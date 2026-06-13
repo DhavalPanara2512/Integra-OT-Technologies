@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -9,7 +7,290 @@
 
 <title>Integra OT Technologies</title>
 
-<link rel="stylesheet" href="css/style.css">
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#020c1b;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* ================= HEADER ================= */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:20px 8%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(10px);
+
+z-index:1000;
+}
+
+.logo a{
+font-size:30px;
+font-weight:bold;
+text-decoration:none;
+color:#00c8ff;
+}
+
+nav{
+display:flex;
+gap:30px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+nav a:hover{
+color:#00c8ff;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+position:relative;
+
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+
+padding:120px 30px;
+
+background:
+linear-gradient(
+rgba(0,10,30,.85),
+rgba(0,10,30,.90)
+),
+url('images/industrial-bg.jpg');
+
+background-size:cover;
+background-position:center;
+}
+
+/* Left PNG */
+
+.hero::before{
+content:'';
+
+position:absolute;
+left:0;
+bottom:0;
+
+width:350px;
+height:350px;
+
+background:url('images/factory.png');
+background-size:contain;
+background-repeat:no-repeat;
+
+opacity:.15;
+}
+
+/* Right PNG */
+
+.hero::after{
+content:'';
+
+position:absolute;
+right:0;
+bottom:0;
+
+width:350px;
+height:350px;
+
+background:url('images/dashboard.png');
+background-size:contain;
+background-repeat:no-repeat;
+
+opacity:.15;
+}
+
+.hero-content{
+max-width:1000px;
+z-index:2;
+}
+
+.hero h1{
+font-size:80px;
+font-weight:800;
+line-height:1.1;
+
+margin-bottom:20px;
+
+text-shadow:
+0 0 20px rgba(0,200,255,.3),
+0 0 50px rgba(0,200,255,.3);
+}
+
+.hero p{
+font-size:24px;
+margin-bottom:40px;
+}
+
+/* ================= BUTTON ================= */
+
+.btn{
+display:inline-block;
+
+padding:15px 35px;
+
+margin:10px;
+
+background:#00c8ff;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:8px;
+
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-5px);
+
+box-shadow:
+0 0 20px rgba(0,200,255,.5);
+
+background:#00a9d6;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+padding:100px 10%;
+}
+
+.section:nth-child(even){
+background:#04162f;
+}
+
+.section:nth-child(odd){
+background:#031124;
+}
+
+.section h2{
+text-align:center;
+
+font-size:48px;
+
+margin-bottom:50px;
+
+color:#00c8ff;
+}
+
+/* ================= CARDS ================= */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,.08);
+
+padding:30px;
+
+border-radius:15px;
+
+text-align:center;
+
+text-decoration:none;
+
+color:white;
+
+transition:.4s;
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+border:1px solid #00c8ff;
+
+box-shadow:
+0 0 20px rgba(0,200,255,.4),
+0 0 40px rgba(0,200,255,.2);
+}
+
+.card h3{
+margin-bottom:15px;
+color:#00c8ff;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+background:#010c1d;
+
+padding:50px;
+
+text-align:center;
+}
+
+footer h3{
+color:#00c8ff;
+margin-bottom:10px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+nav{
+display:none;
+}
+
+.hero::before,
+.hero::after{
+display:none;
+}
+
+.section h2{
+font-size:32px;
+}
+
+}
+
+</style>
 
 </head>
 
@@ -18,20 +299,23 @@
 <header>
 
 <div class="logo">
-<a href="index.html">Integra OT Technologies</a>
+<a href="#">Integra OT Technologies</a>
 </div>
 
-<div class="menu-toggle" id="mobile-menu">
-☰
-</div>
+<nav>
 
-<nav id="navbar">
-
-<a href="index.html">Home</a> <a href="about.html">About</a> <a href="services.html">Services</a> <a href="industries.html">Industries</a> <a href="projects.html">Projects</a> <a href="contact.html">Contact</a>
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Services</a>
+<a href="#">Industries</a>
+<a href="#">Projects</a>
+<a href="#">Contact</a>
 
 </nav>
 
 </header>
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -43,21 +327,25 @@ Digital Transformation
 </h1>
 
 <p>
+
 Industrial Automation • AVEVA PI System • SCADA • Power BI •
 Industrial Cybersecurity • IT-OT Integration
+
 </p>
 
-<a href="services.html" class="btn">
+<a href="#" class="btn">
 Explore Solutions
 </a>
 
-<a href="contact.html" class="btn">
+<a href="#" class="btn">
 Contact Us
 </a>
 
 </div>
 
 </section>
+
+<!-- ABOUT -->
 
 <section class="section">
 
@@ -70,9 +358,10 @@ Contact Us
 <h3>Company Overview</h3>
 
 <p>
+
 Technology-driven company specializing in Industrial Automation,
-AVEVA PI System, SCADA, Power BI, Industrial Cybersecurity
-and Digital Transformation solutions.
+AVEVA PI System, SCADA, Power BI and OT Cybersecurity.
+
 </p>
 
 </div>
@@ -82,8 +371,10 @@ and Digital Transformation solutions.
 <h3>Vision</h3>
 
 <p>
-To become a trusted technology partner in Industrial Automation,
-IT-OT Integration and Digital Transformation.
+
+To become a trusted technology partner in Industrial
+Digital Transformation.
+
 </p>
 
 </div>
@@ -93,8 +384,10 @@ IT-OT Integration and Digital Transformation.
 <h3>Mission</h3>
 
 <p>
-Helping industries unlock the full potential of operational
-and business data through automation and analytics.
+
+Helping industries unlock operational intelligence through
+automation and analytics.
+
 </p>
 
 </div>
@@ -102,6 +395,8 @@ and business data through automation and analytics.
 </div>
 
 </section>
+
+<!-- SERVICES -->
 
 <section class="section">
 
@@ -109,53 +404,66 @@ and business data through automation and analytics.
 
 <div class="cards">
 
-<a href="services.html" class="card">
+<div class="card">
 
 <h3>AVEVA PI System</h3>
 
 <p>
-PI Data Archive, PI AF, PI Vision,
-Connectors, Interfaces and Integrations.
+
+PI Data Archive, AF, PI Vision,
+Connectors & Integrations.
+
 </p>
 
-</a>
+</div>
 
-<a href="services.html" class="card">
+<div class="card">
 
 <h3>SCADA Solutions</h3>
 
 <p>
-SCADA Development, HMI Design,
-Alarm Management and Reporting.
+
+HMI Development,
+Alarm Management,
+Industrial Monitoring.
+
 </p>
 
-</a>
+</div>
 
-<a href="services.html" class="card">
+<div class="card">
 
 <h3>Power BI</h3>
 
 <p>
-Executive Dashboards, KPI Monitoring,
-Business Intelligence and Analytics.
+
+Executive Dashboards,
+KPI Monitoring,
+Analytics.
+
 </p>
 
-</a>
+</div>
 
-<a href="services.html" class="card">
+<div class="card">
 
 <h3>OT Cybersecurity</h3>
 
 <p>
-Industrial Security Assessment,
-Firewall and Network Protection.
+
+Industrial Network Security,
+Risk Assessment,
+Firewall Solutions.
+
 </p>
 
-</a>
+</div>
 
 </div>
 
 </section>
+
+<!-- INDUSTRIES -->
 
 <section class="section">
 
@@ -163,53 +471,55 @@ Firewall and Network Protection.
 
 <div class="cards">
 
-<a href="pharma.html" class="card">
+<div class="card">
 
 <h3>Pharmaceutical</h3>
 
 <p>
-Data Integrity, Compliance,
-Reporting and Analytics Solutions.
+Data Integrity &
+Regulatory Compliance
 </p>
 
-</a>
+</div>
 
-<a href="oilgas.html" class="card">
+<div class="card">
 
 <h3>Oil & Gas</h3>
 
 <p>
-Operational Monitoring,
-Industrial Data Management.
+Real-Time Monitoring &
+Analytics
 </p>
 
-</a>
+</div>
 
-<a href="lng.html" class="card">
+<div class="card">
 
 <h3>LNG</h3>
 
 <p>
-LNG Terminal Monitoring,
-Reporting and Analytics.
+Terminal Operations &
+Reporting
 </p>
 
-</a>
+</div>
 
-<a href="power.html" class="card">
+<div class="card">
 
 <h3>Power</h3>
 
 <p>
-Generation Monitoring,
-Energy Analytics and Reporting.
+Energy Monitoring &
+Performance Analytics
 </p>
 
-</a>
+</div>
 
 </div>
 
 </section>
+
+<!-- WHY US -->
 
 <section class="section">
 
@@ -222,15 +532,15 @@ Energy Analytics and Reporting.
 </div>
 
 <div class="card">
-<h3>Industrial Cybersecurity</h3>
+<h3>SCADA Experts</h3>
 </div>
 
 <div class="card">
-<h3>IT-OT Integration Experts</h3>
+<h3>OT Cybersecurity</h3>
 </div>
 
 <div class="card">
-<h3>24x7 Support</h3>
+<h3>24×7 Support</h3>
 </div>
 
 </div>
@@ -242,13 +552,13 @@ Energy Analytics and Reporting.
 <h3>Integra OT Technologies</h3>
 
 <p>
-Industrial Automation | AVEVA PI | SCADA | Power BI
+
+Industrial Automation | AVEVA PI System | SCADA |
+Power BI | Cybersecurity
+
 </p>
 
 </footer>
 
-<script src="js/script.js"></script>
-
 </body>
-
 </html>
