@@ -1,296 +1,18 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Integra OT Technologies</title>
+<title>Integra OT Technologies | Industrial Automation & Digital Transformation</title>
 
-<style>
+<meta name="description"
+content="Integra OT Technologies provides Industrial Automation, AVEVA PI System, SCADA, Power BI, OT Cybersecurity and Digital Transformation solutions.">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-scroll-behavior:smooth;
-}
-
-body{
-background:#020c1b;
-color:#fff;
-overflow-x:hidden;
-}
-
-/* ================= HEADER ================= */
-
-header{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-padding:20px 8%;
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-background:rgba(0,0,0,0.35);
-backdrop-filter:blur(10px);
-
-z-index:1000;
-}
-
-.logo a{
-font-size:30px;
-font-weight:bold;
-text-decoration:none;
-color:#00c8ff;
-}
-
-nav{
-display:flex;
-gap:30px;
-}
-
-nav a{
-text-decoration:none;
-color:white;
-transition:.3s;
-}
-
-nav a:hover{
-color:#00c8ff;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-position:relative;
-
-min-height:100vh;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-text-align:center;
-
-padding:120px 30px;
-
-background:
-linear-gradient(
-rgba(0,10,30,.85),
-rgba(0,10,30,.90)
-),
-url('images/industrial-bg.jpg');
-
-background-size:cover;
-background-position:center;
-}
-
-/* Left PNG */
-
-.hero::before{
-content:'';
-
-position:absolute;
-left:0;
-bottom:0;
-
-width:350px;
-height:350px;
-
-background:url('images/factory.png');
-background-size:contain;
-background-repeat:no-repeat;
-
-opacity:.15;
-}
-
-/* Right PNG */
-
-.hero::after{
-content:'';
-
-position:absolute;
-right:0;
-bottom:0;
-
-width:350px;
-height:350px;
-
-background:url('images/dashboard.png');
-background-size:contain;
-background-repeat:no-repeat;
-
-opacity:.15;
-}
-
-.hero-content{
-max-width:1000px;
-z-index:2;
-}
-
-.hero h1{
-font-size:80px;
-font-weight:800;
-line-height:1.1;
-
-margin-bottom:20px;
-
-text-shadow:
-0 0 20px rgba(0,200,255,.3),
-0 0 50px rgba(0,200,255,.3);
-}
-
-.hero p{
-font-size:24px;
-margin-bottom:40px;
-}
-
-/* ================= BUTTON ================= */
-
-.btn{
-display:inline-block;
-
-padding:15px 35px;
-
-margin:10px;
-
-background:#00c8ff;
-
-color:white;
-
-text-decoration:none;
-
-border-radius:8px;
-
-transition:.3s;
-}
-
-.btn:hover{
-transform:translateY(-5px);
-
-box-shadow:
-0 0 20px rgba(0,200,255,.5);
-
-background:#00a9d6;
-}
-
-/* ================= SECTION ================= */
-
-.section{
-padding:100px 10%;
-}
-
-.section:nth-child(even){
-background:#04162f;
-}
-
-.section:nth-child(odd){
-background:#031124;
-}
-
-.section h2{
-text-align:center;
-
-font-size:48px;
-
-margin-bottom:50px;
-
-color:#00c8ff;
-}
-
-/* ================= CARDS ================= */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.card{
-
-background:rgba(255,255,255,.05);
-
-backdrop-filter:blur(10px);
-
-border:1px solid rgba(255,255,255,.08);
-
-padding:30px;
-
-border-radius:15px;
-
-text-align:center;
-
-text-decoration:none;
-
-color:white;
-
-transition:.4s;
-}
-
-.card:hover{
-
-transform:translateY(-10px);
-
-border:1px solid #00c8ff;
-
-box-shadow:
-0 0 20px rgba(0,200,255,.4),
-0 0 40px rgba(0,200,255,.2);
-}
-
-.card h3{
-margin-bottom:15px;
-color:#00c8ff;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-background:#010c1d;
-
-padding:50px;
-
-text-align:center;
-}
-
-footer h3{
-color:#00c8ff;
-margin-bottom:10px;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:42px;
-}
-
-.hero p{
-font-size:18px;
-}
-
-nav{
-display:none;
-}
-
-.hero::before,
-.hero::after{
-display:none;
-}
-
-.section h2{
-font-size:32px;
-}
-
-}
-
-</style>
+<link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -299,17 +21,25 @@ font-size:32px;
 <header>
 
 <div class="logo">
-<a href="#">Integra OT Technologies</a>
+
+<img src="images/logo.png" alt="Integra OT Technologies">
+
+<span>Integra OT Technologies</span>
+
 </div>
 
-<nav>
+<div class="menu-toggle" id="mobile-menu">
+☰
+</div>
 
-<a href="#">Home</a>
-<a href="#">About</a>
-<a href="#">Services</a>
-<a href="#">Industries</a>
-<a href="#">Projects</a>
-<a href="#">Contact</a>
+<nav id="navbar">
+
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="industries.html">Industries</a>
+<a href="projects.html">Projects</a>
+<a href="contact.html">Contact</a>
 
 </nav>
 
@@ -322,7 +52,7 @@ font-size:32px;
 <div class="hero-content">
 
 <h1>
-Accelerating Industrial
+Accelerating Industrial<br>
 Digital Transformation
 </h1>
 
@@ -333,11 +63,11 @@ Industrial Cybersecurity • IT-OT Integration
 
 </p>
 
-<a href="#" class="btn">
+<a href="services.html" class="btn">
 Explore Solutions
 </a>
 
-<a href="#" class="btn">
+<a href="contact.html" class="btn">
 Contact Us
 </a>
 
@@ -359,8 +89,9 @@ Contact Us
 
 <p>
 
-Technology-driven company specializing in Industrial Automation,
-AVEVA PI System, SCADA, Power BI and OT Cybersecurity.
+Integra OT Technologies specializes in Industrial Automation,
+AVEVA PI System, SCADA, Power BI, Industrial Cybersecurity,
+Cloud Solutions and Digital Transformation Services.
 
 </p>
 
@@ -372,8 +103,8 @@ AVEVA PI System, SCADA, Power BI and OT Cybersecurity.
 
 <p>
 
-To become a trusted technology partner in Industrial
-Digital Transformation.
+To become a trusted technology partner for Industrial
+Automation, Data Analytics and IT-OT Integration.
 
 </p>
 
@@ -385,8 +116,8 @@ Digital Transformation.
 
 <p>
 
-Helping industries unlock operational intelligence through
-automation and analytics.
+Helping industries unlock operational excellence through
+automation, connectivity and analytics.
 
 </p>
 
@@ -406,26 +137,30 @@ automation and analytics.
 
 <div class="card">
 
+<img src="images/pi-system.jpg" alt="AVEVA PI System">
+
 <h3>AVEVA PI System</h3>
 
 <p>
 
-PI Data Archive, AF, PI Vision,
-Connectors & Integrations.
+PI Data Archive, PI AF, PI Vision,
+Connectors, Interfaces and Integrations.
 
 </p>
 
 </div>
 
 <div class="card">
+
+<img src="images/scada.jpg" alt="SCADA">
 
 <h3>SCADA Solutions</h3>
 
 <p>
 
-HMI Development,
-Alarm Management,
-Industrial Monitoring.
+SCADA Development,
+HMI Design,
+Alarm Management and Reporting.
 
 </p>
 
@@ -433,13 +168,15 @@ Industrial Monitoring.
 
 <div class="card">
 
-<h3>Power BI</h3>
+<img src="images/powerbi.jpg" alt="Power BI">
+
+<h3>Power BI Analytics</h3>
 
 <p>
 
 Executive Dashboards,
 KPI Monitoring,
-Analytics.
+Business Intelligence and Analytics.
 
 </p>
 
@@ -447,13 +184,15 @@ Analytics.
 
 <div class="card">
 
+<img src="images/cybersecurity.jpg" alt="Cybersecurity">
+
 <h3>OT Cybersecurity</h3>
 
 <p>
 
-Industrial Network Security,
-Risk Assessment,
-Firewall Solutions.
+Industrial Security Assessment,
+Firewall,
+Network Segmentation and Risk Analysis.
 
 </p>
 
@@ -462,7 +201,8 @@ Firewall Solutions.
 </div>
 
 </section>
-
+```
+```html
 <!-- INDUSTRIES -->
 
 <section class="section">
@@ -473,44 +213,55 @@ Firewall Solutions.
 
 <div class="card">
 
+<img src="images/pharma.jpg" alt="Pharmaceutical">
+
 <h3>Pharmaceutical</h3>
 
 <p>
-Data Integrity &
-Regulatory Compliance
+Data Integrity, Regulatory Compliance,
+Reporting and Analytics Solutions.
 </p>
 
 </div>
 
 <div class="card">
+
+<img src="images/oilgas.jpg" alt="Oil & Gas">
 
 <h3>Oil & Gas</h3>
 
 <p>
-Real-Time Monitoring &
-Analytics
+Operational Monitoring,
+Industrial Data Management
+and Analytics.
 </p>
 
 </div>
 
 <div class="card">
+
+<img src="images/lng.jpg" alt="LNG">
 
 <h3>LNG</h3>
 
 <p>
-Terminal Operations &
-Reporting
+LNG Terminal Monitoring,
+Reporting,
+Analytics and Optimization.
 </p>
 
 </div>
 
 <div class="card">
 
+<img src="images/power.jpg" alt="Power">
+
 <h3>Power</h3>
 
 <p>
-Energy Monitoring &
-Performance Analytics
+Generation Monitoring,
+Energy Analytics,
+Performance Reporting.
 </p>
 
 </div>
@@ -519,7 +270,7 @@ Performance Analytics
 
 </section>
 
-<!-- WHY US -->
+<!-- WHY CHOOSE US -->
 
 <section class="section">
 
@@ -528,24 +279,58 @@ Performance Analytics
 <div class="cards">
 
 <div class="card">
+
 <h3>AVEVA PI Specialists</h3>
+
+<p>
+Expertise in PI Data Archive,
+PI AF, PI Vision,
+Connectors and Integrations.
+</p>
+
 </div>
 
 <div class="card">
-<h3>SCADA Experts</h3>
+
+<h3>Industrial Cybersecurity</h3>
+
+<p>
+Secure OT Infrastructure,
+Risk Assessment and
+Network Protection.
+</p>
+
 </div>
 
 <div class="card">
-<h3>OT Cybersecurity</h3>
+
+<h3>IT-OT Integration Experts</h3>
+
+<p>
+Seamless integration between
+industrial systems and enterprise
+applications.
+</p>
+
 </div>
 
 <div class="card">
-<h3>24×7 Support</h3>
+
+<h3>24x7 Support</h3>
+
+<p>
+Dedicated support and
+continuous monitoring
+for critical systems.
+</p>
+
 </div>
 
 </div>
 
 </section>
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -553,12 +338,50 @@ Performance Analytics
 
 <p>
 
-Industrial Automation | AVEVA PI System | SCADA |
-Power BI | Cybersecurity
+Industrial Automation |
+AVEVA PI System |
+SCADA |
+Power BI |
+OT Cybersecurity
+
+</p>
+
+<br>
+
+<p>
+
+Email: info@integraottechnologies.com
+
+</p>
+
+<p>
+
+Website:
+www.integraottechnologies.com
 
 </p>
 
 </footer>
 
+<!-- MOBILE MENU -->
+
+<script>
+
+const mobileMenu =
+document.getElementById('mobile-menu');
+
+const navbar =
+document.getElementById('navbar');
+
+mobileMenu.addEventListener('click', () => {
+
+navbar.classList.toggle('active');
+
+});
+
+</script>
+
 </body>
+
 </html>
+```
