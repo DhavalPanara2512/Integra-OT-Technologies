@@ -6,7 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Integra OT Technologies | Industrial Intelligence & Digital Transformation</title>
     <meta name="description" content="Integra OT Technologies provides Industrial Automation, AVEVA PI System, SCADA, Power BI, OT Cybersecurity and Digital Transformation solutions.">
-    <link rel="stylesheet" href="css/style.css?v=3.2">
+    <link rel="stylesheet" href="css/style.css?v=3.8">
+    <style>
+        /* Custom architectural styling overrides to mirror the premium mask look of Image 1 exactly */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 160px 8% 100px;
+            /* Creates the exact translucent light layer look covering your factory plant background graphics */
+            background: linear-gradient(rgba(244, 247, 252, 0.45), rgba(244, 247, 252, 0.60)), url('images/industrial-bg.jpg') center/cover no-repeat;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 1050px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5.5vw, 72px);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 25px;
+            color: #1a2536; /* High-contrast dark text layout parameter */
+            letter-spacing: -0.01em;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 1.8vw, 22px);
+            max-width: 850px;
+            margin: 0 auto 45px;
+            color: #475569; /* Balanced description gray parameter */
+            line-height: 1.75;
+            font-weight: 500;
+        }
+
+        .hero-btn-container {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero .btn {
+            margin: 0;
+            padding: 14px 36px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        @media(max-width: 768px) {
+            .hero { padding: 140px 20px 60px; min-height: auto; }
+            .hero h1 { font-size: 38px; line-height: 1.2; }
+            .hero p { font-size: 16px; margin-bottom: 30px; }
+            .hero-btn-container { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; }
+        }
+    </style>
 </head>
 
 <body>
@@ -36,8 +98,10 @@
             <p>
                 We bridge the gap between complex process operations and enterprise analytics. From edge connectivity and AVEVA PI System optimization to advanced data engineering, we unlock operational excellence.
             </p>
-            <a href="services.html" class="btn">Explore Solutions</a>
-            <a href="contact.html" class="btn">Contact Us</a>
+            <div class="hero-btn-container">
+                <a href="services.html" class="btn">Explore Solutions</a>
+                <a href="contact.html" class="btn">Contact Us</a>
+            </div>
         </div>
     </section>
 
@@ -51,7 +115,7 @@
             </div>
             <div class="card">
                 <img src="images/scada.jpg" alt="SCADA">
-                <h3>SCADA & Automation</h3>
+                <h3>SCADA &amp; Automation</h3>
                 <p>High-performance SCADA application development, ergonomic HMI graphic layouts, alarm management rationalization, and automated shift reporting metrics.</p>
             </div>
             <div class="card">
@@ -76,8 +140,8 @@
                 <p>Ensuring absolute data integrity, strict regulatory validation compliance (FDA 21 CFR Part 11), and electronic batch record tracking.</p>
             </div>
             <div class="card">
-                <img src="images/oilgas.jpg" alt="Oil & Gas">
-                <h3>Oil & Gas</h3>
+                <img src="images/oilgas.jpg" alt="Oil &amp; Gas">
+                <h3>Oil &amp; Gas</h3>
                 <p>Operational asset monitoring, pipeline telemetry aggregation, and centralized multi-site data management across downstream operations.</p>
             </div>
             <div class="card">
@@ -87,7 +151,7 @@
             </div>
             <div class="card">
                 <img src="images/power.jpg" alt="Power">
-                <h3>Power & Utilities</h3>
+                <h3>Power &amp; Utilities</h3>
                 <p>Thermal efficiency metrics, continuous turbine performance monitoring, boiler health visibility, and smart utility grids.</p>
             </div>
         </div>
