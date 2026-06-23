@@ -1,5 +1,5 @@
 /* =========================
-    GLOBAL STYLES
+    GLOBAL STYLES (LIGHT-THEME)
 ========================= */
 *{
     margin: 0;
@@ -10,8 +10,8 @@
 }
 
 body{
-    background: #020c1b;
-    color: #fff;
+    background: #f4f7fc; /* Crisp, clean light background */
+    color: #1a2536;      /* High-contrast dark slate body text */
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -28,9 +28,9 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0, 0, 0, .45);
+    background: rgba(255, 255, 255, 0.8); /* Translucent light header */
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     z-index: 1000;
 }
 
@@ -48,7 +48,7 @@ header{
 .logo span{
     font-size: 28px;
     font-weight: 700;
-    color: #00c8ff;
+    color: #0088cc; /* Deep vivid corporate blue for light background */
 }
 
 nav{
@@ -58,25 +58,25 @@ nav{
 
 nav a{
     text-decoration: none;
-    color: white;
+    color: #334155; /* Slate gray link colors */
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     transition: .3s;
 }
 
 nav a:hover{
-    color: #00c8ff;
+    color: #0088cc;
 }
 
 .menu-toggle{
     display: none;
     font-size: 32px;
     cursor: pointer;
-    color: #00c8ff;
+    color: #0088cc;
 }
 
 /* =========================
-    HERO SECTION
+    HERO SECTION 
 ========================= */
 .hero{
     position: relative;
@@ -86,7 +86,8 @@ nav a:hover{
     align-items: center;
     text-align: center;
     padding: 120px 30px;
-    background: linear-gradient(rgba(0,10,30,.82), rgba(0,10,30,.92)), url('../images/industrial-bg.jpg');
+    /* Keeps your images exactly as they were, but overlays a high-contrast white visibility mask */
+    background: linear-gradient(rgba(244, 247, 252, 0.85), rgba(244, 247, 252, 0.92)), url('../images/industrial-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -103,8 +104,8 @@ nav a:hover{
     background: url('../images/factory.png');
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: .18;
-    filter: drop-shadow(0 0 25px rgba(0,200,255,.4));
+    opacity: .12;
+    filter: drop-shadow(0 0 25px rgba(0,136,204,.2));
 }
 
 .hero::after{
@@ -117,8 +118,8 @@ nav a:hover{
     background: url('../images/dashboard.png');
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: .18;
-    filter: drop-shadow(0 0 25px rgba(0,200,255,.4));
+    opacity: .12;
+    filter: drop-shadow(0 0 25px rgba(0,136,204,.2));
 }
 
 .hero-content{
@@ -132,7 +133,8 @@ nav a:hover{
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 25px;
-    text-shadow: 0 0 15px rgba(0,200,255,.3), 0 0 40px rgba(0,200,255,.2);
+    color: #0f172a; /* Strong bold dark text */
+    text-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .hero p{
@@ -140,7 +142,7 @@ nav a:hover{
     max-width: 1000px;
     margin: auto;
     margin-bottom: 40px;
-    color: #d7e5ff;
+    color: #475569;
 }
 
 /* =========================
@@ -150,18 +152,19 @@ nav a:hover{
     display: inline-block;
     padding: 15px 35px;
     margin: 10px;
-    background: #00c8ff;
+    background: #0088cc;
     color: white;
     text-decoration: none;
     border-radius: 8px;
     font-weight: 600;
     transition: .3s;
+    box-shadow: 0 4px 15px rgba(0, 136, 204, 0.2);
 }
 
 .btn:hover{
-    background: #009fd1;
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(0,200,255,.4);
+    background: #006699;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 136, 204, 0.3);
 }
 
 /* =========================
@@ -172,18 +175,19 @@ nav a:hover{
 }
 
 .section:nth-child(even){
-    background: #04162f;
+    background: #ffffff; /* Alternating white rows */
 }
 
 .section:nth-child(odd){
-    background: #031124;
+    background: #f8fafc; /* Alternating soft slate rows */
 }
 
 .section h2{
     text-align: center;
     font-size: 50px;
     margin-bottom: 60px;
-    color: #00c8ff;
+    color: #0f172a;
+    font-weight: 800;
 }
 
 /* =========================
@@ -196,21 +200,21 @@ nav a:hover{
 }
 
 .card{
-    background: rgba(255, 255, 255, .05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, .08);
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
     padding: 30px;
     border-radius: 15px;
     text-align: center;
     text-decoration: none;
-    color: white;
-    transition: .4s;
+    color: #334155;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+    transition: .4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover{
-    transform: translateY(-10px);
-    border: 1px solid #00c8ff;
-    box-shadow: 0 0 20px rgba(0, 200, 255, .25), 0 0 40px rgba(0, 200, 255, .15);
+    transform: translateY(-8px);
+    border: 1px solid #0088cc;
+    box-shadow: 0 20px 25px -5px rgba(0, 136, 204, 0.1), 0 10px 10px -5px rgba(0, 136, 204, 0.04);
 }
 
 .card img{
@@ -224,7 +228,8 @@ nav a:hover{
 .card h3{
     margin-bottom: 15px;
     font-size: 24px;
-    color: #00c8ff;
+    color: #0f172a;
+    font-weight: 700;
 }
 
 /* =========================
@@ -234,7 +239,7 @@ nav a:hover{
     padding-top: 180px;
     padding-bottom: 120px;
     text-align: center;
-    background: linear-gradient(rgba(0,10,30,.75), rgba(0,10,30,.85)), url('../images/about-banner.jpg');
+    background: linear-gradient(rgba(244, 247, 252, 0.75), rgba(244, 247, 252, 0.85)), url('../images/about-banner.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -249,7 +254,7 @@ nav a:hover{
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0,200,255,.08), transparent, rgba(0,200,255,.05));
+    background: linear-gradient(135deg, rgba(0,136,204,.05), transparent, rgba(0,136,204,.03));
     pointer-events: none;
 }
 
@@ -258,38 +263,45 @@ nav a:hover{
     z-index: 2;
     font-size: 70px;
     font-weight: 800;
-    color: #ffffff;
+    color: #0f172a;
     margin-bottom: 15px;
-    text-shadow: 0 0 20px rgba(0,200,255,.5), 0 0 40px rgba(0,200,255,.3);
 }
 
 .page-banner p{
     position: relative;
     z-index: 2;
     font-size: 22px;
-    color: #d7e5ff;
+    color: #475569;
     max-width: 900px;
     margin: auto;
 }
 
 .company-section{
     position: relative;
-    background: linear-gradient(rgba(2,12,27,.88), rgba(2,12,27,.94)), url('../images/company-bg.jpg');
+    background: linear-gradient(rgba(255,255,255,.82), rgba(255,255,255,.90)), url('../images/company-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .company-section .content{
-    background: rgba(2,12,27,.78);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(8px);
     padding: 40px;
     border-radius: 15px;
-    border: 1px solid rgba(0,200,255,.10);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: #334155;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.company-section .content h2 {
+    color: #0f172a;
+    font-weight: 800;
+    margin-bottom: 20px;
 }
 
 /* =========================
-    ZIGZAG MISSION & VISION (BORDERLESS OVERHAUL)
+    ZIGZAG MISSION & VISION (LIGHT THEME)
 ========================= */
 .mission-vision-container {
     max-width: 1200px;
@@ -314,7 +326,7 @@ nav a:hover{
     direction: ltr;
 }
 
-/* Changed cards into transparent layout elements like Reference Image 1 */
+/* Completely transparent borderless blocks over light layers */
 .mv-row .card {
     text-align: left;
     padding: 10px 0;
@@ -327,15 +339,14 @@ nav a:hover{
 
 .mv-row .card h3 {
     margin-bottom: 20px;
-    color: #00c8ff;
+    color: #0088cc;
     font-size: 36px;
     font-weight: 800;
-    text-shadow: 0 0 15px rgba(0, 200, 255, 0.2);
 }
 
 .mv-row .card p {
     font-size: 18px;
-    color: #d7e5ff;
+    color: #475569;
     line-height: 1.7;
 }
 
@@ -353,44 +364,53 @@ nav a:hover{
     max-height: 380px;
     object-fit: contain;
     border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
-/* Eliminated hover animation triggers since box wrappers are removed */
 .mission-card:hover,
 .vision-card:hover {
     transform: none !important;
     box-shadow: none !important;
 }
 
-/* Core Values Specific Wrapper */
+/* Core Values Specific Light-Wrapper */
 #why-partner{
     position: relative;
-    background: linear-gradient(rgba(3,17,36,.92), rgba(3,17,36,.96)), url('../images/values-bg.png');
+    background: linear-gradient(rgba(244, 247, 252, 0.88), rgba(244, 247, 252, 0.95)), url('../images/values-bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+#why-partner h2 {
+    color: #0f172a;
 }
 
 #why-partner .card{
-    background: rgba(7,26,54,.82);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0,200,255,.15);
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    color: #475569;
+}
+
+#why-partner .card h3 {
+    color: #0f172a;
 }
 
 /* =========================
-    HIGH-TECH UNIFIED FOOTER
+    HIGH-TECH UNIFIED FOOTER (LIGHT THEME)
 ========================= */
 footer {
     position: relative;
-    background: linear-gradient(180deg, rgba(3, 17, 36, 0.95) 0%, rgba(1, 8, 19, 0.98) 100%), url('../images/industrial-bg.jpg'); 
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.98) 100%), url('../images/industrial-bg.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding: 80px 60px;
     text-align: center;
     overflow: hidden;
-    border-top: 2px solid #00c8ff;
-    box-shadow: 0 -10px 30px rgba(0, 200, 255, 0.15);
+    border-top: 2px solid #0088cc;
 }
 
 footer::before {
@@ -398,8 +418,8 @@ footer::before {
     position: absolute;
     inset: 0;
     background-image: 
-        linear-gradient(rgba(0, 200, 255, 0.02) 1px, transparent 1px), 
-        linear-gradient(90deg, rgba(0, 200, 255, 0.02) 1px, transparent 1px);
+        linear-gradient(rgba(0, 136, 204, 0.02) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(0, 136, 204, 0.02) 1px, transparent 1px);
     background-size: 45px 45px;
     pointer-events: none;
     z-index: 1;
@@ -412,29 +432,29 @@ footer h3, footer p, footer .footer-details, footer .footer-social {
 
 footer h3 {
     font-size: 32px;
-    color: #00c8ff;
+    color: #0f172a;
     margin-bottom: 12px;
-    font-weight: 700;
-    text-shadow: 0 0 15px rgba(0, 200, 255, 0.25);
+    font-weight: 800;
 }
 
 .footer-services {
-    color: #a5b7d6;
+    color: #475569;
     margin-bottom: 30px;
     font-size: 16px;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    font-weight: 600;
 }
 
 .footer-details p {
-    color: #cfd9ea;
+    color: #334155;
     font-size: 15px;
     margin: 8px 0;
 }
 
 .footer-details strong {
-    color: #00c8ff;
+    color: #0088cc;
     margin-right: 4px;
 }
 
@@ -442,15 +462,16 @@ footer h3 {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(7, 26, 54, 0.6);
-    border: 1px solid rgba(0, 200, 255, 0.2);
-    color: #fff;
+    background: #ffffff;
+    border: 1px solid rgba(0, 136, 204, 0.2);
+    color: #0077b5;
     text-decoration: none;
     padding: 12px 24px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
     margin-top: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -465,9 +486,14 @@ footer h3 {
 
 .social-link.linkedin:hover {
     background: #0077b5;
-    border-color: #0077b5;
+    color: #ffffff;
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 119, 181, 0.4);
+    box-shadow: 0 8px 20px rgba(0, 119, 181, 0.2);
+}
+
+.social-link.linkedin:hover span {
+    background: #ffffff;
+    color: #0077b5;
 }
 
 /* =========================
@@ -496,7 +522,10 @@ footer h3 {
         margin-top: 15px;
         flex-direction: column;
         text-align: center;
-        background: #04152d;
+        background: #ffffff;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        border-radius: 8px;
+        padding: 10px 0;
     }
 
     nav.active{
