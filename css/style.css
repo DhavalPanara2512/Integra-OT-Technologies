@@ -86,8 +86,7 @@ nav a:hover{
     align-items: center;
     text-align: center;
     padding: 120px 30px;
-    /* Keeps your images exactly as they were, but overlays a high-contrast white visibility mask */
-    background: linear-gradient(rgba(244, 247, 252, 0.85), rgba(244, 247, 252, 0.92)), url('../images/industrial-bg.jpg');
+    background: linear-gradient(rgba(244, 247, 252, 0.50), rgba(244, 247, 252, 0.65)), url('../images/industrial-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -235,57 +234,17 @@ nav a:hover{
 /* =========================
     ABOUT PAGE LAYOUTS
 ========================= */
-.page-banner{
-    padding-top: 180px;
-    padding-bottom: 120px;
-    text-align: center;
-    background: linear-gradient(rgba(244, 247, 252, 0.75), rgba(244, 247, 252, 0.85)), url('../images/about-banner.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    overflow: hidden;
-}
-
-.page-banner::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0,136,204,.05), transparent, rgba(0,136,204,.03));
-    pointer-events: none;
-}
-
-.page-banner h1{
-    position: relative;
-    z-index: 2;
-    font-size: 70px;
-    font-weight: 800;
-    color: #0f172a;
-    margin-bottom: 15px;
-}
-
-.page-banner p{
-    position: relative;
-    z-index: 2;
-    font-size: 22px;
-    color: #475569;
-    max-width: 900px;
-    margin: auto;
-}
-
 .company-section{
     position: relative;
-    background: linear-gradient(rgba(255,255,255,.82), rgba(255,255,255,.90)), url('../images/company-bg.jpg');
+    /* Opacity reduced from 0.82/0.90 to 0.45/0.60 to make company-bg visible */
+    background: linear-gradient(rgba(255,255,255,0.45), rgba(255,255,255,0.60)), url('../images/company-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .company-section .content{
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(8px);
     padding: 40px;
     border-radius: 15px;
@@ -326,7 +285,6 @@ nav a:hover{
     direction: ltr;
 }
 
-/* Completely transparent borderless blocks over light layers */
 .mv-row .card {
     text-align: left;
     padding: 10px 0;
@@ -373,10 +331,13 @@ nav a:hover{
     box-shadow: none !important;
 }
 
-/* Core Values Specific Light-Wrapper */
+/* =========================
+    CORE VALUES (LIGHT-WRAPPER UPDATED)
+========================= */
 #why-partner{
     position: relative;
-    background: linear-gradient(rgba(244, 247, 252, 0.88), rgba(244, 247, 252, 0.95)), url('../images/values-bg.png');
+    /* Clear image pass: Opacity shifted to 0.45 and 0.60 for optimal visibility */
+    background: linear-gradient(rgba(244, 247, 252, 0.45), rgba(244, 247, 252, 0.60)), url('../images/values-bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -388,9 +349,9 @@ nav a:hover{
 }
 
 #why-partner .card{
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
     color: #475569;
 }
 
@@ -403,7 +364,8 @@ nav a:hover{
 ========================= */
 footer {
     position: relative;
-    background: linear-gradient(180deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.98) 100%), url('../images/industrial-bg.jpg'); 
+    /* Footer image pass optimized to 0.50 / 0.65 transparency layer */
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.50) 0%, rgba(241, 245, 249, 0.65) 100%), url('../images/industrial-bg.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -567,10 +529,6 @@ footer h3 {
 
     .section h2{
         font-size: 34px;
-    }
-
-    .page-banner h1{
-        font-size: 40px;
     }
 
     .cards{
