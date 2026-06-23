@@ -362,10 +362,13 @@ nav a:hover{
 /* =========================
     HIGH-TECH UNIFIED FOOTER (LIGHT THEME)
 ========================= */
+/* =========================
+    HIGH-TECH UNIFIED FOOTER (PREMIUM DARK)
+========================= */
 footer {
     position: relative;
-    /* Footer image pass optimized to 0.50 / 0.65 transparency layer */
-    background: linear-gradient(180deg, rgba(248, 250, 252, 0.50) 0%, rgba(241, 245, 249, 0.65) 100%), url('../images/industrial-bg.jpg'); 
+    /* Rich dark gradient mask over the industrial image for maximum text contrast */
+    background: linear-gradient(180deg, rgba(11, 22, 40, 0.94) 0%, rgba(4, 11, 22, 0.98) 100%), url('../images/industrial-bg.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -380,8 +383,8 @@ footer::before {
     position: absolute;
     inset: 0;
     background-image: 
-        linear-gradient(rgba(0, 136, 204, 0.02) 1px, transparent 1px), 
-        linear-gradient(90deg, rgba(0, 136, 204, 0.02) 1px, transparent 1px);
+        linear-gradient(rgba(0, 136, 204, 0.03) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(0, 136, 204, 0.03) 1px, transparent 1px);
     background-size: 45px 45px;
     pointer-events: none;
     z-index: 1;
@@ -394,29 +397,31 @@ footer h3, footer p, footer .footer-details, footer .footer-social {
 
 footer h3 {
     font-size: 32px;
-    color: #0f172a;
+    color: #ffffff; /* Sharp white header */
     margin-bottom: 12px;
     font-weight: 800;
+    letter-spacing: 0.5px;
 }
 
 .footer-services {
-    color: #475569;
+    color: #00c8ff; /* Vibrant cyan for taglines */
     margin-bottom: 30px;
     font-size: 16px;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .footer-details p {
-    color: #334155;
+    color: #cbd5e1; /* Clean light-gray details */
     font-size: 15px;
     margin: 8px 0;
 }
 
 .footer-details strong {
-    color: #0088cc;
+    color: #00c8ff; /* Cyan labels */
     margin-right: 4px;
 }
 
@@ -424,17 +429,16 @@ footer h3 {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: #ffffff;
-    border: 1px solid rgba(0, 136, 204, 0.2);
-    color: #0077b5;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 200, 255, 0.2);
+    color: #ffffff;
     text-decoration: none;
     padding: 12px 24px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
     margin-top: 25px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
 }
 
 .social-link.linkedin span {
@@ -448,109 +452,7 @@ footer h3 {
 
 .social-link.linkedin:hover {
     background: #0077b5;
-    color: #ffffff;
+    border-color: #0077b5;
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 119, 181, 0.2);
-}
-
-.social-link.linkedin:hover span {
-    background: #ffffff;
-    color: #0077b5;
-}
-
-/* =========================
-    MOBILE RESPONSIVE MEDIA QUERIES
-========================= */
-@media(max-width:768px){
-    header{
-        padding: 15px 20px;
-    }
-
-    .logo span{
-        font-size: 18px;
-    }
-
-    .logo img{
-        height: 45px;
-    }
-
-    .menu-toggle{
-        display: block;
-    }
-
-    nav{
-        display: none;
-        width: 100%;
-        margin-top: 15px;
-        flex-direction: column;
-        text-align: center;
-        background: #ffffff;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-        border-radius: 8px;
-        padding: 10px 0;
-    }
-
-    nav.active{
-        display: flex;
-    }
-
-    nav a{
-        padding: 12px;
-    }
-
-    .hero{
-        padding: 120px 20px 60px;
-        min-height: auto;
-    }
-
-    .hero h1{
-        font-size: 42px;
-    }
-
-    .hero p{
-        font-size: 18px;
-    }
-
-    .hero::before,
-    .hero::after{
-        display: none;
-    }
-
-    .btn{
-        display: block;
-        width: 90%;
-        max-width: 300px;
-        margin: 10px auto;
-    }
-
-    .section{
-        padding: 70px 20px;
-    }
-
-    .section h2{
-        font-size: 34px;
-    }
-
-    .cards{
-        grid-template-columns: 1fr;
-    }
-
-    .card img{
-        height: 200px;
-    }
-
-    .mv-row, .mv-row.reverse-row {
-        grid-template-columns: 1fr;
-        direction: ltr;
-        gap: 20px;
-    }
-    
-    .mv-row .card h3 {
-        font-size: 28px;
-    }
-    
-    .mv-image-box {
-        min-height: 200px;
-        height: 200px;
-    }
+    box-shadow: 0 8px 25px rgba(0, 119, 181, 0.35);
 }
