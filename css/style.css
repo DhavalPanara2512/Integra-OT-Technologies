@@ -1,103 +1,81 @@
 /* =========================
-   UPGRADED HERO SECTION
+   CLEAN CEREBULB-STYLE HERO
 ========================= */
 .hero {
   position: relative;
-  min-height: 95vh;
+  min-height: 80vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  padding: 160px 30px 120px;
-  
-  /* Layer 1: Soft white fade out to the bottom section */
-  /* Layer 2: A glowing corporate blue spotlight directly behind the text */
-  /* Layer 3: Your technical/industrial background image, clean and muted */
-  background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, #ffffff 90%),
-    radial-gradient(circle at 50% 45%, rgba(2, 132, 199, 0.12) 0%, transparent 55%),
-    url('../images/industrial-bg.jpg'); 
-    
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  padding: 140px 10% 80px; /* Aligns perfectly with your header padding */
+  background: #ffffff; /* Sharp white canvas */
+  gap: 50px;
   overflow: hidden;
 }
 
-/* Precision tech grid lines layered perfectly over the background image */
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(15, 23, 42, 0.02) 1px, transparent 1px), 
-    linear-gradient(90deg, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
-  background-size: 55px 55px;
-  pointer-events: none;
-  z-index: 1;
-}
-
 .hero-content {
-  max-width: 1050px;
-  position: relative;
-  z-index: 2; /* Ensures text stays perfectly crisp over background images */
+  flex: 1;
+  text-align: left; /* Text stays neat on the left */
+  max-width: 550px;
+  z-index: 2;
 }
 
-/* Premium Typography Shift */
 .hero h1 {
-  font-size: 72px;
+  font-size: 48px; /* Perfectly proportioned heading size */
   font-weight: 800;
-  line-height: 1.12;
-  margin-bottom: 28px;
-  letter-spacing: -2px;
-  color: #0f172a;
-}
-
-/* Style rule to accent a phrase within your H1 if desired */
-.hero h1 span {
-  background: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #0f172a; /* Sharp dark slate */
 }
 
 .hero p {
-  font-size: 21px;
-  max-width: 850px;
-  margin: auto;
-  margin-bottom: 45px;
-  color: #334155;
-  font-weight: 500;
+  font-size: 16px; /* Clean, highly readable body copy */
+  margin-bottom: 30px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* Right Side Image Container */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+/* This restricts the image size perfectly so it is never too large */
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px; /* Strict height limit to keep it balanced */
+  object-fit: contain;
+}
+
+/* Adjust header logo behavior to prevent giant stretched images */
+.logo img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* =========================
-   REFINED NAV HOVER EFFECTS
+   RESPONSIVE MOBILE TWIDDLE
 ========================= */
-nav a {
-  text-decoration: none;
-  color: var(--text-muted);
-  font-size: 15px;
-  font-weight: 600;
-  position: relative;
-  padding: 4px 0;
-  transition: color .2s ease;
-}
-
-nav a:hover {
-  color: var(--accent-primary);
-}
-
-/* Adds a sleek tech line under links on hover */
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--brand-gradient);
-  transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-  width: 100%;
+@media(max-width: 768px){
+  .hero {
+    flex-direction: column-reverse; /* Puts text on top on phones */
+    text-align: center;
+    padding: 120px 20px 40px;
+  }
+  .hero-content {
+    text-align: center;
+    max-width: 100%;
+  }
+  .hero h1 {
+    font-size: 32px;
+  }
+  .hero-image img {
+    max-height: 250px;
+  }
 }
