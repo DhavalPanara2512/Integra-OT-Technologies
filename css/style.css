@@ -1,16 +1,18 @@
 /* =========================
-   GLOBAL & MODERN TECH PALETTE
+   GLOBAL & PREMIUM LIGHT THEME
 ========================= */
 :root {
-  --bg-dark-base: #070a13;      /* Deep premium space black */
-  --bg-dark-card: #0f1424;      /* High contrast card background */
-  --bg-dark-alt: #0b0f1a;       /* Secondary dark segment tone */
-  --text-primary: #f3f4f6;      /* Off-white ultra-readable body text */
-  --text-muted: #9ca3af;        /* Crisp gray secondary text */
-  --accent-cyan: #00f0ff;       /* Vibrant neon IIoT cyan */
-  --accent-purple: #8b5cf6;     /* Digital analytics purple */
-  --tech-gradient: linear-gradient(135deg, #00f0ff 0%, #8b5cf6 100%);
-  --glow-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+  --bg-light-base: #ffffff;     /* Clean white background */
+  --bg-light-alt: #f8fafc;      /* Soft light-gray for alternating sections */
+  --bg-light-card: #ffffff;     /* Crisp white for cards */
+  --text-main: #0f172a;         /* Deep slate/dark gray for primary headings */
+  --text-muted: #475569;        /* Medium slate for readable descriptions */
+  --accent-primary: #0284c7;    /* Tech corporate blue */
+  --accent-secondary: #4f46e5;  /* Deep digital indigo */
+  --brand-gradient: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
+  --subtle-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  --hover-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  --border-color: rgba(15, 23, 42, 0.06);
 }
 
 *{
@@ -22,8 +24,8 @@
 }
 
 body{
-  background: var(--bg-dark-base);
-  color: var(--text-primary);
+  background: var(--bg-light-base);
+  color: var(--text-muted);
   line-height:1.6;
   overflow-x:hidden;
 }
@@ -36,14 +38,14 @@ header{
   top:0;
   left:0;
   width:100%;
-  padding:18px 8%;
+  padding:16px 8%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:rgba(7, 10, 19, 0.75);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.05);
+  border-bottom: 1px solid var(--border-color);
   z-index:1000;
 }
 
@@ -54,16 +56,15 @@ header{
 }
 
 .logo img{
-  height:50px;
+  height:48px;
   width:auto;
-  filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.3));
 }
 
 .logo span{
-  font-size:26px;
+  font-size:24px;
   font-weight:800;
   letter-spacing: -0.5px;
-  background: var(--tech-gradient);
+  background: var(--brand-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -78,19 +79,18 @@ nav a{
   color: var(--text-muted);
   font-size:15px;
   font-weight:600;
-  transition:.3s ease;
+  transition:.2s ease;
 }
 
 nav a:hover{
-  color: var(--accent-cyan);
-  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  color: var(--accent-primary);
 }
 
 .menu-toggle{
   display:none;
-  font-size:32px;
+  font-size:28px;
   cursor:pointer;
-  color: var(--accent-cyan);
+  color: var(--text-main);
 }
 
 /* =========================
@@ -98,96 +98,100 @@ nav a:hover{
 ========================= */
 .hero{
   position:relative;
-  min-height:100vh;
+  min-height:90vh;
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:120px 30px;
-  background: radial-gradient(circle at 50% 30%, #111830 0%, var(--bg-dark-base) 70%);
+  padding:150px 30px 100px;
+  background: radial-gradient(circle at 50% 0%, #f0fdf4 0%, var(--bg-light-base) 70%);
   overflow:hidden;
 }
 
-/* Modern tech grid pattern overlay to match Cerebulb */
+/* Subtle modern tech grid for the light background */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-image: linear-gradient(rgba(15, 23, 42, 0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
   pointer-events: none;
 }
 
 .hero-content{
-  max-width:1100px;
+  max-width:1000px;
   position:relative;
   z-index:2;
 }
 
 .hero h1{
-  font-size:72px;
+  font-size:68px;
   font-weight:800;
   line-height:1.15;
   margin-bottom:25px;
-  letter-spacing: -1px;
-  background: linear-gradient(180deg, #ffffff 30%, #a5b4fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  letter-spacing: -1.5px;
+  color: var(--text-main);
 }
 
 .hero p{
-  font-size:22px;
-  max-width:850px;
+  font-size:20px;
+  max-width:800px;
   margin:auto;
   margin-bottom:40px;
   color: var(--text-muted);
 }
 
 /* =========================
-   BUTTONS (Dynamic Glowing Gradients)
+   BUTTONS (Clean Corporate Style)
 ========================= */
 .btn{
   display:inline-block;
-  padding:16px 38px;
-  margin:10px;
-  background: var(--tech-gradient);
-  color: #070a13;
+  padding:14px 36px;
+  margin:8px;
+  background: var(--brand-gradient);
+  color: #ffffff;
   text-decoration:none;
-  border-radius:30px; /* Rounded pill style looks much cleaner */
-  font-weight:700;
-  letter-spacing: 0.5px;
-  transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.2);
+  border-radius:6px; /* Sleek square-rounded look */
+  font-weight:600;
+  letter-spacing: 0.3px;
+  transition: all .3s ease;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.2);
 }
 
 .btn:hover{
-  transform:translateY(-4px);
-  box-shadow: 0 0 30px rgba(0, 240, 255, 0.45), 0 0 10px rgba(139, 92, 246, 0.3);
-  color: #fff;
+  transform:translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3);
+  filter: brightness(1.05);
+}
+
+/* secondary button helper if needed in HTML */
+.btn-secondary {
+  background: #ffffff;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--subtle-shadow);
 }
 
 /* =========================
    PAGE BANNER & SECTIONS
 ========================= */
 .page-banner{
-  padding-top:190px;
-  padding-bottom:90px;
+  padding-top:180px;
+  padding-bottom:80px;
   text-align:center;
-  background: linear-gradient(180deg, #0e1326 0%, var(--bg-dark-base) 100%);
-  border-bottom: 1px solid rgba(255,255,255,.03);
+  background: var(--bg-light-alt);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .page-banner h1{
-  font-size:56px;
+  font-size:52px;
   font-weight: 800;
-  background: var(--tech-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-main);
   margin-bottom:15px;
 }
 
 .page-banner p{
-  font-size:20px;
+  font-size:18px;
   color: var(--text-muted);
 }
 
@@ -196,69 +200,67 @@ nav a:hover{
 }
 
 .section:nth-child(even){
-  background: var(--bg-dark-alt);
+  background: var(--bg-light-alt);
 }
 
 .section:nth-child(odd){
-  background: var(--bg-dark-base);
+  background: var(--bg-light-base);
 }
 
 .section h2{
   text-align:center;
-  font-size:44px;
+  font-size:40px;
   font-weight: 800;
-  margin-bottom:60px;
-  background: linear-gradient(135deg, #fff 0%, #9ca3af 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin-bottom:50px;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
 }
 
 /* =========================
-   CARDS (Sleek Dark Glassmorphism)
+   CARDS (Sleek Clean Grid Layout)
 ========================= */
 .cards{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:32px;
 }
 
 .card{
-  background: var(--bg-dark-card);
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  padding:35px 30px;
-  border-radius:16px;
+  background: var(--bg-light-card);
+  border: 1px solid var(--border-color);
+  padding:40px 30px;
+  border-radius:12px;
   text-align:center;
   text-decoration:none;
-  color: var(--text-primary);
-  transition: all .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  color: var(--text-muted);
+  box-shadow: var(--subtle-shadow);
+  transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover{
-  transform:translateY(-8px);
-  border: 1px solid rgba(0, 240, 255, 0.3);
-  background: linear-gradient(180deg, var(--bg-dark-card) 0%, #131a30 100%);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), var(--glow-shadow);
+  transform:translateY(-6px);
+  border-color: rgba(2, 132, 199, 0.3);
+  box-shadow: var(--hover-shadow);
 }
 
 .card img{
   width:100%;
   height:200px;
   object-fit:cover;
-  border-radius:10px;
+  border-radius:8px;
   margin-bottom:20px;
-  border: 1px solid rgba(255,255,255,.05);
 }
 
 .card h3{
-  margin-bottom:15px;
+  margin-bottom:12px;
   font-size:22px;
   font-weight: 700;
-  color: #fff;
-  transition: color 0.3s;
+  color: var(--text-main);
+  transition: color 0.2s;
 }
 
 .card:hover h3 {
-  color: var(--accent-cyan);
+  color: var(--accent-primary);
 }
 
 /* =========================
@@ -270,25 +272,26 @@ nav a:hover{
 
 .content h2{
   margin-bottom:20px;
-  color: #fff;
+  color: var(--text-main);
 }
 
 .project-box{
-  background: var(--bg-dark-card);
+  background: var(--bg-light-card);
   padding:30px;
-  border-radius:12px;
+  border-radius:8px;
   margin-bottom:25px;
-  border-left: 4px solid var(--accent-cyan);
-  border-top: 1px solid rgba(255,255,255,0.02);
-  border-right: 1px solid rgba(255,255,255,0.02);
-  border-bottom: 1px solid rgba(255,255,255,0.02);
+  border-left: 4px solid var(--accent-primary);
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--subtle-shadow);
 }
 
 /* =========================
-   CONTACT INPUTS
+   CONTACT FORM (Modern Clean Fields)
 ========================= */
 .contact-form{
-  max-width:800px;
+  max-width:700px;
   margin:auto;
 }
 
@@ -296,23 +299,24 @@ nav a:hover{
 .contact-form textarea{
   width:100%;
   padding:16px;
-  margin-bottom:18px;
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius:8px;
-  background: var(--bg-dark-card);
-  color:white;
+  margin-bottom:16px;
+  border: 1px solid var(--border-color);
+  border-radius:6px;
+  background: #ffffff;
+  color: var(--text-main);
   outline: none;
-  transition: border 0.3s;
+  font-size: 15px;
+  transition: all 0.2s;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus{
-  border: 1px solid var(--accent-cyan);
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
 }
 
 .contact-form textarea{
-  height:180px;
+  height:160px;
   resize:none;
 }
 
@@ -323,26 +327,24 @@ nav a:hover{
 }
 
 /* =========================
-   FOOTER
+   FOOTER (Sleek Dark Slate Contrast)
 ========================= */
 footer{
-  background: #04060d;
+  background: #0f172a; /* Dark slate background for footer gives a high-end structural finish */
   padding:60px 20px;
   text-align:center;
-  border-top:1px solid rgba(255,255,255,.03);
+  color: #94a3b8;
 }
 
 footer h3{
-  font-size:26px;
-  background: var(--tech-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom:15px;
-  font-weight: 800;
+  font-size:24px;
+  color: #ffffff;
+  margin-bottom:12px;
+  font-weight: 700;
 }
 
 footer p{
-  color: var(--text-muted);
+  color: #64748b;
   font-size: 14px;
 }
 
@@ -351,13 +353,13 @@ footer p{
 ========================= */
 @media(max-width:768px){
   header{
-    padding:15px 20px;
+    padding:14px 20px;
   }
   .logo span{
     font-size:20px;
   }
   .logo img{
-    height:40px;
+    height:38px;
   }
   .menu-toggle{
     display:block;
@@ -368,24 +370,26 @@ footer p{
     margin-top:15px;
     flex-direction:column;
     text-align:center;
-    background: var(--bg-dark-card);
-    border-radius: 8px;
+    background: #ffffff;
+    border-radius: 6px;
     padding: 10px 0;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--hover-shadow);
   }
   nav.active{
     display:flex;
   }
   nav a{
     padding:12px;
-    color: #fff;
+    color: var(--text-main);
   }
   .hero{
-    padding:140px 20px 80px;
+    padding:140px 20px 60px;
     min-height:auto;
   }
   .hero h1{
-    font-size:38px;
+    font-size:36px;
+    letter-spacing: -1px;
   }
   .hero p{
     font-size:16px;
@@ -394,17 +398,17 @@ footer p{
     display:block;
     width:100%;
     max-width:300px;
-    margin:15px auto;
+    margin:12px auto;
   }
   .section{
     padding:60px 20px;
   }
   .section h2{
-    font-size:30px;
-    margin-bottom:40px;
+    font-size:28px;
+    margin-bottom:35px;
   }
   .page-banner h1{
-    font-size:36px;
+    font-size:32px;
   }
   .cards{
     grid-template-columns:1fr;
