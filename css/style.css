@@ -446,56 +446,99 @@ grid-template-columns:1fr;
 .card img{
 height:200px;
     /* =========================
-    FOOTER EXTENSIONS
+ /* =========================
+    UPGRADED INSTITUTIONAL FOOTER
 ========================= */
-.footer-services {
-    color: #cfd9ea;
-    margin-bottom: 20px;
-    font-size: 15px;
+footer {
+    /* Subtle overlay gradient to keep text readable + dark high-tech background image */
+    background: 
+        linear-gradient(180deg, rgba(2, 12, 27, 0.95) 0%, rgba(1, 8, 19, 0.98) 100%),
+        url('../images/industrial-bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    padding: 80px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    
+    /* Sleek neon primary accent divider line */
+    border-top: 2px solid #00c8ff;
+    box-shadow: 0 -10px 30px rgba(0, 200, 255, 0.15);
 }
 
-.footer-details {
-    margin-bottom: 25px;
+/* Optional high-tech subtle grid pattern over the footer background */
+footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(0, 200, 255, 0.02) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(0, 200, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Keep the text content sharp above the background */
+footer h3, footer p, footer .footer-details, footer .footer-social {
+    position: relative;
+    z-index: 2;
+}
+
+footer h3 {
+    font-size: 32px;
+    color: #00c8ff;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 15px rgba(0, 200, 255, 0.25);
+}
+
+.footer-services {
+    color: #a5b7d6;
+    margin-bottom: 30px;
+    font-size: 16px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 0.5px;
 }
 
 .footer-details p {
-    color: #a5b7d6;
+    color: #cfd9ea;
     font-size: 15px;
-    margin: 6px 0;
+    margin: 8px 0;
 }
 
 .footer-details strong {
     color: #00c8ff;
+    margin-right: 4px;
 }
 
-.footer-social {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-}
-
-/* Modern LinkedIn Badge Button */
+/* Modernized LinkedIn Corporate Badge Link */
 .social-link.linkedin {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(7, 26, 54, 0.6);
+    border: 1px solid rgba(0, 200, 255, 0.2);
     color: #fff;
     text-decoration: none;
-    padding: 10px 22px;
+    padding: 12px 24px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
-    transition: all 0.3s ease;
+    margin-top: 25px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link.linkedin span {
-    background: #0077b5; /* LinkedIn Blue */
+    background: #0077b5;
     color: white;
     font-weight: 800;
-    font-family: sans-serif;
-    padding: 1px 6px;
+    padding: 2px 6px;
     border-radius: 3px;
     font-size: 12px;
 }
@@ -503,8 +546,6 @@ height:200px;
 .social-link.linkedin:hover {
     background: #0077b5;
     border-color: #0077b5;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
-}
-}
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 119, 181, 0.4);
 }
