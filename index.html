@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Integra OT Technologies | Industrial Intelligence & Digital Transformation</title>
     <meta name="description" content="Integra OT Technologies provides Industrial Automation, AVEVA PI System, SCADA, Power BI, OT Cybersecurity and Digital Transformation solutions.">
-    <link rel="stylesheet" href="css/style.css?v=3.8">
+    <link rel="stylesheet" href="css/style.css?v=3.9">
     <style>
-        /* Custom architectural styling overrides to mirror the premium mask look of Image 1 exactly */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -17,7 +16,6 @@
             align-items: center;
             text-align: center;
             padding: 160px 8% 100px;
-            /* Creates the exact translucent light layer look covering your factory plant background graphics */
             background: linear-gradient(rgba(244, 247, 252, 0.45), rgba(244, 247, 252, 0.60)), url('images/industrial-bg.jpg') center/cover no-repeat;
             overflow: hidden;
         }
@@ -33,7 +31,7 @@
             font-weight: 800;
             line-height: 1.15;
             margin-bottom: 25px;
-            color: #1a2536; /* High-contrast dark text layout parameter */
+            color: #1a2536;
             letter-spacing: -0.01em;
         }
 
@@ -41,7 +39,7 @@
             font-size: clamp(16px, 1.8vw, 22px);
             max-width: 850px;
             margin: 0 auto 45px;
-            color: #475569; /* Balanced description gray parameter */
+            color: #475569;
             line-height: 1.75;
             font-weight: 500;
         }
@@ -84,7 +82,6 @@
             <a href="about.html">About</a>
             <a href="services.html">Services</a>
             <a href="industries.html">Industries</a>
-            <a href="projects.html">Projects</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
@@ -182,13 +179,11 @@
     <footer>
         <h3>Integra OT Technologies</h3>
         <p class="footer-services">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</p>
-        
         <div class="footer-details">
             <p><strong>Email:</strong> info@integraottechnologies.com</p>
             <p><strong>Website:</strong> www.integraottechnologies.com</p>
             <p><strong>Address:</strong> Surat, Gujarat, India</p>
         </div>
-
         <div class="footer-social">
             <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
                 <span>in</span> Connect on LinkedIn
@@ -199,12 +194,10 @@
     <script>
         const mobileMenu = document.getElementById('mobile-menu');
         const navbar = document.getElementById('navbar');
-
         mobileMenu.addEventListener('click', () => {
             navbar.classList.toggle('active');
             mobileMenu.textContent = navbar.classList.contains('active') ? '✕' : '☰';
         });
-
         const navLinks = document.querySelectorAll("#navbar a");
         navLinks.forEach(function(link){
             link.addEventListener("click", function(){
@@ -213,6 +206,5 @@
             });
         });
     </script>
-
 </body>
 </html>
