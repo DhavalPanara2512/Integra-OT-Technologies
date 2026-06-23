@@ -482,5 +482,108 @@ footer h3 {
 
     .card img{
         height: 200px;
+        /* =========================
+    ABOUT PAGE BACKGROUNDS
+========================= */
+
+/* About Banner */
+.page-banner{
+    padding-top:180px;
+    padding-bottom:120px;
+
+    background:
+    linear-gradient(
+        rgba(0,10,30,.75),
+        rgba(0,10,30,.85)
+    ),
+    url('../images/about-banner.jpg');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    text-align:center;
+}
+
+.page-banner h1{
+    font-size:70px;
+    color:#fff;
+
+    text-shadow:
+    0 0 15px rgba(0,200,255,.5),
+    0 0 30px rgba(0,200,255,.3);
+}
+
+.page-banner p{
+    font-size:22px;
+    color:#d7e5ff;
+}
+
+/* Company Overview Section */
+.company-section{
+    position:relative;
+
+    background:
+    linear-gradient(
+        rgba(2,12,27,.90),
+        rgba(2,12,27,.95)
+    ),
+    url('../images/company-bg.jpg');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+/* Mission Card */
+.mission-card{
+    background:
+    linear-gradient(
+        rgba(7,26,54,.92),
+        rgba(7,26,54,.95)
+    ),
+    url('../images/mission-bg.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid rgba(0,200,255,.15);
+}
+
+/* Vision Card */
+.vision-card{
+    background:
+    linear-gradient(
+        rgba(7,26,54,.92),
+        rgba(7,26,54,.95)
+    ),
+    url('../images/vision-bg.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid rgba(0,200,255,.15);
+}
+
+/* Core Values Section */
+#why-partner{
+    position:relative;
+
+    background:
+    linear-gradient(
+        rgba(3,17,36,.94),
+        rgba(3,17,36,.96)
+    ),
+    url('../images/values-bg.png');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+#why-partner .card{
+    background:rgba(7,26,54,.85);
+    backdrop-filter:blur(10px);
+}
     }
 }
