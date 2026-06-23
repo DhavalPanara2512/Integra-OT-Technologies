@@ -1,419 +1,103 @@
 /* =========================
-   GLOBAL & PREMIUM LIGHT THEME
+   UPGRADED HERO SECTION
 ========================= */
-:root {
-  --bg-light-base: #ffffff;     /* Clean white background */
-  --bg-light-alt: #f8fafc;      /* Soft light-gray for alternating sections */
-  --bg-light-card: #ffffff;     /* Crisp white for cards */
-  --text-main: #0f172a;         /* Deep slate/dark gray for primary headings */
-  --text-muted: #475569;        /* Medium slate for readable descriptions */
-  --accent-primary: #0284c7;    /* Tech corporate blue */
-  --accent-secondary: #4f46e5;  /* Deep digital indigo */
-  --brand-gradient: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
-  --subtle-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
-  --hover-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
-  --border-color: rgba(15, 23, 42, 0.06);
+.hero {
+  position: relative;
+  min-height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 160px 30px 120px;
+  
+  /* Layer 1: Soft white fade out to the bottom section */
+  /* Layer 2: A glowing corporate blue spotlight directly behind the text */
+  /* Layer 3: Your technical/industrial background image, clean and muted */
+  background: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, #ffffff 90%),
+    radial-gradient(circle at 50% 45%, rgba(2, 132, 199, 0.12) 0%, transparent 55%),
+    url('../images/industrial-bg.jpg'); 
+    
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-  scroll-behavior:smooth;
-}
-
-body{
-  background: var(--bg-light-base);
-  color: var(--text-muted);
-  line-height:1.6;
-  overflow-x:hidden;
-}
-
-/* =========================
-   HEADER & NAVIGATION
-========================= */
-header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  padding:16px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  border-bottom: 1px solid var(--border-color);
-  z-index:1000;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logo img{
-  height:48px;
-  width:auto;
-}
-
-.logo span{
-  font-size:24px;
-  font-weight:800;
-  letter-spacing: -0.5px;
-  background: var(--brand-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-nav{
-  display:flex;
-  gap:32px;
-}
-
-nav a{
-  text-decoration:none;
-  color: var(--text-muted);
-  font-size:15px;
-  font-weight:600;
-  transition:.2s ease;
-}
-
-nav a:hover{
-  color: var(--accent-primary);
-}
-
-.menu-toggle{
-  display:none;
-  font-size:28px;
-  cursor:pointer;
-  color: var(--text-main);
-}
-
-/* =========================
-   HERO SECTION
-========================= */
-.hero{
-  position:relative;
-  min-height:90vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:150px 30px 100px;
-  background: radial-gradient(circle at 50% 0%, #f0fdf4 0%, var(--bg-light-base) 70%);
-  overflow:hidden;
-}
-
-/* Subtle modern tech grid for the light background */
+/* Precision tech grid lines layered perfectly over the background image */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(15, 23, 42, 0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(rgba(15, 23, 42, 0.02) 1px, transparent 1px), 
+    linear-gradient(90deg, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+  background-size: 55px 55px;
   pointer-events: none;
+  z-index: 1;
 }
 
-.hero-content{
-  max-width:1000px;
-  position:relative;
-  z-index:2;
+.hero-content {
+  max-width: 1050px;
+  position: relative;
+  z-index: 2; /* Ensures text stays perfectly crisp over background images */
 }
 
-.hero h1{
-  font-size:68px;
-  font-weight:800;
-  line-height:1.15;
-  margin-bottom:25px;
-  letter-spacing: -1.5px;
-  color: var(--text-main);
-}
-
-.hero p{
-  font-size:20px;
-  max-width:800px;
-  margin:auto;
-  margin-bottom:40px;
-  color: var(--text-muted);
-}
-
-/* =========================
-   BUTTONS (Clean Corporate Style)
-========================= */
-.btn{
-  display:inline-block;
-  padding:14px 36px;
-  margin:8px;
-  background: var(--brand-gradient);
-  color: #ffffff;
-  text-decoration:none;
-  border-radius:6px; /* Sleek square-rounded look */
-  font-weight:600;
-  letter-spacing: 0.3px;
-  transition: all .3s ease;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.2);
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3);
-  filter: brightness(1.05);
-}
-
-/* secondary button helper if needed in HTML */
-.btn-secondary {
-  background: #ffffff;
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--subtle-shadow);
-}
-
-/* =========================
-   PAGE BANNER & SECTIONS
-========================= */
-.page-banner{
-  padding-top:180px;
-  padding-bottom:80px;
-  text-align:center;
-  background: var(--bg-light-alt);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.page-banner h1{
-  font-size:52px;
+/* Premium Typography Shift */
+.hero h1 {
+  font-size: 72px;
   font-weight: 800;
-  color: var(--text-main);
-  margin-bottom:15px;
+  line-height: 1.12;
+  margin-bottom: 28px;
+  letter-spacing: -2px;
+  color: #0f172a;
 }
 
-.page-banner p{
-  font-size:18px;
-  color: var(--text-muted);
+/* Style rule to accent a phrase within your H1 if desired */
+.hero h1 span {
+  background: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.section{
-  padding:100px 10%;
-}
-
-.section:nth-child(even){
-  background: var(--bg-light-alt);
-}
-
-.section:nth-child(odd){
-  background: var(--bg-light-base);
-}
-
-.section h2{
-  text-align:center;
-  font-size:40px;
-  font-weight: 800;
-  margin-bottom:50px;
-  color: var(--text-main);
-  letter-spacing: -0.5px;
+.hero p {
+  font-size: 21px;
+  max-width: 850px;
+  margin: auto;
+  margin-bottom: 45px;
+  color: #334155;
+  font-weight: 500;
 }
 
 /* =========================
-   CARDS (Sleek Clean Grid Layout)
+   REFINED NAV HOVER EFFECTS
 ========================= */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:32px;
-}
-
-.card{
-  background: var(--bg-light-card);
-  border: 1px solid var(--border-color);
-  padding:40px 30px;
-  border-radius:12px;
-  text-align:center;
-  text-decoration:none;
+nav a {
+  text-decoration: none;
   color: var(--text-muted);
-  box-shadow: var(--subtle-shadow);
-  transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 15px;
+  font-weight: 600;
+  position: relative;
+  padding: 4px 0;
+  transition: color .2s ease;
 }
 
-.card:hover{
-  transform:translateY(-6px);
-  border-color: rgba(2, 132, 199, 0.3);
-  box-shadow: var(--hover-shadow);
-}
-
-.card img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-  border-radius:8px;
-  margin-bottom:20px;
-}
-
-.card h3{
-  margin-bottom:12px;
-  font-size:22px;
-  font-weight: 700;
-  color: var(--text-main);
-  transition: color 0.2s;
-}
-
-.card:hover h3 {
+nav a:hover {
   color: var(--accent-primary);
 }
 
-/* =========================
-   INDUSTRIAL PROJECT BOXES
-========================= */
-.content{
-  padding:80px 10%;
+/* Adds a sleek tech line under links on hover */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--brand-gradient);
+  transition: width 0.3s ease;
 }
 
-.content h2{
-  margin-bottom:20px;
-  color: var(--text-main);
-}
-
-.project-box{
-  background: var(--bg-light-card);
-  padding:30px;
-  border-radius:8px;
-  margin-bottom:25px;
-  border-left: 4px solid var(--accent-primary);
-  border-top: 1px solid var(--border-color);
-  border-right: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: var(--subtle-shadow);
-}
-
-/* =========================
-   CONTACT FORM (Modern Clean Fields)
-========================= */
-.contact-form{
-  max-width:700px;
-  margin:auto;
-}
-
-.contact-form input,
-.contact-form textarea{
-  width:100%;
-  padding:16px;
-  margin-bottom:16px;
-  border: 1px solid var(--border-color);
-  border-radius:6px;
-  background: #ffffff;
-  color: var(--text-main);
-  outline: none;
-  font-size: 15px;
-  transition: all 0.2s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus{
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
-}
-
-.contact-form textarea{
-  height:160px;
-  resize:none;
-}
-
-.contact-form button{
-  border:none;
-  cursor:pointer;
+nav a:hover::after {
   width: 100%;
-}
-
-/* =========================
-   FOOTER (Sleek Dark Slate Contrast)
-========================= */
-footer{
-  background: #0f172a; /* Dark slate background for footer gives a high-end structural finish */
-  padding:60px 20px;
-  text-align:center;
-  color: #94a3b8;
-}
-
-footer h3{
-  font-size:24px;
-  color: #ffffff;
-  margin-bottom:12px;
-  font-weight: 700;
-}
-
-footer p{
-  color: #64748b;
-  font-size: 14px;
-}
-
-/* =========================
-   RESPONSIVE DESIGN MOBILE
-========================= */
-@media(max-width:768px){
-  header{
-    padding:14px 20px;
-  }
-  .logo span{
-    font-size:20px;
-  }
-  .logo img{
-    height:38px;
-  }
-  .menu-toggle{
-    display:block;
-  }
-  nav{
-    display:none;
-    width:100%;
-    margin-top:15px;
-    flex-direction:column;
-    text-align:center;
-    background: #ffffff;
-    border-radius: 6px;
-    padding: 10px 0;
-    border: 1px solid var(--border-color);
-    box-shadow: var(--hover-shadow);
-  }
-  nav.active{
-    display:flex;
-  }
-  nav a{
-    padding:12px;
-    color: var(--text-main);
-  }
-  .hero{
-    padding:140px 20px 60px;
-    min-height:auto;
-  }
-  .hero h1{
-    font-size:36px;
-    letter-spacing: -1px;
-  }
-  .hero p{
-    font-size:16px;
-  }
-  .btn{
-    display:block;
-    width:100%;
-    max-width:300px;
-    margin:12px auto;
-  }
-  .section{
-    padding:60px 20px;
-  }
-  .section h2{
-    font-size:28px;
-    margin-bottom:35px;
-  }
-  .page-banner h1{
-    font-size:32px;
-  }
-  .cards{
-    grid-template-columns:1fr;
-  }
-  .card img{
-    height:180px;
-  }
 }
