@@ -362,66 +362,46 @@ nav a:hover{
 /* =========================
     HIGH-TECH UNIFIED FOOTER (LIGHT THEME)
 ========================= */
+
 /* =========================
-    HIGH-TECH UNIFIED FOOTER (PREMIUM DARK)
+    HIGH-TECH UNIFIED FOOTER (CLEAN LIGHT)
 ========================= */
 footer {
     position: relative;
-    /* Rich dark gradient mask over the industrial image for maximum text contrast */
-    background: linear-gradient(180deg, rgba(11, 22, 40, 0.94) 0%, rgba(4, 11, 22, 0.98) 100%), url('../images/industrial-bg.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: #ffffff; /* Solid brilliant white background */
     padding: 80px 60px;
     text-align: center;
     overflow: hidden;
-    border-top: 2px solid #0088cc;
-}
-
-footer::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: 
-        linear-gradient(rgba(0, 136, 204, 0.03) 1px, transparent 1px), 
-        linear-gradient(90deg, rgba(0, 136, 204, 0.03) 1px, transparent 1px);
-    background-size: 45px 45px;
-    pointer-events: none;
-    z-index: 1;
-}
-
-footer h3, footer p, footer .footer-details, footer .footer-social {
-    position: relative;
-    z-index: 2;
+    border-top: 3px solid #0088cc; /* Clean thick top corporate line */
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.02);
 }
 
 footer h3 {
     font-size: 32px;
-    color: #ffffff; /* Sharp white header */
+    color: #0f172a; /* Deep charcoal headings */
     margin-bottom: 12px;
     font-weight: 800;
-    letter-spacing: 0.5px;
 }
 
 .footer-services {
-    color: #00c8ff; /* Vibrant cyan for taglines */
+    color: #475569;
     margin-bottom: 30px;
     font-size: 16px;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
 }
 
 .footer-details p {
-    color: #cbd5e1; /* Clean light-gray details */
+    color: #334155;
     font-size: 15px;
     margin: 8px 0;
 }
 
 .footer-details strong {
-    color: #00c8ff; /* Cyan labels */
+    color: #0088cc; /* Vibrant blue labels */
     margin-right: 4px;
 }
 
@@ -429,15 +409,16 @@ footer h3 {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(0, 200, 255, 0.2);
-    color: #ffffff;
+    background: #f8fafc;
+    border: 1px solid rgba(0, 136, 204, 0.2);
+    color: #0077b5;
     text-decoration: none;
     padding: 12px 24px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
     margin-top: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
     transition: all 0.3s ease;
 }
 
@@ -452,7 +433,12 @@ footer h3 {
 
 .social-link.linkedin:hover {
     background: #0077b5;
-    border-color: #0077b5;
+    color: #ffffff;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 119, 181, 0.35);
+    box-shadow: 0 8px 20px rgba(0, 119, 181, 0.15);
+}
+
+.social-link.linkedin:hover span {
+    background: #ffffff;
+    color: #0077b5;
 }
