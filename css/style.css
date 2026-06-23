@@ -1,40 +1,30 @@
-css
 /* =========================
     PAGE BANNER
 ========================= */
-
 .page-banner{
     padding-top:180px;
     padding-bottom:120px;
-
     text-align:center;
-
     background:
     linear-gradient(
         rgba(0,10,30,.75),
         rgba(0,10,30,.85)
     ),
     url('../images/about-banner.jpg');
-
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
-
     position:relative;
     overflow:hidden;
 }
 
 .page-banner::before{
     content:'';
-
     position:absolute;
-
     top:0;
     left:0;
-
     width:100%;
     height:100%;
-
     background:
     linear-gradient(
         135deg,
@@ -42,21 +32,16 @@ css
         transparent,
         rgba(0,200,255,.05)
     );
-
     pointer-events:none;
 }
 
 .page-banner h1{
     position:relative;
     z-index:2;
-
     font-size:70px;
     font-weight:800;
-
     color:#ffffff;
-
     margin-bottom:15px;
-
     text-shadow:
     0 0 20px rgba(0,200,255,.5),
     0 0 40px rgba(0,200,255,.3);
@@ -65,123 +50,90 @@ css
 .page-banner p{
     position:relative;
     z-index:2;
-
     font-size:22px;
-
     color:#d7e5ff;
-
     max-width:900px;
-
     margin:auto;
 }
-```
-```css id="z4m3xr"
+
 /* =========================
     ABOUT PAGE BACKGROUNDS
 ========================= */
 
 /* Company Overview Section */
-
 .company-section{
     position:relative;
-
     background:
     linear-gradient(
         rgba(2,12,27,.88),
         rgba(2,12,27,.94)
     ),
     url('../images/company-bg.jpg');
-
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
 }
 
 .company-section .content{
-
-    background:
-    rgba(2,12,27,.78);
-
+    background: rgba(2,12,27,.78);
     backdrop-filter:blur(8px);
-
-    padding:40px;
-
+    padding:40px !important; /* Force layout padding rules over inline blocks */
     border-radius:15px;
-
     border:1px solid rgba(0,200,255,.10);
 }
 
 /* Mission Card */
-
 .mission-card{
-
     background:
     linear-gradient(
         rgba(7,26,54,.88),
         rgba(7,26,54,.94)
     ),
     url('../images/mission-bg.png');
-
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
-
-    border:1px solid rgba(0,200,255,.20);
+    border:1px solid rgba(0,200,255,.20) !important;
 }
 
 /* Vision Card */
-
 .vision-card{
-
     background:
     linear-gradient(
         rgba(7,26,54,.88),
         rgba(7,26,54,.94)
     ),
     url('../images/vision-bg.png');
-
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
-
-    border:1px solid rgba(0,200,255,.20);
+    border:1px solid rgba(0,200,255,.20) !important;
 }
 
 /* Core Values */
-
 #why-partner{
-
     position:relative;
-
     background:
     linear-gradient(
         rgba(3,17,36,.92),
         rgba(3,17,36,.96)
     ),
     url('../images/values-bg.png');
-
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
 }
 
 #why-partner .card{
-
-    background:
-    rgba(7,26,54,.82);
-
+    background: rgba(7,26,54,.82);
     backdrop-filter:blur(10px);
-
     border:1px solid rgba(0,200,255,.15);
 }
 
 /* Hover Effects */
-
 .mission-card:hover,
 .vision-card:hover{
-
     transform:translateY(-8px);
-
     box-shadow:
     0 0 25px rgba(0,200,255,.25),
     0 0 50px rgba(0,200,255,.12);
