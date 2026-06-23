@@ -445,5 +445,66 @@ grid-template-columns:1fr;
 
 .card img{
 height:200px;
+    /* =========================
+    FOOTER EXTENSIONS
+========================= */
+.footer-services {
+    color: #cfd9ea;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.footer-details {
+    margin-bottom: 25px;
+}
+
+.footer-details p {
+    color: #a5b7d6;
+    font-size: 15px;
+    margin: 6px 0;
+}
+
+.footer-details strong {
+    color: #00c8ff;
+}
+
+.footer-social {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Modern LinkedIn Badge Button */
+.social-link.linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.social-link.linkedin span {
+    background: #0077b5; /* LinkedIn Blue */
+    color: white;
+    font-weight: 800;
+    font-family: sans-serif;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.social-link.linkedin:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
+}
 }
 }
