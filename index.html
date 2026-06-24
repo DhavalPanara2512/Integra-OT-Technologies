@@ -1,94 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Integra OT Technologies | Industrial Intelligence & Digital Transformation</title>
+    <title>Integra OT Technologies | Industrial Intelligence</title>
     <meta name="description" content="Integra OT Technologies provides Industrial Automation, AVEVA PI System, SCADA, Power BI, OT Cybersecurity and Digital Transformation solutions.">
-    <link rel="stylesheet" href="css/style.css?v=4.1">
-    <style>
-        /* Embedded layout architecture to force the premium dark look of image_5e3fe4.png on the homepage */
-        .hero {
-            padding: 160px 8% 80px;
-            background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-height: auto; /* Overrides full screen limitation to match about layout perfectly */
-        }
-        .hero::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 136, 204, 0.30) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero::after {
-            content: '';
-            position: absolute; inset: 0;
-            background-image: 
-                linear-gradient(rgba(0, 136, 204, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 136, 204, 0.04) 1px, transparent 1px);
-            background-size: 48px 48px;
-            pointer-events: none;
-        }
-        .hero-inner-box {
-            position: relative;
-            z-index: 2;
-            max-width: 950px;
-            margin: 0 auto;
-        }
-        .hero-eyebrow-pill {
-            display: inline-block;
-            font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
-            text-transform: uppercase; color: #60a5fa;
-            background: rgba(96, 165, 250, 0.12);
-            border: 1px solid rgba(96, 165, 250, 0.28);
-            border-radius: 20px; padding: 5px 18px;
-            margin-bottom: 26px;
-        }
-        .hero h1 {
-            font-size: clamp(32px, 5vw, 56px);
-            font-weight: 800; color: #ffffff;
-            line-height: 1.15; margin-bottom: 22px;
-            text-shadow: none;
-        }
-        .hero p {
-            font-size: 17px; color: rgba(255, 255, 255, 0.62);
-            max-width: 720px; margin: 0 auto 36px; line-height: 1.8;
-            font-weight: normal;
-        }
-        .hero-btn-group {
-            display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;
-        }
-        .hero .btn {
-            margin: 0; padding: 12px 30px; border-radius: 6px; font-weight: 600;
-        }
-        .hero-tags-row {
-            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
-        }
-        .hero-tag-pill {
-            font-size: 12px; font-weight: 600;
-            padding: 5px 14px; border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: rgba(255, 255, 255, 0.72);
-            background: rgba(255, 255, 255, 0.07);
-            letter-spacing: 0.02em;
-        }
-        @media(max-width: 768px) {
-            .hero { padding: 120px 20px 60px; }
-            .hero-btn-group { flex-direction: column; width: 100%; max-width: 280px; margin: 0 auto 30px; }
-        }
-    </style>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/style.css?v=5.0">
 </head>
-
 <body>
 
-    <!-- ══════════════════ HEADER ══════════════════ -->
     <header>
         <div class="logo">
             <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.style.display='none'">
-            <span>Integra OT Technologies</span>
+            <div class="logo-text">
+                <span class="logo-name">Integra OT Technologies</span>
+                <span class="logo-tagline">Industrial Data Infrastructure</span>
+            </div>
         </div>
         <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">☰</button>
         <nav id="navbar">
@@ -97,41 +25,56 @@
             <a href="services.html">Services</a>
             <a href="industries.html">Industries</a>
             <a href="contact.html">Contact</a>
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme Mode">🌙</button>
         </nav>
     </header>
 
-    <!-- ══════════════════ NEW DARK UNIFORM HERO ══════════════════ -->
-    <section class="hero">
-        <div class="hero-inner-box">
-            <div class="hero-eyebrow-pill">Enterprise Solutions</div>
-            <h1>
-                Turn Raw Industrial Data<br>
-                Into Real-Time Intelligence
-            </h1>
-            <p>
-                We bridge the gap between complex process operations and enterprise analytics. From edge connectivity and AVEVA PI System optimization to advanced data engineering, we unlock operational excellence.
-            </p>
-            
-            <div class="hero-btn-group">
-                <a href="services.html" class="btn">Explore Solutions</a>
-                <a href="contact.html" class="btn">Contact Us</a>
+    <section class="page-hero">
+        <div id="particles-js" style="position: absolute; inset:0; pointer-events:none; z-index:1;"></div>
+        <div class="hero-inner">
+            <div class="eyebrow-pill">Enterprise Solutions</div>
+            <h1>Turn Raw Industrial Data<br>Into Real-Time Intelligence</h1>
+            <p class="hero-sub">We bridge the gap between complex process operations and enterprise analytics. From edge connectivity and AVEVA PI System optimization to advanced data engineering, we unlock operational excellence.</p>
+            <div class="hero-btn-row">
+                <a href="services.html" class="btn-primary">Explore Solutions</a>
+                <a href="contact.html" class="btn-outline">Contact Us</a>
             </div>
-
-            <div class="hero-tags-row">
-                <span class="hero-tag-pill">Industrial Automation</span>
-                <span class="hero-tag-pill">AVEVA PI System</span>
-                <span class="hero-tag-pill">SCADA</span>
-                <span class="hero-tag-pill">Power BI</span>
-                <span class="hero-tag-pill">OT Cybersecurity</span>
-                <span class="hero-tag-pill">IT-OT Integration</span>
+            <div class="hero-tags">
+                <span class="hero-tag">Industrial Automation</span>
+                <span class="hero-tag">AVEVA PI System</span>
+                <span class="hero-tag">SCADA</span>
+                <span class="hero-tag">Power BI</span>
+                <span class="hero-tag">OT Cybersecurity</span>
+                <span class="hero-tag">IT-OT Integration</span>
             </div>
         </div>
     </section>
 
-    <!-- ══════════════════ SERVICES ══════════════════ -->
-    <section class="section">
-        <h2>Services</h2>
-        <div class="cards">
+    <section class="stat-strip">
+        <div class="stat-item">
+            <div class="stat-num counter" data-target="250" data-suffix="+">0</div>
+            <div class="stat-label">Projects Delivered</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num counter" data-target="50" data-suffix="+">0</div>
+            <div class="stat-label">Engineering Experts</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num counter" data-target="24" data-suffix="/7">0</div>
+            <div class="stat-label">Support Monitoring</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num counter" data-target="99" data-suffix="%">0</div>
+            <div class="stat-label">Customer Satisfaction</div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="section-header">
+            <h2>Our Core Competencies</h2>
+            <p>High-performance data engineering built to ensure security across mission-critical asset boundaries.</p>
+        </div>
+        <div class="cards-grid">
             <div class="card">
                 <img src="images/pi-system.jpg" alt="AVEVA PI System">
                 <h3>AVEVA PI System</h3>
@@ -155,57 +98,38 @@
         </div>
     </section>
 
-    <!-- ══════════════════ INDUSTRIES WE SERVE ══════════════════ -->
-    <section class="section" id="industries-section">
-        <h2>Industries We Serve</h2>
-        <div class="cards">
-            <div class="card">
-                <img src="images/pharma.jpg" alt="Pharmaceutical">
-                <h3>Pharmaceutical</h3>
-                <p>Ensuring absolute data integrity, strict regulatory validation compliance (FDA 21 CFR Part 11), and electronic batch record tracking.</p>
-            </div>
-            <div class="card">
-                <img src="images/oilgas.jpg" alt="Oil &amp; Gas">
-                <h3>Oil &amp; Gas</h3>
-                <p>Operational asset monitoring, pipeline telemetry aggregation, and centralized multi-site data management across downstream operations.</p>
-            </div>
-            <div class="card">
-                <img src="images/Petrochemicals.jpg" alt="Petrochemicals">
-                <h3>Petrochemicals</h3>
-                <p>Real-time process monitoring, cracking unit mass balance monitoring, utility profiling, and production yield tracking data support.</p>
-            </div>
-            <div class="card">
-                <img src="images/power.jpg" alt="Power">
-                <h3>Power &amp; Utilities</h3>
-                <p>Thermal efficiency metrics, continuous turbine performance monitoring, boiler health visibility, and smart utility grids.</p>
-            </div>
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <div class="marquee-item">🔹 SCADA SYSTEMS</div>
+            <div class="marquee-item">🔹 AVEVA PI HISTORIAN</div>
+            <div class="marquee-item">🔹 POWER BI ANALYTICS</div>
+            <div class="marquee-item">🔹 OT CYBERSECURITY</div>
+            <div class="marquee-item">🔹 INDUSTRIAL DATA BRIDGES</div>
+            <div class="marquee-item">🔹 SCADA SYSTEMS</div>
+            <div class="marquee-item">🔹 AVEVA PI HISTORIAN</div>
+            <div class="marquee-item">🔹 POWER BI ANALYTICS</div>
+            <div class="marquee-item">🔹 OT CYBERSECURITY</div>
+            <div class="marquee-item">🔹 INDUSTRIAL DATA BRIDGES</div>
         </div>
-    </section>
+    </div>
 
-    <!-- ══════════════════ WHY PARTNER WITH US ══════════════════ -->
     <section class="section">
-        <h2>Why Partner With Us</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Deep Domain Expertise</h3>
-                <p>We don't just write scripts; we understand plant process loops, piping, instrumentation constraints, and operational realities.</p>
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 34px; font-weight: 800; margin-bottom: 10px;">Operational Intelligence Platform</h2>
+            <p style="color: #64748b; max-width: 600px; margin: 0 auto;">Experience high-fidelity, real-time plant data management tracking views.</p>
+        </div>
+        <div style="max-width: 900px; margin: 0 auto; background: var(--card-surface); padding: 30px; border-radius: 16px; border: 1px solid var(--border-accent); box-shadow: var(--shadow-lg);">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-accent); padding-bottom: 15px; margin-bottom: 20px;">
+                <div>
+                    <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #0088cc; letter-spacing: 0.05em;">Live Insets</span>
+                    <h4 style="font-size: 18px; font-weight: 700; margin-top: 2px;">Asset Performance Analytics</h4>
+                </div>
+                <span style="background: #eff6ff; color: #0088cc; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; display: inline-flex; align-items: center; gap: 6px;">Live Stream Feed</span>
             </div>
-            <div class="card">
-                <h3>Security by Design</h3>
-                <p>Industrial operations require a zero-risk approach. We maintain completely secure boundaries between control systems and business layers.</p>
-            </div>
-            <div class="card">
-                <h3>Custom Automation</h3>
-                <p>We engineer custom Python and PowerShell bridge scripts and data connectors to ensure your enterprise applications interact seamlessly.</p>
-            </div>
-            <div class="card">
-                <h3>24x7 Mission-Critical Support</h3>
-                <p>Industrial data infrastructure never sleeps. We provide continuous system health monitoring and priority engineering response.</p>
-            </div>
+            <div id="kpi-trend-chart"></div>
         </div>
     </section>
 
-    <!-- ══════════════════ FOOTER ══════════════════ -->
     <footer>
         <h3>Integra OT Technologies</h3>
         <p class="footer-services">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</p>
@@ -214,29 +138,14 @@
             <p><strong>Website:</strong> www.integraottechnologies.com</p>
             <p><strong>Address:</strong> Surat, Gujarat, India</p>
         </div>
-        <div class="footer-social">
-            <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
-                <span>in</span> Connect on LinkedIn
-            </a>
-        </div>
     </footer>
 
-    <!-- MOBILE NAVIGATION LOGIC SCRIPT -->
-    <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navbar = document.getElementById('navbar');
-        mobileMenu.addEventListener('click', () => {
-            navbar.classList.toggle('active');
-            mobileMenu.textContent = navbar.classList.contains('active') ? '✕' : '☰';
-        });
-        const navLinks = document.querySelectorAll("#navbar a");
-        navLinks.forEach(function(link){
-            link.addEventListener("click", function(){
-                navbar.classList.remove("active");
-                mobileMenu.textContent = '☰';
-            });
-        });
-    </script>
+    <div id="progress-bar"></div>
+    <button id="topBtn">↑</button>
+    <a href="contact.html" class="floating-chat">💬</a>
 
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
