@@ -321,88 +321,103 @@
         .val-card-new p{ font-size:14px; color:#475569; line-height:1.75; }
 
         /* =========================
-           UPGRADED: EXPERTISE AUTOMATED INFINITE TICKER
+           UPGRADED: EXPERTISE AUTOMATED INFINITE TICKER (PREMIUM DARK INDUSTRIAL BG)
         ========================= */
         .expertise-section{
-            padding:75px 0 85px; /* Pushed edge-to-edge for sliding effect */
-            background:#f8fafc;
-            border-bottom:1px solid #e5e7eb;
-            overflow:hidden;
+            padding:85px 0 95px;
+            /* UPGRADED: Added a rich blueprint grid layout over an industrial slate dark shade */
+            background: linear-gradient(135deg, #091122 0%, #0c1a30 100%);
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(0, 136, 204, 0.15);
+            border-bottom: 1px solid rgba(0, 136, 204, 0.15);
+        }
+        /* Blueprint grid lines wrapper mesh overlay layer */
+        .expertise-section::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 136, 204, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 136, 204, 0.03) 1px, transparent 1px);
+            background-size: 40px 45px; pointer-events: none; z-index: 1;
         }
         .expertise-header-box {
             padding: 0 8%;
             max-width: 1100px;
-            margin: 0 auto 35px;
+            margin: 0 auto 40px;
             text-align: left;
+            position: relative; z-index: 2;
         }
         .expertise-section .eyebrow{
             font-size:11px;
             font-weight:700;
             letter-spacing:0.12em; text-transform:uppercase;
-            color:#0088cc; margin-bottom:12px;
+            color:#60a5fa; margin-bottom:12px;
         }
         .expertise-section h2{
             font-size:32px;
             font-weight:800;
-            color:#0f172a;
+            color:#ffffff;
         }
         
-        /* Moving Row Engines */
         .ticker-wrapper {
             width: 100%;
             overflow: hidden;
             position: relative;
-            padding: 10px 0;
+            padding: 15px 0;
+            z-index: 2;
         }
-        /* Fade gradients on left & right sides for high premium layout depth */
+        /* Premium dark blur fade controls */
         .ticker-wrapper::before, .ticker-wrapper::after {
             content: '';
-            position: absolute; top: 0; bottom: 0; width: 120px;
+            position: absolute; top: 0; bottom: 0; width: 140px;
             z-index: 3; pointer-events: none;
         }
         .ticker-wrapper::before {
-            left: 0; background: linear-gradient(90deg, #f8fafc 0%, transparent 100%);
+            left: 0; background: linear-gradient(90deg, #091122 0%, transparent 100%);
         }
         .ticker-wrapper::after {
-            right: 0; background: linear-gradient(-90deg, #f8fafc 0%, transparent 100%);
+            right: 0; background: linear-gradient(-90deg, #091122 0%, transparent 100%);
         }
 
         @keyframes infiniteScroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Perfect half-slice loop translate */
+            100% { transform: translateX(-50%); }
         }
         .exp-ticker-track {
             display: flex;
             width: max-content;
-            gap: 15px;
-            animation: infiniteScroll 32s linear infinite;
+            gap: 18px;
+            animation: infiniteScroll 35s linear infinite;
         }
-        /* Pause on Hover optimization */
         .ticker-wrapper:hover .exp-ticker-track {
             animation-play-state: paused;
         }
 
+        /* UPGRADED: Glassmorphism translucent dark pill tile architecture style */
         .exp-pill-new{
             display:inline-flex;
             align-items:center; gap:10px;
             font-size:14px; font-weight:600;
-            color:#0088cc; background:#ffffff;
-            border:1px solid #cbd5e1;
-            border-radius:30px; padding:12px 24px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            color:rgba(255, 255, 255, 0.9); 
+            background:rgba(255, 255, 255, 0.04);
+            border:1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius:30px; padding:14px 28px;
             white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        /* Electric blue soft neon border pop response glow rules */
         .exp-pill-new:hover{
             background:#0088cc;
             color:#fff;
-            border-color:#0088cc;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 136, 204, 0.15);
+            border-color:#60a5fa;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 136, 204, 0.4);
         }
         .exp-pill-new svg{
-            width:16px; height:16px; stroke:#0088cc; fill:none;
-            stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;
+            width:16px; height:16px; stroke:#60a5fa; fill:none;
+            stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
             transition:.25s;
         }
         .exp-pill-new:hover svg{ stroke:#fff; }
@@ -499,7 +514,7 @@
            SLIDE-DOWN MOBILE RESPONSIVE
         ========================= */
         @media(max-width:768px){
-            header{ padding:15px 5%; background:#ffffff; box-shadow:0 2px 10px rgba(0, 0, 0, 0.05); }
+            header { padding:15px 5%; background:#ffffff; box-shadow:0 2px 10px rgba(0, 0, 0, 0.05); }
             .logo span{ font-size:18px; }
             .logo img{ height:45px; }
             
@@ -529,7 +544,7 @@
             .info-left-panel { text-align: center; }
             .info-left-panel h2 { font-size: 30px; }
             .contact-form-holder { padding: 25px 20px; }
-            .expertise-section{ padding:45px 0 55px; }
+            .expertise-section{ padding:55px 0 65px; }
             .ticker-wrapper::before, .ticker-wrapper::after { width: 50px; }
         }
         @media(max-width:480px){
@@ -712,9 +727,6 @@
     </div>
 </section>
 
-<!-- =========================
-   UPGRADED: AUTOMATIC RUNNING TICKER SECTION
-========================= -->
 <section class="expertise-section animated-block">
     <div class="expertise-header-box">
         <div class="eyebrow">Technical Stack</div>
@@ -723,7 +735,6 @@
     
     <div class="ticker-wrapper">
         <div class="exp-ticker-track">
-            <!-- First loop set of pills -->
             <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>AVEVA PI System Engineering</span>
             <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>SCADA Systems &amp; HMIs</span>
             <span class="exp-pill-new"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Power BI Operational Reporting</span>
@@ -735,7 +746,6 @@
             <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>Historian Data Infrastructure &amp; Buffering</span>
             <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>OPC UA / DA Interface Connectivity</span>
 
-            <!-- Second duplicate set of cloned pills for perfect infinite matching loop -->
             <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>AVEVA PI System Engineering</span>
             <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>SCADA Systems &amp; HMIs</span>
             <span class="exp-pill-new"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Power BI Operational Reporting</span>
@@ -750,13 +760,9 @@
     </div>
 </section>
 
-<!-- =========================
-   SPLIT ENQUIRY SECTION (INFO LEFT | FORM RIGHT)
-========================= -->
 <section class="bottom-split-section">
     <div class="split-container">
         
-        <!-- Left Side Details -->
         <div class="info-left-panel">
             <h2>Integra OT Technologies</h2>
             <div class="subtitle">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</div>
@@ -772,7 +778,6 @@
             </div>
         </div>
 
-        <!-- Right Side Enquiry Form Card -->
         <div class="contact-form-holder">
             <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
                 <div class="form-group">
@@ -794,7 +799,6 @@
     </div>
 </section>
 
-<!-- ------------------ CLEAN SYSTEM BASE FOOTER ------------------ -->
 <footer class="minimal-base-footer">
     <p>&copy; 2026 Integra OT Technologies. All Rights Reserved.</p>
 </footer>
