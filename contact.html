@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Integra OT Technologies</title>
     <meta name="description" content="Get in touch with Integra OT Technologies for industrial automation engineering queries and IT-OT data platform consultation.">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="css/style.css?v=4.0">
     <style>
         .contact-hero {
@@ -111,7 +112,7 @@
             <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.style.display='none'">
             <span>Integra OT Technologies</span>
         </div>
-        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">?</button>
+        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">&#9776;</button>
         <nav id="navbar">
             <a href="./index.html">Home</a>
             <a href="about.html">About</a>
@@ -193,15 +194,18 @@
     <script>
         const mobileMenu = document.getElementById('mobile-menu');
         const navbar = document.getElementById('navbar');
+        
         mobileMenu.addEventListener('click', () => {
             navbar.classList.toggle('active');
-            mobileMenu.textContent = navbar.classList.contains('active') ? '?' : '?';
+            // FIXED: Uses safe string innerHTML entities to keep formatting clear
+            mobileMenu.innerHTML = navbar.classList.contains('active') ? '&times;' : '&#9776;';
         });
+        
         const navLinks = document.querySelectorAll('#navbar a');
         navLinks.forEach(function(link){
             link.addEventListener('click', function(){
                 navbar.classList.remove('active');
-                mobileMenu.textContent = '?';
+                mobileMenu.innerHTML = '&#9776;'; // FIXED
             });
         });
     </script>
