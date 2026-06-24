@@ -178,15 +178,9 @@
         .footer-services{ color:#475569; margin-bottom:30px; font-size:16px; font-weight:600; }
         .footer-details p{ color:#334155; font-size:15px; margin:8px 0; }
         .footer-details strong{ color:#0088cc; margin-right:4px; }
-        .social-link.linkedin{
-            display:inline-flex; align-items:center; gap:10px;
-            background:#ffffff; border:1px solid rgba(0,136,204,0.2);
-            color:#0077b5; text-decoration:none; padding:12px 24px; border-radius:6px; font-size:14px; font-weight:600; margin-top:25px;
-        }
-        .social-link.linkedin:hover{ background:#0077b5; color:#ffffff; }
 
         /* =========================
-           UPGRADED SLIDE-DOWN MOBILE RESPONSIVE
+           SLIDE-DOWN MOBILE RESPONSIVE
         ========================= */
         @media(max-width: 768px) {
             header{ padding:15px 5%; background:#ffffff; box-shadow:0 2px 10px rgba(0, 0, 0, 0.05); }
@@ -205,10 +199,11 @@
             }
             nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform:translateY(0); }
             nav a{ padding:14px 8%; width:100%; font-size:16px; color:#334155; border-bottom:1px solid rgba(0,0,0,0.02); }
-            nav a:hover, nav a.active{
+            
+            /* REMOVED ACTIVE HIGHLIGHT UNIFORMITY FOR THIS SPECIFIC PAGE OVERRIDE */
+            nav a:hover {
                 background:#f0f7ff;
                 color:#0088cc;
-                border-bottom: 2px solid #0088cc; /* FIXED: Underline highlighting engine layout match */
                 padding-left:10%;
             }
             
@@ -318,7 +313,6 @@
                     <li>Scheduled Application Backup &amp; Disaster Recovery Audits</li>
                 </ul>
             </div>
-
         </div>
     </section>
 
