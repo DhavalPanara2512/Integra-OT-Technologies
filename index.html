@@ -58,6 +58,23 @@
         }
 
         /* ==========================================================================
+           RESTORED: SCROLL ANIMATION PARAMS (SAME AS ABOUT)
+           ========================================================================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animated-block {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+        }
+
+        /* ==========================================================================
            HERO SECTION LAYOUT
            ========================================================================== */
         .hero {
@@ -227,12 +244,14 @@
 
 <body>
 
+    <!-- ------------------ HEADER SYSTEM ------------------ -->
     <header>
         <div class="logo">
             <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.style.display='none'">
             <span>Integra OT Technologies</span>
         </div>
         
+        <!-- Hamburger Line Trigger Button (Visible only on Mobile) -->
         <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">&#9776;</button>
         
         <nav id="navbar">
@@ -244,6 +263,7 @@
         </nav>
     </header>
 
+    <!-- ------------------ HERO DISPLAY ------------------ -->
     <section class="hero">
         <div class="hero-inner-box">
             <div class="hero-eyebrow-pill">Enterprise Solutions</div>
@@ -271,7 +291,8 @@
         </div>
     </section>
 
-    <section class="section">
+    <!-- ------------------ SERVICES CONTAINER (FADED BLOCK) ------------------ -->
+    <section class="section animated-block">
         <h2>Services</h2>
         <div class="cards">
             <div class="card">
@@ -297,7 +318,8 @@
         </div>
     </section>
 
-    <section class="section" id="industries-section">
+    <!-- ------------------ INDUSTRIES SECTOR (FADED BLOCK) ------------------ -->
+    <section class="section animated-block" id="industries-section">
         <h2>Industries We Serve</h2>
         <div class="cards">
             <div class="card">
@@ -323,7 +345,8 @@
         </div>
     </section>
 
-    <section class="section">
+    <!-- ------------------ VALUE CORE ADVANTAGES (FADED BLOCK) ------------------ -->
+    <section class="section animated-block">
         <h2>Why Partner With Us</h2>
         <div class="cards">
             <div class="card">
@@ -345,7 +368,8 @@
         </div>
     </section>
 
-    <section class="bottom-split-section">
+    <!-- ------------------ ENQUIRY CAPTURE PANEL (FADED BLOCK) ------------------ -->
+    <section class="bottom-split-section animated-block">
         <div class="split-container">
             
             <div class="info-left-panel">
@@ -384,10 +408,12 @@
         </div>
     </section>
 
+    <!-- ------------------ SYSTEM LINE FOOTER ------------------ -->
     <footer class="minimal-base-footer">
         <p>&copy; 2026 Integra OT Technologies. All Rights Reserved.</p>
     </footer>
 
+    <!-- MOBILE INTERACTIVE SCRIPT CONTROLLER -->
     <script>
         const mobileMenu = document.getElementById('mobile-menu');
         const navbar = document.getElementById('navbar');
