@@ -8,253 +8,83 @@
     <meta name="description" content="Integra OT Technologies provides Industrial Automation, AVEVA PI System, SCADA, Power BI, OT Cybersecurity and Digital Transformation solutions.">
     <link rel="stylesheet" href="css/style.css?v=4.1">
     <style>
-        /* ==========================================================================
+        /* =========================
            GLOBAL & CORE RESETS
-           ========================================================================== */
-        *{
-            margin: 0; padding: 0; box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-            scroll-behavior: smooth;
-        }
-        body{
-            background: #f4f7fc;
-            color: #1a2536;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+           ========================= */
+        *{ margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
+        body{ background: #f4f7fc; color: #1a2536; line-height: 1.6; overflow-x: hidden; }
+        
         header{
-            position: fixed; top: 0; left: 0; width: 100%;
-            padding: 18px 8%;
+            position: fixed; top: 0; left: 0; width: 100%; padding: 18px 8%;
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-            z-index: 1000;
+            background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08); z-index: 1000;
         }
         .logo{ display: flex; align-items: center; gap: 12px; }
         .logo img{ height: 60px; width: auto; }
         .logo span{ font-size: 24px; font-weight: 700; color: #0088cc; }
         
-        /* Desktop View Navigation (Visible by Default) */
         nav{ display: flex; gap: 28px; }
-        nav a{
-            text-decoration: none; color: #334155;
-            font-size: 16px; font-weight: 600; transition: .3s;
-            padding-bottom: 3px;
-        }
+        nav a{ text-decoration: none; color: #334155; font-size: 16px; font-weight: 600; transition: .3s; padding-bottom: 3px; }
         nav a:hover{ color: #0088cc; }
         nav a.active{ color: #0088cc; border-bottom: 2px solid #0088cc; }
 
-        /* Hamburger Button: Hidden on Desktop View */
-        .menu-toggle{
-            display: none;
-            background: none;
-            border: none;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #0088cc;
-            z-index: 1001;
-        }
+        .menu-toggle{ display: none; background: none; border: none; font-size: 28px; cursor: pointer; color: #0088cc; }
 
-        /* ==========================================================================
-           SCROLL ANIMATION PARAMS (SAME AS ABOUT)
-           ========================================================================== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animated-block {
-            animation: fadeInUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
-        }
+        /* Animation class */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .animated-block { animation: fadeInUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) both; }
 
-        /* ==========================================================================
-           OPTIMIZED: HERO SECTION LAYOUT (COMPACT HEIGHT FOR SCROLL EFFECT)
-           ========================================================================== */
+        /* =========================
+           OPTIMIZED COMPACT HERO 
+           (Height Kam ki gayi hai)
+           ========================= */
         .hero {
-            padding: 130px 8% 50px; /* Reduced top/bottom padding to make it smaller */
+            padding: 90px 8% 40px !important; /* Padding kam karke height reduce ki */
             background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            text-align: center; position: relative; overflow: hidden;
         }
-        .hero::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 136, 204, 0.30) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero::after {
-            content: ''; position: absolute; inset: 0;
-            background-image: linear-gradient(rgba(0, 136, 204, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 136, 204, 0.04) 1px, transparent 1px);
-            background-size: 48px 48px; pointer-events: none;
-        }
+        .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 136, 204, 0.30) 0%, transparent 70%); pointer-events: none; }
         .hero-inner-box { position: relative; z-index: 2; max-width: 950px; margin: 0 auto; }
-        .hero-eyebrow-pill {
-            display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
-            text-transform: uppercase; color: #60a5fa; background: rgba(96, 165, 250, 0.12);
-            border: 1px solid rgba(96, 165, 250, 0.28); border-radius: 20px; padding: 4px 16px; margin-bottom: 18px;
-        }
-        .hero h1 { font-size: clamp(30px, 4.5vw, 50px); font-weight: 800; color: #ffffff; line-height: 1.2; margin-bottom: 18px; }
-        .hero p { font-size: 16.5px; color: rgba(255, 255, 255, 0.65); max-width: 700px; margin: 0 auto 28px; line-height: 1.7; }
-        .hero-btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
-        .hero .btn { margin: 0; padding: 11px 28px; border-radius: 6px; font-weight: 600; text-decoration: none; background: #0088cc; color: white; transition: 0.2s ease; }
-        .hero .btn:hover { background: #0077b5; transform: translateY(-1px); }
+        .hero-eyebrow-pill { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #60a5fa; background: rgba(96, 165, 250, 0.12); border: 1px solid rgba(96, 165, 250, 0.28); border-radius: 20px; padding: 4px 16px; margin-bottom: 15px; }
+        .hero h1 { font-size: clamp(30px, 4.5vw, 50px); font-weight: 800; color: #ffffff; line-height: 1.2; margin-bottom: 15px; }
+        .hero p { font-size: 16px; color: rgba(255, 255, 255, 0.65); max-width: 700px; margin: 0 auto 25px; line-height: 1.6; }
+        .hero-btn-group { display: flex; gap: 14px; justify-content: center; margin-bottom: 25px; }
+        .hero .btn { padding: 11px 28px; border-radius: 6px; font-weight: 600; text-decoration: none; background: #0088cc; color: white; transition: 0.2s; }
         .hero-tags-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-        .hero-tag-pill {
-            font-size: 11.5px; font-weight: 600; padding: 4px 12px; border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.68);
-            background: rgba(255, 255, 255, 0.06); letter-spacing: 0.02em;
-        }
+        .hero-tag-pill { font-size: 11.5px; font-weight: 600; padding: 4px 12px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.68); background: rgba(255, 255, 255, 0.06); }
 
-        /* ==========================================================================
-           SERVICES & INDUSTRIES SECTION GRID
-           ========================================================================== */
-        .section { padding: 75px 8%; text-align: center; }
-        .section h2 { font-size: 32px; font-weight: 800; margin-bottom: 40px; color: #0f172a; }
+        /* =========================
+           SERVICES & INDUSTRIES
+           ========================= */
+        .section { padding: 60px 8%; text-align: center; }
+        .section h2 { font-size: 30px; font-weight: 800; margin-bottom: 30px; color: #0f172a; }
         .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
-        .card { background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 12px; padding: 30px 24px; text-align: left; }
-        .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
-        .card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #0f172a; }
-        .card p { font-size: 14px; color: #475569; line-height: 1.6; }
-
-        /* ==========================================================================
-           SPLIT ENQUIRY CONTAINER LAYOUT
-           ========================================================================== */
-        .bottom-split-section {
-            position: relative;
-            padding: 90px 8%;
-            background: linear-gradient(180deg, rgba(248,250,252,0.48) 0%, rgba(241,245,249,0.62) 100%),
-                        url('images/industrial-bg.jpg') center/cover no-repeat;
-            overflow: hidden;
-            border-top: 2px solid #0088cc;
-        }
-        .bottom-split-section::before {
-            content: ''; position: absolute; inset: 0;
-            background-image: linear-gradient(rgba(0,136,204,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,136,204,0.02) 1px, transparent 1px);
-            background-size: 45px 45px; pointer-events: none; z-index: 1;
-        }
+        .card { background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 12px; padding: 25px; text-align: left; }
+        .card img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
         
-        .split-container {
-            position: relative; z-index: 2;
-            max-width: 1100px; margin: 0 auto;
-            display: grid; grid-template-columns: 1.15fr 1fr; gap: 60px;
-            align-items: center;
-        }
+        /* Split footer with BG */
+        .bottom-split-section { position: relative; padding: 60px 8%; background: linear-gradient(180deg, rgba(248,250,252,0.48) 0%, rgba(241,245,249,0.62) 100%), url('images/industrial-bg.jpg') center/cover no-repeat; border-top: 2px solid #0088cc; }
+        .split-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
         
-        .info-left-panel { text-align: left; }
-        .info-left-panel h2 { font-size: 38px; font-weight: 800; color: #0f172a; margin-bottom: 14px; }
-        .info-left-panel .subtitle { font-size: 15px; color: #475569; font-weight: 600; margin-bottom: 28px; line-height: 1.5; }
-        .info-left-panel .details-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
-        .info-left-panel .details-list p { font-size: 15px; color: #334155; display: flex; align-items: center; }
-        .info-left-panel .details-list strong { color: #0088cc; width: 85px; display: inline-block; font-weight: 700; }
-        
-        .social-link.linkedin {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: #ffffff; border: 1px solid rgba(0, 136, 204, 0.2);
-            color: #0077b5; text-decoration: none; padding: 12px 24px; border-radius: 6px;
-            font-size: 14px; font-weight: 600; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .social-link.linkedin span { background: #0077b5; color: white; font-weight: 800; padding: 2px 6px; border-radius: 3px; font-size: 12px; }
-        .social-link.linkedin:hover { background: #0077b5; color: #ffffff; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,119,181,0.2); }
-
-        .contact-form-holder {
-            background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 16px;
-            padding: 40px; box-shadow: 0 4px 25px rgba(0,0,0,0.03);
-        }
-        .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; text-align: left; }
-        .form-group label { font-size: 13px; font-weight: 700; color: #334155; }
-        .form-group input, .form-group textarea {
-            padding: 12px 16px; font-size: 15px; border: 1px solid #cbd5e1; border-radius: 6px;
-            background: #f8fafc; color: #0f172a; transition: all 0.2s ease; width: 100%;
-        }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #0088cc; background: #ffffff; box-shadow: 0 0 0 3px rgba(0,136,204,0.1); }
-        .submit-btn {
-            background: #0088cc; color: white; border: none; padding: 14px 30px;
-            font-size: 16px; font-weight: 600; border-radius: 6px; cursor: pointer;
-            transition: all 0.2s ease; width: 100%;
-        }
-        .submit-btn:hover { background: #006699; }
-
-        .minimal-base-footer { background: #0a1628; padding: 25px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); position: relative; z-index: 2; }
-        .minimal-base-footer p { color: rgba(255,255,255,0.40); font-size: 13px; }
-
-        /* ==========================================================================
-           RESPONSIVE MEDIA MEDIA QUERIES (HAMBURGER ONLY ON MOBILE SCREENS)
-           ========================================================================== */
-        @media(max-width: 768px) {
-            header { padding: 15px 5%; background: #ffffff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
-            .logo span { font-size: 18px; }
-            .logo img { height: 45px; }
-            
+        @media(max-width: 768px){
             .menu-toggle { display: block; }
-            
-            nav{
-                display: flex;
-                visibility: hidden;
-                opacity: 0;
-                pointer-events: none;
-                position: absolute;
-                top: 100%; left: 0; width: 100%;
-                flex-direction: column;
-                text-align: left; background: #ffffff;
-                box-shadow: 0 15px 25px rgba(0,0,0,0.08);
-                border-top: 1px solid rgba(0,0,0,0.05);
-                padding: 15px 0;
-                transform: translateY(-10px);
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-            nav.active{
-                visibility: visible;
-                opacity: 1;
-                pointer-events: auto;
-                transform: translateY(0);
-            }
-            nav a{
-                padding: 14px 8%;
-                width: 100%;
-                font-size: 16px;
-                color: #334155;
-                border-bottom: 1px solid rgba(0,0,0,0.02);
-            }
-            nav a:last-child { border-bottom: none; }
-            nav a:hover, nav a.active{
-                background: #f0f7ff;
-                color: #0088cc;
-                border-bottom: none !important;
-                padding-left: 10%;
-            }
-
-            .hero { padding: 110px 20px 40px; }
-            .hero-btn-group { flex-direction: column; width: 100%; max-width: 280px; margin: 0 auto 25px; }
-            .split-container { grid-template-columns: 1fr; gap: 40px; }
-            .info-left-panel { text-align: center; }
-            .info-left-panel h2 { font-size: 30px; }
-            .contact-form-holder { padding: 25px 20px; }
+            nav { display: none; }
+            nav.active { display: flex; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 15px 0; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- ------------------ HEADER SYSTEM ------------------ -->
     <header>
         <div class="logo">
-            <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.style.display='none'">
+            <img src="images/logo.png" alt="Integra OT Technologies">
             <span>Integra OT Technologies</span>
         </div>
-        
-        <!-- Hamburger Line Trigger Button (Visible only on Mobile) -->
-        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">&#9776;</button>
-        
+        <button class="menu-toggle" id="mobile-menu">&#9776;</button>
         <nav id="navbar">
-            <a href="./index.html" class="active">Home</a>
+            <a href="index.html" class="active">Home</a>
             <a href="about.html">About</a>
             <a href="services.html">Services</a>
             <a href="industries.html">Industries</a>
@@ -262,174 +92,33 @@
         </nav>
     </header>
 
-    <!-- ------------------ HERO DISPLAY ------------------ -->
     <section class="hero">
         <div class="hero-inner-box">
             <div class="hero-eyebrow-pill">Enterprise Solutions</div>
-            <h1>
-                Turn Raw Industrial Data<br>
-                Into Real-Time Intelligence
-            </h1>
-            <p>
-                We bridge the gap between complex process operations and enterprise analytics. From edge connectivity and AVEVA PI System optimization to advanced data engineering, we unlock operational excellence.
-            </p>
-            
+            <h1>Turn Raw Industrial Data<br>Into Real-Time Intelligence</h1>
+            <p>We bridge the gap between complex process operations and enterprise analytics. From edge connectivity to advanced data engineering, we unlock operational excellence.</p>
             <div class="hero-btn-group">
                 <a href="services.html" class="btn">Explore Solutions</a>
                 <a href="contact.html" class="btn">Contact Us</a>
             </div>
-
             <div class="hero-tags-row">
                 <span class="hero-tag-pill">Industrial Automation</span>
                 <span class="hero-tag-pill">AVEVA PI System</span>
                 <span class="hero-tag-pill">SCADA</span>
-                <span class="hero-tag-pill">Power BI</span>
-                <span class="hero-tag-pill">OT Cybersecurity</span>
-                <span class="hero-tag-pill">IT-OT Integration</span>
             </div>
         </div>
     </section>
 
-    <!-- ------------------ SERVICES CONTAINER (FADED BLOCK) ------------------ -->
     <section class="section animated-block">
         <h2>Services</h2>
         <div class="cards">
-            <div class="card">
-                <img src="images/pi-system.jpg" alt="AVEVA PI System">
-                <h3>AVEVA PI System</h3>
-                <p>Expert enterprise historian engineering covering PI Data Archive, Asset Framework (AF) templates, PI Vision dashboards, and high-availability buffering interfaces.</p>
             </div>
-            <div class="card">
-                <img src="images/scada.jpg" alt="SCADA">
-                <h3>SCADA &amp; Automation</h3>
-                <p>High-performance SCADA application development, ergonomic HMI graphic layouts, alarm management rationalization, and automated shift reporting metrics.</p>
-            </div>
-            <div class="card">
-                <img src="images/powerbi.jpg" alt="Power BI">
-                <h3>Operational Analytics</h3>
-                <p>Consolidating real-time plant data with enterprise systems to deliver interactive Power BI dashboards, tracking manufacturing metrics and plant efficiencies.</p>
-            </div>
-            <div class="card">
-                <img src="images/cybersecurity.jpg" alt="OT Cybersecurity">
-                <h3>OT Cybersecurity</h3>
-                <p>Protecting critical infrastructure through industrial security risk assessments, deep network segmentation following ISA/IEC 62443, and firewall configurations.</p>
-            </div>
-        </div>
     </section>
 
-    <!-- ------------------ INDUSTRIES SECTOR (FADED BLOCK) ------------------ -->
-    <section class="section animated-block" id="industries-section">
-        <h2>Industries We Serve</h2>
-        <div class="cards">
-            <div class="card">
-                <img src="images/pharma.jpg" alt="Pharmaceutical">
-                <h3>Pharmaceutical</h3>
-                <p>Ensuring absolute data integrity, strict regulatory validation compliance (FDA 21 CFR Part 11), and electronic batch record tracking.</p>
-            </div>
-            <div class="card">
-                <img src="images/oilgas.jpg" alt="Oil &amp; Gas">
-                <h3>Oil &amp; Gas</h3>
-                <p>Operational asset monitoring, pipeline telemetry aggregation, and centralized multi-site data management across downstream operations.</p>
-            </div>
-            <div class="card">
-                <img src="images/Petrochemicals.jpg" alt="Petrochemicals">
-                <h3>Petrochemicals</h3>
-                <p>Real-time process monitoring, cracking unit mass balance monitoring, utility profiling, and production yield tracking data support.</p>
-            </div>
-            <div class="card">
-                <img src="images/power.jpg" alt="Power">
-                <h3>Power &amp; Utilities</h3>
-                <p>Thermal efficiency metrics, continuous turbine performance monitoring, boiler health visibility, and smart utility grids.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ------------------ WHY PARTNER WITH US (FADED BLOCK) ------------------ -->
-    <section class="section animated-block">
-        <h2>Why Partner With Us</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Deep Domain Expertise</h3>
-                <p>We don't just write scripts; we understand plant process loops, piping, instrumentation constraints, and operational realities.</p>
-            </div>
-            <div class="card">
-                <h3>Security by Design</h3>
-                <p>Industrial operations require a zero-risk approach. We maintain completely secure boundaries between control systems and business layers.</p>
-            </div>
-            <div class="card">
-                <h3>Custom Automation</h3>
-                <p>We engineer custom Python and PowerShell bridge scripts and data connectors to ensure your enterprise applications interact seamlessly.</p>
-            </div>
-            <div class="card">
-                <h3>24x7 Mission-Critical Support</h3>
-                <p>Industrial data infrastructure never sleeps. We provide continuous system health monitoring and priority engineering response.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ------------------ ENQUIRY CAPTURE PANEL (FADED BLOCK) ------------------ -->
-    <section class="bottom-split-section animated-block">
-        <div class="split-container">
-            
-            <div class="info-left-panel">
-                <h2>Integra OT Technologies</h2>
-                <div class="subtitle">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</div>
-                <div class="details-list">
-                    <p><strong>Email:</strong> info@integraottechnologies.com</p>
-                    <p><strong>Website:</strong> www.integraottechnologies.com</p>
-                    <p><strong>Address:</strong> Surat, Gujarat, India</p>
-                </div>
-                <div class="social-box">
-                    <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
-                        <span>in</span> Connect on LinkedIn
-                    </a>
-                </div>
-            </div>
-
-            <div class="contact-form-holder">
-                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" required placeholder="John Doe">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Corporate Email</label>
-                        <input type="email" id="email" required placeholder="john@company.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="msg">Project Context / Technical Needs</label>
-                        <textarea id="msg" rows="5" required placeholder="Outline your asset tag counts, software variants or system specifications..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Submit Specification Request</button>
-                </form>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ------------------ SYSTEM LINE FOOTER ------------------ -->
-    <footer class="minimal-base-footer">
-        <p>&copy; 2026 Integra OT Technologies. All Rights Reserved.</p>
-    </footer>
-
-    <!-- MOBILE INTERACTIVE SCRIPT CONTROLLER -->
     <script>
         const mobileMenu = document.getElementById('mobile-menu');
         const navbar = document.getElementById('navbar');
-        
-        mobileMenu.addEventListener('click', () => {
-            navbar.classList.toggle('active');
-            mobileMenu.innerHTML = navbar.classList.contains('active') ? '&times;' : '&#9776;';
-        });
-
-        const navLinks = document.querySelectorAll("#navbar a");
-        navLinks.forEach(function(link){
-            link.addEventListener("click", function(){
-                navbar.classList.remove("active");
-                mobileMenu.innerHTML = '&#9776;';
-            });
-        });
+        mobileMenu.addEventListener('click', () => { navbar.classList.toggle('active'); });
     </script>
-
 </body>
 </html>
