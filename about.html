@@ -321,50 +321,94 @@
         .val-card-new p{ font-size:14px; color:#475569; line-height:1.75; }
 
         /* =========================
-           EXPERTISE SECTION
+           UPGRADED: EXPERTISE AUTOMATED INFINITE TICKER
         ========================= */
         .expertise-section{
-            padding:72px 8%;
+            padding:75px 0 85px; /* Pushed edge-to-edge for sliding effect */
             background:#f8fafc;
             border-bottom:1px solid #e5e7eb;
+            overflow:hidden;
         }
-        .expertise-inner{ max-width:1100px; margin:0 auto; }
-        .expertise-inner .eyebrow{
+        .expertise-header-box {
+            padding: 0 8%;
+            max-width: 1100px;
+            margin: 0 auto 35px;
+            text-align: left;
+        }
+        .expertise-section .eyebrow{
             font-size:11px;
             font-weight:700;
             letter-spacing:0.12em; text-transform:uppercase;
             color:#0088cc; margin-bottom:12px;
         }
-        .expertise-inner h2{
-            font-size:30px;
+        .expertise-section h2{
+            font-size:32px;
             font-weight:800;
-            color:#0f172a; margin-bottom:32px;
+            color:#0f172a;
         }
-        .exp-pills{ display:flex; flex-wrap:wrap; gap:10px; }
+        
+        /* Moving Row Engines */
+        .ticker-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 10px 0;
+        }
+        /* Fade gradients on left & right sides for high premium layout depth */
+        .ticker-wrapper::before, .ticker-wrapper::after {
+            content: '';
+            position: absolute; top: 0; bottom: 0; width: 120px;
+            z-index: 3; pointer-events: none;
+        }
+        .ticker-wrapper::before {
+            left: 0; background: linear-gradient(90deg, #f8fafc 0%, transparent 100%);
+        }
+        .ticker-wrapper::after {
+            right: 0; background: linear-gradient(-90deg, #f8fafc 0%, transparent 100%);
+        }
+
+        @keyframes infiniteScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Perfect half-slice loop translate */
+        }
+        .exp-ticker-track {
+            display: flex;
+            width: max-content;
+            gap: 15px;
+            animation: infiniteScroll 32s linear infinite;
+        }
+        /* Pause on Hover optimization */
+        .ticker-wrapper:hover .exp-ticker-track {
+            animation-play-state: paused;
+        }
+
         .exp-pill-new{
-            display:flex;
-            align-items:center; gap:8px;
-            font-size:13px; font-weight:600;
-            color:#0088cc; background:#eff6ff;
-            border:1px solid #bfdbfe;
-            border-radius:8px; padding:9px 18px;
-            transition:.25s;
+            display:inline-flex;
+            align-items:center; gap:10px;
+            font-size:14px; font-weight:600;
+            color:#0088cc; background:#ffffff;
+            border:1px solid #cbd5e1;
+            border-radius:30px; padding:12px 24px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            white-space: nowrap;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .exp-pill-new:hover{
             background:#0088cc;
             color:#fff;
             border-color:#0088cc;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 136, 204, 0.15);
         }
-        .exp-pill-new:hover svg{ stroke:#fff; }
         .exp-pill-new svg{
-            width:15px;
-            height:15px; stroke:#0088cc; fill:none;
+            width:16px; height:16px; stroke:#0088cc; fill:none;
             stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;
             transition:.25s;
         }
+        .exp-pill-new:hover svg{ stroke:#fff; }
 
         /* =========================
-           RESTORED SPLIT SECTION WITH BACKGROUND INTEGRATION
+           SPLIT ENQUIRY SECTION (INFO LEFT | FORM RIGHT)
         ========================= */
         .bottom-split-section {
             position: relative;
@@ -452,66 +496,23 @@
         .minimal-base-footer p { color: rgba(255,255,255,0.40); font-size: 13px; }
 
         /* =========================
-           UPGRADED SLIDE-DOWN MOBILE RESPONSIVE
+           SLIDE-DOWN MOBILE RESPONSIVE
         ========================= */
         @media(max-width:768px){
-            header{
-                padding:15px 5%;
-                background:#ffffff;
-                box-shadow:0 2px 10px rgba(0, 0, 0, 0.05);
-            }
+            header{ padding:15px 5%; background:#ffffff; box-shadow:0 2px 10px rgba(0, 0, 0, 0.05); }
             .logo span{ font-size:18px; }
             .logo img{ height:45px; }
             
-            .menu-toggle{
-                display:block;
-                background:none;
-                border:none;
-                font-size:28px;
-                font-weight:bold;
-                cursor:pointer;
-                color:#0088cc;
-                z-index:1001;
-                transition: transform 0.2s ease;
-            }
-            .menu-toggle:focus { outline: none; }
-            
+            .menu-toggle{ display:block; background:none; border:none; font-size:28px; font-weight:bold; cursor:pointer; color:#0088cc; z-index:1001; }
             nav{
-                display:flex;
-                visibility:hidden;
-                opacity:0;
-                pointer-events:none;
-                position:absolute;
-                top:100%; left:0; width:100%;
-                margin-top:0; flex-direction:column;
-                text-align:left; background:#ffffff;
-                box-shadow:0 15px 25px rgba(0,0,0,0.08);
-                border-top:1px solid rgba(0,0,0,0.05);
-                padding:15px 0;
-                transform:translateY(-10px);
-                transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                display:flex; visibility:hidden; opacity:0; pointer-events:none; position:absolute; top:100%; left:0; width:100%; flex-direction:column;
+                text-align:left; background:#ffffff; box-shadow:0 15px 25px rgba(0,0,0,0.08); border-top:1px solid rgba(0,0,0,0.05); padding:15px 0; transform:translateY(-10px); transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             }
-            nav.active{
-                visibility:visible;
-                opacity:1;
-                pointer-events:auto;
-                transform:translateY(0);
-            }
-            nav a{
-                padding:14px 8%;
-                width:100%;
-                font-size:16px;
-                color:#334155;
-                border-bottom:1px solid rgba(0,0,0,0.02);
-            }
-            nav a:last-child { border-bottom: none; }
+            nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform:translateY(0); }
+            nav a{ padding:14px 8%; width:100%; font-size:16px; color:#334155; border-bottom:1px solid rgba(0,0,0,0.02); }
             
-            /* Overrides layout view box highlighting lines on current sub-structure selection */
             nav a:hover, nav a.active{
-                background:#f0f7ff;
-                color:#0088cc;
-                border-bottom: none !important;
-                padding-left:10%;
+                background:#f0f7ff; color:#0088cc; border-bottom: none !important; padding-left:10%;
             }
             
             .about-hero{ padding:120px 20px 60px; }
@@ -519,34 +520,17 @@
             .cap-item{ border-right:none; border-bottom:1px solid #e5e7eb; }
             .overview-section{ padding:60px 20px; }
             .overview-grid{ grid-template-columns:1fr; gap:36px; }
-            
             .mv-section{ padding:60px 5% 40px; }
             .section-header h2{ font-size:32px; }
-            .mission-vision-container { gap: 50px; }
-            
-            .mv-row, .mv-row.reverse-row {
-                grid-template-columns:1fr;
-                direction:ltr; gap:15px; margin-bottom:20px;
-            }
-            .mv-row .card h3 { font-size:26px; margin-bottom:10px; }
-            .mv-row .card p { font-size:15px; }
-            
-            .mv-image-box { 
-                min-height:auto;
-                height:auto; padding:0 10px; margin-top:5px;
-            }
-            .mv-image-box img { 
-                max-height:260px;
-                border-radius:10px;
-            }
-            
+            .mv-row, .mv-row.reverse-row { grid-template-columns:1fr; direction:ltr; gap:15px; margin-bottom:20px; }
             .values-section{ padding:60px 20px; }
             .values-grid-new{ grid-template-columns:1fr; }
             .split-container { grid-template-columns: 1fr; gap: 40px; }
             .info-left-panel { text-align: center; }
             .info-left-panel h2 { font-size: 30px; }
             .contact-form-holder { padding: 25px 20px; }
-            .expertise-section{ padding:52px 20px; }
+            .expertise-section{ padding:45px 0 55px; }
+            .ticker-wrapper::before, .ticker-wrapper::after { width: 50px; }
         }
         @media(max-width:480px){
             .capability-strip{ grid-template-columns:1fr; }
@@ -728,66 +712,92 @@
     </div>
 </section>
 
+<!-- =========================
+   UPGRADED: AUTOMATIC RUNNING TICKER SECTION
+========================= -->
 <section class="expertise-section animated-block">
-    <div class="expertise-inner">
+    <div class="expertise-header-box">
         <div class="eyebrow">Technical Stack</div>
         <h2>Our Areas of Expertise</h2>
-        <div class="exp-pills">
-            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>AVEVA PI System</span>
-            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>SCADA Systems</span>
-            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Power BI</span>
-            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>IT-OT Integration</span>
-            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>OT Cybersecurity</span>
-            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Industrial Automation</span>
-            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>Process Instrumentation</span>
-            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Enterprise Analytics</span>
-            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>Historian / Data Infrastructure</span>
+    </div>
+    
+    <div class="ticker-wrapper">
+        <div class="exp-ticker-track">
+            <!-- First loop set of pills -->
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>AVEVA PI System Engineering</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>SCADA Systems &amp; HMIs</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Power BI Operational Reporting</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/></svg>Secure IT-OT Integration Bridge</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>ISA/IEC 62443 OT Cybersecurity</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Industrial Process Automation</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/></svg>Field Process Instrumentation</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>ISA-95 Enterprise Data Architecture</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>Historian Data Infrastructure &amp; Buffering</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>OPC UA / DA Interface Connectivity</span>
+
+            <!-- Second duplicate set of cloned pills for perfect infinite matching loop -->
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>AVEVA PI System Engineering</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>SCADA Systems &amp; HMIs</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Power BI Operational Reporting</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/></svg>Secure IT-OT Integration Bridge</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>ISA/IEC 62443 OT Cybersecurity</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Industrial Process Automation</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/></svg>Field Process Instrumentation</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>ISA-95 Enterprise Data Architecture</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>Historian Data Infrastructure &amp; Buffering</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>OPC UA / DA Interface Connectivity</span>
         </div>
     </div>
 </section>
 
-    <section class="bottom-split-section">
-        <div class="split-container">
-            
-            <div class="info-left-panel">
-                <h2>Integra OT Technologies</h2>
-                <div class="subtitle">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</div>
-                <div class="details-list">
-                    <p><strong>Email:</strong> info@integraottechnologies.com</p>
-                    <p><strong>Website:</strong> www.integraottechnologies.com</p>
-                    <p><strong>Address:</strong> Surat, Gujarat, India</p>
-                </div>
-                <div class="social-box">
-                    <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
-                        <span>in</span> Connect on LinkedIn
-                    </a>
-                </div>
+<!-- =========================
+   SPLIT ENQUIRY SECTION (INFO LEFT | FORM RIGHT)
+========================= -->
+<section class="bottom-split-section">
+    <div class="split-container">
+        
+        <!-- Left Side Details -->
+        <div class="info-left-panel">
+            <h2>Integra OT Technologies</h2>
+            <div class="subtitle">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</div>
+            <div class="details-list">
+                <p><strong>Email:</strong> info@integraottechnologies.com</p>
+                <p><strong>Website:</strong> www.integraottechnologies.com</p>
+                <p><strong>Address:</strong> Surat, Gujarat, India</p>
             </div>
-
-            <div class="contact-form-holder">
-                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" required placeholder="John Doe">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Corporate Email</label>
-                        <input type="email" id="email" required placeholder="john@company.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="msg">Project Context / Technical Needs</label>
-                        <textarea id="msg" rows="5" required placeholder="Outline your asset tag counts, software variants or system specifications..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Submit Specification Request</button>
-                </form>
+            <div class="social-box">
+                <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
+                    <span>in</span> Connect on LinkedIn
+                </a>
             </div>
-
         </div>
-    </section>
 
-    <footer class="minimal-base-footer">
-        <p>&copy; 2026 Integra OT Technologies. All Rights Reserved.</p>
-    </footer>
+        <!-- Right Side Enquiry Form Card -->
+        <div class="contact-form-holder">
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="email">Corporate Email</label>
+                    <input type="email" id="email" required placeholder="john@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="msg">Project Context / Technical Needs</label>
+                    <textarea id="msg" rows="5" required placeholder="Outline your asset tag counts, software variants or system specifications..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Specification Request</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<!-- ------------------ CLEAN SYSTEM BASE FOOTER ------------------ -->
+<footer class="minimal-base-footer">
+    <p>&copy; 2026 Integra OT Technologies. All Rights Reserved.</p>
+</footer>
 
 <script>
     const mobileMenu = document.getElementById('mobile-menu');
