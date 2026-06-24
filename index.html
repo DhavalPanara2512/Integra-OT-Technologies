@@ -8,9 +8,9 @@
     <meta name="description" content="Integra OT Technologies provides Industrial Automation, AVEVA PI System, SCADA, Power BI, OT Cybersecurity and Digital Transformation solutions.">
     <link rel="stylesheet" href="css/style.css?v=4.1">
     <style>
-        /* =========================
-           GLOBAL & HERO ARCHITECTURE
-        ========================= */
+        /* ==========================================================================
+           GLOBAL & CORE RESETS
+           ========================================================================== */
         *{
             margin: 0; padding: 0; box-sizing: border-box;
             font-family: 'Segoe UI', sans-serif;
@@ -35,6 +35,7 @@
         .logo img{ height: 60px; width: auto; }
         .logo span{ font-size: 24px; font-weight: 700; color: #0088cc; }
         
+        /* Desktop View Navigation (Visible by Default) */
         nav{ display: flex; gap: 28px; }
         nav a{
             text-decoration: none; color: #334155;
@@ -44,9 +45,9 @@
         nav a:hover{ color: #0088cc; }
         nav a.active{ color: #0088cc; border-bottom: 2px solid #0088cc; }
 
-        /* ADDED: Unified Hamburger Styling for both Desktop & Mobile */
+        /* Hamburger Button: Hidden on Desktop View */
         .menu-toggle{
-            display: block; /* Always visible on desktop and mobile */
+            display: none;
             background: none;
             border: none;
             font-size: 28px;
@@ -54,10 +55,11 @@
             cursor: pointer;
             color: #0088cc;
             z-index: 1001;
-            transition: transform 0.2s ease;
         }
-        .menu-toggle:focus { outline: none; }
 
+        /* ==========================================================================
+           HERO SECTION LAYOUT
+           ========================================================================== */
         .hero {
             padding: 160px 8% 80px;
             background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%);
@@ -84,7 +86,7 @@
         .hero h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 22px; }
         .hero p { font-size: 17px; color: rgba(255, 255, 255, 0.62); max-width: 720px; margin: 0 auto 36px; line-height: 1.8; }
         .hero-btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .hero .btn { margin: 0; padding: 12px 30px; border-radius: 6px; font-weight: 600; }
+        .hero .btn { margin: 0; padding: 12px 30px; border-radius: 6px; font-weight: 600; text-decoration: none; background: #0088cc; color: white; }
         .hero-tags-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
         .hero-tag-pill {
             font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 6px;
@@ -92,9 +94,9 @@
             background: rgba(255, 255, 255, 0.07); letter-spacing: 0.02em;
         }
 
-        /* =========================
-           SERVICES & INDUSTRIES WE SERVE
-        ========================= */
+        /* ==========================================================================
+           SERVICES & INDUSTRIES SECTION GRID
+           ========================================================================== */
         .section { padding: 80px 8%; text-align: center; }
         .section h2 { font-size: 32px; font-weight: 800; margin-bottom: 40px; color: #0f172a; }
         .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
@@ -103,9 +105,9 @@
         .card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #0f172a; }
         .card p { font-size: 14px; color: #475569; line-height: 1.6; }
 
-        /* =========================
-           SPLIT FOOTER PANEL WITH BG IMAGES
-        ========================= */
+        /* ==========================================================================
+           SPLIT ENQUIRY CONTAINER LAYOUT
+           ========================================================================== */
         .bottom-split-section {
             position: relative;
             padding: 90px 8%;
@@ -116,8 +118,7 @@
         }
         .bottom-split-section::before {
             content: ''; position: absolute; inset: 0;
-            background-image: linear-gradient(rgba(0,136,204,0.02) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(0,136,204,0.02) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(0,136,204,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,136,204,0.02) 1px, transparent 1px);
             background-size: 45px 45px; pointer-events: none; z-index: 1;
         }
         
@@ -166,17 +167,25 @@
         .minimal-base-footer { background: #0a1628; padding: 25px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); position: relative; z-index: 2; }
         .minimal-base-footer p { color: rgba(255,255,255,0.40); font-size: 13px; }
 
-        /* =========================
-           SLIDE-DOWN RESPONSIBILITY FOR HANDSETS & DESKTOP DRAWER MAPPING
-           ========================= */
-        @media(max-width: 4000px){ /* Trigger drawer style for both desktop and mobile safely */
+        /* ==========================================================================
+           RESPONSIVE MEDIA MEDIA QUERIES (HAMBURGER ONLY ON MOBILE SCREENS)
+           ========================================================================== */
+        @media(max-width: 768px) {
+            header { padding: 15px 5%; background: #ffffff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
+            .logo span { font-size: 18px; }
+            .logo img { height: 45px; }
+            
+            /* Show Hamburger icon only on Mobile */
+            .menu-toggle { display: block; }
+            
+            /* Convert Nav to Slide down overlay Drawer style */
             nav{
                 display: flex;
                 visibility: hidden;
                 opacity: 0;
                 pointer-events: none;
                 position: absolute;
-                top: 100%; right: 0; width: 300px;
+                top: 100%; left: 0; width: 100%;
                 flex-direction: column;
                 text-align: left; background: #ffffff;
                 box-shadow: 0 15px 25px rgba(0,0,0,0.08);
@@ -203,15 +212,9 @@
                 background: #f0f7ff;
                 color: #0088cc;
                 border-bottom: none !important;
-                padding-left: 12%;
+                padding-left: 10%;
             }
-        }
 
-        @media(max-width: 768px) {
-            header { padding: 15px 5%; background: #ffffff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
-            .logo span { font-size: 18px; }
-            .logo img { height: 45px; }
-            nav { width: 100%; } /* full width drawer on phone screens */
             .hero { padding: 120px 20px 60px; }
             .hero-btn-group { flex-direction: column; width: 100%; max-width: 280px; margin: 0 auto 30px; }
             .split-container { grid-template-columns: 1fr; gap: 40px; }
@@ -224,14 +227,14 @@
 
 <body>
 
-    <!-- ------------------ HEADER ------------------ -->
     <header>
         <div class="logo">
             <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.style.display='none'">
             <span>Integra OT Technologies</span>
         </div>
-        <!-- UNIVERSAL HAMBURGER BUTTON STRUCTURE -->
+        
         <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">&#9776;</button>
+        
         <nav id="navbar">
             <a href="./index.html" class="active">Home</a>
             <a href="about.html">About</a>
@@ -241,7 +244,6 @@
         </nav>
     </header>
 
-    <!-- ------------------ HERO ------------------ -->
     <section class="hero">
         <div class="hero-inner-box">
             <div class="hero-eyebrow-pill">Enterprise Solutions</div>
@@ -269,7 +271,6 @@
         </div>
     </section>
 
-    <!-- ------------------ SERVICES ------------------ -->
     <section class="section">
         <h2>Services</h2>
         <div class="cards">
@@ -296,7 +297,6 @@
         </div>
     </section>
 
-    <!-- ------------------ INDUSTRIES WE SERVE ------------------ -->
     <section class="section" id="industries-section">
         <h2>Industries We Serve</h2>
         <div class="cards">
@@ -323,7 +323,6 @@
         </div>
     </section>
 
-    <!-- ------------------ WHY PARTNER WITH US ------------------ -->
     <section class="section">
         <h2>Why Partner With Us</h2>
         <div class="cards">
@@ -346,11 +345,9 @@
         </div>
     </section>
 
-    <!-- ------------------ SPLIT PANEL ENQUIRY SYSTEM ------------------ -->
     <section class="bottom-split-section">
         <div class="split-container">
             
-            <!-- Left Side Details -->
             <div class="info-left-panel">
                 <h2>Integra OT Technologies</h2>
                 <div class="subtitle">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</div>
@@ -366,7 +363,6 @@
                 </div>
             </div>
 
-            <!-- Right Side Enquiry Form Card -->
             <div class="contact-form-holder">
                 <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
                     <div class="form-group">
@@ -388,19 +384,19 @@
         </div>
     </section>
 
-    <!-- ------------------ BASE FOOTER LINE ------------------ -->
     <footer class="minimal-base-footer">
         <p>&copy; 2026 Integra OT Technologies. All Rights Reserved.</p>
     </footer>
 
-    <!-- MOBILE NAVIGATION LOGIC SCRIPT -->
     <script>
         const mobileMenu = document.getElementById('mobile-menu');
         const navbar = document.getElementById('navbar');
+        
         mobileMenu.addEventListener('click', () => {
             navbar.classList.toggle('active');
             mobileMenu.innerHTML = navbar.classList.contains('active') ? '&times;' : '&#9776;';
         });
+
         const navLinks = document.querySelectorAll("#navbar a");
         navLinks.forEach(function(link){
             link.addEventListener("click", function(){
