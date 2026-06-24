@@ -200,11 +200,11 @@
             nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform:translateY(0); }
             nav a{ padding:14px 8%; width:100%; font-size:16px; color:#334155; border-bottom:1px solid rgba(0,0,0,0.02); }
             
-            /* Overrides and cleanly removes any underlying outline highlight mechanics on this panel layout view */
+            /* REMOVED ACTIVE HIGHLIGHT UNIFORMITY FOR THIS SPECIFIC PAGE OVERRIDE */
             nav a:hover, nav a.active {
                 background:#f0f7ff;
                 color:#0088cc;
-                border-bottom: none !important; 
+                border-bottom: none !important; /* Forces underline removal */
                 padding-left:10%;
             }
             
