@@ -24,6 +24,23 @@
         }
 
         /* =========================
+           SCROLL ANIMATION PARAMS
+        ========================= */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animated-block {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+        }
+
+        /* =========================
            HEADER & NAV
         ========================= */
         header{
@@ -347,6 +364,94 @@
         }
 
         /* =========================
+           RESTORED SPLIT SECTION WITH BACKGROUND INTEGRATION
+        ========================= */
+        .bottom-split-section {
+            position: relative;
+            padding: 90px 8%;
+            background: linear-gradient(180deg, rgba(248,250,252,0.48) 0%, rgba(241,245,249,0.62) 100%),
+                        url('images/industrial-bg.jpg') center/cover no-repeat;
+            overflow: hidden;
+            border-top: 2px solid #0088cc;
+        }
+        .bottom-split-section::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(0,136,204,0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0,136,204,0.02) 1px, transparent 1px);
+            background-size: 45px 45px; pointer-events: none; z-index: 1;
+        }
+        .split-container {
+            position: relative; z-index: 2;
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.15fr 1fr; gap: 60px;
+            align-items: center;
+        }
+        .info-left-panel {
+            text-align: left;
+        }
+        .info-left-panel h2 {
+            font-size: 38px; font-weight: 800; color: #0f172a; margin-bottom: 14px;
+        }
+        .info-left-panel .subtitle {
+            font-size: 15px; color: #475569; font-weight: 600; margin-bottom: 28px; line-height: 1.5;
+        }
+        .info-left-panel .details-list {
+            display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px;
+        }
+        .info-left-panel .details-list p {
+            font-size: 15px; color: #334155; display: flex; align-items: center;
+        }
+        .info-left-panel .details-list strong {
+            color: #0088cc; width: 85px; display: inline-block; font-weight: 700;
+        }
+        .social-link.linkedin {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: #ffffff; border: 1px solid rgba(0, 136, 204, 0.2);
+            color: #0077b5; text-decoration: none; padding: 12px 24px; border-radius: 6px;
+            font-size: 14px; font-weight: 600; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .social-link.linkedin span {
+            background: #0077b5; color: white; font-weight: 800; padding: 2px 6px; border-radius: 3px; font-size: 12px;
+        }
+        .social-link.linkedin:hover {
+            background: #0077b5; color: #ffffff; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,119,181,0.2);
+        }
+        .social-link.linkedin:hover span { background: #ffffff; color: #0077b5; }
+
+        .contact-form-holder {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.03);
+        }
+        .form-group {
+            margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; text-align: left;
+        }
+        .form-group label { font-size: 13px; font-weight: 700; color: #334155; }
+        .form-group input, .form-group textarea {
+            padding: 12px 16px; font-size: 15px; border: 1px solid #cbd5e1; border-radius: 6px;
+            background: #f8fafc; color: #0f172a; transition: all 0.2s ease; width: 100%;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none; border-color: #0088cc; background: #ffffff; box-shadow: 0 0 0 3px rgba(0,136,204,0.1);
+        }
+        .submit-btn {
+            background: #0088cc; color: white; border: none; padding: 14px 30px;
+            font-size: 16px; font-weight: 600; border-radius: 6px; cursor: pointer;
+            transition: all 0.2s ease; width: 100%;
+        }
+        .submit-btn:hover { background: #006699; }
+
+        /* Minimal clean footer bottom line */
+        .minimal-base-footer {
+            background: #0a1628; padding: 25px 20px; text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.04); position: relative; z-index: 2;
+        }
+        .minimal-base-footer p { color: rgba(255,255,255,0.40); font-size: 13px; }
+
+        /* =========================
            UPGRADED SLIDE-DOWN MOBILE RESPONSIVE
         ========================= */
         @media(max-width:768px){
@@ -400,12 +505,13 @@
                 border-bottom:1px solid rgba(0,0,0,0.02);
             }
             nav a:last-child { border-bottom: none; }
+            
+            /* Overrides layout view box highlighting lines on current sub-structure selection */
             nav a:hover, nav a.active{
                 background:#f0f7ff;
                 color:#0088cc;
-                border-bottom: 2px solid #0088cc; /* FIXED: Underline highlighting engine layout match */
+                border-bottom: none !important;
                 padding-left:10%;
-                border-bottom-color:rgba(0,0,0,0.02);
             }
             
             .about-hero{ padding:120px 20px 60px; }
@@ -414,7 +520,6 @@
             .overview-section{ padding:60px 20px; }
             .overview-grid{ grid-template-columns:1fr; gap:36px; }
             
-            /* CRITICAL LAYOUT FRAME CORRECTIONS */
             .mv-section{ padding:60px 5% 40px; }
             .section-header h2{ font-size:32px; }
             .mission-vision-container { gap: 50px; }
@@ -437,8 +542,11 @@
             
             .values-section{ padding:60px 20px; }
             .values-grid-new{ grid-template-columns:1fr; }
+            .split-container { grid-template-columns: 1fr; gap: 40px; }
+            .info-left-panel { text-align: center; }
+            .info-left-panel h2 { font-size: 30px; }
+            .contact-form-holder { padding: 25px 20px; }
             .expertise-section{ padding:52px 20px; }
-            footer{ padding:60px 20px; }
         }
         @media(max-width:480px){
             .capability-strip{ grid-template-columns:1fr; }
@@ -481,7 +589,7 @@
     </div>
 </section>
 
-<div class="capability-strip">
+<div class="capability-strip animated-block">
     <div class="cap-item">
         <div class="cap-icon">
             <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
@@ -520,7 +628,7 @@
     </div>
 </div>
 
-<section class="overview-section">
+<section class="overview-section animated-block">
     <div class="overview-grid">
         <div class="overview-text">
             <div class="ov-eyebrow">Company Overview</div>
@@ -560,7 +668,7 @@
     </div>
 </section>
 
-<section class="mv-section">
+<section class="mv-section animated-block">
     <div class="section-header">
         <div class="eyebrow">Purpose &amp; Direction</div>
         <h2>Mission &amp; Vision</h2>
@@ -590,7 +698,7 @@
     </div>
 </section>
 
-<section class="values-section" id="why-partner">
+<section class="values-section animated-block" id="why-partner">
     <div class="section-header">
         <div class="eyebrow">What We Stand For</div>
         <h2>Core Values</h2>
@@ -620,7 +728,7 @@
     </div>
 </section>
 
-<section class="expertise-section">
+<section class="expertise-section animated-block">
     <div class="expertise-inner">
         <div class="eyebrow">Technical Stack</div>
         <h2>Our Areas of Expertise</h2>
@@ -638,20 +746,48 @@
     </div>
 </section>
 
-<footer>
-    <h3>Integra OT Technologies</h3>
-    <p class="footer-services">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</p>
-    <div class="footer-details">
-        <p><strong>Email:</strong> info@integraottechnologies.com</p>
-        <p><strong>Website:</strong> www.integraottechnologies.com</p>
-        <p><strong>Address:</strong> Surat, Gujarat, India</p>
-    </div>
-    <div class="footer-social">
-        <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
-            <span>in</span> Connect on LinkedIn
-        </a>
-    </div>
-</footer>
+    <section class="bottom-split-section">
+        <div class="split-container">
+            
+            <div class="info-left-panel">
+                <h2>Integra OT Technologies</h2>
+                <div class="subtitle">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</div>
+                <div class="details-list">
+                    <p><strong>Email:</strong> info@integraottechnologies.com</p>
+                    <p><strong>Website:</strong> www.integraottechnologies.com</p>
+                    <p><strong>Address:</strong> Surat, Gujarat, India</p>
+                </div>
+                <div class="social-box">
+                    <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
+                        <span>in</span> Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-form-holder">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Corporate Email</label>
+                        <input type="email" id="email" required placeholder="john@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="msg">Project Context / Technical Needs</label>
+                        <textarea id="msg" rows="5" required placeholder="Outline your asset tag counts, software variants or system specifications..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Specification Request</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="minimal-base-footer">
+        <p>&copy; 2026 Integra OT Technologies. All Rights Reserved.</p>
+    </footer>
 
 <script>
     const mobileMenu = document.getElementById('mobile-menu');
