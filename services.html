@@ -200,10 +200,11 @@
             nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform:translateY(0); }
             nav a{ padding:14px 8%; width:100%; font-size:16px; color:#334155; border-bottom:1px solid rgba(0,0,0,0.02); }
             
-            /* REMOVED ACTIVE HIGHLIGHT UNIFORMITY FOR THIS SPECIFIC PAGE OVERRIDE */
-            nav a:hover {
+            /* Overrides and cleanly removes any underlying outline highlight mechanics on this panel layout view */
+            nav a:hover, nav a.active {
                 background:#f0f7ff;
                 color:#0088cc;
+                border-bottom: none !important; 
                 padding-left:10%;
             }
             
@@ -226,7 +227,7 @@
         <nav id="navbar">
             <a href="./index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="services.html" class="active">Services</a>
+            <a href="services.html">Services</a>
             <a href="industries.html">Industries</a>
             <a href="contact.html">Contact</a>
         </nav>
