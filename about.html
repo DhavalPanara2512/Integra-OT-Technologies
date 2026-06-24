@@ -199,92 +199,250 @@
             letter-spacing:0.12em; text-transform:uppercase;
             color:#0088cc; margin-bottom:12px;
         }
-        .section-header h2{ font-size:42px; font-weight:800; color:#0f172a; }
-        .mission-vision-container { max-width: 1100px; margin: auto; display: flex; flex-direction: column; gap: 80px; }
-        .mv-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .mv-row.reverse-row { direction: rtl; }
-        .mv-row.reverse-row .card { direction: ltr; }
-        .mv-row .card {
-            text-align: left; padding: 10px 0; background: transparent !important; border: none !important; box-shadow: none !important; transform: none !important;
+        .section-header h2{
+            font-size:42px; font-weight:800; color:#0f172a;
         }
-        .mv-row .card h3 { margin-bottom: 20px; font-size: 32px; font-weight: 800; }
+        .mission-vision-container {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+        .mv-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .mv-row.reverse-row {
+            direction: rtl;
+        }
+        .mv-row.reverse-row .card {
+            direction: ltr;
+        }
+        .mv-row .card {
+            text-align: left;
+            padding: 10px 0;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        .mv-row .card h3 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: 800;
+        }
         .mv-row .card.mission h3 { color: #0088cc; }
         .mv-row .card.vision h3 { color: #0d9488; }
-        .mv-row .card p { font-size: 16px; color: #475569; line-height: 1.8; }
-        .mv-image-box { width: 100%; height: auto; display: flex; align-items: center; justify-content: center; }
-        .mv-image-box img { width: 100%; height: auto; max-height: 340px; object-fit: contain; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .mv-row .card p {
+            font-size: 16px;
+            color: #475569;
+            line-height: 1.8;
+        }
+        .mv-image-box {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .mv-image-box img {
+            width: 100%;
+            height: auto;
+            max-height: 340px;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
 
         /* =========================
            CORE VALUES (WITH VALUES BACKGROUND)
         ========================= */
         .values-section{
-            padding:80px 8%; position:relative;
-            background:linear-gradient(rgba(244,247,252,0.45),rgba(244,247,252,0.60)), url('images/values-bg.png') center/cover no-repeat;
+            padding:80px 8%;
+            position:relative;
+            background:linear-gradient(rgba(244,247,252,0.45),rgba(244,247,252,0.60)),
+                       url('images/values-bg.png') center/cover no-repeat;
             border-bottom:1px solid rgba(0,0,0,0.05);
         }
         .values-section .section-header h2{ color:#0f172a; }
-        .values-grid-new{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:1100px; margin:0 auto; }
-        .val-card-new{ background:rgba(255,255,255,0.94); border:1px solid rgba(0,0,0,0.08); border-radius:16px; padding:32px 26px; transition:.4s cubic-bezier(0.4,0,0.2,1); }
-        .val-card-new:hover{ transform:translateY(-8px); border-color:#0088cc; box-shadow:0 20px 40px rgba(0,136,204,0.1); }
-        .val-icon{ width:46px; height:46px; background:#eff6ff; border-radius:11px; display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
-        .val-icon svg{ width:20px; height:20px; stroke:#0088cc; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-        .val-card-new h3{ font-size:20px; font-weight:700; color:#0f172a; margin-bottom:12px; }
+        .values-grid-new{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:24px; max-width:1100px; margin:0 auto;
+        }
+        .val-card-new{
+            background:rgba(255,255,255,0.94);
+            border:1px solid rgba(0,0,0,0.08);
+            border-radius:16px; padding:32px 26px;
+            transition:.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .val-card-new:hover{
+            transform:translateY(-8px);
+            border-color:#0088cc;
+            box-shadow:0 20px 40px rgba(0,136,204,0.1);
+        }
+        .val-icon{
+            width:46px;
+            height:46px; background:#eff6ff;
+            border-radius:11px;
+            display:flex; align-items:center; justify-content:center;
+            margin-bottom:20px;
+        }
+        .val-icon svg{
+            width:20px;
+            height:20px; stroke:#0088cc; fill:none;
+            stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;
+        }
+        .val-card-new h3{
+            font-size:20px;
+            font-weight:700;
+            color:#0f172a; margin-bottom:12px;
+        }
         .val-card-new p{ font-size:14px; color:#475569; line-height:1.75; }
 
         /* =========================
            EXPERTISE SECTION
         ========================= */
-        .expertise-section{ padding:72px 8%; background:#f8fafc; border-bottom:1px solid #e5e7eb; }
-        .expertise-inner{ max-width:1100px; margin:0 auto; }
-        .expertise-inner .eyebrow{ font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#0088cc; margin-bottom:12px; }
-        .expertise-inner h2{ font-size:30px; font-weight:800; color:#0f172a; margin-bottom:32px; }
-        .exp-pills{ display:flex; flex-wrap:wrap; gap:10px; }
-        .exp-pill-new{ display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:#0088cc; background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:9px 18px; transition:.25s; }
-        .exp-pill-new:hover{ background:#0088cc; color:#fff; border-color:#0088cc; }
-        .exp-pill-new:hover svg{ stroke:#fff; }
-        .exp-pill-new svg{ width:15px; height:15px; stroke:#0088cc; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; transition:.25s; }
-
-        /* =========================
-           FOOTER
-        ========================= */
-        footer{
-            position:relative; background:linear-gradient(180deg,rgba(248,250,252,0.50) 0%,rgba(241,245,249,0.65) 100%), url('images/industrial-bg.jpg') center/cover no-repeat;
-            padding:80px 60px; text-align:center; overflow:hidden; border-top:2px solid #0088cc;
+        .expertise-section{
+            padding:72px 8%;
+            background:#f8fafc;
+            border-bottom:1px solid #e5e7eb;
         }
-        footer h3{ font-size:32px; color:#0f172a; margin-bottom:12px; font-weight:800; }
-        .footer-services{ color:#475569; margin-bottom:30px; font-size:16px; max-width:800px; margin-left:auto; margin-right:auto; font-weight:600; }
-        .footer-details p{ color:#334155; font-size:15px; margin:8px 0; }
-        .footer-details strong{ color:#0088cc; margin-right:4px; }
-        .social-link.linkedin{ display:inline-flex; align-items:center; gap:10px; background:#ffffff; border:1px solid rgba(0,136,204,0.2); color:#0077b5; text-decoration:none; padding:12px 24px; border-radius:6px; font-size:14px; font-weight:600; margin-top:25px; }
+        .expertise-inner{ max-width:1100px; margin:0 auto; }
+        .expertise-inner .eyebrow{
+            font-size:11px;
+            font-weight:700;
+            letter-spacing:0.12em; text-transform:uppercase;
+            color:#0088cc; margin-bottom:12px;
+        }
+        .expertise-inner h2{
+            font-size:30px;
+            font-weight:800;
+            color:#0f172a; margin-bottom:32px;
+        }
+        .exp-pills{ display:flex; flex-wrap:wrap; gap:10px; }
+        .exp-pill-new{
+            display:flex;
+            align-items:center; gap:8px;
+            font-size:13px; font-weight:600;
+            color:#0088cc; background:#eff6ff;
+            border:1px solid #bfdbfe;
+            border-radius:8px; padding:9px 18px;
+            transition:.25s;
+        }
+        .exp-pill-new:hover{
+            background:#0088cc;
+            color:#fff;
+            border-color:#0088cc;
+        }
+        .exp-pill-new:hover svg{ stroke:#fff; }
+        .exp-pill-new svg{
+            width:15px;
+            height:15px; stroke:#0088cc; fill:none;
+            stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;
+            transition:.25s;
+        }
 
         /* =========================
            UPGRADED SLIDE-DOWN MOBILE RESPONSIVE
         ========================= */
         @media(max-width:768px){
-            header{ padding:15px 5%; background:#ffffff; box-shadow:0 2px 10px rgba(0, 0, 0, 0.05); }
+            header{
+                padding:15px 5%;
+                background:#ffffff;
+                box-shadow:0 2px 10px rgba(0, 0, 0, 0.05);
+            }
             .logo span{ font-size:18px; }
             .logo img{ height:45px; }
             
-            .menu-toggle{ display:block; background:none; border:none; font-size:28px; font-weight:bold; cursor:pointer; color:#0088cc; z-index:1001; }
-            nav{
-                display:flex; visibility:hidden; opacity:0; pointer-events:none; position:absolute; top:100%; left:0; width:100%; flex-direction:column;
-                text-align:left; background:#ffffff; box-shadow:0 15px 25px rgba(0,0,0,0.08); border-top:1px solid rgba(0,0,0,0.05); padding:15px 0; transform:translateY(-10px); transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            .menu-toggle{
+                display:block;
+                background:none;
+                border:none;
+                font-size:28px;
+                font-weight:bold;
+                cursor:pointer;
+                color:#0088cc;
+                z-index:1001;
+                transition: transform 0.2s ease;
             }
-            nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform:translateY(0); }
-            nav a{ padding:14px 8%; width:100%; font-size:16px; color:#334155; border-bottom:1px solid rgba(0,0,0,0.02); }
-            nav a:hover, nav a.active{ background:#f0f7ff; color:#0088cc; padding-left:10%; }
+            .menu-toggle:focus { outline: none; }
+            
+            nav{
+                display:flex;
+                visibility:hidden;
+                opacity:0;
+                pointer-events:none;
+                position:absolute;
+                top:100%; left:0; width:100%;
+                margin-top:0; flex-direction:column;
+                text-align:left; background:#ffffff;
+                box-shadow:0 15px 25px rgba(0,0,0,0.08);
+                border-top:1px solid rgba(0,0,0,0.05);
+                padding:15px 0;
+                transform:translateY(-10px);
+                transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            nav.active{
+                visibility:visible;
+                opacity:1;
+                pointer-events:auto;
+                transform:translateY(0);
+            }
+            nav a{
+                padding:14px 8%;
+                width:100%;
+                font-size:16px;
+                color:#334155;
+                border-bottom:1px solid rgba(0,0,0,0.02);
+            }
+            nav a:last-child { border-bottom: none; }
+            nav a:hover, nav a.active{
+                background:#f0f7ff;
+                color:#0088cc;
+                border-bottom: 2px solid #0088cc; /* FIXED: Underline highlighting engine layout match */
+                padding-left:10%;
+                border-bottom-color:rgba(0,0,0,0.02);
+            }
             
             .about-hero{ padding:120px 20px 60px; }
             .capability-strip{ grid-template-columns:1fr 1fr; }
             .cap-item{ border-right:none; border-bottom:1px solid #e5e7eb; }
             .overview-section{ padding:60px 20px; }
             .overview-grid{ grid-template-columns:1fr; gap:36px; }
+            
+            /* CRITICAL LAYOUT FRAME CORRECTIONS */
             .mv-section{ padding:60px 5% 40px; }
             .section-header h2{ font-size:32px; }
-            .mv-row, .mv-row.reverse-row { grid-template-columns:1fr; direction:ltr; gap:15px; margin-bottom:20px; }
+            .mission-vision-container { gap: 50px; }
+            
+            .mv-row, .mv-row.reverse-row {
+                grid-template-columns:1fr;
+                direction:ltr; gap:15px; margin-bottom:20px;
+            }
+            .mv-row .card h3 { font-size:26px; margin-bottom:10px; }
+            .mv-row .card p { font-size:15px; }
+            
+            .mv-image-box { 
+                min-height:auto;
+                height:auto; padding:0 10px; margin-top:5px;
+            }
+            .mv-image-box img { 
+                max-height:260px;
+                border-radius:10px;
+            }
+            
             .values-section{ padding:60px 20px; }
             .values-grid-new{ grid-template-columns:1fr; }
+            .expertise-section{ padding:52px 20px; }
             footer{ padding:60px 20px; }
+        }
+        @media(max-width:480px){
+            .capability-strip{ grid-template-columns:1fr; }
+            .cap-item:last-child{ border-bottom:none; }
         }
     </style>
 </head>
@@ -309,7 +467,9 @@
     <div class="hero-inner">
         <div class="hero-eyebrow">About Us</div>
         <h1>Industrial data platforms built for <em>operational reality</em></h1>
-        <p class="hero-sub">We help manufacturing and energy organizations connect plant-floor systems to enterprise intelligence — through secure, scalable IT-OT integration.</p>
+        <p class="hero-sub">
+            We help manufacturing and energy organizations connect plant-floor systems to enterprise intelligence — through secure, scalable IT-OT integration.
+        </p>
         <div class="hero-tags">
             <span class="hero-tag">Industrial Automation</span>
             <span class="hero-tag">AVEVA PI System</span>
@@ -323,20 +483,40 @@
 
 <div class="capability-strip">
     <div class="cap-item">
-        <div class="cap-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <div class="cap-text"><h4>IT-OT Integration</h4><p>Bridging plant-floor systems to enterprise data</p></div>
+        <div class="cap-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="cap-text">
+            <h4>IT-OT Integration</h4>
+            <p>Bridging plant-floor systems to enterprise data</p>
+        </div>
     </div>
     <div class="cap-item">
-        <div class="cap-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div class="cap-text"><h4>OT Cybersecurity</h4><p>Protecting industrial control systems</p></div>
+        <div class="cap-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="cap-text">
+            <h4>OT Cybersecurity</h4>
+            <p>Protecting industrial control systems</p>
+        </div>
     </div>
     <div class="cap-item">
-        <div class="cap-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <div class="cap-text"><h4>Real-time Visibility</h4><p>Live data across every plant process</p></div>
+        <div class="cap-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="cap-text">
+            <h4>Real-time Visibility</h4>
+            <p>Live data across every plant process</p>
+        </div>
     </div>
     <div class="cap-item">
-        <div class="cap-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <div class="cap-text"><h4>Advanced Analytics</h4><p>Operational data into business intelligence</p></div>
+        <div class="cap-icon">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="cap-text">
+            <h4>Advanced Analytics</h4>
+            <p>Operational data into business intelligence</p>
+        </div>
     </div>
 </div>
 
@@ -386,20 +566,27 @@
         <h2>Mission &amp; Vision</h2>
     </div>
     <div class="mission-vision-container">
+        
         <div class="mv-row">
             <div class="card mission">
                 <h3>Our Mission</h3>
                 <p>To empower industries with secure and resilient IT-OT data ecosystems that provide real-time operational visibility, enable data-driven decision-making and accelerate digital transformation.</p>
             </div>
-            <div class="mv-image-box"><img src="images/mission-bg.png" alt="Mission Diagram" onerror="this.style.display='none'"></div>
+            <div class="mv-image-box">
+                <img src="images/mission-bg.png" alt="Mission Ecosystem Diagram" onerror="this.style.display='none'">
+            </div>
         </div>
+
         <div class="mv-row reverse-row">
             <div class="card vision">
                 <h3>Our Vision</h3>
                 <p>To become a trusted global partner in industrial digital transformation, helping organizations unlock the full potential of operational data, advanced analytics and intelligent automation.</p>
             </div>
-            <div class="mv-image-box"><img src="images/vision-bg.png" alt="Vision Diagram" onerror="this.style.display='none'"></div>
+            <div class="mv-image-box">
+                <img src="images/vision-bg.png" alt="Vision Dashboard Preview" onerror="this.style.display='none'">
+            </div>
         </div>
+
     </div>
 </section>
 
@@ -410,17 +597,23 @@
     </div>
     <div class="values-grid-new">
         <div class="val-card-new">
-            <div class="val-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+            <div class="val-icon">
+                <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
             <h3>Domain Expertise</h3>
             <p>Technical excellence rooted in real industrial processes. Our solutions are designed around plant operations, process reliability and operational efficiency — not generic IT templates.</p>
         </div>
         <div class="val-card-new">
-            <div class="val-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="val-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
             <h3>Security by Design</h3>
             <p>Industrial environments require secure architectures from the ground up. We implement cybersecurity best practices across every layer of the IT-OT ecosystem — not as an afterthought.</p>
         </div>
         <div class="val-card-new">
-            <div class="val-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+            <div class="val-icon">
+                <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
             <h3>Data Integrity</h3>
             <p>Reliable decisions require reliable data. Our architectures ensure operational information is accurate, complete and trusted — from the sensor to the CEO's dashboard.</p>
         </div>
@@ -432,11 +625,15 @@
         <div class="eyebrow">Technical Stack</div>
         <h2>Our Areas of Expertise</h2>
         <div class="exp-pills">
-            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>AVEVA PI System</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>AVEVA PI System</span>
             <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>SCADA Systems</span>
             <span class="exp-pill-new"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Power BI</span>
-            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/></svg>IT-OT Integration</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>IT-OT Integration</span>
             <span class="exp-pill-new"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>OT Cybersecurity</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Industrial Automation</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>Process Instrumentation</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Enterprise Analytics</span>
+            <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>Historian / Data Infrastructure</span>
         </div>
     </div>
 </section>
@@ -449,11 +646,17 @@
         <p><strong>Website:</strong> www.integraottechnologies.com</p>
         <p><strong>Address:</strong> Surat, Gujarat, India</p>
     </div>
+    <div class="footer-social">
+        <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
+            <span>in</span> Connect on LinkedIn
+        </a>
+    </div>
 </footer>
 
 <script>
     const mobileMenu = document.getElementById('mobile-menu');
     const navbar = document.getElementById('navbar');
+    
     mobileMenu.addEventListener('click', () => {
         navbar.classList.toggle('active');
         mobileMenu.innerHTML = navbar.classList.contains('active') ? '&times;' : '&#9776;';
@@ -466,5 +669,6 @@
         });
     });
 </script>
+
 </body>
 </html>
