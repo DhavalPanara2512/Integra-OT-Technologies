@@ -4,7 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     
-    // 1. MOBILE MENU MANAGER 
+    // 1. MOBILE MENU MANAGER
     const menuToggle = document.getElementById("mobile-menu");
     const navbar = document.getElementById("navbar");
 
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    const navLinks = document.querySelectorAll("#navbar a"); [cite: 161]
+    const navLinks = document.querySelectorAll("#navbar a");
     navLinks.forEach(function(link) {
         link.addEventListener("click", function() {
             navbar.classList.remove("active");
