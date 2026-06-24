@@ -5,8 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services | Integra OT Technologies</title>
     <meta name="description" content="Explore our specialized IT-OT integration, AVEVA PI System optimization, SCADA automation, OT Cybersecurity, and Annual Maintenance Contracts (AMC).">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="css/style.css?v=3.9">
     <style>
+        /* =========================
+           GLOBAL STYLES
+        ========================= */
+        *{
+            margin:0; padding:0; box-sizing:border-box;
+            font-family:'Segoe UI',sans-serif;
+            scroll-behavior:smooth;
+        }
+        body{
+            background:#f4f7fc;
+            color:#1a2536;
+            line-height:1.6;
+            overflow-x:hidden;
+        }
+
+        /* =========================
+           HEADER & NAV
+        ========================= */
+        header{
+            position:fixed; top:0; left:0; width:100%;
+            padding:18px 8%;
+            display:flex; justify-content:space-between; align-items:center;
+            background:rgba(255,255,255,0.88);
+            backdrop-filter:blur(12px);
+            border-bottom:1px solid rgba(0,0,0,0.08);
+            z-index:1000;
+        }
+        .logo{ display:flex; align-items:center; gap:12px; }
+        .logo img{ height:60px; width:auto; }
+        .logo span{ font-size:22px; font-weight:700; color:#0088cc; }
+        nav{ display:flex; gap:28px; }
+        nav a{
+            text-decoration:none; color:#334155;
+            font-size:16px; font-weight:600; transition:.3s;
+            padding-bottom:3px;
+        }
+        nav a:hover{ color:#0088cc; }
+        nav a.active{
+            color:#0088cc;
+            border-bottom:2px solid #0088cc;
+        }
+        .menu-toggle{ display:none; }
+
+        /* =========================
+           SERVICES HERO
+        ========================= */
         .services-hero {
             padding: 160px 8% 60px;
             background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%);
@@ -70,13 +117,101 @@
             font-weight: 500;
         }
         .feature-list li::before {
-            content: "\2713"; color: #0088cc; font-weight: bold; /* FIXED: Renders a clean browser-safe checkmark icon symbol */
+            content: "\2713"; color: #0088cc; font-weight: bold;
         }
-        
+
+        /* =========================
+           EXECUTION FRAMEWORK
+        ========================= */
+        .values-section{
+            padding:80px 8%;
+            position:relative;
+            background:#ffffff;
+            border-bottom:1px solid rgba(0,0,0,0.05);
+        }
+        .section-header{ text-align:center; margin-bottom:52px; }
+        .section-header .eyebrow{
+            font-size:11px; font-weight:700;
+            letter-spacing:0.12em; text-transform:uppercase;
+            color:#0088cc; margin-bottom:12px;
+        }
+        .section-header h2{ font-size:42px; font-weight:800; color:#0f172a; }
+        .values-grid-new{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:24px; max-width:1100px; margin:0 auto;
+        }
+        .val-card-new{
+            background:#ffffff;
+            border:1px solid rgba(0,0,0,0.08);
+            border-radius:16px; padding:32px 26px;
+            transition:.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .val-card-new:hover{
+            transform:translateY(-8px);
+            border-color:#0088cc;
+            box-shadow:0 20px 40px rgba(0,136,204,0.1);
+        }
+        .val-icon{
+            width:46px; height:46px; background:#eff6ff;
+            border-radius:11px;
+            display:flex; align-items:center; justify-content:center;
+            margin-bottom:20px;
+        }
+        .val-icon svg{
+            width:20px; height:20px; stroke:#0088cc; fill:none;
+            stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;
+        }
+        .val-card-new h3{ font-size:20px; font-weight:700; color:#0f172a; margin-bottom:12px; }
+        .val-card-new p{ font-size:14px; color:#475569; line-height:1.75; }
+
+        /* =========================
+           FOOTER
+        ========================= */
+        footer{
+            position:relative;
+            background:linear-gradient(180deg,rgba(248,250,252,0.50) 0%,rgba(241,245,249,0.65) 100%),
+                       url('images/industrial-bg.jpg') center/cover no-repeat;
+            padding:80px 60px; text-align:center; overflow:hidden; border-top:2px solid #0088cc;
+        }
+        footer h3{ font-size:32px; color:#0f172a; margin-bottom:12px; font-weight:800; }
+        .footer-services{ color:#475569; margin-bottom:30px; font-size:16px; font-weight:600; }
+        .footer-details p{ color:#334155; font-size:15px; margin:8px 0; }
+        .footer-details strong{ color:#0088cc; margin-right:4px; }
+        .social-link.linkedin{
+            display:inline-flex; align-items:center; gap:10px;
+            background:#ffffff; border:1px solid rgba(0,136,204,0.2);
+            color:#0077b5; text-decoration:none; padding:12px 24px; border-radius:6px; font-size:14px; font-weight:600; margin-top:25px;
+        }
+        .social-link.linkedin:hover{ background:#0077b5; color:#ffffff; }
+
+        /* =========================
+           ADDED MOBILE RESPONSIVE ENGINE FOR NAVIGATION
+        ========================= */
         @media(max-width: 768px) {
+            header{ padding:15px 5%; background:#ffffff; box-shadow:0 2px 10px rgba(0, 0, 0, 0.05); }
+            .logo span{ font-size:18px; }
+            .logo img{ height:45px; }
+            
+            .menu-toggle{
+                display:block; background:none; border:none; font-size:28px;
+                font-weight:bold; cursor:pointer; color:#0088cc; z-index:1001;
+            }
+            nav{
+                display:flex; visibility:hidden; opacity:0; pointer-events:none;
+                position:absolute; top:100%; left:0; width:100%; flex-direction:column;
+                background:#ffffff; box-shadow:0 15px 25px rgba(0,0,0,0.08); border-top:1px solid rgba(0,0,0,0.05);
+                padding:15px 0; transform:translateY(-10px); transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform:translateY(0); }
+            nav a{ padding:14px 8%; width:100%; font-size:16px; color:#334155; border-bottom:1px solid rgba(0,0,0,0.02); }
+            nav a:hover, nav a.active{ background:#f0f7ff; color:#0088cc; padding-left:10%; }
+            
             .detailed-services-grid { grid-template-columns: 1fr; gap: 24px; }
             .services-hero { padding: 120px 20px 50px; }
             .service-feature-card { padding: 30px 20px; }
+            .values-grid-new{ grid-template-columns: 1fr; gap:20px; }
+            footer{ padding:60px 20px; }
         }
     </style>
 </head>
@@ -107,7 +242,6 @@
 
     <section class="section">
         <div class="detailed-services-grid">
-            
             <div class="service-feature-card">
                 <div class="srv-icon">
                     <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
@@ -165,7 +299,7 @@
                 </ul>
             </div>
 
-            <div class="service-feature-card">
+            <div class="service-feature-card" style="grid-column: span 1;">
                 <div class="srv-icon">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
                 </div>
@@ -178,7 +312,6 @@
                     <li>Scheduled Application Backup &amp; Disaster Recovery Audits</li>
                 </ul>
             </div>
-
         </div>
     </section>
 
@@ -220,11 +353,6 @@
             <p><strong>Website:</strong> www.integraottechnologies.com</p>
             <p><strong>Address:</strong> Surat, Gujarat, India</p>
         </div>
-        <div class="footer-social">
-            <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
-                <span>in</span> Connect on LinkedIn
-            </a>
-        </div>
     </footer>
 
     <script>
@@ -232,14 +360,13 @@
         const navbar = document.getElementById('navbar');
         mobileMenu.addEventListener('click', () => {
             navbar.classList.toggle('active');
-            // FIXED: Uses safe string .innerHTML elements to keep symbols stable on devices
             mobileMenu.innerHTML = navbar.classList.contains('active') ? '&times;' : '&#9776;';
         });
         const navLinks = document.querySelectorAll('#navbar a');
         navLinks.forEach(function(link){
             link.addEventListener('click', function(){
                 navbar.classList.remove('active');
-                mobileMenu.innerHTML = '&#9776;'; // FIXED
+                mobileMenu.innerHTML = '&#9776;';
             });
         });
     </script>
