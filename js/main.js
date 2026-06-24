@@ -4,20 +4,18 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     
-    // 1. ORIGINAL MOBILE MENU LOGIC (Enhanced to fix text/icon swaps)
+    // 1. MOBILE MENU MANAGER 
     const menuToggle = document.getElementById("mobile-menu");
     const navbar = document.getElementById("navbar");
 
     if(menuToggle) {
         menuToggle.addEventListener("click", function() {
             navbar.classList.toggle("active");
-            // Dynamic check to prevent '?' issues on standard phone menus
             menuToggle.textContent = navbar.classList.contains("active") ? "✕" : "☰";
         });
     }
 
-    // Auto close menu on mobile after click
-    const navLinks = document.querySelectorAll("#navbar a");
+    const navLinks = document.querySelectorAll("#navbar a"); [cite: 161]
     navLinks.forEach(function(link) {
         link.addEventListener("click", function() {
             navbar.classList.remove("active");
@@ -25,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // 2. PREMIUM UPGRADE: SCROLL PROGRESS & BACK TO TOP ENGINE
+    // 2. SCROLL PROGRESS BAR & BACK TO TOP VISIBILITY
     const progressBar = document.getElementById("progress-bar");
     const topBtn = document.getElementById("topBtn");
 
@@ -33,13 +31,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         
-        // Calculate scroll progress percentage boundary
         if (progressBar && docHeight > 0) {
             const progressPct = (scrollTop / docHeight) * 100;
             progressBar.style.width = `${progressPct}%`;
         }
 
-        // Display or hide back-to-top layout arrow button
         if (topBtn) {
             if (scrollTop > 300) {
                 topBtn.classList.add("show");
@@ -55,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 3. PREMIUM UPGRADE: DARK & LIGHT MODE INTERFACE LOCALSTORAGE MEMORY
+    // 3. STORAGE LIGHT / DARK TOGGLE ROUTINE
     const currentTheme = localStorage.getItem("theme") || "light";
     document.documentElement.setAttribute("data-theme", currentTheme);
     updateToggleIcon(currentTheme);
@@ -70,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.setItem("theme", targetTheme);
             updateToggleIcon(targetTheme);
             
-            // Re-render dashboard trends chart color scheme to match standard theme modes
             if (window.ApexCharts) { initDashboardMockupCharts(); }
         });
     }
@@ -81,19 +76,18 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // 4. PREMIUM UPGRADE: INTERSECTION OBSERVER FOR STATISTIC COUNTERS
+    // 4. OBSERVER FOR ANIMATING STATS COUNTERS
     const counters = document.querySelectorAll(".counter");
     if (counters.length > 0) {
         const runCounterAnimation = function(counterElement) {
             const target = +counterElement.getAttribute("data-target");
             const count = +counterElement.innerText;
-            const speed = target / 60; // Ticks pacing duration formula
+            const speed = target / 60;
 
             if (count < target) {
                 counterElement.innerText = Math.ceil(count + speed);
                 setTimeout(() => runCounterAnimation(counterElement), 16);
             } else {
-                // Keep suffix formatting like '+' or '%' clean at maximum limit
                 counterElement.innerText = target + (counterElement.dataset.suffix || "");
             }
         };
@@ -111,10 +105,10 @@ document.addEventListener("DOMContentLoaded", function() {
         counters.forEach(counter => observer.observe(counter));
     }
 
-    // 5. PREMIUM UPGRADE: APEXCHARTS DASHBOARD ENGINE INITIALIZER
+    // 5. APEXCHARTS LOADER
     initDashboardMockupCharts();
 
-    // 6. PREMIUM UPGRADE: NATIVE PARTICLES STARFIELD BACKGROUND
+    // 6. NATIVE PARTICLES GENERATION HOOK
     if (document.getElementById("particles-js") && window.particlesJS) {
         particlesJS("particles-js", {
             particles: {
@@ -132,12 +126,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-/* Independent Chart Generation Block for Live KPI Metrics Dashboard Mockups */
 function initDashboardMockupCharts() {
     const trendChartContainer = document.querySelector("#kpi-trend-chart");
     if (!trendChartContainer) return;
 
-    trendChartContainer.innerHTML = ""; // Wipe past canvas layers before redraws
+    trendChartContainer.innerHTML = ""; 
     const isDark = document.documentElement.getAttribute("data-theme") === "dark";
 
     const chartOptions = {
