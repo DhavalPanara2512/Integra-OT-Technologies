@@ -208,10 +208,10 @@
         .val-card-new p{ font-size:14px; color:#475569; line-height:1.75; }
 
         /* =========================
-           FIXED: TWO-ROW BALANCED INFINITE TICKER 
+           FIXED & ALIGNED: EXPERTISE HEADER AREA
         ========================= */
         .expertise-section{
-            padding:85px 0 95px;
+            padding:95px 0 105px;
             background: linear-gradient(135deg, #091122 0%, #0c1a30 100%);
             position: relative; overflow: hidden;
             border-top: 1px solid rgba(0, 136, 204, 0.15); border-bottom: 1px solid rgba(0, 136, 204, 0.15);
@@ -221,11 +221,42 @@
             background-image: linear-gradient(rgba(0, 136, 204, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 136, 204, 0.03) 1px, transparent 1px);
             background-size: 40px 45px; pointer-events: none; z-index: 1;
         }
-        .expertise-header-box { padding: 0 8%; max-width: 1100px; margin: 0 auto 35px; text-align: left; position: relative; z-index: 2; }
-        .expertise-section .eyebrow{ font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#60a5fa; margin-bottom:12px; }
-        .expertise-section h2{ font-size:32px; font-weight:800; color:#ffffff; }
         
-        .ticker-container { display: flex; flex-direction: column; gap: 16px; width: 100%; position: relative; z-index: 2; }
+        /* ADJUSTED: Left alignment framework setup to match main layout */
+        .expertise-header-box { 
+            padding: 0 8%; 
+            max-width: 1100px; 
+            margin: 0 auto 45px; 
+            text-align: left; /* Forces alignment left verbatim */
+            position: relative; 
+            z-index: 2; 
+        }
+        .expertise-section .eyebrow{ 
+            font-size:12px; 
+            font-weight:700; 
+            letter-spacing:0.14em; 
+            text-transform:uppercase; 
+            color:#60a5fa; 
+            margin-bottom:10px;
+            display: block;
+        }
+        .expertise-section h2{ 
+            font-size:36px; 
+            font-weight:800; 
+            color:#ffffff;
+            letter-spacing: -0.01em;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
+        /* Tech border bar below left header text */
+        .expertise-section h2::after {
+            content: '';
+            position: absolute; left: 0; bottom: 0; width: 65px; height: 3px;
+            background: #0088cc; border-radius: 2px;
+        }
+        
+        .ticker-container { display: flex; flex-direction: column; gap: 18px; width: 100%; position: relative; z-index: 2; }
         .ticker-wrapper { width: 100%; overflow: hidden; position: relative; padding: 5px 0; }
         .ticker-wrapper::before, .ticker-wrapper::after {
             content: ''; position: absolute; top: 0; bottom: 0; width: 180px; z-index: 3; pointer-events: none;
@@ -324,6 +355,8 @@
             .info-left-panel h2 { font-size: 30px; }
             .contact-form-holder { padding: 25px 20px; }
             .expertise-section{ padding:55px 0 65px; }
+            .expertise-header-box { text-align: center; margin-bottom: 35px; }
+            .expertise-section h2::after { left: 50%; transform: translateX(-50%); }
             .ticker-wrapper::before, .ticker-wrapper::after { width: 60px; }
         }
         @media(max-width:480px){ .capability-strip{ grid-template-columns:1fr; } .cap-item:last-child{ border-bottom:none; } }
@@ -426,7 +459,7 @@
         <div class="mv-row">
             <div class="card mission">
                 <h3>Our Mission</h3>
-                <p>To empower continuous-process industries with secure, high-integrity, and highly available IT-OT data ecosystems that ensure permanent real-time operational visibility, accelerate advanced plant floor analytics, and protect industrial perimeter boundaries from edge to cloud.</p>
+                <p>To empower continuous-process industries with secure, high-integrity, and highly available IT-OT data ecosystems that provide permanent real-time operational visibility, accelerate advanced plant floor analytics, and protect industrial perimeter boundaries from edge to cloud.</p>
             </div>
             <div class="mv-image-box"><img src="images/mission-bg.png" alt="Mission Ecosystem Diagram" onerror="this.style.display='none'"></div>
         </div>
@@ -464,13 +497,17 @@
     </div>
 </section>
 
+<!-- =========================
+   PERFECTLY BALANCED LEFT-ALIGNED TICKER ROW HEADER SECTION
+========================= -->
 <section class="expertise-section animated-block">
     <div class="expertise-header-box">
-        <div class="eyebrow">Technical Stack</div>
+        <span class="eyebrow">Technical Stack</span>
         <h2>Our Areas of Expertise</h2>
     </div>
     
     <div class="ticker-container">
+        <!-- Row 1: Left Scrolling Track -->
         <div class="ticker-wrapper">
             <div class="exp-ticker-track track-left">
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>AVEVA PI System Engineering</span>
@@ -478,6 +515,7 @@
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/></svg>Power BI Operational Reporting</span>
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/></svg>Secure IT-OT Integration Bridge</span>
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3"/></svg>ISA/IEC 62443 OT Cybersecurity</span>
+                <!-- Cloned set for loop -->
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>AVEVA PI System Engineering</span>
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>SCADA Systems &amp; HMIs</span>
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/></svg>Power BI Operational Reporting</span>
@@ -486,6 +524,7 @@
             </div>
         </div>
 
+        <!-- Row 2: Right Scrolling Track -->
         <div class="ticker-wrapper">
             <div class="exp-ticker-track track-right">
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Industrial Process Automation</span>
@@ -493,6 +532,7 @@
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4"/></svg>ISA-95 Enterprise Data Architecture</span>
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/></svg>Historian Data Infrastructure &amp; Buffering</span>
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>OPC UA / DA Interface Connectivity</span>
+                <!-- Cloned set for loop -->
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Industrial Process Automation</span>
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/></svg>Field Process Instrumentation</span>
                 <span class="exp-pill-new"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4"/></svg>ISA-95 Enterprise Data Architecture</span>
