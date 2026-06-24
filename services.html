@@ -5,51 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services | Integra OT Technologies</title>
     <meta name="description" content="Explore our specialized IT-OT integration, AVEVA PI System optimization, SCADA automation, OT Cybersecurity, and Annual Maintenance Contracts (AMC).">
-    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="css/style.css?v=3.9">
     <style>
         /* =========================
            GLOBAL STYLES
         ========================= */
         *{
-            margin:0; padding:0; box-sizing:border-box;
-            font-family:'Segoe UI',sans-serif;
-            scroll-behavior:smooth;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
         }
         body{
-            background:#f4f7fc;
-            color:#1a2536;
-            line-height:1.6;
-            overflow-x:hidden;
+            background: #f4f7fc;
+            color: #1a2536;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* =========================
-           HEADER & NAV
+           HEADER & NAVIGATION
         ========================= */
         header{
-            position:fixed; top:0; left:0; width:100%;
-            padding:18px 8%;
-            display:flex; justify-content:space-between; align-items:center;
-            background:rgba(255,255,255,0.88);
-            backdrop-filter:blur(12px);
-            border-bottom:1px solid rgba(0,0,0,0.08);
-            z-index:1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
-        .logo{ display:flex; align-items:center; gap:12px; }
-        .logo img{ height:60px; width:auto; }
-        .logo span{ font-size:22px; font-weight:700; color:#0088cc; }
-        nav{ display:flex; gap:28px; }
+
+        .logo{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img{
+            height: 60px;
+            width: auto;
+        }
+
+        .logo span{
+            font-size: 24px;
+            font-weight: 700;
+            color: #0088cc;
+        }
+
+        nav{
+            display: flex;
+            gap: 28px;
+        }
+
         nav a{
-            text-decoration:none; color:#334155;
-            font-size:16px; font-weight:600; transition:.3s;
-            padding-bottom:3px;
+            text-decoration: none;
+            color: #334155;
+            font-size: 16px;
+            font-weight: 600;
+            transition: .3s;
+            padding-bottom: 3px;
         }
-        nav a:hover{ color:#0088cc; }
+
+        nav a:hover{
+            color: #0088cc;
+        }
+
         nav a.active{
-            color:#0088cc;
-            border-bottom:2px solid #0088cc;
+            color: #0088cc;
+            border-bottom: 2px solid #0088cc;
         }
-        .menu-toggle{ display:none; }
+
+        .menu-toggle{
+            display: none;
+        }
 
         /* =========================
            SERVICES HERO
@@ -74,6 +110,10 @@
             font-size: 18px; color: rgba(255, 255, 255, 0.65);
             max-width: 650px; margin: 0 auto; line-height: 1.7;
         }
+
+        /* =========================
+           CARDS GRID SYSTEM
+        ========================= */
         .detailed-services-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -119,100 +159,140 @@
         .feature-list li::before {
             content: "\2713"; color: #0088cc; font-weight: bold;
         }
-
+        
         /* =========================
            EXECUTION FRAMEWORK
         ========================= */
-        .values-section{
-            padding:80px 8%;
-            position:relative;
-            background:#ffffff;
-            border-bottom:1px solid rgba(0,0,0,0.05);
+        .values-section {
+            padding: 80px 8%;
+            background: #ffffff;
         }
-        .section-header{ text-align:center; margin-bottom:52px; }
-        .section-header .eyebrow{
-            font-size:11px; font-weight:700;
-            letter-spacing:0.12em; text-transform:uppercase;
-            color:#0088cc; margin-bottom:12px;
+        .section-header { text-align: center; margin-bottom: 52px; }
+        .section-header .eyebrow {
+            font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #0088cc; margin-bottom: 12px;
         }
-        .section-header h2{ font-size:42px; font-weight:800; color:#0f172a; }
-        .values-grid-new{
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:24px; max-width:1100px; margin:0 auto;
+        .section-header h2 { font-size: 42px; font-weight: 800; color: #0f172a; }
+
+        .values-grid-new {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px; max-width: 1100px; margin: 0 auto;
         }
-        .val-card-new{
-            background:#ffffff;
-            border:1px solid rgba(0,0,0,0.08);
-            border-radius:16px; padding:32px 26px;
-            transition:.4s cubic-bezier(0.4,0,0.2,1);
+        .val-card-new {
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 16px; padding: 32px 26px;
+            transition: .4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .val-card-new:hover{
-            transform:translateY(-8px);
-            border-color:#0088cc;
-            box-shadow:0 20px 40px rgba(0,136,204,0.1);
+        .val-card-new:hover {
+            transform: translateY(-8px);
+            border-color: #0088cc;
+            box-shadow: 0 20px 40px rgba(0, 136, 204, 0.1);
         }
-        .val-icon{
-            width:46px; height:46px; background:#eff6ff;
-            border-radius:11px;
-            display:flex; align-items:center; justify-content:center;
-            margin-bottom:20px;
+        .val-icon {
+            width: 46px; height: 46px; background: #eff6ff;
+            border-radius: 11px; display: flex; align-items: center;
+            justify-content: center; margin-bottom: 20px;
         }
-        .val-icon svg{
-            width:20px; height:20px; stroke:#0088cc; fill:none;
-            stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;
+        .val-icon svg {
+            width: 20px; height: 20px; stroke: #0088cc; fill: none;
+            stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
         }
-        .val-card-new h3{ font-size:20px; font-weight:700; color:#0f172a; margin-bottom:12px; }
-        .val-card-new p{ font-size:14px; color:#475569; line-height:1.75; }
+        .val-card-new h3 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+        .val-card-new p { font-size: 14px; color: #475569; line-height: 1.75; }
 
         /* =========================
            FOOTER
         ========================= */
-        footer{
-            position:relative;
-            background:linear-gradient(180deg,rgba(248,250,252,0.50) 0%,rgba(241,245,249,0.65) 100%),
-                       url('images/industrial-bg.jpg') center/cover no-repeat;
-            padding:80px 60px; text-align:center; overflow:hidden; border-top:2px solid #0088cc;
+        footer {
+            position: relative;
+            background: linear-gradient(180deg, rgba(248, 250, 252, 0.50) 0%, rgba(241, 245, 249, 0.65) 100%), url('images/industrial-bg.jpg') center/cover no-repeat;
+            padding: 80px 60px;
+            text-align: center;
+            overflow: hidden;
+            border-top: 2px solid #0088cc;
         }
-        footer h3{ font-size:32px; color:#0f172a; margin-bottom:12px; font-weight:800; }
-        .footer-services{ color:#475569; margin-bottom:30px; font-size:16px; font-weight:600; }
-        .footer-details p{ color:#334155; font-size:15px; margin:8px 0; }
-        .footer-details strong{ color:#0088cc; margin-right:4px; }
+        footer h3 { font-size: 32px; color: #0f172a; margin-bottom: 12px; font-weight: 800; }
+        .footer-services { color: #475569; margin-bottom: 30px; font-size: 16px; font-weight: 600; }
+        .footer-details p { color: #334155; font-size: 15px; margin: 8px 0; }
+        .footer-details strong { color: #0088cc; margin-right: 4px; }
 
         /* =========================
-           SLIDE-DOWN MOBILE RESPONSIVE
+           MOBILE RESPONSIVE MEDIA QUERIES
         ========================= */
-        @media(max-width: 768px) {
-            header{ padding:15px 5%; background:#ffffff; box-shadow:0 2px 10px rgba(0, 0, 0, 0.05); }
-            .logo span{ font-size:18px; }
-            .logo img{ height:45px; }
-            
+        @media(max-width:768px){
+            header{
+                padding: 15px 5%;
+                background: #ffffff;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            }
+            .logo span{ font-size: 18px; }
+            .logo img{ height: 45px; }
+
             .menu-toggle{
-                display:block; background:none; border:none; font-size:28px;
-                font-weight:bold; cursor:pointer; color:#0088cc; z-index:1001;
+                display: block;
+                background: none;
+                border: none;
+                font-size: 28px;
+                font-weight: bold;
+                cursor: pointer;
+                color: #0088cc;
+                transition: transform 0.2s ease;
+                z-index: 1001;
             }
+            .menu-toggle:focus { outline: none; }
+
             nav{
-                display:flex; visibility:hidden; opacity:0; pointer-events:none;
-                position:absolute; top:100%; left:0; width:100%; flex-direction:column;
-                background:#ffffff; box-shadow:0 15px 25px rgba(0,0,0,0.08); border-top:1px solid rgba(0,0,0,0.05);
-                padding:15px 0; transform:translateY(-10px); transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                display: flex;
+                visibility: hidden;
+                opacity: 0;
+                pointer-events: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                margin-top: 0;
+                flex-direction: column;
+                text-align: left;
+                background: #ffffff;
+                box-shadow: 0 15px 25px rgba(0,0,0,0.08);
+                border-top: 1px solid rgba(0,0,0,0.05);
+                padding: 15px 0;
+                transform: translateY(-10px);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             }
-            nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform:translateY(0); }
-            nav a{ padding:14px 8%; width:100%; font-size:16px; color:#334155; border-bottom:1px solid rgba(0,0,0,0.02); }
-            
-            /* REMOVED ACTIVE HIGHLIGHT UNIFORMITY FOR THIS SPECIFIC PAGE OVERRIDE */
-            nav a:hover, nav a.active {
-                background:#f0f7ff;
-                color:#0088cc;
-                border-bottom: none !important; /* Forces underline removal */
-                padding-left:10%;
+
+            nav.active{
+                visibility: visible;
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(0);
             }
-            
-            .detailed-services-grid { grid-template-columns: 1fr; gap: 24px; }
+
+            nav a{
+                padding: 14px 8%;
+                width: 100%;
+                font-size: 16px;
+                color: #334155;
+                border-bottom: 1px solid rgba(0,0,0,0.02);
+                transition: all 0.2s ease;
+            }
+            nav a:last-child { border-bottom: none; }
+
+            /* FIXED: Completely removed any underlying active underline border effects */
+            nav a:hover, nav a.active{
+                background: transparent !important;
+                color: #0088cc;
+                padding-left: 10%;
+                border-bottom: none !important;
+            }
+
             .services-hero { padding: 120px 20px 50px; }
+            .detailed-services-grid { grid-template-columns: 1fr; gap: 24px; }
             .service-feature-card { padding: 30px 20px; }
-            .values-grid-new{ grid-template-columns: 1fr; gap:20px; }
-            footer{ padding:60px 20px; }
+            .values-grid-new { grid-template-columns: 1fr; }
+            footer{ padding: 60px 20px; }
         }
     </style>
 </head>
@@ -314,6 +394,7 @@
                     <li>Scheduled Application Backup &amp; Disaster Recovery Audits</li>
                 </ul>
             </div>
+
         </div>
     </section>
 
