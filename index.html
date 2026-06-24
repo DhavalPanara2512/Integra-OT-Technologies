@@ -8,85 +8,128 @@
     <meta name="description" content="Integra OT Technologies provides Industrial Automation, AVEVA PI System, SCADA, Power BI, OT Cybersecurity and Digital Transformation solutions.">
     <link rel="stylesheet" href="css/style.css?v=4.1">
     <style>
-        /* Embedded layout architecture to force the premium dark look of the homepage */
+        /* =========================
+           GLOBAL & HERO ARCHITECTURE
+        ========================= */
+        *{
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+        body{
+            background: #f4f7fc;
+            color: #1a2536;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        header{
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 18px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+        }
+        .logo{ display: flex; align-items: center; gap: 12px; }
+        .logo img{ height: 60px; width: auto; }
+        .logo span{ font-size: 24px; font-weight: 700; color: #0088cc; }
+        nav{ display: flex; gap: 28px; }
+        nav a{
+            text-decoration: none; color: #334155;
+            font-size: 16px; font-weight: 600; transition: .3s;
+            padding-bottom: 3px;
+        }
+        nav a:hover{ color: #0088cc; }
+        nav a.active{ color: #0088cc; border-bottom: 2px solid #0088cc; }
+        .menu-toggle{ display: none; }
+
         .hero {
             padding: 160px 8% 80px;
             background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%);
             text-align: center;
             position: relative;
             overflow: hidden;
-            min-height: auto;
         }
         .hero::before {
-            content: '';
-            position: absolute; inset: 0;
+            content: ''; position: absolute; inset: 0;
             background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 136, 204, 0.30) 0%, transparent 70%);
             pointer-events: none;
         }
         .hero::after {
-            content: '';
-            position: absolute; inset: 0;
-            background-image: 
-                linear-gradient(rgba(0, 136, 204, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 136, 204, 0.04) 1px, transparent 1px);
-            background-size: 48px 48px;
-            pointer-events: none;
+            content: ''; position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(0, 136, 204, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 136, 204, 0.04) 1px, transparent 1px);
+            background-size: 48px 48px; pointer-events: none;
         }
-        .hero-inner-box {
-            position: relative;
-            z-index: 2;
-            max-width: 950px;
-            margin: 0 auto;
-        }
+        .hero-inner-box { position: relative; z-index: 2; max-width: 950px; margin: 0 auto; }
         .hero-eyebrow-pill {
-            display: inline-block;
-            font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
-            text-transform: uppercase; color: #60a5fa;
-            background: rgba(96, 165, 250, 0.12);
-            border: 1px solid rgba(96, 165, 250, 0.28);
-            border-radius: 20px; padding: 5px 18px;
-            margin-bottom: 26px;
+            display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+            text-transform: uppercase; color: #60a5fa; background: rgba(96, 165, 250, 0.12);
+            border: 1px solid rgba(96, 165, 250, 0.28); border-radius: 20px; padding: 5px 18px; margin-bottom: 26px;
         }
-        .hero h1 {
-            font-size: clamp(32px, 5vw, 56px);
-            font-weight: 800; color: #ffffff;
-            line-height: 1.15; margin-bottom: 22px;
-            text-shadow: none;
-        }
-        .hero p {
-            font-size: 17px; color: rgba(255, 255, 255, 0.62);
-            max-width: 720px; margin: 0 auto 36px; line-height: 1.8;
-            font-weight: normal;
-        }
-        .hero-btn-group {
-            display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;
-        }
-        .hero .btn {
-            margin: 0; padding: 12px 30px; border-radius: 6px; font-weight: 600;
-        }
-        .hero-tags-row {
-            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
-        }
+        .hero h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 22px; }
+        .hero p { font-size: 17px; color: rgba(255, 255, 255, 0.62); max-width: 720px; margin: 0 auto 36px; line-height: 1.8; }
+        .hero-btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+        .hero .btn { margin: 0; padding: 12px 30px; border-radius: 6px; font-weight: 600; }
+        .hero-tags-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
         .hero-tag-pill {
-            font-size: 12px; font-weight: 600;
-            padding: 5px 14px; border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: rgba(255, 255, 255, 0.72);
-            background: rgba(255, 255, 255, 0.07);
-            letter-spacing: 0.02em;
+            font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.14); color: rgba(255, 255, 255, 0.72);
+            background: rgba(255, 255, 255, 0.07); letter-spacing: 0.02em;
         }
 
         /* =========================
-           ADDED: ENQUIRY PANEL STYLES
+           SPLIT ENQUIRY & INFO PANEL
         ========================= */
-        .enquiry-section {
-            padding: 60px 8% 80px;
+        .bottom-split-section {
+            padding: 80px 8%;
             background: #f4f7fc;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
-        .enquiry-container {
-            max-width: 650px;
+        .split-container {
+            max-width: 1100px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 50px;
+            align-items: center;
         }
+        
+        /* Left Side Details styling */
+        .info-left-panel {
+            text-align: left;
+        }
+        .info-left-panel h2 {
+            font-size: 36px; font-weight: 800; color: #0f172a; margin-bottom: 12px;
+        }
+        .info-left-panel .subtitle {
+            font-size: 15px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;
+        }
+        .info-left-panel .details-list {
+            display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;
+        }
+        .info-left-panel .details-list p {
+            font-size: 16px; color: #334155; display: flex; align-items: center;
+        }
+        .info-left-panel .details-list strong {
+            color: #0088cc; width: 90px; display: inline-block; font-weight: 700;
+        }
+        .social-link.linkedin {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: #ffffff; border: 1px solid rgba(0, 136, 204, 0.2);
+            color: #0077b5; text-decoration: none; padding: 12px 24px; border-radius: 6px;
+            font-size: 14px; font-weight: 600; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+        .social-link.linkedin span {
+            background: #0077b5; color: white; font-weight: 800; padding: 2px 6px; border-radius: 3px; font-size: 12px;
+        }
+        .social-link.linkedin:hover {
+            background: #0077b5; color: #ffffff; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,119,181,0.2);
+        }
+        .social-link.linkedin:hover span { background: #ffffff; color: #0077b5; }
+
+        /* Right Side Form Card styling */
         .contact-form-holder {
             background: #ffffff;
             border: 1px solid rgba(0, 0, 0, 0.06);
@@ -96,23 +139,12 @@
         }
         .form-group {
             margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            text-align: left;
+            display: flex; flex-direction: column; gap: 8px; text-align: left;
         }
-        .form-group label {
-            font-size: 13px; font-weight: 700; color: #334155;
-        }
+        .form-group label { font-size: 13px; font-weight: 700; color: #334155; }
         .form-group input, .form-group textarea {
-            padding: 12px 16px;
-            font-size: 15px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            background: #f8fafc;
-            color: #0f172a;
-            transition: all 0.2s ease;
-            width: 100%;
+            padding: 12px 16px; font-size: 15px; border: 1px solid #cbd5e1; border-radius: 6px;
+            background: #f8fafc; color: #0f172a; transition: all 0.2s ease; width: 100%;
         }
         .form-group input:focus, .form-group textarea:focus {
             outline: none; border-color: #0088cc; background: #ffffff; box-shadow: 0 0 0 3px rgba(0,136,204,0.1);
@@ -124,11 +156,31 @@
         }
         .submit-btn:hover { background: #006699; }
 
+        /* =========================
+           FOOTER ARCHITECTURE
+        ========================= */
+        footer {
+            background: #0a1628;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        footer p {
+            color: rgba(255,255,255,0.45);
+            font-size: 13px;
+        }
+
         @media(max-width: 768px) {
             .hero { padding: 120px 20px 60px; }
             .hero-btn-group { flex-direction: column; width: 100%; max-width: 280px; margin: 0 auto 30px; }
-            .enquiry-section { padding: 40px 20px 60px; }
+            .split-container { grid-template-columns: 1fr; gap: 40px; }
+            .info-left-panel { text-align: center; }
+            .info-left-panel h2 { font-size: 28px; }
             .contact-form-holder { padding: 25px 20px; }
+            
+            nav a:hover, nav a.active {
+                background: #f0f7ff; color: #0088cc; border-bottom: none !important; padding-left: 10%;
+            }
         }
     </style>
 </head>
@@ -251,8 +303,24 @@
         </div>
     </section>
 
-    <section class="enquiry-section">
-        <div class="enquiry-container">
+    <section class="bottom-split-section">
+        <div class="split-container">
+            
+            <div class="info-left-panel">
+                <h2>Integra OT Technologies</h2>
+                <div class="subtitle">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</div>
+                <div class="details-list">
+                    <p><strong>Email:</strong> info@integraottechnologies.com</p>
+                    <p><strong>Website:</strong> www.integraottechnologies.com</p>
+                    <p><strong>Address:</strong> Surat, Gujarat, India</p>
+                </div>
+                <div class="social-box">
+                    <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
+                        <span>in</span> Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+
             <div class="contact-form-holder">
                 <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
                     <div class="form-group">
@@ -270,22 +338,12 @@
                     <button type="submit" class="submit-btn">Submit Specification Request</button>
                 </form>
             </div>
+
         </div>
     </section>
 
     <footer>
-        <h3>Integra OT Technologies</h3>
-        <p class="footer-services">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</p>
-        <div class="footer-details">
-            <p><strong>Email:</strong> info@integraottechnologies.com</p>
-            <p><strong>Website:</strong> www.integraottechnologies.com</p>
-            <p><strong>Address:</strong> Surat, Gujarat, India</p>
-        </div>
-        <div class="footer-social">
-            <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
-                <span>in</span> Connect on LinkedIn
-            </a>
-        </div>
+        <p>&copy; 2026 Integra OT Technologies. All Rights Reserved.</p>
     </footer>
 
     <script>
