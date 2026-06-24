@@ -7,50 +7,309 @@
     <meta name="description" content="Explore our specialized IT-OT integration, AVEVA PI System optimization, SCADA automation, OT Cybersecurity, and Annual Maintenance Contracts (AMC).">
     <link rel="stylesheet" href="css/style.css?v=3.9">
     <style>
-        /* FADE-IN ANIMATION FUNCTION */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        .animated-block { animation: fadeInUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) both; }
+        /* =========================
+           GLOBAL STYLES
+        ========================= */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+        body{
+            background: #f4f7fc;
+            color: #1a2536;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        /* [REST OF YOUR ORIGINAL CSS REMAINS EXACTLY THE SAME] */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
-        body { background: #f4f7fc; color: #1a2536; line-height: 1.6; overflow-x: hidden; }
-        header { position: fixed; top: 0; left: 0; width: 100%; padding: 18px 8%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.08); z-index: 1000; }
-        .logo { display: flex; align-items: center; gap: 12px; }
-        .logo img { height: 60px; width: auto; }
-        .logo span { font-size: 24px; font-weight: 700; color: #0088cc; }
-        nav { display: flex; gap: 28px; }
-        nav a { text-decoration: none; color: #334155; font-size: 16px; font-weight: 600; transition: .3s; padding-bottom: 3px; }
-        nav a:hover { color: #0088cc; }
-        nav a.active { color: #0088cc; border-bottom: 2px solid #0088cc; }
-        .menu-toggle { display: none; }
-        .services-hero { padding: 160px 8% 60px; background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%); text-align: center; position: relative; overflow: hidden; }
-        .services-hero h1 { font-size: clamp(30px, 4.5vw, 52px); font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 15px; }
-        .services-hero p { font-size: 18px; color: rgba(255, 255, 255, 0.65); max-width: 650px; margin: 0 auto; line-height: 1.7; }
-        .section { padding: 80px 8%; }
-        .detailed-services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto; }
-        .service-feature-card { background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 16px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .srv-icon { width: 52px; height: 52px; background: #eff6ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
-        .srv-icon svg { width: 24px; height: 24px; stroke: #0088cc; fill: none; stroke-width: 2; }
-        .service-feature-card h3 { font-size: 24px; color: #0f172a; margin-bottom: 15px; }
-        .feature-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-        .feature-list li::before { content: "\2713"; color: #0088cc; font-weight: bold; margin-right: 10px; }
-        .values-section { padding: 80px 8%; background: #ffffff; }
-        .values-grid-new { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
-        .val-card-new { background: rgba(255, 255, 255, 0.96); border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 16px; padding: 32px 26px; }
-        footer { padding: 80px 60px; text-align: center; border-top: 2px solid #0088cc; background: #f8fafc; }
-        @media(max-width:768px){ .menu-toggle { display: block; } nav { display: none; } nav.active { display: flex; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 20px; } .detailed-services-grid { grid-template-columns: 1fr; } .values-grid-new { grid-template-columns: 1fr; } }
+        /* =========================
+           HEADER & NAVIGATION
+        ========================= */
+        header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+        }
+
+        .logo{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img{
+            height: 60px;
+            width: auto;
+        }
+
+        .logo span{
+            font-size: 24px;
+            font-weight: 700;
+            color: #0088cc;
+        }
+
+        nav{
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a{
+            text-decoration: none;
+            color: #334155;
+            font-size: 16px;
+            font-weight: 600;
+            transition: .3s;
+            padding-bottom: 3px;
+        }
+
+        nav a:hover{
+            color: #0088cc;
+        }
+
+        /* Desktop active setup */
+        nav a.active{
+            color: #0088cc;
+            border-bottom: 2px solid #0088cc;
+        }
+
+        .menu-toggle{
+            display: none;
+        }
+
+        /* =========================
+           SERVICES HERO
+        ========================= */
+        .services-hero {
+            padding: 160px 8% 60px;
+            background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .services-hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 136, 204, 0.30) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .services-hero h1 {
+            font-size: clamp(30px, 4.5vw, 52px);
+            font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 15px;
+        }
+        .services-hero p {
+            font-size: 18px; color: rgba(255, 255, 255, 0.65);
+            max-width: 650px; margin: 0 auto; line-height: 1.7;
+        }
+
+        /* =========================
+           CARDS GRID SYSTEM
+        ========================= */
+        .detailed-services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .service-feature-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-feature-card:hover {
+            transform: translateY(-6px);
+            border-color: #0088cc;
+            box-shadow: 0 20px 40px rgba(0, 136, 204, 0.08);
+        }
+        .srv-icon {
+            width: 52px; height: 52px; background: #eff6ff;
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px;
+        }
+        .srv-icon svg {
+            width: 24px; height: 24px; stroke: #0088cc; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .service-feature-card h3 {
+            font-size: 24px; font-weight: 700; color: #0f172a; margin-bottom: 15px;
+        }
+        .service-feature-card p {
+            font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 20px;
+        }
+        .feature-list {
+            list-style: none; display: flex; flex-direction: column; gap: 10px;
+        }
+        .feature-list li {
+            font-size: 14px; color: #334155; display: flex; align-items: center; gap: 10px;
+            font-weight: 500;
+        }
+        .feature-list li::before {
+            content: "\2713"; color: #0088cc; font-weight: bold;
+        }
+        
+        /* =========================
+           EXECUTION FRAMEWORK
+        ========================= */
+        .values-section {
+            padding: 80px 8%;
+            background: #ffffff;
+        }
+        .section-header { text-align: center; margin-bottom: 52px; }
+        .section-header .eyebrow {
+            font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #0088cc; margin-bottom: 12px;
+        }
+        .section-header h2 { font-size: 42px; font-weight: 800; color: #0f172a; }
+
+        .values-grid-new {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px; max-width: 1100px; margin: 0 auto;
+        }
+        .val-card-new {
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 16px; padding: 32px 26px;
+            transition: .4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .val-card-new:hover {
+            transform: translateY(-8px);
+            border-color: #0088cc;
+            box-shadow: 0 20px 40px rgba(0, 136, 204, 0.1);
+        }
+        .val-icon {
+            width: 46px; height: 46px; background: #eff6ff;
+            border-radius: 11px; display: flex; align-items: center;
+            justify-content: center; margin-bottom: 20px;
+        }
+        .val-icon svg {
+            width: 20px; height: 20px; stroke: #0088cc; fill: none;
+            stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .val-card-new h3 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+        .val-card-new p { font-size: 14px; color: #475569; line-height: 1.75; }
+
+        /* =========================
+           FOOTER
+        ========================= */
+        footer {
+            position: relative;
+            background: linear-gradient(180deg, rgba(248, 250, 252, 0.50) 0%, rgba(241, 245, 249, 0.65) 100%), url('images/industrial-bg.jpg') center/cover no-repeat;
+            padding: 80px 60px;
+            text-align: center;
+            overflow: hidden;
+            border-top: 2px solid #0088cc;
+        }
+        footer h3 { font-size: 32px; color: #0f172a; margin-bottom: 12px; font-weight: 800; }
+        .footer-services { color: #475569; margin-bottom: 30px; font-size: 16px; font-weight: 600; }
+        .footer-details p { color: #334155; font-size: 15px; margin: 8px 0; }
+        .footer-details strong { color: #0088cc; margin-right: 4px; }
+
+        /* =========================
+           MOBILE RESPONSIVE MEDIA QUERIES
+        ========================= */
+        @media(max-width:768px){
+            header{
+                padding: 15px 5%;
+                background: #ffffff;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            }
+            .logo span{ font-size: 18px; }
+            .logo img{ height: 45px; }
+
+            .menu-toggle{
+                display: block;
+                background: none;
+                border: none;
+                font-size: 28px;
+                font-weight: bold;
+                cursor: pointer;
+                color: #0088cc;
+                z-index: 1001;
+            }
+            .menu-toggle:focus { outline: none; }
+
+            nav{
+                display: flex;
+                visibility: hidden;
+                opacity: 0;
+                pointer-events: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                margin-top: 0;
+                flex-direction: column;
+                text-align: left;
+                background: #ffffff;
+                box-shadow: 0 15px 25px rgba(0,0,0,0.08);
+                border-top: 1px solid rgba(0,0,0,0.05);
+                padding: 15px 0;
+                transform: translateY(-10px);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            nav.active{
+                visibility: visible;
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(0);
+            }
+
+            nav a{
+                padding: 14px 8%;
+                width: 100%;
+                font-size: 16px;
+                color: #334155;
+                border-bottom: 1px solid rgba(0,0,0,0.02);
+            }
+            nav a:last-child { border-bottom: none; }
+
+            /* MATCHES IMAGE: Gives Services the soft blue background block, shifts left, removes line */
+            nav a.active{
+                background: #f0f7ff !important;
+                color: #0088cc !important;
+                padding-left: 10%;
+                border-bottom: none !important;
+            }
+            
+            nav a:hover {
+                color: #0088cc;
+            }
+
+            .services-hero { padding: 120px 20px 50px; }
+            .detailed-services-grid { grid-template-columns: 1fr; gap: 24px; }
+            .service-feature-card { padding: 30px 20px; }
+            .values-grid-new { grid-template-columns: 1fr; }
+            footer{ padding: 60px 20px; }
+        }
     </style>
 </head>
 <body>
+
     <header>
         <div class="logo">
             <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.style.display='none'">
             <span>Integra OT Technologies</span>
         </div>
-        <button class="menu-toggle" id="mobile-menu">&#9776;</button>
+        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">&#9776;</button>
         <nav id="navbar">
             <a href="./index.html">Home</a>
             <a href="about.html">About</a>
+            <!-- Keep active here so the mobile layout adds the soft highlight box matching about -->
             <a href="services.html" class="active">Services</a>
             <a href="industries.html">Industries</a>
             <a href="contact.html">Contact</a>
@@ -65,30 +324,110 @@
         </div>
     </section>
 
-    <section class="section animated-block">
+    <section class="section">
         <div class="detailed-services-grid">
+            
             <div class="service-feature-card">
+                <div class="srv-icon">
+                    <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
+                </div>
                 <h3>AVEVA PI System Engineering</h3>
                 <p>Complete execution framework covering data archive migrations, asset framework mapping infrastructure, and customized real-time processing visuals.</p>
                 <ul class="feature-list">
-                    <li>PI Data Archive Upgrades & Patch Deployment</li>
-                    <li>Asset Framework (AF) Templates & Element Hierarchies</li>
+                    <li>PI Data Archive Upgrades &amp; Patch Deployment</li>
+                    <li>Asset Framework (AF) Templates &amp; Element Hierarchies</li>
                     <li>PI Vision Dashboard Layout Customization</li>
+                    <li>PI Vision Custom Symbol Creation &amp; Extensibility</li>
+                    <li>High-Availability Buffering &amp; OPC Interface Mapping</li>
                 </ul>
             </div>
-            <div class="service-feature-card"><h3>SCADA & Automation Systems</h3><p>Ergonomic human-machine automation layout mapping engineered directly for production line clarity.</p></div>
-            <div class="service-feature-card"><h3>Operational Data Analytics</h3><p>Extracting raw historian tables and processing loop registries to construct responsive analytical tracking modules.</p></div>
-            <div class="service-feature-card"><h3>Industrial OT Cybersecurity</h3><p>Securing plant networks from environmental and digital threat vectors without creating pipeline latency.</p></div>
-            <div class="service-feature-card"><h3>Annual Maintenance Contracts (AMC)</h3><p>Comprehensive technical support SLA programs engineered to maximize up-time.</p></div>
+
+            <div class="service-feature-card">
+                <div class="srv-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                </div>
+                <h3>SCADA &amp; Automation Systems</h3>
+                <p>Ergonomic human-machine automation layout mapping engineered directly for production line clarity, process control tracking, and precise shift telemetry loop management.</p>
+                <ul class="feature-list">
+                    <li>High-Performance HMI Graphical Designs</li>
+                    <li>Industrial Alarm Rationalization &amp; Auditing</li>
+                    <li>Automated Production Shift Report Matrices</li>
+                    <li>PLC Data Loop Mapping &amp; Interlocking Protocols</li>
+                </ul>
+            </div>
+
+            <div class="service-feature-card">
+                <div class="srv-icon">
+                    <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </div>
+                <h3>Operational Data Analytics</h3>
+                <p>Extracting raw historian tables and processing loop registries to construct responsive analytical tracking modules and executive corporate insight dashboards.</p>
+                <ul class="feature-list">
+                    <li>Interactive Power BI Process Dashboards</li>
+                    <li>Overall Equipment Effectiveness (OEE) Tracking</li>
+                    <li>Plant Mass Balance &amp; Utility Profiling Modules</li>
+                    <li>Historical Equipment Downtime Analytics</li>
+                </ul>
+            </div>
+
+            <div class="service-feature-card">
+                <div class="srv-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Industrial OT Cybersecurity</h3>
+                <p>Securing plant networks from environmental and digital threat vectors without creating pipeline latency issues or asset operational processing loop hazards.</p>
+                <ul class="feature-list">
+                    <li>ISA/IEC 62443 Industrial Network Risk Assessment</li>
+                    <li>Deep Perimeter Firewall &amp; DMZ Configurations</li>
+                    <li>Secure Remote Access Infrastructure Architectures</li>
+                    <li>Unidirectional Data Gateways &amp; Protocol Segmentation</li>
+                </ul>
+            </div>
+
+            <div class="service-feature-card">
+                <div class="srv-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                </div>
+                <h3>Annual Maintenance Contracts (AMC)</h3>
+                <p>Comprehensive technical support SLA programs engineered to maximize up-time, audit process tag integrity, and keep server systems completely patched.</p>
+                <ul class="feature-list">
+                    <li>24/7 Priority Incident Engineering Support</li>
+                    <li>Proactive PI System Health Checks &amp; Optimization</li>
+                    <li>Interface Connectivity &amp; Buffer Pool Maintenance</li>
+                    <li>Scheduled Application Backup &amp; Disaster Recovery Audits</li>
+                </ul>
+            </div>
+
         </div>
     </section>
 
-    <section class="values-section animated-block" id="why-partner">
-        <h2>How We Deploy Solutions</h2>
+    <section class="values-section" id="why-partner">
+        <div class="section-header">
+            <div class="eyebrow">Execution Framework</div>
+            <h2>How We Deploy Solutions</h2>
+        </div>
         <div class="values-grid-new">
-            <div class="val-card-new"><h3>1. Assess & Architecture</h3></div>
-            <div class="val-card-new"><h3>2. Seamless Integration</h3></div>
-            <div class="val-card-new"><h3>3. Lifelong Optimization</h3></div>
+            <div class="val-card-new">
+                <div class="val-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                </div>
+                <h3>1. Assess &amp; Architecture</h3>
+                <p>We analyze your target process tags, instrument constraints, and system control boundaries to build zero-risk deployment blueprints.</p>
+            </div>
+            <div class="val-card-new">
+                <div class="val-icon">
+                    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <h3>2. Seamless Integration</h3>
+                <p>We build automated Python/PowerShell bridges, tune high-availability archive buffering buffers, and run validation tests concurrently.</p>
+            </div>
+            <div class="val-card-new">
+                <div class="val-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <h3>3. Lifelong Optimization</h3>
+                <p>We supply 24/7 mission-critical system health monitoring response loops to preserve high data integrity from plant floor to executive level.</p>
+            </div>
         </div>
     </section>
 
@@ -105,7 +444,17 @@
     <script>
         const mobileMenu = document.getElementById('mobile-menu');
         const navbar = document.getElementById('navbar');
-        mobileMenu.addEventListener('click', () => { navbar.classList.toggle('active'); });
+        mobileMenu.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            mobileMenu.innerHTML = navbar.classList.contains('active') ? '&times;' : '&#9776;';
+        });
+        const navLinks = document.querySelectorAll('#navbar a');
+        navLinks.forEach(function(link){
+            link.addEventListener('click', function(){
+                navbar.classList.remove('active');
+                mobileMenu.innerHTML = '&#9776;';
+            });
+        });
     </script>
 </body>
 </html>
