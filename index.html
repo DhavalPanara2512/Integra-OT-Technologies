@@ -8,14 +8,14 @@
     <meta name="description" content="Integra OT Technologies provides Industrial Automation, AVEVA PI System, SCADA, Power BI, OT Cybersecurity and Digital Transformation solutions.">
     <link rel="stylesheet" href="css/style.css?v=4.1">
     <style>
-        /* Embedded layout architecture to force the premium dark look of image_5e3fe4.png on the homepage */
+        /* Embedded layout architecture to force the premium dark look of the homepage */
         .hero {
             padding: 160px 8% 80px;
             background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%);
             text-align: center;
             position: relative;
             overflow: hidden;
-            min-height: auto; /* Overrides full screen limitation to match about layout perfectly */
+            min-height: auto;
         }
         .hero::before {
             content: '';
@@ -75,9 +75,60 @@
             background: rgba(255, 255, 255, 0.07);
             letter-spacing: 0.02em;
         }
+
+        /* =========================
+           ADDED: ENQUIRY PANEL STYLES
+        ========================= */
+        .enquiry-section {
+            padding: 60px 8% 80px;
+            background: #f4f7fc;
+        }
+        .enquiry-container {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        .contact-form-holder {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+        }
+        .form-group label {
+            font-size: 13px; font-weight: 700; color: #334155;
+        }
+        .form-group input, .form-group textarea {
+            padding: 12px 16px;
+            font-size: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background: #f8fafc;
+            color: #0f172a;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none; border-color: #0088cc; background: #ffffff; box-shadow: 0 0 0 3px rgba(0,136,204,0.1);
+        }
+        .submit-btn {
+            background: #0088cc; color: white; border: none; padding: 14px 30px;
+            font-size: 16px; font-weight: 600; border-radius: 6px; cursor: pointer;
+            transition: all 0.2s ease; width: 100%;
+        }
+        .submit-btn:hover { background: #006699; }
+
         @media(max-width: 768px) {
             .hero { padding: 120px 20px 60px; }
             .hero-btn-group { flex-direction: column; width: 100%; max-width: 280px; margin: 0 auto 30px; }
+            .enquiry-section { padding: 40px 20px 60px; }
+            .contact-form-holder { padding: 25px 20px; }
         }
     </style>
 </head>
@@ -200,6 +251,28 @@
         </div>
     </section>
 
+    <section class="enquiry-section">
+        <div class="enquiry-container">
+            <div class="contact-form-holder">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Corporate Email</label>
+                        <input type="email" id="email" required placeholder="john@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="msg">Project Context / Technical Needs</label>
+                        <textarea id="msg" rows="5" required placeholder="Outline your asset tag counts, software variants or system specifications..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Specification Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <h3>Integra OT Technologies</h3>
         <p class="footer-services">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</p>
@@ -220,14 +293,13 @@
         const navbar = document.getElementById('navbar');
         mobileMenu.addEventListener('click', () => {
             navbar.classList.toggle('active');
-            // FIXED: Uses safe .innerHTML with mathematical browser entities to solve '?' errors
             mobileMenu.innerHTML = navbar.classList.contains('active') ? '&times;' : '&#9776;';
         });
         const navLinks = document.querySelectorAll("#navbar a");
         navLinks.forEach(function(link){
             link.addEventListener("click", function(){
                 navbar.classList.remove("active");
-                mobileMenu.innerHTML = '&#9776;'; // FIXED
+                mobileMenu.innerHTML = '&#9776;';
             });
         });
     </script>
