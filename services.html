@@ -7,454 +7,462 @@
     <meta name="description" content="Explore our specialized IT-OT integration, AVEVA PI System optimization, SCADA automation, OT Cybersecurity, and Annual Maintenance Contracts (AMC).">
     <link rel="stylesheet" href="css/style.css?v=3.9">
     <style>
-        /* =========================
-           GLOBAL STYLES
-        ========================= */
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-            scroll-behavior: smooth;
-        }
-        body{
-            background: #f4f7fc;
-            color: #1a2536;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;scroll-behavior:smooth;}
+        body{background:#f4f7fc;color:#1a2536;line-height:1.6;overflow-x:hidden;}
 
-        /* =========================
-           HEADER & NAVIGATION
-        ========================= */
-        header{
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-            z-index: 1000;
-        }
+        /* ── HEADER ── */
+        header{position:fixed;top:0;left:0;width:100%;padding:18px 8%;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.08);z-index:1000;}
+        .logo{display:flex;align-items:center;gap:12px;}
+        .logo img{height:60px;width:auto;}
+        .logo span{font-size:24px;font-weight:700;color:#0088cc;}
+        nav{display:flex;gap:28px;}
+        nav a{text-decoration:none;color:#334155;font-size:16px;font-weight:600;transition:.3s;padding-bottom:3px;}
+        nav a:hover{color:#0088cc;}
+        nav a.active{color:#0088cc;border-bottom:2px solid #0088cc;}
+        .menu-toggle{display:none;}
 
-        .logo{
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        /* ── HERO ── */
+        .services-hero{
+            padding:160px 8% 80px;
+            background:linear-gradient(135deg,#07101f 0%,#0a1b3d 50%,#0d2858 100%);
+            text-align:center;position:relative;overflow:hidden;
         }
+        .services-hero::before{
+            content:'';position:absolute;inset:0;
+            background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(0,136,204,0.35) 0%,transparent 70%);
+            pointer-events:none;
+        }
+        .services-hero::after{
+            content:'';position:absolute;bottom:-1px;left:0;width:100%;height:60px;
+            background:linear-gradient(to bottom,transparent,#f4f7fc);
+        }
+        .hero-badge{
+            display:inline-block;background:rgba(0,136,204,0.18);border:1px solid rgba(0,136,204,0.4);
+            color:#5bbfed;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+            padding:6px 16px;border-radius:100px;margin-bottom:20px;
+        }
+        .services-hero h1{font-size:clamp(32px,5vw,56px);font-weight:800;color:#fff;line-height:1.12;margin-bottom:18px;}
+        .services-hero h1 span{color:#38b2f4;}
+        .services-hero p{font-size:17px;color:rgba(255,255,255,0.6);max-width:600px;margin:0 auto 40px;line-height:1.75;}
 
-        .logo img{
-            height: 60px;
-            width: auto;
+        /* ── STATS BAR ── */
+        .stats-bar{
+            display:flex;justify-content:center;gap:0;max-width:820px;margin:0 auto;
+            background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+            border-radius:14px;overflow:hidden;
         }
+        .stat-item{flex:1;padding:22px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.1);}
+        .stat-item:last-child{border-right:none;}
+        .stat-num{font-size:32px;font-weight:800;color:#fff;line-height:1;}
+        .stat-num span{color:#38b2f4;}
+        .stat-label{font-size:12px;color:rgba(255,255,255,0.5);margin-top:5px;font-weight:500;letter-spacing:.04em;}
 
-        .logo span{
-            font-size: 24px;
-            font-weight: 700;
-            color: #0088cc;
-        }
+        /* ── SECTION WRAPPER ── */
+        .section{padding:80px 8%;}
+        .section-header{text-align:center;margin-bottom:54px;}
+        .eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0088cc;margin-bottom:12px;}
+        .section-header h2{font-size:clamp(28px,3.5vw,42px);font-weight:800;color:#0f172a;line-height:1.2;}
+        .section-header p{font-size:16px;color:#64748b;max-width:550px;margin:14px auto 0;line-height:1.7;}
 
-        nav{
-            display: flex;
-            gap: 28px;
+        /* ── SERVICES GRID ── */
+        .services-grid{
+            display:grid;grid-template-columns:1fr 1fr;gap:28px;
+            max-width:1100px;margin:0 auto;
         }
+        .service-card{
+            background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:18px;
+            padding:36px;position:relative;overflow:hidden;
+            transition:all .35s cubic-bezier(.4,0,.2,1);
+        }
+        .service-card::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:3px;
+            background:linear-gradient(90deg,#0088cc,#38b2f4);
+            transform:scaleX(0);transform-origin:left;transition:.35s;
+        }
+        .service-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(0,136,204,0.1);border-color:#b3dff5;}
+        .service-card:hover::before{transform:scaleX(1);}
+        .srv-icon{
+            width:52px;height:52px;background:#eff8ff;border-radius:13px;
+            display:flex;align-items:center;justify-content:center;margin-bottom:22px;
+            transition:background .3s;
+        }
+        .service-card:hover .srv-icon{background:#0088cc;}
+        .srv-icon svg{width:24px;height:24px;stroke:#0088cc;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s;}
+        .service-card:hover .srv-icon svg{stroke:#fff;}
+        .service-card h3{font-size:22px;font-weight:700;color:#0f172a;margin-bottom:12px;}
+        .service-card p{font-size:14.5px;color:#475569;line-height:1.72;margin-bottom:22px;}
+        .feature-list{list-style:none;display:flex;flex-direction:column;gap:9px;}
+        .feature-list li{font-size:13.5px;color:#334155;display:flex;align-items:flex-start;gap:9px;font-weight:500;line-height:1.5;}
+        .feature-list li::before{content:"\2713";color:#0088cc;font-weight:800;flex-shrink:0;margin-top:1px;}
 
-        nav a{
-            text-decoration: none;
-            color: #334155;
-            font-size: 16px;
-            font-weight: 600;
-            transition: .3s;
-            padding-bottom: 3px;
+        /* ── TRUST SECTION ── */
+        .trust-section{padding:80px 8%;background:#fff;}
+        .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1100px;margin:0 auto;}
+        .trust-card{
+            background:#f8fafc;border:1px solid rgba(0,0,0,0.05);border-radius:16px;
+            padding:28px 22px;text-align:center;transition:.35s;
         }
+        .trust-card:hover{background:#fff;border-color:#b3dff5;box-shadow:0 10px 30px rgba(0,136,204,0.08);transform:translateY(-4px);}
+        .trust-icon{width:56px;height:56px;background:#eff8ff;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+        .trust-icon svg{width:26px;height:26px;stroke:#0088cc;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+        .trust-card h4{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:8px;}
+        .trust-card p{font-size:13px;color:#64748b;line-height:1.65;}
 
-        nav a:hover{
-            color: #0088cc;
+        /* ── PROCESS SECTION ── */
+        .process-section{padding:80px 8%;background:linear-gradient(135deg,#f0f7ff 0%,#f4f7fc 100%);}
+        .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto;}
+        .process-card{
+            background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:16px;
+            padding:32px 26px;transition:.35s;
         }
+        .process-card:hover{transform:translateY(-6px);border-color:#0088cc;box-shadow:0 16px 40px rgba(0,136,204,0.1);}
+        .step-num{
+            font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+            color:#0088cc;background:#eff8ff;display:inline-block;
+            padding:5px 12px;border-radius:100px;margin-bottom:18px;
+        }
+        .p-icon{width:44px;height:44px;background:#f8fafc;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+        .p-icon svg{width:20px;height:20px;stroke:#0088cc;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+        .process-card h3{font-size:19px;font-weight:700;color:#0f172a;margin-bottom:11px;}
+        .process-card p{font-size:14px;color:#475569;line-height:1.75;}
 
-        /* Desktop active setup */
-        nav a.active{
-            color: #0088cc;
-            border-bottom: 2px solid #0088cc;
+        /* ── CTA SECTION ── */
+        .cta-section{
+            padding:80px 8%;
+            background:linear-gradient(135deg,#0a1628 0%,#0d2045 50%,#0f2d60 100%);
+            text-align:center;position:relative;overflow:hidden;
         }
+        .cta-section::before{
+            content:'';position:absolute;inset:0;
+            background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(0,136,204,0.25) 0%,transparent 70%);
+        }
+        .cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto;}
+        .cta-section h2{font-size:clamp(26px,4vw,44px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px;}
+        .cta-section h2 span{color:#38b2f4;}
+        .cta-section p{font-size:16px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:36px;}
+        .cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+        .btn-primary{
+            display:inline-flex;align-items:center;gap:8px;
+            background:#0088cc;color:#fff;text-decoration:none;
+            padding:14px 30px;border-radius:10px;font-weight:700;font-size:15px;
+            transition:.3s;border:2px solid #0088cc;
+        }
+        .btn-primary:hover{background:#006fa5;border-color:#006fa5;transform:translateY(-2px);}
+        .btn-outline{
+            display:inline-flex;align-items:center;gap:8px;
+            background:transparent;color:#fff;text-decoration:none;
+            padding:14px 30px;border-radius:10px;font-weight:700;font-size:15px;
+            border:2px solid rgba(255,255,255,0.3);transition:.3s;
+        }
+        .btn-outline:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.5);}
 
-        .menu-toggle{
-            display: none;
+        /* ── FOOTER ── */
+        footer{
+            background:linear-gradient(180deg,rgba(248,250,252,.5) 0%,rgba(241,245,249,.65) 100%),
+                url('images/industrial-bg.jpg') center/cover no-repeat;
+            padding:70px 8%;text-align:center;border-top:2px solid #0088cc;
         }
+        .footer-logo{font-size:26px;font-weight:800;color:#0088cc;margin-bottom:8px;}
+        .footer-tagline{font-size:13px;color:#94a3b8;letter-spacing:.08em;text-transform:uppercase;margin-bottom:28px;}
+        .footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:28px;flex-wrap:wrap;}
+        .footer-links a{color:#475569;font-size:14px;font-weight:600;text-decoration:none;transition:.3s;}
+        .footer-links a:hover{color:#0088cc;}
+        .footer-divider{width:60px;height:2px;background:#0088cc;margin:0 auto 28px;}
+        .footer-details p{color:#475569;font-size:14.5px;margin:7px 0;}
+        .footer-details strong{color:#0088cc;margin-right:4px;}
 
-        /* =========================
-           SERVICES HERO
-        ========================= */
-        .services-hero {
-            padding: 160px 8% 60px;
-            background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        /* ── RESPONSIVE ── */
+        @media(max-width:900px){
+            .trust-grid{grid-template-columns:1fr 1fr;}
         }
-        .services-hero::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 136, 204, 0.30) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .services-hero h1 {
-            font-size: clamp(30px, 4.5vw, 52px);
-            font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 15px;
-        }
-        .services-hero p {
-            font-size: 18px; color: rgba(255, 255, 255, 0.65);
-            max-width: 650px; margin: 0 auto; line-height: 1.7;
-        }
-
-        /* =========================
-           CARDS GRID SYSTEM
-        ========================= */
-        .detailed-services-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .service-feature-card {
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .service-feature-card:hover {
-            transform: translateY(-6px);
-            border-color: #0088cc;
-            box-shadow: 0 20px 40px rgba(0, 136, 204, 0.08);
-        }
-        .srv-icon {
-            width: 52px; height: 52px; background: #eff6ff;
-            border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 24px;
-        }
-        .srv-icon svg {
-            width: 24px; height: 24px; stroke: #0088cc; fill: none;
-            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-        }
-        .service-feature-card h3 {
-            font-size: 24px; font-weight: 700; color: #0f172a; margin-bottom: 15px;
-        }
-        .service-feature-card p {
-            font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 20px;
-        }
-        .feature-list {
-            list-style: none; display: flex; flex-direction: column; gap: 10px;
-        }
-        .feature-list li {
-            font-size: 14px; color: #334155; display: flex; align-items: center; gap: 10px;
-            font-weight: 500;
-        }
-        .feature-list li::before {
-            content: "\2713"; color: #0088cc; font-weight: bold;
-        }
-        
-        /* =========================
-           EXECUTION FRAMEWORK
-        ========================= */
-        .values-section {
-            padding: 80px 8%;
-            background: #ffffff;
-        }
-        .section-header { text-align: center; margin-bottom: 52px; }
-        .section-header .eyebrow {
-            font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-            text-transform: uppercase; color: #0088cc; margin-bottom: 12px;
-        }
-        .section-header h2 { font-size: 42px; font-weight: 800; color: #0f172a; }
-
-        .values-grid-new {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px; max-width: 1100px; margin: 0 auto;
-        }
-        .val-card-new {
-            background: rgba(255, 255, 255, 0.96);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 16px; padding: 32px 26px;
-            transition: .4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .val-card-new:hover {
-            transform: translateY(-8px);
-            border-color: #0088cc;
-            box-shadow: 0 20px 40px rgba(0, 136, 204, 0.1);
-        }
-        .val-icon {
-            width: 46px; height: 46px; background: #eff6ff;
-            border-radius: 11px; display: flex; align-items: center;
-            justify-content: center; margin-bottom: 20px;
-        }
-        .val-icon svg {
-            width: 20px; height: 20px; stroke: #0088cc; fill: none;
-            stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
-        }
-        .val-card-new h3 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
-        .val-card-new p { font-size: 14px; color: #475569; line-height: 1.75; }
-
-        /* =========================
-           FOOTER
-        ========================= */
-        footer {
-            position: relative;
-            background: linear-gradient(180deg, rgba(248, 250, 252, 0.50) 0%, rgba(241, 245, 249, 0.65) 100%), url('images/industrial-bg.jpg') center/cover no-repeat;
-            padding: 80px 60px;
-            text-align: center;
-            overflow: hidden;
-            border-top: 2px solid #0088cc;
-        }
-        footer h3 { font-size: 32px; color: #0f172a; margin-bottom: 12px; font-weight: 800; }
-        .footer-services { color: #475569; margin-bottom: 30px; font-size: 16px; font-weight: 600; }
-        .footer-details p { color: #334155; font-size: 15px; margin: 8px 0; }
-        .footer-details strong { color: #0088cc; margin-right: 4px; }
-
-        /* =========================
-           MOBILE RESPONSIVE MEDIA QUERIES
-        ========================= */
         @media(max-width:768px){
-            header{
-                padding: 15px 5%;
-                background: #ffffff;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            }
-            .logo span{ font-size: 18px; }
-            .logo img{ height: 45px; }
-
-            .menu-toggle{
-                display: block;
-                background: none;
-                border: none;
-                font-size: 28px;
-                font-weight: bold;
-                cursor: pointer;
-                color: #0088cc;
-                z-index: 1001;
-            }
-            .menu-toggle:focus { outline: none; }
-
-            nav{
-                display: flex;
-                visibility: hidden;
-                opacity: 0;
-                pointer-events: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                margin-top: 0;
-                flex-direction: column;
-                text-align: left;
-                background: #ffffff;
-                box-shadow: 0 15px 25px rgba(0,0,0,0.08);
-                border-top: 1px solid rgba(0,0,0,0.05);
-                padding: 15px 0;
-                transform: translateY(-10px);
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-
-            nav.active{
-                visibility: visible;
-                opacity: 1;
-                pointer-events: auto;
-                transform: translateY(0);
-            }
-
-            nav a{
-                padding: 14px 8%;
-                width: 100%;
-                font-size: 16px;
-                color: #334155;
-                border-bottom: 1px solid rgba(0,0,0,0.02);
-            }
-            nav a:last-child { border-bottom: none; }
-
-            /* MATCHES IMAGE: Gives Services the soft blue background block, shifts left, removes line */
-            nav a.active{
-                background: #f0f7ff !important;
-                color: #0088cc !important;
-                padding-left: 10%;
-                border-bottom: none !important;
-            }
-            
-            nav a:hover {
-                color: #0088cc;
-            }
-
-            .services-hero { padding: 120px 20px 50px; }
-            .detailed-services-grid { grid-template-columns: 1fr; gap: 24px; }
-            .service-feature-card { padding: 30px 20px; }
-            .values-grid-new { grid-template-columns: 1fr; }
-            footer{ padding: 60px 20px; }
+            header{padding:15px 5%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.05);}
+            .logo span{font-size:18px;}.logo img{height:45px;}
+            .menu-toggle{display:block;background:none;border:none;font-size:28px;font-weight:bold;cursor:pointer;color:#0088cc;z-index:1001;}
+            .menu-toggle:focus{outline:none;}
+            nav{display:flex;visibility:hidden;opacity:0;pointer-events:none;position:absolute;top:100%;left:0;width:100%;flex-direction:column;text-align:left;background:#fff;box-shadow:0 15px 25px rgba(0,0,0,.08);border-top:1px solid rgba(0,0,0,.05);padding:15px 0;transform:translateY(-10px);transition:all .3s cubic-bezier(.4,0,.2,1);}
+            nav.active{visibility:visible;opacity:1;pointer-events:auto;transform:translateY(0);}
+            nav a{padding:14px 8%;width:100%;font-size:16px;color:#334155;border-bottom:1px solid rgba(0,0,0,.02);}
+            nav a:last-child{border-bottom:none;}
+            nav a.active{background:#f0f7ff!important;color:#0088cc!important;padding-left:10%;border-bottom:none!important;}
+            .stats-bar{flex-direction:column;gap:0;}
+            .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1);}
+            .stat-item:last-child{border-bottom:none;}
+            .services-grid{grid-template-columns:1fr;gap:20px;}
+            .service-card{padding:26px 20px;}
+            .process-grid{grid-template-columns:1fr;}
+            .trust-grid{grid-template-columns:1fr 1fr;}
+            .section{padding:60px 5%;}
+            .cta-section{padding:60px 5%;}
+            footer{padding:60px 5%;}
+            .footer-links{gap:18px;}
         }
+        @media(max-width:480px){.trust-grid{grid-template-columns:1fr;}}
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.style.display='none'">
-            <span>Integra OT Technologies</span>
+<header>
+    <div class="logo">
+        <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.style.display='none'">
+        <span>Integra OT Technologies</span>
+    </div>
+    <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">&#9776;</button>
+    <nav id="navbar">
+        <a href="./index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="services-hero">
+    <div class="hero-badge">Our Capabilities</div>
+    <h1>Engineering Services That<br><span>Power Industrial Operations</span></h1>
+    <p>High-performance data solutions built for operational scale — protecting asset boundaries and delivering actionable plant metrics from sensor to boardroom.</p>
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-num">50<span>+</span></div>
+            <div class="stat-label">Projects Delivered</div>
         </div>
-        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">&#9776;</button>
-        <nav id="navbar">
-            <a href="./index.html">Home</a>
-            <a href="about.html">About</a>
-            <!-- Keep active here so the mobile layout adds the soft highlight box matching about -->
-            <a href="services.html" class="active">Services</a>
-            <a href="industries.html">Industries</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
-
-    <section class="services-hero">
-        <div class="hero-inner">
-            <div class="hero-eyebrow">Capabilities</div>
-            <h1>Our Engineering Services</h1>
-            <p>High-performance data solutions built specifically to handle operational scale, protect asset boundary architectures, and deliver actionable plant metrics.</p>
+        <div class="stat-item">
+            <div class="stat-num">99<span>.9%</span></div>
+            <div class="stat-label">Uptime Achieved</div>
         </div>
-    </section>
-
-    <section class="section">
-        <div class="detailed-services-grid">
-            
-            <div class="service-feature-card">
-                <div class="srv-icon">
-                    <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
-                </div>
-                <h3>AVEVA PI System Engineering</h3>
-                <p>Complete execution framework covering data archive migrations, asset framework mapping infrastructure, and customized real-time processing visuals.</p>
-                <ul class="feature-list">
-                    <li>PI Data Archive Upgrades &amp; Patch Deployment</li>
-                    <li>Asset Framework (AF) Templates &amp; Element Hierarchies</li>
-                    <li>PI Vision Dashboard Layout Customization</li>
-                    <li>PI Vision Custom Symbol Creation &amp; Extensibility</li>
-                    <li>High-Availability Buffering &amp; OPC Interface Mapping</li>
-                </ul>
-            </div>
-
-            <div class="service-feature-card">
-                <div class="srv-icon">
-                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                </div>
-                <h3>SCADA &amp; Automation Systems</h3>
-                <p>Ergonomic human-machine automation layout mapping engineered directly for production line clarity, process control tracking, and precise shift telemetry loop management.</p>
-                <ul class="feature-list">
-                    <li>High-Performance HMI Graphical Designs</li>
-                    <li>Industrial Alarm Rationalization &amp; Auditing</li>
-                    <li>Automated Production Shift Report Matrices</li>
-                    <li>PLC Data Loop Mapping &amp; Interlocking Protocols</li>
-                </ul>
-            </div>
-
-            <div class="service-feature-card">
-                <div class="srv-icon">
-                    <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                </div>
-                <h3>Operational Data Analytics</h3>
-                <p>Extracting raw historian tables and processing loop registries to construct responsive analytical tracking modules and executive corporate insight dashboards.</p>
-                <ul class="feature-list">
-                    <li>Interactive Power BI Process Dashboards</li>
-                    <li>Overall Equipment Effectiveness (OEE) Tracking</li>
-                    <li>Plant Mass Balance &amp; Utility Profiling Modules</li>
-                    <li>Historical Equipment Downtime Analytics</li>
-                </ul>
-            </div>
-
-            <div class="service-feature-card">
-                <div class="srv-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <h3>Industrial OT Cybersecurity</h3>
-                <p>Securing plant networks from environmental and digital threat vectors without creating pipeline latency issues or asset operational processing loop hazards.</p>
-                <ul class="feature-list">
-                    <li>ISA/IEC 62443 Industrial Network Risk Assessment</li>
-                    <li>Deep Perimeter Firewall &amp; DMZ Configurations</li>
-                    <li>Secure Remote Access Infrastructure Architectures</li>
-                    <li>Unidirectional Data Gateways &amp; Protocol Segmentation</li>
-                </ul>
-            </div>
-
-            <div class="service-feature-card">
-                <div class="srv-icon">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-                </div>
-                <h3>Annual Maintenance Contracts (AMC)</h3>
-                <p>Comprehensive technical support SLA programs engineered to maximize up-time, audit process tag integrity, and keep server systems completely patched.</p>
-                <ul class="feature-list">
-                    <li>24/7 Priority Incident Engineering Support</li>
-                    <li>Proactive PI System Health Checks &amp; Optimization</li>
-                    <li>Interface Connectivity &amp; Buffer Pool Maintenance</li>
-                    <li>Scheduled Application Backup &amp; Disaster Recovery Audits</li>
-                </ul>
-            </div>
-
+        <div class="stat-item">
+            <div class="stat-num">15<span>+</span></div>
+            <div class="stat-label">Industries Served</div>
         </div>
-    </section>
-
-    <section class="values-section" id="why-partner">
-        <div class="section-header">
-            <div class="eyebrow">Execution Framework</div>
-            <h2>How We Deploy Solutions</h2>
+        <div class="stat-item">
+            <div class="stat-num">24<span>/7</span></div>
+            <div class="stat-label">AMC Support</div>
         </div>
-        <div class="values-grid-new">
-            <div class="val-card-new">
-                <div class="val-icon">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
-                </div>
-                <h3>1. Assess &amp; Architecture</h3>
-                <p>We analyze your target process tags, instrument constraints, and system control boundaries to build zero-risk deployment blueprints.</p>
-            </div>
-            <div class="val-card-new">
-                <div class="val-icon">
-                    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                </div>
-                <h3>2. Seamless Integration</h3>
-                <p>We build automated Python/PowerShell bridges, tune high-availability archive buffering buffers, and run validation tests concurrently.</p>
-            </div>
-            <div class="val-card-new">
-                <div class="val-icon">
-                    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                </div>
-                <h3>3. Lifelong Optimization</h3>
-                <p>We supply 24/7 mission-critical system health monitoring response loops to preserve high data integrity from plant floor to executive level.</p>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
-    <footer>
-        <h3>Integra OT Technologies</h3>
-        <p class="footer-services">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</p>
-        <div class="footer-details">
-            <p><strong>Email:</strong> info@integraottechnologies.com</p>
-            <p><strong>Website:</strong> www.integraottechnologies.com</p>
-            <p><strong>Address:</strong> Surat, Gujarat, India</p>
-        </div>
-    </footer>
+<!-- SERVICES GRID -->
+<section class="section">
+    <div class="section-header">
+        <div class="eyebrow">What We Do</div>
+        <h2>Our Core Service Lines</h2>
+        <p>Each engagement is scoped, staffed, and executed by engineers with deep OT domain expertise.</p>
+    </div>
+    <div class="services-grid">
 
-    <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navbar = document.getElementById('navbar');
-        mobileMenu.addEventListener('click', () => {
-            navbar.classList.toggle('active');
-            mobileMenu.innerHTML = navbar.classList.contains('active') ? '&times;' : '&#9776;';
+        <div class="service-card">
+            <div class="srv-icon">
+                <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
+            </div>
+            <h3>AVEVA PI System Engineering</h3>
+            <p>Complete execution framework covering data archive migrations, asset framework mapping infrastructure, and customized real-time processing visuals for plant-wide visibility.</p>
+            <ul class="feature-list">
+                <li>PI Data Archive Upgrades &amp; Patch Deployment</li>
+                <li>Asset Framework (AF) Templates &amp; Element Hierarchies</li>
+                <li>PI Vision Dashboard Layout Customization</li>
+                <li>PI Vision Custom Symbol Creation &amp; Extensibility</li>
+                <li>High-Availability Buffering &amp; OPC Interface Mapping</li>
+            </ul>
+        </div>
+
+        <div class="service-card">
+            <div class="srv-icon">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h3>SCADA &amp; Automation Systems</h3>
+            <p>Ergonomic HMI automation engineered directly for production line clarity, process control tracking, and precise shift telemetry loop management across plant environments.</p>
+            <ul class="feature-list">
+                <li>High-Performance HMI Graphical Designs</li>
+                <li>Industrial Alarm Rationalization &amp; Auditing</li>
+                <li>Automated Production Shift Report Matrices</li>
+                <li>PLC Data Loop Mapping &amp; Interlocking Protocols</li>
+            </ul>
+        </div>
+
+        <div class="service-card">
+            <div class="srv-icon">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <h3>Operational Data Analytics</h3>
+            <p>Extracting raw historian tables and processing loop registries to build responsive analytical tracking modules and executive corporate insight dashboards.</p>
+            <ul class="feature-list">
+                <li>Interactive Power BI Process Dashboards</li>
+                <li>Overall Equipment Effectiveness (OEE) Tracking</li>
+                <li>Plant Mass Balance &amp; Utility Profiling Modules</li>
+                <li>Historical Equipment Downtime Analytics</li>
+            </ul>
+        </div>
+
+        <div class="service-card">
+            <div class="srv-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Industrial OT Cybersecurity</h3>
+            <p>Securing plant networks from environmental and digital threat vectors without creating pipeline latency issues or asset operational processing loop hazards.</p>
+            <ul class="feature-list">
+                <li>ISA/IEC 62443 Industrial Network Risk Assessment</li>
+                <li>Deep Perimeter Firewall &amp; DMZ Configurations</li>
+                <li>Secure Remote Access Infrastructure Architectures</li>
+                <li>Unidirectional Data Gateways &amp; Protocol Segmentation</li>
+            </ul>
+        </div>
+
+        <div class="service-card">
+            <div class="srv-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <h3>Annual Maintenance Contracts (AMC)</h3>
+            <p>Comprehensive SLA programs engineered to maximize uptime, audit process tag integrity, and keep server systems completely patched and performant.</p>
+            <ul class="feature-list">
+                <li>24/7 Priority Incident Engineering Support</li>
+                <li>Proactive PI System Health Checks &amp; Optimization</li>
+                <li>Interface Connectivity &amp; Buffer Pool Maintenance</li>
+                <li>Scheduled Application Backup &amp; Disaster Recovery Audits</li>
+            </ul>
+        </div>
+
+        <div class="service-card">
+            <div class="srv-icon">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <h3>IT/OT Network Integration</h3>
+            <p>Bridging enterprise IT systems with plant-floor OT infrastructure — enabling secure, seamless data flow from PLC to ERP without compromising operational safety.</p>
+            <ul class="feature-list">
+                <li>IT/OT Convergence Architecture Design</li>
+                <li>Data Historian to Enterprise System Bridging</li>
+                <li>Industrial Protocol Translation (Modbus, OPC-UA)</li>
+                <li>Network Segmentation &amp; VLAN Configuration</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<!-- WHY US -->
+<section class="trust-section">
+    <div class="section-header">
+        <div class="eyebrow">Why Partner With Us</div>
+        <h2>The Integra Advantage</h2>
+        <p>We bring more than technical skills — we bring deep industry context and a commitment to long-term outcomes.</p>
+    </div>
+    <div class="trust-grid">
+        <div class="trust-card">
+            <div class="trust-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <h4>OT-Focused Expertise</h4>
+            <p>Our engineers are specialists in industrial environments — not generalists adapting IT practices.</p>
+        </div>
+        <div class="trust-card">
+            <div class="trust-icon">
+                <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h4>Zero-Risk Deployment</h4>
+            <p>Every project follows a structured change-management process — no unplanned downtime, ever.</p>
+        </div>
+        <div class="trust-card">
+            <div class="trust-icon">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h4>Dedicated Account Team</h4>
+            <p>You get a named engineer, not a ticket queue — direct access to the team that built your system.</p>
+        </div>
+        <div class="trust-card">
+            <div class="trust-icon">
+                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h4>Real-Time Monitoring</h4>
+            <p>Proactive health checks catch issues before they become incidents — keeping your plant floor running.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+    <div class="section-header">
+        <div class="eyebrow">Execution Framework</div>
+        <h2>How We Deploy Solutions</h2>
+        <p>A structured three-phase approach that minimizes risk and maximizes speed-to-value.</p>
+    </div>
+    <div class="process-grid">
+        <div class="process-card">
+            <div class="step-num">Phase 01</div>
+            <div class="p-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+            </div>
+            <h3>Assess &amp; Architect</h3>
+            <p>We analyze your target process tags, instrument constraints, and system control boundaries to build zero-risk deployment blueprints tailored to your plant.</p>
+        </div>
+        <div class="process-card">
+            <div class="step-num">Phase 02</div>
+            <div class="p-icon">
+                <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Integrate &amp; Validate</h3>
+            <p>We build automated Python/PowerShell bridges, tune high-availability archive buffers, and run concurrent validation tests before any go-live cutover.</p>
+        </div>
+        <div class="process-card">
+            <div class="step-num">Phase 03</div>
+            <div class="p-icon">
+                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h3>Optimize &amp; Support</h3>
+            <p>We supply 24/7 mission-critical health monitoring and proactive optimization loops to preserve high data integrity from plant floor to executive level.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-inner">
+        <h2>Ready to Modernize<br><span>Your Plant Operations?</span></h2>
+        <p>Tell us about your OT environment. Our engineers will scope a solution tailored to your assets, constraints, and operational goals — no generic proposals.</p>
+        <div class="cta-buttons">
+            <a href="contact.html" class="btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1.01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                Start a Conversation
+            </a>
+            <a href="industries.html" class="btn-outline">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                View Industries
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-logo">Integra OT Technologies</div>
+    <div class="footer-tagline">Industrial Automation · AVEVA PI System · SCADA · Power BI · OT Cybersecurity</div>
+    <div class="footer-links">
+        <a href="./index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-details">
+        <p><strong>Email:</strong> info@integraottechnologies.com</p>
+        <p><strong>Website:</strong> www.integraottechnologies.com</p>
+        <p><strong>Address:</strong> Surat, Gujarat, India</p>
+    </div>
+</footer>
+
+<script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navbar = document.getElementById('navbar');
+    mobileMenu.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+        mobileMenu.innerHTML = navbar.classList.contains('active') ? '&times;' : '&#9776;';
+    });
+    document.querySelectorAll('#navbar a').forEach(link => {
+        link.addEventListener('click', () => {
+            navbar.classList.remove('active');
+            mobileMenu.innerHTML = '&#9776;';
         });
-        const navLinks = document.querySelectorAll('#navbar a');
-        navLinks.forEach(function(link){
-            link.addEventListener('click', function(){
-                navbar.classList.remove('active');
-                mobileMenu.innerHTML = '&#9776;';
-            });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
