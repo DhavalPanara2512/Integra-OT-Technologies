@@ -7,101 +7,56 @@
     <meta name="description" content="Discover the industrial sectors we serve, including Pharmaceutical, Oil & Gas, Petrochemicals, and Power Utilities with specialized IT-OT data platforms.">
     <link rel="stylesheet" href="css/style.css?v=4.0">
     <style>
-        /* Custom architectural styling overrides to mirror the premium mask look perfectly */
-        .industries-hero {
-            padding: 160px 8% 60px;
-            background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .industries-hero::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 136, 204, 0.30) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .industries-hero h1 {
-            font-size: clamp(30px, 4.5vw, 52px);
-            font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 15px;
-        }
-        .industries-hero p {
-            font-size: 18px; color: rgba(255, 255, 255, 0.65);
-            max-width: 650px; margin: 0 auto; line-height: 1.7;
-        }
-        .detailed-ind-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .industry-focus-card {
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 16px;
-            padding: 0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        .industry-focus-card:hover {
-            transform: translateY(-6px);
-            border-color: #0088cc;
-            box-shadow: 0 20px 40px rgba(0, 136, 204, 0.08);
-        }
-        .industry-focus-card img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-        }
-        .ind-card-content {
-            padding: 35px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .industry-focus-card h3 {
-            font-size: 24px; font-weight: 700; color: #0f172a; margin-bottom: 15px;
-        }
-        .industry-focus-card p {
-            font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 20px;
-        }
-        .compliance-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: auto;
-        }
-        .comp-tag {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 4px 10px;
-            border-radius: 4px;
-            background: #f1f5f9;
-            color: #475569;
-            border: 1px solid #e2e8f0;
-        }
+        /* === ORIGINAL CSS STARTS HERE === */
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; scroll-behavior:smooth; }
+        body { background:#f4f7fc; color:#1a2536; line-height:1.6; overflow-x:hidden; }
         
-        @media(max-width: 768px) {
-            .detailed-ind-grid { grid-template-columns: 1fr; gap: 24px; }
-            .industries-hero { padding: 120px 20px 50px; }
-            .ind-card-content { padding: 25px 20px; }
-            .industry-focus-card img { height: 180px; }
-        }
+        /* FADE-IN ANIMATION ADDED */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animated-block { animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both; }
+
+        header { position:fixed; top:0; left:0; width:100%; padding:18px 8%; display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(0,0,0,0.08); z-index:1000; }
+        .logo { display:flex; align-items:center; gap:12px; }
+        .logo img { height:60px; width:auto; }
+        .logo span { font-size:24px; font-weight:700; color:#0088cc; }
+        nav { display:flex; gap:28px; }
+        nav a { text-decoration:none; color:#334155; font-size:16px; font-weight:600; transition:.3s; padding-bottom:3px; }
+        nav a:hover { color:#0088cc; }
+        nav a.active { color:#0088cc; border-bottom:2px solid #0088cc; }
+        .menu-toggle { display:none; }
+        
+        .industries-hero { padding: 160px 8% 60px; background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%); text-align: center; position: relative; overflow: hidden; }
+        .industries-hero h1 { font-size: clamp(30px, 4.5vw, 52px); font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 15px; }
+        .industries-hero p { font-size: 18px; color: rgba(255, 255, 255, 0.65); max-width: 650px; margin: 0 auto; line-height: 1.7; }
+        
+        .section { padding: 80px 8%; }
+        .detailed-ind-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto; }
+        .industry-focus-card { background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 16px; padding: 0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); overflow: hidden; display: flex; flex-direction: column; }
+        .ind-card-content { padding: 35px; }
+        .industry-focus-card img { width: 100%; height: 240px; object-fit: cover; }
+        .compliance-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 20px; }
+        .comp-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; background: #f1f5f9; color: #475569; }
+        
+        /* NEW CTA SECTION */
+        .cta-section { padding: 80px 8%; background: linear-gradient(135deg,#0a1628 0%,#0d2045 50%,#0f2d60 100%); text-align: center; }
+        .cta-section h2 { font-size: 44px; font-weight: 800; color: #fff; margin-bottom: 16px; }
+        .cta-section h2 span { color: #38b2f4; }
+        .cta-section p { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 36px; }
+        .btn-primary { background:#0088cc; color:#fff; padding:14px 30px; border-radius:10px; font-weight:700; text-decoration:none; margin: 5px; display:inline-block; }
+        .btn-outline { border:2px solid rgba(255,255,255,0.3); color:#fff; padding:14px 30px; border-radius:10px; font-weight:700; text-decoration:none; margin: 5px; display:inline-block; }
+
+        footer { padding: 80px 60px; text-align: center; border-top: 2px solid #0088cc; background: #f8fafc; }
+        @media(max-width:768px){ .menu-toggle { display: block; } nav { display: none; } nav.active { display: flex; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 20px; } .detailed-ind-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo">
-            <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.style.display='none'">
+            <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
             <span>Integra OT Technologies</span>
         </div>
-        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">&#9776;</button>
+        <button class="menu-toggle" id="mobile-menu">&#9776;</button>
         <nav id="navbar">
             <a href="./index.html">Home</a>
             <a href="about.html">About</a>
@@ -119,124 +74,60 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section animated-block">
         <div class="detailed-ind-grid">
-            
             <div class="industry-focus-card">
-                <img src="images/pharma.jpg" alt="Pharmaceutical Facility Manufacturing Operations">
+                <img src="images/pharma.jpg" alt="Pharmaceutical">
                 <div class="ind-card-content">
                     <h3>Pharmaceutical</h3>
                     <p>Ensuring absolute process data integrity, full visibility across critical environmental attributes, automated validation mapping layouts, and batch genealogy tracking solutions built strictly around regulatory parameters.</p>
-                    <div class="compliance-tags">
-                        <span class="comp-tag">FDA 21 CFR Part 11</span>
-                        <span class="comp-tag">GAMP 5</span>
-                        <span class="comp-tag">Data Integrity ALCOA+</span>
-                    </div>
+                    <div class="compliance-tags"><span class="comp-tag">FDA 21 CFR Part 11</span><span class="comp-tag">GAMP 5</span><span class="comp-tag">Data Integrity ALCOA+</span></div>
                 </div>
             </div>
-
             <div class="industry-focus-card">
-                <img src="images/oilgas.jpg" alt="Oil and Gas Downstream Production Unit">
+                <img src="images/oilgas.jpg" alt="Oil and Gas">
                 <div class="ind-card-content">
-                    <h3>Oil &amp; Gas</h3>
+                    <h3>Oil & Gas</h3>
                     <p>Aggregating highly distributed telemetry structures, pipeline monitoring loops, and process flow rates into secure enterprise historians to optimize production yield calculations and remote plant coordination metrics.</p>
-                    <div class="compliance-tags">
-                        <span class="comp-tag">Telemetry Aggregation</span>
-                        <span class="comp-tag">Downstream Operations</span>
-                        <span class="comp-tag">Asset Optimization</span>
-                    </div>
+                    <div class="compliance-tags"><span class="comp-tag">Telemetry Aggregation</span><span class="comp-tag">Downstream Operations</span><span class="comp-tag">Asset Optimization</span></div>
                 </div>
             </div>
-
             <div class="industry-focus-card">
-                <img src="images/Petrochemicals.jpg" alt="Petrochemical Processing Complex Asset Chains">
+                <img src="images/Petrochemicals.jpg" alt="Petrochemicals">
                 <div class="ind-card-content">
                     <h3>Petrochemicals</h3>
                     <p>Engineering complex asset framework tracking loops, real-time mass balances across cracking configurations, continuous process auditing layouts, and high-availability historical infrastructure deployment.</p>
-                    <div class="compliance-tags">
-                        <span class="comp-tag">Mass Balance Monitoring</span>
-                        <span class="comp-tag">Cracking Unit Analytics</span>
-                        <span class="comp-tag">Utility Profiling</span>
-                    </div>
+                    <div class="compliance-tags"><span class="comp-tag">Mass Balance Monitoring</span><span class="comp-tag">Cracking Unit Analytics</span><span class="comp-tag">Utility Profiling</span></div>
                 </div>
             </div>
-
             <div class="industry-focus-card">
-                <img src="images/power.jpg" alt="Power Plant Generator Telemetry Unit">
+                <img src="images/power.jpg" alt="Power">
                 <div class="ind-card-content">
-                    <h3>Power &amp; Utilities</h3>
+                    <h3>Power & Utilities</h3>
                     <p>Tracking high-speed continuous thermal metrics, steam turbine degradation patterns, live utility boiler processing health loops, and generating actionable load profiling dashboards for corporate visualization.</p>
-                    <div class="compliance-tags">
-                        <span class="comp-tag">Thermal Efficiency</span>
-                        <span class="comp-tag">Boiler Health Loops</span>
-                        <span class="comp-tag">Smart Grid Interfaces</span>
-                    </div>
+                    <div class="compliance-tags"><span class="comp-tag">Thermal Efficiency</span><span class="comp-tag">Boiler Health Loops</span><span class="comp-tag">Smart Grid Interfaces</span></div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <section class="values-section" id="why-partner">
-        <div class="section-header">
-            <div class="eyebrow">Industrial Standards</div>
-            <h2>Universal Compliance Priorities</h2>
-        </div>
-        <div class="values-grid-new">
-            <div class="val-card-new">
-                <div class="val-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <h3>Network Segregations</h3>
-                <p>We deploy standard multi-tiered zone partitions based completely on ISA/IEC 62443 parameters to shield lower level PLC arrays from internet-facing business links.</p>
-            </div>
-            <div class="val-card-new">
-                <div class="val-icon">
-                    <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                </div>
-                <h3>High-Speed Buffering</h3>
-                <p>Our interface architectures ensure zero data loss during upstream communication dropped connections by reserving non-volatile local disk storage capacity tags until recovered.</p>
-            </div>
-            <div class="val-card-new">
-                <div class="val-icon">
-                    <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                </div>
-                <h3>Unified Data Trust</h3>
-                <p>We map plant asset templates directly against true mathematical operational attributes, guaranteeing identical trustworthy metrics display on clean dashboards.</p>
-            </div>
+    <section class="cta-section animated-block">
+        <h2>Ready to Modernize<br><span>Your Plant Operations?</span></h2>
+        <p>Tell us about your OT environment. Our engineers will scope a solution tailored to your assets, constraints, and operational goals — no generic proposals.</p>
+        <div class="cta-buttons">
+            <a href="contact.html" class="btn-primary">Start a Conversation</a>
+            <a href="services.html" class="btn-outline">View Services</a>
         </div>
     </section>
 
     <footer>
-        <h3>Integra OT Technologies</h3>
-        <p class="footer-services">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</p>
-        <div class="footer-details">
-            <p><strong>Email:</strong> info@integraottechnologies.com</p>
-            <p><strong>Website:</strong> www.integraottechnologies.com</p>
-            <p><strong>Address:</strong> Surat, Gujarat, India</p>
-        </div>
-        <div class="footer-social">
-            <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
-                <span>in</span> Connect on LinkedIn
-            </a>
-        </div>
+        <p>&copy; 2026 Integra OT Technologies. All Rights Reserved.</p>
     </footer>
 
     <script>
         const mobileMenu = document.getElementById('mobile-menu');
         const navbar = document.getElementById('navbar');
-        mobileMenu.addEventListener('click', () => {
-            navbar.classList.toggle('active');
-            // FIXED: Uses safe string .innerHTML with mathematical tags to solve layout '?' glitches
-            mobileMenu.innerHTML = navbar.classList.contains('active') ? '&times;' : '&#9776;';
-        });
-        const navLinks = document.querySelectorAll('#navbar a');
-        navLinks.forEach(function(link){
-            link.addEventListener('click', function(){
-                navbar.classList.remove('active');
-                mobileMenu.innerHTML = '&#9776;'; // FIXED
-            });
-        });
+        mobileMenu.addEventListener('click', () => { navbar.classList.toggle('active'); });
     </script>
 </body>
 </html>
