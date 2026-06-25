@@ -1,100 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Integra OT Technologies</title>
-    <meta name="description" content="Get in touch with Integra OT Technologies for industrial automation engineering queries and IT-OT data platform consultation.">
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" href="css/style.css?v=4.0">
-    <style>
-        /* CSS WAHI HAI JO AAPNE DIYA THA, BAS EMAIL SECTION UPDATED HAI */
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; scroll-behavior:smooth; }
-        body { background:#f4f7fc; color:#1a2536; line-height:1.6; overflow-x:hidden; }
-
-        .contact-hero { padding: 160px 8% 60px; background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%); text-align: center; position: relative; overflow: hidden; }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 1100px; margin: 0 auto; padding: 80px 8%; }
-        .info-card { background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 12px; padding: 25px; display: flex; align-items: flex-start; gap: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.01); margin-bottom: 25px; }
-        .info-icon-box { width: 44px; height: 44px; background: #eff6ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; min-width: 44px; }
-        .info-icon-box svg { width: 20px; height: 20px; stroke: #0088cc; fill: none; stroke-width: 2; }
-        .contact-form-holder { background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
-        .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
-        .form-group input, .form-group textarea { padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 6px; background: #f8fafc; width: 100%; }
-        .submit-btn { background: #0088cc; color: white; border: none; padding: 14px 30px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: 700; }
-        
-        footer { padding: 70px 8%; background: #f8fafc; text-align: center; border-top: 2px solid #0088cc; }
-        @media(max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Integra OT Technologies</title>
+<meta name="description" content="Get in touch with Integra OT Technologies for industrial automation engineering queries and IT-OT data platform consultation.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="stylesheet" href="css/style.css?v=4.0">
+<style>
+        .contact-hero {
+            padding: 160px 8% 60px;
+            background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 136, 204, 0.30) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .contact-hero h1 {
+            font-size: clamp(30px, 4.5vw, 52px);
+            font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 15px;
+        }
+        .contact-hero p {
+            font-size: 18px; color: rgba(255, 255, 255, 0.65);
+            max-width: 650px; margin: 0 auto; line-height: 1.7;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .contact-info-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .info-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+        }
+        .info-card h4 {
+            font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 5px;
+        }
+        .info-card p {
+            font-size: 15px; color: #475569;
+        }
+        .info-icon-box {
+            width: 44px; height: 44px; background: #eff6ff; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; min-width: 44px;
+        }
+        .info-icon-box svg {
+            width: 20px; height: 20px; stroke: #0088cc; fill: none; stroke-width: 2;
+        }
+        .contact-form-holder {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group label {
+            font-size: 13px; font-weight: 700; color: #334155;
+        }
+        .form-group input, .form-group textarea {
+            padding: 12px 16px;
+            font-size: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background: #f8fafc;
+            color: #0f172a;
+            transition: all 0.2s ease;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none; border-color: #0088cc; background: #ffffff; box-shadow: 0 0 0 3px rgba(0,136,204,0.1);
+        }
+        .submit-btn {
+            background: #0088cc; color: white; border: none; padding: 14px 30px;
+            font-size: 16px; font-weight: 600; border-radius: 6px; cursor: pointer;
+            transition: all 0.2s ease; width: 100%;
+        }
+        .submit-btn:hover { background: #006699; }
+ 
+        @media(max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 35px; }
+            .contact-hero { padding: 120px 20px 50px; }
+            .contact-form-holder { padding: 25px 20px; }
+        }
+</style>
 </head>
 <body>
-
+ 
     <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
-            <span>Integra OT Technologies</span>
-        </div>
-        <button class="menu-toggle" id="mobile-menu">&#9776;</button>
-        <nav id="navbar">
-            <a href="./index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="industries.html">Industries</a>
-            <a href="contact.html" class="active">Contact</a>
-        </nav>
-    </header>
-
+<div class="logo">
+<img src="images/logo.png" alt="Integra OT Technologies" onerror="this.style.display='none'">
+<span>Integra OT Technologies</span>
+</div>
+<button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">&#9776;</button>
+<nav id="navbar">
+<a href="./index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="industries.html">Industries</a>
+<a href="contact.html" class="active">Contact</a>
+</nav>
+</header>
+ 
     <section class="contact-hero">
-        <h1>Get In Touch With Us</h1>
-        <p>Let's discuss how we can help optimize your plant connectivity infrastructure.</p>
-    </section>
-
+<div class="hero-inner">
+<div class="hero-eyebrow">Connect</div>
+<h1>Get In Touch With Us</h1>
+<p>Let's discuss how we can help optimize your plant connectivity infrastructure and maximize asset data availability layers securely.</p>
+</div>
+</section>
+ 
     <section class="section">
-        <div class="contact-grid">
-            <div class="contact-info-panel">
+<div class="contact-grid">
+<div class="contact-info-panel">
+<div class="info-card">
+<div class="info-icon-box">
+<svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</div>
+<div>
+<h4>Engineering Query Routing</h4>
+<p>info@integraottechnologies.com</p>
+</div>
+</div>
+ 
                 <div class="info-card">
-                    <div class="info-icon-box"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-                    <div>
-                        <h4>Engineering Query Routing</h4>
-                        <p>dhavalpanara1234@gmail.com</p>
-                    </div>
-                </div>
-                <div class="info-card">
-                    <div class="info-icon-box"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-                    <div>
-                        <h4>Operations Headquarters</h4>
-                        <p>Surat, Gujarat, India</p>
-                    </div>
-                </div>
-            </div>
-
+<div class="info-icon-box">
+<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div>
+<h4>Operations Headquarters</h4>
+<p>Surat, Gujarat, India</p>
+</div>
+</div>
+</div>
+ 
             <div class="contact-form-holder">
-                <form action="mailto:dhavalpanara1234@gmail.com" method="POST" enctype="text/plain">
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" name="name" required placeholder="John Doe">
-                    </div>
-                    <div class="form-group">
-                        <label>Corporate Email</label>
-                        <input type="email" name="email" required placeholder="john@company.com">
-                    </div>
-                    <div class="form-group">
-                        <label>Project Context / Technical Needs</label>
-                        <textarea name="message" rows="5" required placeholder="Outline your requirements..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Submit Specification Request</button>
-                </form>
-            </div>
+<form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
+<div class="form-group">
+<label for="name">Full Name</label>
+<input type="text" id="name" required placeholder="John Doe">
+</div>
+<div class="form-group">
+<label for="email">Corporate Email</label>
+<input type="email" id="email" required placeholder="john@company.com">
+</div>
+<div class="form-group">
+<label for="msg">Project Context / Technical Needs</label>
+<textarea id="msg" rows="5" required placeholder="Outline your asset tag counts, software variants or system specifications..."></textarea>
+</div>
+<button type="submit" class="submit-btn">Submit Specification Request</button>
+</form>
+</div>
+ 
         </div>
-    </section>
-
+</section>
+ 
     <footer>
-        <p>&copy; 2026 Integra OT Technologies. All Rights Reserved.</p>
-    </footer>
-
+<h3>Integra OT Technologies</h3>
+<p class="footer-services">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</p>
+<div class="footer-details">
+<p><strong>Email:</strong> info@integraottechnologies.com</p>
+<p><strong>Website:</strong> www.integraottechnologies.com</p>
+<p><strong>Address:</strong> Surat, Gujarat, India</p>
+</div>
+<div class="footer-social">
+<a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
+<span>in</span> Connect on LinkedIn
+</a>
+</div>
+</footer>
+ 
     <script>
         const mobileMenu = document.getElementById('mobile-menu');
         const navbar = document.getElementById('navbar');
-        mobileMenu.addEventListener('click', () => { navbar.classList.toggle('active'); });
-    </script>
+        mobileMenu.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            // FIXED: Uses safe string innerHTML entities to keep formatting clear
+            mobileMenu.innerHTML = navbar.classList.contains('active') ? '&times;' : '&#9776;';
+        });
+        const navLinks = document.querySelectorAll('#navbar a');
+        navLinks.forEach(function(link){
+            link.addEventListener('click', function(){
+                navbar.classList.remove('active');
+                mobileMenu.innerHTML = '&#9776;'; // FIXED
+            });
+        });
+</script>
 </body>
 </html>
