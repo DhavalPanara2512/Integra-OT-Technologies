@@ -86,40 +86,22 @@
         .section-header h2{font-size:clamp(28px,3.5vw,42px);font-weight:800;color:#0f172a;line-height:1.2;}
         .section-header p{font-size:16px;color:#64748b;max-width:550px;margin:14px auto 0;line-height:1.7;}
 
-        /* ── TECHNOLOGY STACK ── */
-        .tech-section{padding:80px 8%;background:#0a1628;border-top:1px solid #1e3a5f;}
-        .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto;}
-        .tech-category{
-            position:relative;overflow:hidden;border-radius:16px;padding:28px 24px;
-            transition:.4s cubic-bezier(.4,0,.2,1);
-            background-size:cover;background-position:center;
-            border:1px solid rgba(255,255,255,0.1);
-            min-height:220px;
-        }
-        .tech-category::before{
-            content:'';position:absolute;inset:0;
-            background:linear-gradient(145deg,rgba(7,16,31,0.88) 0%,rgba(10,27,61,0.80) 100%);
-            transition:.4s;border-radius:16px;
-        }
-        .tech-category:hover{transform:translateY(-6px);border-color:rgba(0,136,204,0.6);box-shadow:0 20px 50px rgba(0,136,204,0.2);}
-        .tech-category:hover::before{background:linear-gradient(145deg,rgba(7,16,31,0.72) 0%,rgba(0,100,180,0.60) 100%);}
-        .tech-category.cat-historian{background-image:url('images/pi-system.jpg');}
-        .tech-category.cat-analytics{background-image:url('images/powerbi.jpg');}
-        .tech-category.cat-cyber{background-image:url('images/cybersecurity.jpg');}
-        .tech-category.cat-programming{background-image:url('images/scada.jpg');}
-        .tech-category.cat-control{background-image:url('images/oilgas.jpg');}
-        .tech-category.cat-compliance{background-image:url('images/pharma.jpg');}
-        .tech-cat-header{position:relative;z-index:1;display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.15);}
-        .tech-cat-icon{width:42px;height:42px;background:rgba(0,136,204,0.25);border:1px solid rgba(0,136,204,0.45);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-        .tech-cat-icon svg{width:20px;height:20px;stroke:#38b2f4;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-        .tech-cat-header h3{font-size:15px;font-weight:700;color:#fff;}
-        .tech-tags{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px;}
-        .tech-tag{
-            font-size:12px;font-weight:600;padding:6px 12px;border-radius:6px;
-            background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
-            color:rgba(255,255,255,0.85);transition:.2s;cursor:default;backdrop-filter:blur(4px);
-        }
-        .tech-tag:hover{background:rgba(0,136,204,0.45);border-color:#38b2f4;color:#fff;}
+        /* ── SERVICES GRID ── */
+        .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1100px;margin:0 auto;}
+        .service-card{background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:16px;padding:28px 22px;position:relative;overflow:hidden;transition:all .35s cubic-bezier(.4,0,.2,1);}
+        .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0088cc,#38b2f4);transform:scaleX(0);transform-origin:left;transition:.35s;}
+        .service-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(0,136,204,0.1);border-color:#b3dff5;}
+        .service-card:hover::before{transform:scaleX(1);}
+        .sc-img{width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:18px;}
+        .sc-icon{width:46px;height:46px;background:#eff8ff;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:background .3s;}
+        .service-card:hover .sc-icon{background:#0088cc;}
+        .sc-icon svg{width:22px;height:22px;stroke:#0088cc;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s;}
+        .service-card:hover .sc-icon svg{stroke:#fff;}
+        .service-card h3{font-size:17px;font-weight:700;color:#0f172a;margin-bottom:10px;}
+        .service-card p{font-size:13.5px;color:#475569;line-height:1.68;}
+        .card-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:700;color:#0088cc;text-decoration:none;transition:.3s;}
+        .card-link:hover{gap:10px;}
+        .card-link svg{width:14px;height:14px;stroke:#0088cc;fill:none;stroke-width:2.5;}
 
         /* ── INDUSTRIES ── */
         .industries-section{padding:80px 8%;background:#fff;}
@@ -141,7 +123,7 @@
         .why-card h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:10px;}
         .why-card p{font-size:13px;color:#64748b;line-height:1.68;}
 
-        /* ── PROCESS ── */
+        /* ── PROCESS STRIP ── */
         .process-section{padding:80px 8%;background:#fff;border-top:1px solid #e5e7eb;}
         .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto;}
         .process-card{background:#f8fafc;border:1px solid rgba(0,0,0,0.06);border-radius:16px;padding:30px 26px;transition:.35s;position:relative;}
@@ -161,7 +143,7 @@
         .cta-section p{font-size:16px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:36px;}
         .cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 
-        /* ── CONTACT ── */
+        /* ── CONTACT SPLIT ── */
         .contact-section{
             padding:80px 8%;
             background:linear-gradient(180deg,rgba(248,250,252,0.5) 0%,rgba(241,245,249,0.65) 100%),url('images/industrial-bg.jpg') center/cover no-repeat;
@@ -198,7 +180,7 @@
 
         /* ── RESPONSIVE ── */
         @media(max-width:900px){
-            .tech-grid{grid-template-columns:1fr 1fr;}
+            .services-grid{grid-template-columns:1fr 1fr;}
             .industries-grid{grid-template-columns:1fr 1fr;}
             .why-grid{grid-template-columns:1fr 1fr;}
         }
@@ -218,7 +200,7 @@
             .stat-item:last-child{border-bottom:none;}
             .capability-strip{grid-template-columns:1fr 1fr;}
             .cap-item{border-right:none;border-bottom:1px solid #e5e7eb;}
-            .tech-grid{grid-template-columns:1fr;}
+            .services-grid{grid-template-columns:1fr;}
             .industries-grid{grid-template-columns:1fr 1fr;}
             .why-grid{grid-template-columns:1fr 1fr;}
             .process-grid{grid-template-columns:1fr;}
@@ -228,7 +210,6 @@
             .contact-form{padding:26px 20px;}
             .section{padding:60px 5%;}
             .industries-section,.why-section,.process-section,.cta-section,.contact-section{padding:60px 5%;}
-            .tech-section{padding:60px 5%;}
             footer{padding:60px 5%;}
             .footer-links{gap:18px;}
             .hero-btn-group{flex-direction:column;align-items:center;}
@@ -323,110 +304,49 @@
     </div>
 </div>
 
-<!-- ══ TECHNOLOGY STACK ══ -->
-<section class="tech-section animated-block">
-    <div class="section-header" style="margin-bottom:54px;">
-        <span class="eyebrow" style="color:#38b2f4;">Our Technology Stack</span>
-        <h2 style="color:#fff;">Tools & Platforms We Master</h2>
-        <p style="color:rgba(255,255,255,0.55);">We work with the technologies your plant already uses — and extend them to deliver more value.</p>
+<!-- ══ SERVICES ══ -->
+<section class="section animated-block">
+    <div class="section-header">
+        <span class="eyebrow">What We Do</span>
+        <h2>Our Core Services</h2>
+        <p>Each engagement is scoped and executed by engineers with deep OT domain expertise.</p>
     </div>
-    <div class="tech-grid">
-        <div class="tech-category cat-historian">
-            <div class="tech-cat-header">
-                <div class="tech-cat-icon">
-                    <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
-                </div>
-                <h3>Data Historians & SCADA</h3>
+    <div class="services-grid">
+        <div class="service-card">
+            <img src="images/pi-system.jpg" alt="AVEVA PI System" class="sc-img" onerror="this.style.display='none'">
+            <div class="sc-icon">
+                <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
             </div>
-            <div class="tech-tags">
-                <span class="tech-tag">AVEVA PI Data Archive</span>
-                <span class="tech-tag">PI Asset Framework</span>
-                <span class="tech-tag">PI Vision</span>
-                <span class="tech-tag">PI Connector</span>
-                <span class="tech-tag">Wonderware</span>
-                <span class="tech-tag">Ignition SCADA</span>
-                <span class="tech-tag">Intouch HMI</span>
-            </div>
+            <h3>AVEVA PI System</h3>
+            <p>Expert historian engineering covering PI Data Archive, Asset Framework templates, PI Vision dashboards, and high-availability buffering interfaces.</p>
+            <a href="services.html" class="card-link">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
-        <div class="tech-category cat-analytics">
-            <div class="tech-cat-header">
-                <div class="tech-cat-icon">
-                    <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                </div>
-                <h3>Analytics & Visualization</h3>
+        <div class="service-card">
+            <img src="images/scada.jpg" alt="SCADA" class="sc-img" onerror="this.style.display='none'">
+            <div class="sc-icon">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             </div>
-            <div class="tech-tags">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">Microsoft Azure</span>
-                <span class="tech-tag">SQL Server</span>
-                <span class="tech-tag">Power Automate</span>
-                <span class="tech-tag">Excel & VBA</span>
-                <span class="tech-tag">SSRS Reports</span>
-            </div>
+            <h3>SCADA & Automation</h3>
+            <p>High-performance SCADA development, ergonomic HMI layouts, alarm management rationalization, and automated shift reporting matrices.</p>
+            <a href="services.html" class="card-link">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
-        <div class="tech-category cat-cyber">
-            <div class="tech-cat-header">
-                <div class="tech-cat-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <h3>Cybersecurity & Networking</h3>
+        <div class="service-card">
+            <img src="images/powerbi.jpg" alt="Power BI" class="sc-img" onerror="this.style.display='none'">
+            <div class="sc-icon">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
             </div>
-            <div class="tech-tags">
-                <span class="tech-tag">ISA/IEC 62443</span>
-                <span class="tech-tag">Cisco Industrial</span>
-                <span class="tech-tag">Fortinet FortiGate</span>
-                <span class="tech-tag">DMZ Architecture</span>
-                <span class="tech-tag">VLAN Segmentation</span>
-                <span class="tech-tag">Nozomi Networks</span>
-            </div>
+            <h3>Operational Analytics</h3>
+            <p>Consolidating real-time plant data with enterprise systems to deliver interactive Power BI dashboards, OEE tracking, and plant efficiency metrics.</p>
+            <a href="services.html" class="card-link">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
-        <div class="tech-category cat-programming">
-            <div class="tech-cat-header">
-                <div class="tech-cat-icon">
-                    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                </div>
-                <h3>Programming & Automation</h3>
+        <div class="service-card">
+            <img src="images/cybersecurity.jpg" alt="OT Cybersecurity" class="sc-img" onerror="this.style.display='none'">
+            <div class="sc-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
-            <div class="tech-tags">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">PowerShell</span>
-                <span class="tech-tag">PI Web API</span>
-                <span class="tech-tag">REST APIs</span>
-                <span class="tech-tag">SQL / T-SQL</span>
-                <span class="tech-tag">VBScript</span>
-            </div>
-        </div>
-        <div class="tech-category cat-control">
-            <div class="tech-cat-header">
-                <div class="tech-cat-icon">
-                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                </div>
-                <h3>Control Systems</h3>
-            </div>
-            <div class="tech-tags">
-                <span class="tech-tag">Siemens S7 PLC</span>
-                <span class="tech-tag">Allen-Bradley</span>
-                <span class="tech-tag">Modbus TCP/RTU</span>
-                <span class="tech-tag">OPC UA / DA</span>
-                <span class="tech-tag">DNP3</span>
-                <span class="tech-tag">Profibus</span>
-            </div>
-        </div>
-        <div class="tech-category cat-compliance">
-            <div class="tech-cat-header">
-                <div class="tech-cat-icon">
-                    <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                </div>
-                <h3>Compliance & Standards</h3>
-            </div>
-            <div class="tech-tags">
-                <span class="tech-tag">FDA 21 CFR Part 11</span>
-                <span class="tech-tag">GMP Validation</span>
-                <span class="tech-tag">ISO 27001</span>
-                <span class="tech-tag">NERC CIP</span>
-                <span class="tech-tag">IEC 61511</span>
-                <span class="tech-tag">NIST Framework</span>
-            </div>
+            <h3>OT Cybersecurity</h3>
+            <p>Protecting critical infrastructure through industrial risk assessments, network segmentation following ISA/IEC 62443, and firewall configurations.</p>
+            <a href="services.html" class="card-link">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
     </div>
 </section>
