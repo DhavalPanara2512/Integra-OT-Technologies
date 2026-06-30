@@ -225,7 +225,7 @@ nav a.active::after{
 .val-card p{ font-size:13.5px; color: var(--mist); line-height:1.75; }
 
 /* ==========================================================================
-   ANIMATED EXPERTISE TICKER
+   ANIMATED EXPERTISE TICKER (Fixed: Desktop Hardware Loop Optimization)
    ========================================================================== */
 .expertise-section{
     padding: 80px 0; background: var(--deep); position:relative; overflow:hidden;
@@ -255,7 +255,11 @@ nav a.active::after{
 @keyframes scrollLeft{ 0%{ transform:translateX(0); } 100%{ transform:translateX(-50%); } }
 @keyframes scrollRight{ 0%{ transform:translateX(-50%); } 100%{ transform:translateX(0); } }
 
-.exp-ticker-track{ display:flex; width:max-content; gap:14px; }
+.exp-ticker-track{ 
+    display:flex; 
+    width: max-content; /* Forces full length calculation on desktop viewports */
+    gap:14px; 
+}
 .track-left{ animation: scrollLeft 32s linear infinite; }
 .track-right{ animation: scrollRight 32s linear infinite; }
 .ticker-wrapper:hover .exp-ticker-track{ animation-play-state: paused; }
@@ -264,7 +268,7 @@ nav a.active::after{
     display:inline-flex; align-items:center; gap:9px; font-size:13.5px; font-weight:600; color:#fff;
     background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14);
     border-radius: 30px; padding:11px 22px; white-space:nowrap; transition: all .25s ease;
-    flex-shrink: 0;
+    flex-shrink: 0; /* Prevents text compression on laptops and high-res screens */
 }
 .exp-pill:hover{ background: var(--signal); border-color: var(--signal); transform: translateY(-2px); }
 .exp-pill svg{ width:15px; height:15px; stroke: var(--signal); fill:none; stroke-width:2.1; transition: stroke .2s ease; }
@@ -340,21 +344,11 @@ footer{
 .footer-base{ margin-top:36px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.06); }
 .footer-base p{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: var(--font-mono); }
 
-/* FIX: Absolute enforcement loop ensuring mobile queries don't clip footer layout anchors */
+/* Absolute enforcement layout loop ensuring mobile viewports do not mask layout nodes */
 footer a {
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
-}
-
-/* ==========================================================================
-   SCROLL REVEAL
-   ========================================================================== */
-.reveal{ opacity:0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.is-visible{ opacity:1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce){
-    .reveal{ opacity:1; transform:none; transition:none; }
-    html{ scroll-behavior:auto; }
 }
 
 /* ==========================================================================
@@ -366,9 +360,7 @@ footer a {
 @media(max-width:768px){
     header{ padding:14px 5%; }
     .menu-toggle{ display:block; }
-    
-    /* Target only the top main header navigation tracker list */
-    header nav{
+    nav{
         display:flex; visibility:hidden; opacity:0; pointer-events:none;
         position:absolute; top:100%; left:0; width:100%;
         flex-direction:column; align-items:flex-start; gap:0;
@@ -377,10 +369,10 @@ footer a {
         padding:10px 0; transform: translateY(-8px);
         transition: all .25s ease;
     }
-    header nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform: translateY(0); }
-    header nav a{ width:100%; padding:13px 6%; border-bottom:1px solid var(--line); color: var(--mist) !important; }
-    header nav a:last-child{ border-bottom:none; }
-    header nav a.active::after{ display:none; }
+    nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform: translateY(0); }
+    nav a{ width:100%; padding:13px 6%; border-bottom:1px solid var(--line); }
+    nav a:last-child{ border-bottom:none; }
+    nav a.active::after{ display:none; }
 
     .hero{ padding:120px 6% 56px; }
     .capability-strip{ grid-template-columns: 1fr 1fr; }
@@ -597,7 +589,7 @@ footer a {
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/></svg>Field Process Instrumentation</span>
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>ISA-95 Enterprise Data Architecture</span>
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>Historian Data Infrastructure &amp; Buffering</span>
-                <span class="exp-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/></svg>OPC UA / DA Interface Connectivity</span>
+                <span class="exp-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3(15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/></svg>OPC UA / DA Interface Connectivity</span>
                 
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Industrial Process Automation</span>
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/></svg>Field Process Instrumentation</span>
