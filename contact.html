@@ -39,7 +39,7 @@ body{
     overflow-x: hidden;
 }
 img{ display:block; max-width:100%; }
-a{ color:inherit; }
+a{ color:inherit; text-decoration:none; }
 
 /* ==========================================================================
    HEADER
@@ -62,13 +62,20 @@ header{
     font-family: var(--font-mono); font-weight:600; font-size:13px; color: var(--amber);
     flex-shrink:0;
 }
-.logo span{ font-family: var(--font-display); font-size:18px; font-weight:700; letter-spacing:-0.01em; }
+.logo-text{ display:flex; flex-direction:column; line-height:1.15; }
+.logo-text .logo-main{
+    font-family: var(--font-display); font-size:17px; font-weight:700;
+    letter-spacing:0.01em; color: var(--ink);
+}
+.logo-text .logo-main .accent{ color: var(--signal); }
+.logo-text .logo-tagline{
+    font-family: var(--font-body); font-size:10.5px; font-weight:500;
+    letter-spacing:0.01em; color: var(--mist); margin-top:2px;
+}
 nav{ display:flex; align-items:center; gap:30px; }
 nav a{
-    text-decoration:none; color: var(--mist);
-    font-size:14.5px; font-weight:600; letter-spacing:0.01em;
-    transition: color .2s ease;
-    position: relative; padding-bottom: 2px;
+    color: var(--mist); font-size:14.5px; font-weight:600; letter-spacing:0.01em;
+    transition: color .2s ease; position: relative; padding-bottom: 2px;
 }
 nav a:hover{ color: var(--ink); }
 nav a.active{ color: var(--signal); }
@@ -218,22 +225,34 @@ nav a.active::after{
 .submit-btn:hover{ background:#1a6fbb; }
 
 /* ==========================================================================
-   FOOTER
+   FOOTER FRAME & OVERRIDES
    ========================================================================== */
-footer{ background: var(--deep); padding:36px 20px 24px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
-.footer-tagline{ font-family: var(--font-mono); font-size:11.5px; color: rgba(255,255,255,0.4); letter-spacing:0.04em; margin-bottom:18px; }
-.footer-details{ display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-bottom:18px; }
+footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
+.footer-brand{ font-family: var(--font-display); font-size:24px; font-weight:700; color:#fff; margin-bottom:10px; }
+.footer-tagline{ font-family: var(--font-mono); font-size:12px; color: rgba(255,255,255,0.4); letter-spacing:0.04em; margin-bottom:30px; }
+.footer-nav{ display:flex; gap:34px; justify-content:center; flex-wrap:wrap; margin-bottom:30px; }
+.footer-nav a{ color: rgba(255,255,255,0.65); font-size:14.5px; font-weight:600; transition: color .2s ease; }
+.footer-nav a:hover{ color:#fff; }
+.footer-divider{ width:60px; height:1px; background: rgba(255,255,255,0.12); margin:0 auto 28px; }
+.footer-details{ display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin-bottom:22px; }
 .footer-details p{ color: rgba(255,255,255,0.55); font-size:13px; }
 .footer-details strong{ color: var(--amber); margin-right:5px; font-family: var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; }
 .social-link.linkedin{
     display:inline-flex; align-items:center; gap:10px;
     background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.14);
-    color:#fff; text-decoration:none; padding:10px 20px; border-radius:7px;
-    font-size:13px; font-weight:600; transition: all .2s ease; margin-bottom:18px;
+    color:#fff; padding:10px 20px; border-radius:7px;
+    font-size:13px; font-weight:600; transition: all .2s ease; margin-top: 6px; margin-bottom: 22px;
 }
 .social-link.linkedin span{ background: var(--signal); color:#fff; font-weight:700; padding:2px 6px; border-radius:3px; font-size:11px; }
 .social-link.linkedin:hover{ border-color: rgba(255,255,255,0.32); background: rgba(255,255,255,0.07); }
-footer .copyright{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: var(--font-mono); }
+footer .copyright{ color: rgba(255,255,255,0.3); font-size:12px; font-family: var(--font-mono); letter-spacing:0.03em; }
+
+/* FIX: Absolute enforcement loop ensuring mobile queries don't clip footer layout anchors */
+footer a {
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
 
 /* ==========================================================================
    SCROLL REVEAL
@@ -251,7 +270,9 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: 
 @media(max-width:768px){
     header{ padding:14px 5%; }
     .menu-toggle{ display:block; }
-    nav{
+    
+    /* Target only the top main header navigation tracker list */
+    header nav{
         display:flex; visibility:hidden; opacity:0; pointer-events:none;
         position:absolute; top:100%; left:0; width:100%;
         flex-direction:column; align-items:flex-start; gap:0;
@@ -260,16 +281,17 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: 
         padding:10px 0; transform: translateY(-8px);
         transition: all .25s ease;
     }
-    nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform: translateY(0); }
-    nav a{ width:100%; padding:13px 6%; border-bottom:1px solid var(--line); }
-    nav a:last-child{ border-bottom:none; }
-    nav a.active::after{ display:none; }
+    header nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform: translateY(0); }
+    header nav a{ width:100%; padding:13px 6%; border-bottom:1px solid var(--line); color: var(--mist) !important; }
+    header nav a:last-child{ border-bottom:none; }
+    header nav a.active::after{ display:none; }
 
     .page-hero{ padding:120px 6% 64px; }
     .contact-grid{ grid-template-columns:1fr; gap:34px; }
     .contact-form-holder{ padding:26px 22px; }
     .brochure-card, .qr-card{ flex-direction:column; text-align:center; }
     .footer-details{ flex-direction:column; gap:8px; }
+    .footer-nav{ gap:18px; }
 }
 </style>
 </head>
@@ -278,7 +300,10 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: 
 <header>
     <div class="logo">
         <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'mark',textContent:'OT'}))">
-        <span>Integra OT Technologies</span>
+        <div class="logo-text">
+            <span class="logo-main">Integra <span class="accent">IT-OT Technologies</span></span>
+            <span class="logo-tagline">Integrate. Optimize. Transform.</span>
+        </div>
     </div>
     <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
     <nav id="navbar">
@@ -322,7 +347,6 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: 
                 </div>
             </div>
 
-            <!-- Brochure download -->
             <div class="brochure-card">
                 <div class="brochure-icon">
                     <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><polyline points="9 14 12 17 15 14"/></svg>
@@ -334,7 +358,6 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: 
                 <a href="documents/Integra-OT-Technologies-Brochure.pdf" class="brochure-btn" download>Download PDF</a>
             </div>
 
-            <!-- QR code -->
             <div class="qr-card">
                 <div class="qr-box">
                     <img src="images/qr-code.png" alt="Scan to save Integra OT Technologies contact" onerror="this.style.display='none'">
@@ -369,7 +392,16 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: 
 </section>
 
 <footer>
+    <div class="footer-brand">Integra OT Technologies</div>
     <div class="footer-tagline">Industrial Automation · AVEVA PI System · SCADA · Power BI · OT Cybersecurity</div>
+    <nav class="footer-nav">
+        <a href="./index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <div class="footer-divider"></div>
     <div class="footer-details">
         <p><strong>Email</strong> info@integraottechnologies.com</p>
         <p><strong>Website</strong> www.integraottechnologies.com</p>
