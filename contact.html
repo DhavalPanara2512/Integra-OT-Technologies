@@ -6,205 +6,416 @@
 <title>Contact Us | Integra OT Technologies</title>
 <meta name="description" content="Get in touch with Integra OT Technologies for industrial automation engineering queries and IT-OT data platform consultation.">
 <link rel="icon" type="image/png" href="images/favicon.png">
-<link rel="stylesheet" href="css/style.css?v=4.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-        .contact-hero {
-            padding: 160px 8% 60px;
-            background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .contact-hero::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 136, 204, 0.30) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .contact-hero h1 {
-            font-size: clamp(30px, 4.5vw, 52px);
-            font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 15px;
-        }
-        .contact-hero p {
-            font-size: 18px; color: rgba(255, 255, 255, 0.65);
-            max-width: 650px; margin: 0 auto; line-height: 1.7;
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .contact-info-panel {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-        .info-card {
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 12px;
-            padding: 25px;
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.01);
-        }
-        .info-card h4 {
-            font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 5px;
-        }
-        .info-card p {
-            font-size: 15px; color: #475569;
-        }
-        .info-icon-box {
-            width: 44px; height: 44px; background: #eff6ff; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center; min-width: 44px;
-        }
-        .info-icon-box svg {
-            width: 20px; height: 20px; stroke: #0088cc; fill: none; stroke-width: 2;
-        }
-        .contact-form-holder {
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-        }
-        .form-group {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .form-group label {
-            font-size: 13px; font-weight: 700; color: #334155;
-        }
-        .form-group input, .form-group textarea {
-            padding: 12px 16px;
-            font-size: 15px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            background: #f8fafc;
-            color: #0f172a;
-            transition: all 0.2s ease;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none; border-color: #0088cc; background: #ffffff; box-shadow: 0 0 0 3px rgba(0,136,204,0.1);
-        }
-        .submit-btn {
-            background: #0088cc; color: white; border: none; padding: 14px 30px;
-            font-size: 16px; font-weight: 600; border-radius: 6px; cursor: pointer;
-            transition: all 0.2s ease; width: 100%;
-        }
-        .submit-btn:hover { background: #006699; }
- 
-        @media(max-width: 768px) {
-            .contact-grid { grid-template-columns: 1fr; gap: 35px; }
-            .contact-hero { padding: 120px 20px 50px; }
-            .contact-form-holder { padding: 25px 20px; }
-        }
+/* ==========================================================================
+   TOKENS (shared with index.html)
+   ========================================================================== */
+:root{
+    --ink: #0d1420;
+    --mist: #5b6878;
+    --line: #e3e8ef;
+    --paper: #f6f8fb;
+    --deep: #0a0f1a;
+    --deep-2: #0d1b30;
+    --signal: #1e7fd6;
+    --signal-soft: rgba(30,127,214,0.12);
+    --amber: #ff9d2e;
+    --amber-soft: rgba(255,157,46,0.14);
+    --radius: 10px;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; }
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+header{
+    position: fixed; top:0; left:0; width:100%;
+    padding: 16px 6%;
+    display:flex; justify-content:space-between; align-items:center;
+    background: rgba(246,248,251,0.86);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    z-index: 1000;
+}
+.logo{ display:flex; align-items:center; gap:11px; }
+.logo img{ height: 34px; width:auto; border-radius: 7px; }
+.logo .mark{
+    width: 34px; height: 34px; border-radius: 7px;
+    background: var(--deep);
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--font-mono); font-weight:600; font-size:13px; color: var(--amber);
+    flex-shrink:0;
+}
+.logo span{ font-family: var(--font-display); font-size:18px; font-weight:700; letter-spacing:-0.01em; }
+nav{ display:flex; align-items:center; gap:30px; }
+nav a{
+    text-decoration:none; color: var(--mist);
+    font-size:14.5px; font-weight:600; letter-spacing:0.01em;
+    transition: color .2s ease;
+    position: relative; padding-bottom: 2px;
+}
+nav a:hover{ color: var(--ink); }
+nav a.active{ color: var(--signal); }
+nav a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background: var(--signal);
+}
+.menu-toggle{
+    display:none; background:none; border:none; font-size:24px; cursor:pointer; color: var(--ink);
+}
+
+/* ==========================================================================
+   PAGE HERO
+   ========================================================================== */
+.page-hero{
+    padding: 168px 6% 90px;
+    background: var(--deep);
+    background-image: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(30,127,214,0.22) 0%, transparent 70%);
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+}
+.page-hero::before{
+    content:''; position:absolute; inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent 85%);
+    pointer-events:none;
+}
+.page-hero-inner{ position:relative; z-index:2; max-width: 720px; margin:0 auto; }
+.eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family: var(--font-mono); font-size:11.5px; font-weight:600; letter-spacing:0.1em;
+    text-transform:uppercase; color: var(--amber);
+    background: var(--amber-soft); border:1px solid rgba(255,157,46,0.3);
+    border-radius: 4px; padding:6px 12px; margin-bottom:22px;
+}
+.eyebrow .dot{ width:6px; height:6px; border-radius:50%; background: var(--amber); }
+.page-hero h1{
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4.6vw, 54px);
+    font-weight:700; line-height:1.12; letter-spacing:-0.01em;
+    margin-bottom:18px;
+}
+.page-hero h1 em{ font-style:normal; color: var(--signal); }
+.page-hero p{
+    font-size:16.5px; color: rgba(255,255,255,0.62); max-width:600px; margin:0 auto;
+}
+
+/* ==========================================================================
+   SECTION SHELLS
+   ========================================================================== */
+.section{ padding: 90px 6%; }
+.section-head{ max-width: 620px; margin: 0 auto 48px; text-align:center; }
+.section-eyebrow{
+    font-family: var(--font-mono); font-size:11.5px; font-weight:600; letter-spacing:0.1em;
+    text-transform:uppercase; color: var(--signal); margin-bottom:12px;
+}
+.section h2{
+    font-family: var(--font-display); font-size: clamp(26px, 3vw, 34px);
+    font-weight:700; letter-spacing:-0.01em; color: var(--ink); margin-bottom:10px;
+}
+.section-head p{ color: var(--mist); font-size:15px; }
+
+/* ==========================================================================
+   CONTACT GRID
+   ========================================================================== */
+.contact-grid{
+    display:grid; grid-template-columns: 1fr 1.05fr; gap:44px;
+    max-width: 1100px; margin: 0 auto;
+}
+.contact-info-panel{ display:flex; flex-direction:column; gap:20px; }
+
+.info-card{
+    background:#fff; border:1px solid var(--line); border-radius: var(--radius);
+    padding:24px; display:flex; align-items:flex-start; gap:18px;
+    transition: border-color .2s ease, transform .2s ease;
+}
+.info-card:hover{ border-color: rgba(30,127,214,0.3); transform: translateY(-2px); }
+.info-icon-box{
+    width:44px; height:44px; border-radius:8px; flex-shrink:0;
+    background: var(--signal-soft);
+    display:flex; align-items:center; justify-content:center;
+}
+.info-icon-box svg{ width:20px; height:20px; stroke: var(--signal); fill:none; stroke-width:2; }
+.info-card h4{ font-family: var(--font-display); font-size:15.5px; font-weight:700; color: var(--ink); margin-bottom:4px; }
+.info-card p{ font-size:14px; color: var(--mist); }
+
+/* Brochure download card */
+.brochure-card{
+    background: var(--deep); border:1px solid rgba(255,255,255,0.08); border-radius: var(--radius);
+    padding:26px; display:flex; align-items:center; gap:18px; color:#fff;
+}
+.brochure-icon{
+    width:48px; height:48px; border-radius:9px; flex-shrink:0;
+    background: var(--amber-soft); border:1px solid rgba(255,157,46,0.3);
+    display:flex; align-items:center; justify-content:center;
+}
+.brochure-icon svg{ width:22px; height:22px; stroke: var(--amber); fill:none; stroke-width:2; }
+.brochure-text{ flex:1; }
+.brochure-text h4{ font-family: var(--font-display); font-size:15.5px; font-weight:700; margin-bottom:3px; }
+.brochure-text p{ font-size:13px; color: rgba(255,255,255,0.55); }
+.brochure-btn{
+    flex-shrink:0; background: var(--signal); color:#fff; text-decoration:none;
+    font-size:13.5px; font-weight:600; padding:11px 18px; border-radius:7px;
+    transition: background .2s ease; white-space:nowrap;
+}
+.brochure-btn:hover{ background:#1a6fbb; }
+
+/* QR card */
+.qr-card{
+    background:#fff; border:1px solid var(--line); border-radius: var(--radius);
+    padding:24px; display:flex; align-items:center; gap:20px;
+}
+.qr-box{
+    width:96px; height:96px; flex-shrink:0; border-radius:8px;
+    background:#fff; border:1px solid var(--line); padding:6px;
+    display:flex; align-items:center; justify-content:center;
+}
+.qr-box img{ width:100%; height:100%; object-fit:contain; }
+.qr-text h4{ font-family: var(--font-display); font-size:15.5px; font-weight:700; color: var(--ink); margin-bottom:4px; }
+.qr-text p{ font-size:13.5px; color: var(--mist); }
+.qr-text .qr-mono{ font-family: var(--font-mono); font-size:11.5px; color: var(--signal); margin-top:6px; display:block; letter-spacing:0.02em; }
+
+/* Contact form */
+.contact-form-holder{
+    background:#fff; border:1px solid var(--line); border-radius: 14px; padding:38px;
+}
+.form-group{ margin-bottom:18px; display:flex; flex-direction:column; gap:7px; text-align:left; }
+.form-group label{ font-size:12.5px; font-weight:600; color: var(--ink); }
+.form-group input, .form-group textarea{
+    padding:11px 14px; font-size:14.5px; border:1px solid var(--line); border-radius:7px;
+    background: var(--paper); color: var(--ink); transition: all .2s ease; width:100%;
+    font-family: var(--font-body);
+}
+.form-group input:focus, .form-group textarea:focus{
+    outline: 2px solid transparent; border-color: var(--signal); background:#fff;
+    box-shadow: 0 0 0 3px var(--signal-soft);
+}
+.submit-btn{
+    background: var(--signal); color:#fff; border:none; padding:13px 28px;
+    font-size:15px; font-weight:600; border-radius:7px; cursor:pointer;
+    transition: background .2s ease; width:100%; font-family: var(--font-body);
+}
+.submit-btn:hover{ background:#1a6fbb; }
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer{ background: var(--deep); padding:36px 20px 24px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
+.footer-tagline{ font-family: var(--font-mono); font-size:11.5px; color: rgba(255,255,255,0.4); letter-spacing:0.04em; margin-bottom:18px; }
+.footer-details{ display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-bottom:18px; }
+.footer-details p{ color: rgba(255,255,255,0.55); font-size:13px; }
+.footer-details strong{ color: var(--amber); margin-right:5px; font-family: var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; }
+.social-link.linkedin{
+    display:inline-flex; align-items:center; gap:10px;
+    background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.14);
+    color:#fff; text-decoration:none; padding:10px 20px; border-radius:7px;
+    font-size:13px; font-weight:600; transition: all .2s ease; margin-bottom:18px;
+}
+.social-link.linkedin span{ background: var(--signal); color:#fff; font-weight:700; padding:2px 6px; border-radius:3px; font-size:11px; }
+.social-link.linkedin:hover{ border-color: rgba(255,255,255,0.32); background: rgba(255,255,255,0.07); }
+footer .copyright{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: var(--font-mono); }
+
+/* ==========================================================================
+   SCROLL REVEAL
+   ========================================================================== */
+.reveal{ opacity:0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible{ opacity:1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media(max-width:768px){
+    header{ padding:14px 5%; }
+    .menu-toggle{ display:block; }
+    nav{
+        display:flex; visibility:hidden; opacity:0; pointer-events:none;
+        position:absolute; top:100%; left:0; width:100%;
+        flex-direction:column; align-items:flex-start; gap:0;
+        background:#fff; border-top:1px solid var(--line);
+        box-shadow: 0 16px 30px rgba(0,0,0,0.08);
+        padding:10px 0; transform: translateY(-8px);
+        transition: all .25s ease;
+    }
+    nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform: translateY(0); }
+    nav a{ width:100%; padding:13px 6%; border-bottom:1px solid var(--line); }
+    nav a:last-child{ border-bottom:none; }
+    nav a.active::after{ display:none; }
+
+    .page-hero{ padding:120px 6% 64px; }
+    .contact-grid{ grid-template-columns:1fr; gap:34px; }
+    .contact-form-holder{ padding:26px 22px; }
+    .brochure-card, .qr-card{ flex-direction:column; text-align:center; }
+    .footer-details{ flex-direction:column; gap:8px; }
+}
 </style>
 </head>
 <body>
- 
-    <header>
-<div class="logo">
-<img src="images/logo.png" alt="Integra OT Technologies" onerror="this.style.display='none'">
-<span>Integra OT Technologies</span>
-</div>
-<button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">&#9776;</button>
-<nav id="navbar">
-<a href="./index.html">Home</a>
-<a href="about.html">About</a>
-<a href="services.html">Services</a>
-<a href="industries.html">Industries</a>
-<a href="contact.html" class="active">Contact</a>
-</nav>
+
+<header>
+    <div class="logo">
+        <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'mark',textContent:'OT'}))">
+        <span>Integra OT Technologies</span>
+    </div>
+    <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    <nav id="navbar">
+        <a href="./index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="contact.html" class="active">Contact</a>
+    </nav>
 </header>
- 
-    <section class="contact-hero">
-<div class="hero-inner">
-<div class="hero-eyebrow">Connect</div>
-<h1>Get In Touch With Us</h1>
-<p>Let's discuss how we can help optimize your plant connectivity infrastructure and maximize asset data availability layers securely.</p>
-</div>
+
+<section class="page-hero">
+    <div class="page-hero-inner">
+        <div class="eyebrow"><span class="dot"></span>Connect</div>
+        <h1>Get in touch with <em>our engineers</em></h1>
+        <p>Let's discuss how we can help optimize your plant connectivity infrastructure and maximize asset data availability layers securely.</p>
+    </div>
 </section>
- 
-    <section class="section">
-<div class="contact-grid">
-<div class="contact-info-panel">
-<div class="info-card">
-<div class="info-icon-box">
-<svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-</div>
-<div>
-<h4>Engineering Query Routing</h4>
-<p>info@integraottechnologies.com</p>
-</div>
-</div>
- 
-                <div class="info-card">
-<div class="info-icon-box">
-<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-</div>
-<div>
-<h4>Operations Headquarters</h4>
-<p>Surat, Gujarat, India</p>
-</div>
-</div>
-</div>
- 
-            <div class="contact-form-holder">
-<form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
-<div class="form-group">
-<label for="name">Full Name</label>
-<input type="text" id="name" required placeholder="John Doe">
-</div>
-<div class="form-group">
-<label for="email">Corporate Email</label>
-<input type="email" id="email" required placeholder="john@company.com">
-</div>
-<div class="form-group">
-<label for="msg">Project Context / Technical Needs</label>
-<textarea id="msg" rows="5" required placeholder="Outline your asset tag counts, software variants or system specifications..."></textarea>
-</div>
-<button type="submit" class="submit-btn">Submit Specification Request</button>
-</form>
-</div>
- 
+
+<section class="section reveal">
+    <div class="contact-grid">
+        <div class="contact-info-panel">
+
+            <div class="info-card">
+                <div class="info-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                    <h4>Engineering Query Routing</h4>
+                    <p>info@integraottechnologies.com</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                    <h4>Operations Headquarters</h4>
+                    <p>Surat, Gujarat, India</p>
+                </div>
+            </div>
+
+            <!-- Brochure download -->
+            <div class="brochure-card">
+                <div class="brochure-icon">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><polyline points="9 14 12 17 15 14"/></svg>
+                </div>
+                <div class="brochure-text">
+                    <h4>Company Brochure</h4>
+                    <p>Capabilities, platforms &amp; engineering scope — PDF</p>
+                </div>
+                <a href="documents/Integra-OT-Technologies-Brochure.pdf" class="brochure-btn" download>Download PDF</a>
+            </div>
+
+            <!-- QR code -->
+            <div class="qr-card">
+                <div class="qr-box">
+                    <img src="images/qr-code.png" alt="Scan to save Integra OT Technologies contact" onerror="this.style.display='none'">
+                </div>
+                <div class="qr-text">
+                    <h4>Scan to Save Our Details</h4>
+                    <p>Quick-scan this code to save our contact card or jump straight to our website.</p>
+                    <span class="qr-mono">www.integraottechnologies.com</span>
+                </div>
+            </div>
+
         </div>
+
+        <div class="contact-form-holder">
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="email">Corporate Email</label>
+                    <input type="email" id="email" name="email" required placeholder="john@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="msg">Project Context / Technical Needs</label>
+                    <textarea id="msg" name="msg" rows="5" required placeholder="Outline your asset tag counts, software variants or system specifications..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Specification Request</button>
+            </form>
+        </div>
+    </div>
 </section>
- 
-    <footer>
-<h3>Integra OT Technologies</h3>
-<p class="footer-services">Industrial Automation | AVEVA PI System | SCADA | Power BI | OT Cybersecurity</p>
-<div class="footer-details">
-<p><strong>Email:</strong> info@integraottechnologies.com</p>
-<p><strong>Website:</strong> www.integraottechnologies.com</p>
-<p><strong>Address:</strong> Surat, Gujarat, India</p>
-</div>
-<div class="footer-social">
-<a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" class="social-link linkedin">
-<span>in</span> Connect on LinkedIn
-</a>
-</div>
+
+<footer>
+    <div class="footer-tagline">Industrial Automation · AVEVA PI System · SCADA · Power BI · OT Cybersecurity</div>
+    <div class="footer-details">
+        <p><strong>Email</strong> info@integraottechnologies.com</p>
+        <p><strong>Website</strong> www.integraottechnologies.com</p>
+        <p><strong>Address</strong> Surat, Gujarat, India</p>
+    </div>
+    <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" rel="noopener" class="social-link linkedin">
+        <span>in</span> Connect on LinkedIn
+    </a>
+    <p class="copyright">&copy; 2026 INTEGRA_OT // ALL RIGHTS RESERVED</p>
 </footer>
- 
-    <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navbar = document.getElementById('navbar');
-        mobileMenu.addEventListener('click', () => {
-            navbar.classList.toggle('active');
-            // FIXED: Uses safe string innerHTML entities to keep formatting clear
-            mobileMenu.innerHTML = navbar.classList.contains('active') ? '&times;' : '&#9776;';
+
+<script>
+(function(){
+    var mobileMenu = document.getElementById('mobile-menu');
+    var navbar = document.getElementById('navbar');
+
+    mobileMenu.addEventListener('click', function(){
+        var open = navbar.classList.toggle('active');
+        mobileMenu.innerHTML = open ? '&times;' : '&#9776;';
+        mobileMenu.setAttribute('aria-expanded', open);
+    });
+
+    navbar.querySelectorAll('a').forEach(function(link){
+        link.addEventListener('click', function(){
+            navbar.classList.remove('active');
+            mobileMenu.innerHTML = '&#9776;';
+            mobileMenu.setAttribute('aria-expanded', 'false');
         });
-        const navLinks = document.querySelectorAll('#navbar a');
-        navLinks.forEach(function(link){
-            link.addEventListener('click', function(){
-                navbar.classList.remove('active');
-                mobileMenu.innerHTML = '&#9776;'; // FIXED
+    });
+
+    var revealEls = document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+        var io = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if(entry.isIntersecting){
+                    entry.target.classList.add('is-visible');
+                    io.unobserve(entry.target);
+                }
             });
-        });
+        }, { threshold: 0.12 });
+        revealEls.forEach(function(el){ io.observe(el); });
+    } else {
+        revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+    }
+})();
 </script>
+
 </body>
 </html>
