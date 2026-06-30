@@ -259,8 +259,20 @@ nav a.active::after{
 }
 .submit-btn:hover{ background:#1a6fbb; }
 
-footer{ background: var(--deep); padding:22px 20px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
-footer p{ color: rgba(255,255,255,0.35); font-size:12.5px; font-family: var(--font-mono); }
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
+.footer-brand{ font-family: var(--font-display); font-size:24px; font-weight:700; color:#fff; margin-bottom:10px; }
+.footer-tagline{ font-family: var(--font-mono); font-size:12px; color: rgba(255,255,255,0.4); letter-spacing:0.04em; margin-bottom:30px; }
+.footer-nav{ display:flex; gap:34px; justify-content:center; flex-wrap:wrap; margin-bottom:30px; }
+.footer-nav a{ text-decoration:none; color: rgba(255,255,255,0.65); font-size:14.5px; font-weight:600; transition: color .2s ease; }
+.footer-nav a:hover{ color:#fff; }
+.footer-divider{ width:60px; height:1px; background: rgba(255,255,255,0.12); margin:0 auto 28px; }
+.footer-details{ display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin-bottom:22px; }
+.footer-details p{ color: rgba(255,255,255,0.55); font-size:13px; }
+.footer-details strong{ color: var(--amber); margin-right:5px; font-family: var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; }
+footer .copyright{ color: rgba(255,255,255,0.3); font-size:12px; font-family: var(--font-mono); letter-spacing:0.03em; }
 
 /* ==========================================================================
    SCROLL REVEAL
@@ -303,6 +315,8 @@ footer p{ color: rgba(255,255,255,0.35); font-size:12.5px; font-family: var(--fo
     .info-left-panel{ text-align:center; }
     .details-list p{ justify-content:center; }
     .contact-form-holder{ padding:26px 22px; }
+    .footer-details{ flex-direction:column; gap:8px; }
+    .footer-nav{ gap:18px; }
 }
 </style>
 </head>
@@ -460,43 +474,24 @@ footer p{ color: rgba(255,255,255,0.35); font-size:12.5px; font-family: var(--fo
     </div>
 </section>
 
-<section class="bottom-split-section reveal">
-    <div class="split-container">
-        <div class="info-left-panel">
-            <h2>Let's talk about your plant data</h2>
-            <div class="subtitle">Industrial Automation · AVEVA PI System · SCADA · Power BI · OT Cybersecurity</div>
-            <div class="details-list">
-                <p><strong>Email</strong> info@integraottechnologies.com</p>
-                <p><strong>Website</strong> www.integraottechnologies.com</p>
-                <p><strong>Address</strong> Surat, Gujarat, India</p>
-            </div>
-            <a href="https://www.linkedin.com/company/integra-ot-technologies" target="_blank" rel="noopener" class="social-link linkedin">
-                <span>in</span> Connect on LinkedIn
-            </a>
-        </div>
-
-        <div class="contact-form-holder">
-            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required placeholder="John Doe">
-                </div>
-                <div class="form-group">
-                    <label for="email">Corporate Email</label>
-                    <input type="email" id="email" name="email" required placeholder="john@company.com">
-                </div>
-                <div class="form-group">
-                    <label for="msg">Project Context / Technical Needs</label>
-                    <textarea id="msg" name="msg" rows="5" required placeholder="Outline your asset tag counts, software variants or system specifications..."></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Submit Specification Request</button>
-            </form>
-        </div>
-    </div>
-</section>
 
 <footer>
-    <p>&copy; 2026 INTEGRA_OT // ALL RIGHTS RESERVED</p>
+    <div class="footer-brand">Integra OT Technologies</div>
+    <div class="footer-tagline">INDUSTRIAL AUTOMATION · AVEVA PI SYSTEM · SCADA · POWER BI · OT CYBERSECURITY</div>
+    <nav class="footer-nav">
+        <a href="./index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-divider"></div>
+    <div class="footer-details">
+        <p><strong>Email</strong> info@integraottechnologies.com</p>
+        <p><strong>Website</strong> www.integraottechnologies.com</p>
+        <p><strong>Address</strong> Surat, Gujarat, India</p>
+    </div>
+    <p class="copyright">&copy; 2026 INTEGRA_OT // ALL RIGHTS RESERVED</p>
 </footer>
 
 <script>
