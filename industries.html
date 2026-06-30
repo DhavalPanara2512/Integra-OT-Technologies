@@ -1,69 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industries We Serve | Integra OT Technologies</title>
-    <meta name="description" content="Discover the industrial sectors we serve, including Pharmaceutical, Oil & Gas, Petrochemicals, and Power Utilities with specialized IT-OT data platforms.">
-    <link rel="stylesheet" href="css/style.css?v=4.0">
-    <style>
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; scroll-behavior:smooth; }
-        body { background:#f4f7fc; color:#1a2536; line-height:1.6; overflow-x:hidden; }
-        
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        .animated-block { animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industries We Serve | Integra OT Technologies</title>
+<meta name="description" content="Discover the industrial sectors we serve, including Pharmaceutical, Oil & Gas, Petrochemicals, and Power Utilities with specialized IT-OT data platforms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   TOKENS (shared with index.html)
+   ========================================================================== */
+:root{
+    --ink: #0d1420;
+    --mist: #5b6878;
+    --line: #e3e8ef;
+    --paper: #f6f8fb;
+    --deep: #0a0f1a;
+    --deep-2: #0d1b30;
+    --signal: #1e7fd6;
+    --signal-soft: rgba(30,127,214,0.12);
+    --amber: #ff9d2e;
+    --amber-soft: rgba(255,157,46,0.14);
+    --radius: 10px;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; }
 
-        header { position:fixed; top:0; left:0; width:100%; padding:18px 8%; display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(0,0,0,0.08); z-index:1000; }
-        .logo { display:flex; align-items:center; gap:12px; }
-        .logo img { height:60px; width:auto; }
-        .logo span { font-size:24px; font-weight:700; color:#0088cc; }
-        nav { display:flex; gap:28px; }
-        nav a { text-decoration:none; color:#334155; font-size:16px; font-weight:600; transition:.3s; padding-bottom:3px; }
-        nav a:hover { color:#0088cc; }
-        nav a.active { color:#0088cc; border-bottom:2px solid #0088cc; }
-        .menu-toggle { display:none; }
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+header{
+    position: fixed; top:0; left:0; width:100%;
+    padding: 16px 6%;
+    display:flex; justify-content:space-between; align-items:center;
+    background: rgba(246,248,251,0.86);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    z-index: 1000;
+}
+.logo{ display:flex; align-items:center; gap:11px; }
+.logo img{ height: 34px; width:auto; border-radius: 7px; }
+.logo .mark{
+    width: 34px; height: 34px; border-radius: 7px;
+    background: var(--deep);
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--font-mono); font-weight:600; font-size:13px; color: var(--amber);
+    flex-shrink:0;
+}
+.logo span{ font-family: var(--font-display); font-size:18px; font-weight:700; letter-spacing:-0.01em; }
+nav{ display:flex; align-items:center; gap:30px; }
+nav a{
+    text-decoration:none; color: var(--mist);
+    font-size:14.5px; font-weight:600; letter-spacing:0.01em;
+    transition: color .2s ease;
+    position: relative; padding-bottom: 2px;
+}
+nav a:hover{ color: var(--ink); }
+nav a.active{ color: var(--signal); }
+nav a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background: var(--signal);
+}
+.menu-toggle{
+    display:none; background:none; border:none; font-size:24px; cursor:pointer; color: var(--ink);
+}
 
-        .industries-hero { padding: 160px 8% 60px; background: linear-gradient(135deg, #0a1628 0%, #0d2045 55%, #0f2d60 100%); text-align: center; position: relative; overflow: hidden; }
-        .industries-hero h1 { font-size: clamp(30px, 4.5vw, 52px); font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 15px; }
-        .industries-hero p { font-size: 18px; color: rgba(255, 255, 255, 0.65); max-width: 650px; margin: 0 auto; line-height: 1.7; }
-        
-        .section { padding: 80px 8%; }
-        .detailed-ind-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto; }
-        .industry-focus-card { background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 16px; padding: 0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); overflow: hidden; display: flex; flex-direction: column; }
-        .ind-card-content { padding: 35px; }
-        .industry-focus-card img { width: 100%; height: 240px; object-fit: cover; }
-        .compliance-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 20px; }
-        .comp-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; background: #f1f5f9; color: #475569; }
+/* ==========================================================================
+   PAGE HERO (industries variant of .hero)
+   ========================================================================== */
+.page-hero{
+    padding: 168px 6% 90px;
+    background: var(--deep);
+    background-image: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(30,127,214,0.22) 0%, transparent 70%);
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+}
+.page-hero::before{
+    content:''; position:absolute; inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent 85%);
+    pointer-events:none;
+}
+.page-hero-inner{ position:relative; z-index:2; max-width: 720px; margin:0 auto; }
+.eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family: var(--font-mono); font-size:11.5px; font-weight:600; letter-spacing:0.1em;
+    text-transform:uppercase; color: var(--amber);
+    background: var(--amber-soft); border:1px solid rgba(255,157,46,0.3);
+    border-radius: 4px; padding:6px 12px; margin-bottom:22px;
+}
+.eyebrow .dot{ width:6px; height:6px; border-radius:50%; background: var(--amber); }
+.page-hero h1{
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4.6vw, 54px);
+    font-weight:700; line-height:1.12; letter-spacing:-0.01em;
+    margin-bottom:18px;
+}
+.page-hero h1 em{ font-style:normal; color: var(--signal); }
+.page-hero p{
+    font-size:16.5px; color: rgba(255,255,255,0.62); max-width:600px; margin:0 auto;
+}
 
-        .cta-section { padding: 80px 8%; background: linear-gradient(135deg,#0a1628 0%,#0d2045 50%,#0f2d60 100%); text-align: center; }
-        .cta-section h2 { font-size: 44px; font-weight: 800; color: #fff; margin-bottom: 16px; }
-        .cta-section h2 span { color: #38b2f4; }
-        .cta-section p { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 36px; }
-        .btn-primary { background:#0088cc; color:#fff; padding:14px 30px; border-radius:10px; font-weight:700; text-decoration:none; margin: 5px; display:inline-block; }
-        .btn-outline { border:2px solid rgba(255,255,255,0.3); color:#fff; padding:14px 30px; border-radius:10px; font-weight:700; text-decoration:none; margin: 5px; display:inline-block; }
+/* ==========================================================================
+   SECTION SHELLS (shared)
+   ========================================================================== */
+.section{ padding: 90px 6%; }
+.section-head{ max-width: 620px; margin: 0 auto 48px; text-align:center; }
+.section-eyebrow{
+    font-family: var(--font-mono); font-size:11.5px; font-weight:600; letter-spacing:0.1em;
+    text-transform:uppercase; color: var(--signal); margin-bottom:12px;
+}
+.section h2{
+    font-family: var(--font-display); font-size: clamp(26px, 3vw, 34px);
+    font-weight:700; letter-spacing:-0.01em; color: var(--ink); margin-bottom:10px;
+}
+.section-head p{ color: var(--mist); font-size:15px; }
 
-        /* FOOTER WITH BG IMAGE RESTORED */
-        footer { 
-            background: linear-gradient(180deg,rgba(248,250,252,.5) 0%,rgba(241,245,249,.65) 100%), url('images/industrial-bg.jpg') center/cover no-repeat; 
-            padding: 80px 8%; text-align: center; border-top: 2px solid #0088cc; 
-        }
-        .footer-logo { font-size:26px; font-weight:800; color:#0088cc; margin-bottom:8px; }
-        .footer-tagline { font-size:13px; color:#475569; margin-bottom:28px; }
-        .footer-details p { color:#475569; font-size:14.5px; margin:7px 0; }
-        .footer-details strong { color:#0088cc; margin-right:4px; }
-        .social-link.linkedin { display:inline-block; margin-top:20px; color:#0077b5; text-decoration:none; font-weight:600; }
+/* ==========================================================================
+   DETAILED INDUSTRY CARDS (extends index.html .card)
+   ========================================================================== */
+.cards{ display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:24px; max-width:1180px; margin:0 auto; }
+.detailed-ind-grid{ grid-template-columns: repeat(2, 1fr); max-width: 1000px; }
 
-        @media(max-width:768px){ .menu-toggle { display: block; } nav { display: none; } nav.active { display: flex; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 20px; } .detailed-ind-grid { grid-template-columns: 1fr; } }
-    </style>
+.card{
+    background:#fff; border:1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; text-align:left; transition: border-color .2s ease, transform .2s ease;
+    display:flex; flex-direction:column;
+}
+.card:hover{ border-color: rgba(30,127,214,0.3); transform: translateY(-2px); }
+.card .card-media{
+    position: relative; height:170px; width:100%;
+    background-color: var(--deep);
+    background-image:
+        linear-gradient(rgba(10,15,26,0.55), rgba(10,15,26,0.55)),
+        var(--card-img),
+        linear-gradient(135deg, #11223d 0%, #0a0f1a 100%);
+    background-size: cover; background-position: center;
+}
+.card .card-media .tag{
+    position:absolute; left:14px; bottom:14px;
+    font-family: var(--font-mono); font-size:11px; color:#fff;
+    background: rgba(255,255,255,0.12); backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.25);
+    display:inline-block; padding:4px 9px; border-radius:4px; letter-spacing:0.04em;
+}
+.card .card-body{ padding:26px 28px 28px; display:flex; flex-direction:column; flex:1; }
+.card h3{ font-family: var(--font-display); font-size:19px; font-weight:700; margin-bottom:10px; color: var(--ink); }
+.card p{ font-size:14.5px; color: var(--mist); line-height:1.68; }
+
+.compliance-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; padding-top:20px; }
+.comp-tag{
+    font-family: var(--font-mono); font-size:10.5px; font-weight:600; letter-spacing:0.04em;
+    text-transform:uppercase; padding:5px 10px; border-radius:4px;
+    background: var(--signal-soft); color: var(--signal); border:1px solid rgba(30,127,214,0.2);
+}
+
+/* ==========================================================================
+   CTA SECTION (deep panel, consistent with index bottom-split)
+   ========================================================================== */
+.cta-section{
+    position:relative; padding: 90px 6%;
+    background-color: var(--deep);
+    background-image:
+        linear-gradient(rgba(10,15,26,0.92), rgba(10,15,26,0.92)),
+        url('images/industrial-bg.jpg');
+    background-size: cover; background-position: center;
+    text-align:center; overflow:hidden;
+}
+.cta-section::before{
+    content:''; position:absolute; inset:0;
+    background-image: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(30,127,214,0.18) 0%, transparent 70%);
+    pointer-events:none;
+}
+.cta-inner{ position:relative; z-index:2; }
+.cta-section h2{
+    font-family: var(--font-display); font-size: clamp(28px,3.6vw,40px);
+    font-weight:700; color:#fff; margin-bottom:14px; letter-spacing:-0.01em;
+}
+.cta-section h2 em{ font-style:normal; color: var(--signal); }
+.cta-section p{ font-size:15.5px; color: rgba(255,255,255,0.6); margin-bottom:34px; max-width:520px; margin-left:auto; margin-right:auto; }
+.cta-buttons{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+.btn{
+    padding:13px 26px; border-radius:7px; font-size:14.5px; font-weight:600;
+    text-decoration:none; transition: all .2s ease; display:inline-block;
+}
+.btn-primary{ background: var(--signal); color:#fff; }
+.btn-primary:hover{ background:#1a6fbb; transform: translateY(-1px); }
+.btn-outline{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.22); }
+.btn-outline:hover{ border-color: rgba(255,255,255,0.5); }
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer{ background: var(--deep); padding:36px 20px 24px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
+.footer-tagline{ font-family: var(--font-mono); font-size:11.5px; color: rgba(255,255,255,0.4); letter-spacing:0.04em; margin-bottom:18px; }
+.footer-details{ display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-bottom:18px; }
+.footer-details p{ color: rgba(255,255,255,0.55); font-size:13px; }
+.footer-details strong{ color: var(--amber); margin-right:5px; font-family: var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; }
+footer .copyright{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: var(--font-mono); }
+
+/* ==========================================================================
+   SCROLL REVEAL
+   ========================================================================== */
+.reveal{ opacity:0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible{ opacity:1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media(max-width:768px){
+    header{ padding:14px 5%; }
+    .menu-toggle{ display:block; }
+    nav{
+        display:flex; visibility:hidden; opacity:0; pointer-events:none;
+        position:absolute; top:100%; left:0; width:100%;
+        flex-direction:column; align-items:flex-start; gap:0;
+        background:#fff; border-top:1px solid var(--line);
+        box-shadow: 0 16px 30px rgba(0,0,0,0.08);
+        padding:10px 0; transform: translateY(-8px);
+        transition: all .25s ease;
+    }
+    nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform: translateY(0); }
+    nav a{ width:100%; padding:13px 6%; border-bottom:1px solid var(--line); }
+    nav a:last-child{ border-bottom:none; }
+    nav a.active::after{ display:none; }
+
+    .page-hero{ padding:120px 6% 64px; }
+    .detailed-ind-grid{ grid-template-columns: 1fr; }
+    .footer-details{ flex-direction:column; gap:8px; }
+}
+</style>
 </head>
+
 <body>
 
 <header>
     <div class="logo">
-        <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
+        <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'mark',textContent:'OT'}))">
         <span>Integra OT Technologies</span>
     </div>
-    <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">&#9776;</button>
+    <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
     <nav id="navbar">
         <a href="./index.html">Home</a>
         <a href="about.html">About</a>
@@ -73,41 +271,49 @@
     </nav>
 </header>
 
-<section class="industries-hero">
-    <h1>Tailored IT-OT Solutions</h1>
-    <p>Providing specialized data infrastructure architectures that strictly respect unique regulatory frameworks, asset operating constraints, and engineering protocols.</p>
+<section class="page-hero">
+    <div class="page-hero-inner">
+        <div class="eyebrow"><span class="dot"></span>Sector Expertise</div>
+        <h1>Tailored <em>IT‑OT</em> solutions for every plant floor</h1>
+        <p>Specialized data infrastructure architectures that strictly respect unique regulatory frameworks, asset operating constraints, and engineering protocols.</p>
+    </div>
 </section>
 
-<section class="section animated-block">
-    <div class="detailed-ind-grid">
-        <div class="industry-focus-card">
-            <img src="images/pharma.jpg" alt="Pharmaceutical">
-            <div class="ind-card-content">
+<section class="section reveal">
+    <div class="section-head">
+        <div class="section-eyebrow">Sectors</div>
+        <h2>Industries We Serve</h2>
+        <p>Domain-specific delivery shaped around the realities of each plant floor.</p>
+    </div>
+    <div class="cards detailed-ind-grid">
+        <div class="card">
+            <div class="card-media" style="--card-img:url('images/pharma.jpg')"><span class="tag">PHARMA</span></div>
+            <div class="card-body">
                 <h3>Pharmaceutical</h3>
                 <p>Ensuring absolute process data integrity, full visibility across critical environmental attributes, automated validation mapping layouts, and batch genealogy tracking.</p>
                 <div class="compliance-tags"><span class="comp-tag">FDA 21 CFR Part 11</span><span class="comp-tag">GAMP 5</span></div>
             </div>
         </div>
-        <div class="industry-focus-card">
-            <img src="images/oilgas.jpg" alt="Oil and Gas">
-            <div class="ind-card-content">
-                <h3>Oil & Gas</h3>
+        <div class="card">
+            <div class="card-media" style="--card-img:url('images/oilgas.jpg')"><span class="tag">OIL &amp; GAS</span></div>
+            <div class="card-body">
+                <h3>Oil &amp; Gas</h3>
                 <p>Aggregating highly distributed telemetry, pipeline monitoring loops, and process flow rates into secure enterprise historians to optimize production yield.</p>
                 <div class="compliance-tags"><span class="comp-tag">Telemetry</span><span class="comp-tag">Downstream</span></div>
             </div>
         </div>
-        <div class="industry-focus-card">
-            <img src="images/Petrochemicals.jpg" alt="Petrochemicals">
-            <div class="ind-card-content">
+        <div class="card">
+            <div class="card-media" style="--card-img:url('images/Petrochemicals.jpg')"><span class="tag">PETCHEM</span></div>
+            <div class="card-body">
                 <h3>Petrochemicals</h3>
                 <p>Engineering complex asset framework tracking loops, real-time mass balances, continuous process auditing, and high-availability infrastructure.</p>
                 <div class="compliance-tags"><span class="comp-tag">Mass Balance</span><span class="comp-tag">Cracking Analytics</span></div>
             </div>
         </div>
-        <div class="industry-focus-card">
-            <img src="images/power.jpg" alt="Power">
-            <div class="ind-card-content">
-                <h3>Power & Utilities</h3>
+        <div class="card">
+            <div class="card-media" style="--card-img:url('images/power.jpg')"><span class="tag">POWER</span></div>
+            <div class="card-body">
+                <h3>Power &amp; Utilities</h3>
                 <p>Tracking high-speed continuous thermal metrics, steam turbine degradation patterns, live utility boiler processing health, and actionable load profiling dashboards.</p>
                 <div class="compliance-tags"><span class="comp-tag">Thermal Efficiency</span><span class="comp-tag">Smart Grid</span></div>
             </div>
@@ -115,29 +321,62 @@
     </div>
 </section>
 
-<section class="cta-section animated-block">
-    <h2>Ready to Modernize<br><span>Your Plant Operations?</span></h2>
-    <p>Tell us about your OT environment. Our engineers will scope a solution tailored to your assets.</p>
-    <div class="cta-buttons">
-        <a href="contact.html" class="btn-primary">Start a Conversation</a>
-        <a href="services.html" class="btn-outline">View Services</a>
+<section class="cta-section reveal">
+    <div class="cta-inner">
+        <h2>Ready to modernize <em>your plant operations?</em></h2>
+        <p>Tell us about your OT environment. Our engineers will scope a solution tailored to your assets.</p>
+        <div class="cta-buttons">
+            <a href="contact.html" class="btn btn-primary">Start a Conversation</a>
+            <a href="services.html" class="btn btn-outline">View Services</a>
+        </div>
     </div>
 </section>
 
 <footer>
-    <div class="footer-logo">Integra OT Technologies</div>
     <div class="footer-tagline">Industrial Automation · AVEVA PI System · SCADA · Power BI · OT Cybersecurity</div>
     <div class="footer-details">
-        <p><strong>Email:</strong> info@integraottechnologies.com</p>
-        <p><strong>Website:</strong> www.integraottechnologies.com</p>
-        <p><strong>Address:</strong> Surat, Gujarat, India</p>
+        <p><strong>Email</strong> info@integraottechnologies.com</p>
+        <p><strong>Website</strong> www.integraottechnologies.com</p>
+        <p><strong>Address</strong> Surat, Gujarat, India</p>
     </div>
+    <p class="copyright">&copy; 2026 INTEGRA_OT // ALL RIGHTS RESERVED</p>
 </footer>
 
 <script>
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navbar = document.getElementById('navbar');
-    mobileMenu.addEventListener('click', () => { navbar.classList.toggle('active'); });
+(function(){
+    var mobileMenu = document.getElementById('mobile-menu');
+    var navbar = document.getElementById('navbar');
+
+    mobileMenu.addEventListener('click', function(){
+        var open = navbar.classList.toggle('active');
+        mobileMenu.innerHTML = open ? '&times;' : '&#9776;';
+        mobileMenu.setAttribute('aria-expanded', open);
+    });
+
+    navbar.querySelectorAll('a').forEach(function(link){
+        link.addEventListener('click', function(){
+            navbar.classList.remove('active');
+            mobileMenu.innerHTML = '&#9776;';
+            mobileMenu.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    var revealEls = document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+        var io = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if(entry.isIntersecting){
+                    entry.target.classList.add('is-visible');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(function(el){ io.observe(el); });
+    } else {
+        revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+    }
+})();
 </script>
+
 </body>
 </html>
