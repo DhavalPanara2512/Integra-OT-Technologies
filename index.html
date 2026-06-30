@@ -61,6 +61,16 @@ header{
     font-family: var(--font-mono); font-weight:600; font-size:13px; color: var(--amber);
     flex-shrink:0;
 }
+.logo-text{ display:flex; flex-direction:column; line-height:1.15; }
+.logo-text .logo-main{
+    font-family: var(--font-display); font-size:17px; font-weight:700;
+    letter-spacing:0.01em; color: var(--ink);
+}
+.logo-text .logo-main .accent{ color: var(--signal); }
+.logo-text .logo-tagline{
+    font-family: var(--font-body); font-size:10.5px; font-weight:500;
+    letter-spacing:0.01em; color: var(--mist); margin-top:1px;
+}
 .logo span{ font-family: var(--font-display); font-size:18px; font-weight:700; letter-spacing:-0.01em; }
 nav{ display:flex; align-items:center; gap:30px; }
 nav a{
@@ -325,8 +335,11 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12px; font-family: va
 
 <header>
     <div class="logo">
-        <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'mark',textContent:'OT'}))">
-        <span>Integra OT Technologies</span>
+        <div class="mark">OT</div>
+        <div class="logo-text">
+            <span class="logo-main">Integra <span class="accent">IT-OT Technologies</span></span>
+            <span class="logo-tagline">Integrate. Optimize. Transform.</span>
+        </div>
     </div>
     <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
     <nav id="navbar">
