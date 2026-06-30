@@ -210,12 +210,17 @@ nav a.active::after{
 /* ==========================================================================
    FOOTER
    ========================================================================== */
-footer{ background: var(--deep); padding:36px 20px 24px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
-.footer-tagline{ font-family: var(--font-mono); font-size:11.5px; color: rgba(255,255,255,0.4); letter-spacing:0.04em; margin-bottom:18px; }
-.footer-details{ display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-bottom:18px; }
+footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
+.footer-brand{ font-family: var(--font-display); font-size:24px; font-weight:700; color:#fff; margin-bottom:10px; }
+.footer-tagline{ font-family: var(--font-mono); font-size:12px; color: rgba(255,255,255,0.4); letter-spacing:0.04em; margin-bottom:30px; }
+.footer-nav{ display:flex; gap:34px; justify-content:center; flex-wrap:wrap; margin-bottom:30px; }
+.footer-nav a{ text-decoration:none; color: rgba(255,255,255,0.65); font-size:14.5px; font-weight:600; transition: color .2s ease; }
+.footer-nav a:hover{ color:#fff; }
+.footer-divider{ width:60px; height:1px; background: rgba(255,255,255,0.12); margin:0 auto 28px; }
+.footer-details{ display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin-bottom:22px; }
 .footer-details p{ color: rgba(255,255,255,0.55); font-size:13px; }
 .footer-details strong{ color: var(--amber); margin-right:5px; font-family: var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; }
-footer .copyright{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: var(--font-mono); }
+footer .copyright{ color: rgba(255,255,255,0.3); font-size:12px; font-family: var(--font-mono); letter-spacing:0.03em; }
 
 /* ==========================================================================
    SCROLL REVEAL
@@ -250,6 +255,7 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: 
     .page-hero{ padding:120px 6% 64px; }
     .detailed-ind-grid{ grid-template-columns: 1fr; }
     .footer-details{ flex-direction:column; gap:8px; }
+    .footer-nav{ gap:18px; }
 }
 </style>
 </head>
@@ -333,7 +339,16 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: 
 </section>
 
 <footer>
-    <div class="footer-tagline">Industrial Automation · AVEVA PI System · SCADA · Power BI · OT Cybersecurity</div>
+    <div class="footer-brand">Integra OT Technologies</div>
+    <div class="footer-tagline">INDUSTRIAL AUTOMATION · AVEVA PI SYSTEM · SCADA · POWER BI · OT CYBERSECURITY</div>
+    <nav class="footer-nav">
+        <a href="./index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-divider"></div>
     <div class="footer-details">
         <p><strong>Email</strong> info@integraottechnologies.com</p>
         <p><strong>Website</strong> www.integraottechnologies.com</p>
