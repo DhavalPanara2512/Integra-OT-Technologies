@@ -1,213 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services | Integra OT Technologies</title>
-    <meta name="description" content="Explore our specialized IT-OT integration, AVEVA PI System optimization, SCADA automation, OT Cybersecurity, and Annual Maintenance Contracts (AMC).">
-    <link rel="stylesheet" href="css/style.css?v=3.9">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;scroll-behavior:smooth;}
-        body{background:#f4f7fc;color:#1a2536;line-height:1.6;overflow-x:hidden;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Services | Integra OT Technologies</title>
+<meta name="description" content="Explore our specialized IT-OT integration, AVEVA PI System optimization, SCADA automation, OT Cybersecurity, and Annual Maintenance Contracts (AMC).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   TOKENS (shared with index.html)
+   ========================================================================== */
+:root{
+    --ink: #0d1420;
+    --mist: #5b6878;
+    --line: #e3e8ef;
+    --paper: #f6f8fb;
+    --deep: #0a0f1a;
+    --deep-2: #0d1b30;
+    --signal: #1e7fd6;
+    --signal-soft: rgba(30,127,214,0.12);
+    --amber: #ff9d2e;
+    --amber-soft: rgba(255,157,46,0.14);
+    --radius: 10px;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; }
 
-        /* ── HEADER ── */
-        header{position:fixed;top:0;left:0;width:100%;padding:18px 8%;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.08);z-index:1000;}
-        .logo{display:flex;align-items:center;gap:12px;}
-        .logo img{height:60px;width:auto;}
-        .logo span{font-size:24px;font-weight:700;color:#0088cc;}
-        nav{display:flex;gap:28px;}
-        nav a{text-decoration:none;color:#334155;font-size:16px;font-weight:600;transition:.3s;padding-bottom:3px;}
-        nav a:hover{color:#0088cc;}
-        nav a.active{color:#0088cc;border-bottom:2px solid #0088cc;}
-        .menu-toggle{display:none;}
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+header{
+    position: fixed; top:0; left:0; width:100%;
+    padding: 16px 6%;
+    display:flex; justify-content:space-between; align-items:center;
+    background: rgba(246,248,251,0.86);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    z-index: 1000;
+}
+.logo{ display:flex; align-items:center; gap:11px; }
+.logo img{ height: 34px; width:auto; border-radius: 7px; }
+.logo .mark{
+    width: 34px; height: 34px; border-radius: 7px;
+    background: var(--deep);
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--font-mono); font-weight:600; font-size:13px; color: var(--amber);
+    flex-shrink:0;
+}
+.logo span{ font-family: var(--font-display); font-size:18px; font-weight:700; letter-spacing:-0.01em; }
+nav{ display:flex; align-items:center; gap:30px; }
+nav a{
+    text-decoration:none; color: var(--mist);
+    font-size:14.5px; font-weight:600; letter-spacing:0.01em;
+    transition: color .2s ease;
+    position: relative; padding-bottom: 2px;
+}
+nav a:hover{ color: var(--ink); }
+nav a.active{ color: var(--signal); }
+nav a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background: var(--signal);
+}
+.menu-toggle{
+    display:none; background:none; border:none; font-size:24px; cursor:pointer; color: var(--ink);
+}
 
-        /* ── HERO ── */
-        .services-hero{
-            padding:160px 8% 80px;
-            background:linear-gradient(135deg,#07101f 0%,#0a1b3d 50%,#0d2858 100%);
-            text-align:center;position:relative;overflow:hidden;
-        }
-        .services-hero::before{
-            content:'';position:absolute;inset:0;
-            background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(0,136,204,0.35) 0%,transparent 70%);
-            pointer-events:none;
-        }
-        .services-hero::after{
-            content:'';position:absolute;bottom:-1px;left:0;width:100%;height:60px;
-            background:linear-gradient(to bottom,transparent,#f4f7fc);
-        }
-        .hero-badge{
-            display:inline-block;background:rgba(0,136,204,0.18);border:1px solid rgba(0,136,204,0.4);
-            color:#5bbfed;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-            padding:6px 16px;border-radius:100px;margin-bottom:20px;
-        }
-        .services-hero h1{font-size:clamp(32px,5vw,56px);font-weight:800;color:#fff;line-height:1.12;margin-bottom:18px;}
-        .services-hero h1 span{color:#38b2f4;}
-        .services-hero p{font-size:17px;color:rgba(255,255,255,0.6);max-width:600px;margin:0 auto 40px;line-height:1.75;}
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero{
+    padding: 168px 6% 80px;
+    background: var(--deep);
+    background-image: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(30,127,214,0.22) 0%, transparent 70%);
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+}
+.hero::before{
+    content:''; position:absolute; inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent 85%);
+    pointer-events:none;
+}
+.hero-inner{ position:relative; z-index:2; max-width: 760px; margin:0 auto; }
+.eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family: var(--font-mono); font-size:11.5px; font-weight:600; letter-spacing:0.1em;
+    text-transform:uppercase; color: var(--amber);
+    background: var(--amber-soft); border:1px solid rgba(255,157,46,0.3);
+    border-radius: 4px; padding:6px 12px; margin-bottom:22px;
+}
+.eyebrow .dot{ width:6px; height:6px; border-radius:50%; background: var(--amber); }
+.hero h1{
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4.6vw, 50px);
+    font-weight:700; line-height:1.15; letter-spacing:-0.01em;
+    margin-bottom:18px;
+}
+.hero h1 em{ font-style:normal; color: var(--signal); }
+.hero p{
+    font-size:16.5px; color: rgba(255,255,255,0.62); max-width:580px; margin:0 auto 44px;
+}
 
-        /* ── STATS BAR ── */
-        .stats-bar{
-            display:flex;justify-content:center;gap:0;max-width:820px;margin:0 auto;
-            background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
-            border-radius:14px;overflow:hidden;
-        }
-        .stat-item{flex:1;padding:22px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.1);}
-        .stat-item:last-child{border-right:none;}
-        .stat-num{font-size:32px;font-weight:800;color:#fff;line-height:1;}
-        .stat-num span{color:#38b2f4;}
-        .stat-label{font-size:12px;color:rgba(255,255,255,0.5);margin-top:5px;font-weight:500;letter-spacing:.04em;}
+/* stats bar - reuses pipeline visual language */
+.stats-bar{
+    display:grid; grid-template-columns: repeat(3, 1fr);
+    max-width: 720px; margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 30px;
+}
+.stat-item{ padding: 0 18px; border-right: 1px solid rgba(255,255,255,0.1); }
+.stat-item:last-child{ border-right:none; }
+.stat-num{ font-family: var(--font-display); font-size:30px; font-weight:700; color:#fff; line-height:1; }
+.stat-num em{ font-style:normal; color: var(--signal); }
+.stat-label{
+    font-family: var(--font-mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
+    color: rgba(255,255,255,0.4); margin-top:8px;
+}
 
-        /* ── SECTION WRAPPER ── */
-        .section{padding:80px 8%;}
-        .section-header{text-align:center;margin-bottom:54px;}
-        .eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0088cc;margin-bottom:12px;}
-        .section-header h2{font-size:clamp(28px,3.5vw,42px);font-weight:800;color:#0f172a;line-height:1.2;}
-        .section-header p{font-size:16px;color:#64748b;max-width:550px;margin:14px auto 0;line-height:1.7;}
+/* ==========================================================================
+   SECTION SHELLS
+   ========================================================================== */
+.section{ padding: 90px 6%; }
+.section-head{ max-width: 620px; margin: 0 auto 48px; text-align:center; }
+.section-eyebrow{
+    font-family: var(--font-mono); font-size:11.5px; font-weight:600; letter-spacing:0.1em;
+    text-transform:uppercase; color: var(--signal); margin-bottom:12px;
+}
+.section h2{
+    font-family: var(--font-display); font-size: clamp(26px, 3vw, 34px);
+    font-weight:700; letter-spacing:-0.01em; color: var(--ink); margin-bottom:10px;
+}
+.section-head p{ color: var(--mist); font-size:15px; }
 
-        /* ── SERVICES GRID ── */
-        .services-grid{
-            display:grid;grid-template-columns:1fr 1fr;gap:28px;
-            max-width:1100px;margin:0 auto;
-        }
-        .service-card{
-            background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:18px;
-            padding:36px;position:relative;overflow:hidden;
-            transition:all .35s cubic-bezier(.4,0,.2,1);
-        }
-        .service-card::before{
-            content:'';position:absolute;top:0;left:0;right:0;height:3px;
-            background:linear-gradient(90deg,#0088cc,#38b2f4);
-            transform:scaleX(0);transform-origin:left;transition:.35s;
-        }
-        .service-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(0,136,204,0.1);border-color:#b3dff5;}
-        .service-card:hover::before{transform:scaleX(1);}
-        .srv-icon{
-            width:52px;height:52px;background:#eff8ff;border-radius:13px;
-            display:flex;align-items:center;justify-content:center;margin-bottom:22px;
-            transition:background .3s;
-        }
-        .service-card:hover .srv-icon{background:#0088cc;}
-        .srv-icon svg{width:24px;height:24px;stroke:#0088cc;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s;}
-        .service-card:hover .srv-icon svg{stroke:#fff;}
-        .service-card h3{font-size:22px;font-weight:700;color:#0f172a;margin-bottom:12px;}
-        .service-card p{font-size:14.5px;color:#475569;line-height:1.72;margin-bottom:22px;}
-        .feature-list{list-style:none;display:flex;flex-direction:column;gap:9px;}
-        .feature-list li{font-size:13.5px;color:#334155;display:flex;align-items:flex-start;gap:9px;font-weight:500;line-height:1.5;}
-        .feature-list li::before{content:"\2713";color:#0088cc;font-weight:800;flex-shrink:0;margin-top:1px;}
+/* ==========================================================================
+   SERVICES GRID
+   ========================================================================== */
+.services-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap:24px;
+    max-width:1140px; margin:0 auto;
+}
+.service-card{
+    background:#fff; border:1px solid var(--line); border-radius: var(--radius);
+    padding:32px; position:relative; overflow:hidden;
+    transition: border-color .2s ease, transform .2s ease;
+}
+.service-card::before{
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--signal), var(--amber));
+    transform: scaleX(0); transform-origin:left; transition: transform .3s ease;
+}
+.service-card:hover{ transform: translateY(-3px); border-color: rgba(30,127,214,0.3); }
+.service-card:hover::before{ transform: scaleX(1); }
+.srv-icon{
+    width:46px; height:46px; background: var(--signal-soft); border-radius:10px;
+    display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+    transition: background .2s ease;
+}
+.service-card:hover .srv-icon{ background: var(--signal); }
+.srv-icon svg{ width:22px; height:22px; stroke: var(--signal); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; transition: stroke .2s ease; }
+.service-card:hover .srv-icon svg{ stroke:#fff; }
+.service-card h3{ font-family: var(--font-display); font-size:19.5px; font-weight:700; color: var(--ink); margin-bottom:11px; }
+.service-card p{ font-size:14px; color: var(--mist); line-height:1.7; margin-bottom:20px; }
+.feature-list{ list-style:none; display:flex; flex-direction:column; gap:9px; }
+.feature-list li{
+    font-size:13.5px; color: var(--ink); display:flex; align-items:flex-start; gap:9px;
+    font-weight:500; line-height:1.5;
+}
+.feature-list li::before{
+    content:"\2713"; color: var(--signal); font-weight:800; flex-shrink:0; margin-top:1px;
+}
 
-        /* ── TRUST SECTION ── */
-        .trust-section{padding:80px 8%;background:#fff;}
-        .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1100px;margin:0 auto;}
-        .trust-card{
-            background:#f8fafc;border:1px solid rgba(0,0,0,0.05);border-radius:16px;
-            padding:28px 22px;text-align:center;transition:.35s;
-        }
-        .trust-card:hover{background:#fff;border-color:#b3dff5;box-shadow:0 10px 30px rgba(0,136,204,0.08);transform:translateY(-4px);}
-        .trust-icon{width:56px;height:56px;background:#eff8ff;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
-        .trust-icon svg{width:26px;height:26px;stroke:#0088cc;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-        .trust-card h4{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:8px;}
-        .trust-card p{font-size:13px;color:#64748b;line-height:1.65;}
+.section.alt{ background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 
-        /* ── PROCESS SECTION ── */
-        .process-section{padding:80px 8%;background:linear-gradient(135deg,#f0f7ff 0%,#f4f7fc 100%);}
-        .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto;}
-        .process-card{
-            background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:16px;
-            padding:32px 26px;transition:.35s;
-        }
-        .process-card:hover{transform:translateY(-6px);border-color:#0088cc;box-shadow:0 16px 40px rgba(0,136,204,0.1);}
-        .step-num{
-            font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
-            color:#0088cc;background:#eff8ff;display:inline-block;
-            padding:5px 12px;border-radius:100px;margin-bottom:18px;
-        }
-        .p-icon{width:44px;height:44px;background:#f8fafc;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
-        .p-icon svg{width:20px;height:20px;stroke:#0088cc;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-        .process-card h3{font-size:19px;font-weight:700;color:#0f172a;margin-bottom:11px;}
-        .process-card p{font-size:14px;color:#475569;line-height:1.75;}
+/* ==========================================================================
+   TRUST GRID (Why Us)
+   ========================================================================== */
+.trust-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:20px; max-width:1140px; margin:0 auto; }
+.trust-card{
+    background: var(--paper); border:1px solid var(--line); border-radius: var(--radius);
+    padding:26px 22px; text-align:center; transition: all .2s ease;
+}
+.trust-card:hover{ background:#fff; border-color: rgba(30,127,214,0.3); transform: translateY(-3px); }
+.trust-icon{
+    width:50px; height:50px; background: var(--signal-soft); border-radius:11px;
+    display:flex; align-items:center; justify-content:center; margin:0 auto 16px;
+}
+.trust-icon svg{ width:24px; height:24px; stroke: var(--signal); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.trust-card h4{ font-family: var(--font-display); font-size:15.5px; font-weight:700; color: var(--ink); margin-bottom:8px; }
+.trust-card p{ font-size:13px; color: var(--mist); line-height:1.65; }
 
-        /* ── CTA SECTION ── */
-        .cta-section{
-            padding:80px 8%;
-            background:linear-gradient(135deg,#0a1628 0%,#0d2045 50%,#0f2d60 100%);
-            text-align:center;position:relative;overflow:hidden;
-        }
-        .cta-section::before{
-            content:'';position:absolute;inset:0;
-            background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(0,136,204,0.25) 0%,transparent 70%);
-        }
-        .cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto;}
-        .cta-section h2{font-size:clamp(26px,4vw,44px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px;}
-        .cta-section h2 span{color:#38b2f4;}
-        .cta-section p{font-size:16px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:36px;}
-        .cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-        .btn-primary{
-            display:inline-flex;align-items:center;gap:8px;
-            background:#0088cc;color:#fff;text-decoration:none;
-            padding:14px 30px;border-radius:10px;font-weight:700;font-size:15px;
-            transition:.3s;border:2px solid #0088cc;
-        }
-        .btn-primary:hover{background:#006fa5;border-color:#006fa5;transform:translateY(-2px);}
-        .btn-outline{
-            display:inline-flex;align-items:center;gap:8px;
-            background:transparent;color:#fff;text-decoration:none;
-            padding:14px 30px;border-radius:10px;font-weight:700;font-size:15px;
-            border:2px solid rgba(255,255,255,0.3);transition:.3s;
-        }
-        .btn-outline:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.5);}
+/* ==========================================================================
+   PROCESS
+   ========================================================================== */
+.process-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; max-width:1140px; margin:0 auto; position: relative; }
+.process-card{
+    background:#fff; border:1px solid var(--line); border-radius: var(--radius);
+    padding:30px 26px; transition: all .2s ease;
+}
+.process-card:hover{ transform: translateY(-3px); border-color: rgba(30,127,214,0.3); }
+.step-num{
+    font-family: var(--font-mono); font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+    color: var(--signal); background: var(--signal-soft);
+    display:inline-block; padding:5px 12px; border-radius:4px; margin-bottom:18px;
+}
+.p-icon{ width:42px; height:42px; background: var(--paper); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+.p-icon svg{ width:20px; height:20px; stroke: var(--signal); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.process-card h3{ font-family: var(--font-display); font-size:18.5px; font-weight:700; color: var(--ink); margin-bottom:11px; }
+.process-card p{ font-size:14px; color: var(--mist); line-height:1.75; }
 
-        /* ── FOOTER ── */
-        footer{
-            background:linear-gradient(180deg,rgba(248,250,252,.5) 0%,rgba(241,245,249,.65) 100%),
-                url('images/industrial-bg.jpg') center/cover no-repeat;
-            padding:70px 8%;text-align:center;border-top:2px solid #0088cc;
-        }
-        .footer-logo{font-size:26px;font-weight:800;color:#0088cc;margin-bottom:8px;}
-        .footer-tagline{font-size:13px;color:#94a3b8;letter-spacing:.08em;text-transform:uppercase;margin-bottom:28px;}
-        .footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:28px;flex-wrap:wrap;}
-        .footer-links a{color:#475569;font-size:14px;font-weight:600;text-decoration:none;transition:.3s;}
-        .footer-links a:hover{color:#0088cc;}
-        .footer-divider{width:60px;height:2px;background:#0088cc;margin:0 auto 28px;}
-        .footer-details p{color:#475569;font-size:14.5px;margin:7px 0;}
-        .footer-details strong{color:#0088cc;margin-right:4px;}
+/* ==========================================================================
+   CTA
+   ========================================================================== */
+.cta-section{
+    padding: 100px 6%;
+    background-color: var(--deep);
+    background-image: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(30,127,214,0.22) 0%, transparent 70%);
+    text-align:center; position:relative; overflow:hidden;
+}
+.cta-inner{ position:relative; z-index:1; max-width:640px; margin:0 auto; }
+.cta-section h2{
+    font-family: var(--font-display); font-size: clamp(26px, 4vw, 40px);
+    font-weight:700; color:#fff; line-height:1.2; margin-bottom:16px; letter-spacing:-0.01em;
+}
+.cta-section h2 em{ font-style:normal; color: var(--signal); }
+.cta-section p{ font-size:15.5px; color: rgba(255,255,255,0.6); line-height:1.75; margin-bottom:34px; }
+.cta-buttons{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+.btn{
+    padding:13px 26px; border-radius:7px; font-size:14.5px; font-weight:600;
+    text-decoration:none; transition: all .2s ease; display:inline-flex; align-items:center; gap:8px;
+}
+.btn-primary{ background: var(--signal); color:#fff; }
+.btn-primary:hover{ background:#1a6fbb; transform: translateY(-1px); }
+.btn-outline{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.22); }
+.btn-outline:hover{ border-color: rgba(255,255,255,0.5); }
 
-        /* ── RESPONSIVE ── */
-        @media(max-width:900px){
-            .trust-grid{grid-template-columns:1fr 1fr;}
-        }
-        @media(max-width:768px){
-            header{padding:15px 5%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.05);}
-            .logo span{font-size:18px;}.logo img{height:45px;}
-            .menu-toggle{display:block;background:none;border:none;font-size:28px;font-weight:bold;cursor:pointer;color:#0088cc;z-index:1001;}
-            .menu-toggle:focus{outline:none;}
-            nav{display:flex;visibility:hidden;opacity:0;pointer-events:none;position:absolute;top:100%;left:0;width:100%;flex-direction:column;text-align:left;background:#fff;box-shadow:0 15px 25px rgba(0,0,0,.08);border-top:1px solid rgba(0,0,0,.05);padding:15px 0;transform:translateY(-10px);transition:all .3s cubic-bezier(.4,0,.2,1);}
-            nav.active{visibility:visible;opacity:1;pointer-events:auto;transform:translateY(0);}
-            nav a{padding:14px 8%;width:100%;font-size:16px;color:#334155;border-bottom:1px solid rgba(0,0,0,.02);}
-            nav a:last-child{border-bottom:none;}
-            nav a.active{background:#f0f7ff!important;color:#0088cc!important;padding-left:10%;border-bottom:none!important;}
-            .stats-bar{flex-direction:column;gap:0;}
-            .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1);}
-            .stat-item:last-child{border-bottom:none;}
-            .services-grid{grid-template-columns:1fr;gap:20px;}
-            .service-card{padding:26px 20px;}
-            .process-grid{grid-template-columns:1fr;}
-            .trust-grid{grid-template-columns:1fr 1fr;}
-            .section{padding:60px 5%;}
-            .cta-section{padding:60px 5%;}
-            footer{padding:60px 5%;}
-            .footer-links{gap:18px;}
-        }
-        @media(max-width:480px){.trust-grid{grid-template-columns:1fr;}}
-    </style>
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer{
+    position:relative; padding: 70px 6% 30px;
+    background-color: var(--deep);
+    background-image:
+        linear-gradient(rgba(10,15,26,0.92), rgba(10,15,26,0.92)),
+        url('images/industrial-bg.jpg');
+    background-size: cover; background-position: center;
+    text-align:center;
+}
+.footer-logo{ font-family: var(--font-display); font-size:22px; font-weight:700; color:#fff; margin-bottom:8px; }
+.footer-tagline{
+    font-family: var(--font-mono); font-size:11.5px; color: rgba(255,255,255,0.4);
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:30px;
+}
+.footer-links{ display:flex; justify-content:center; gap:30px; margin-bottom:30px; flex-wrap:wrap; }
+.footer-links a{ color: rgba(255,255,255,0.65); font-size:14px; font-weight:600; text-decoration:none; transition: color .2s ease; }
+.footer-links a:hover{ color: var(--signal); }
+.footer-divider{ width:48px; height:1px; background: rgba(255,255,255,0.18); margin:0 auto 26px; }
+.footer-details p{ color: rgba(255,255,255,0.55); font-size:13.5px; margin:6px 0; }
+.footer-details strong{ font-family: var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; color: var(--amber); margin-right:6px; }
+.footer-base{ margin-top:36px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.06); }
+.footer-base p{ color: rgba(255,255,255,0.3); font-size:12.5px; font-family: var(--font-mono); }
+
+/* ==========================================================================
+   SCROLL REVEAL
+   ========================================================================== */
+.reveal{ opacity:0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible{ opacity:1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media(max-width:900px){
+    .trust-grid{ grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:768px){
+    header{ padding:14px 5%; }
+    .menu-toggle{ display:block; }
+    nav{
+        display:flex; visibility:hidden; opacity:0; pointer-events:none;
+        position:absolute; top:100%; left:0; width:100%;
+        flex-direction:column; align-items:flex-start; gap:0;
+        background:#fff; border-top:1px solid var(--line);
+        box-shadow: 0 16px 30px rgba(0,0,0,0.08);
+        padding:10px 0; transform: translateY(-8px);
+        transition: all .25s ease;
+    }
+    nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform: translateY(0); }
+    nav a{ width:100%; padding:13px 6%; border-bottom:1px solid var(--line); }
+    nav a:last-child{ border-bottom:none; }
+    nav a.active::after{ display:none; }
+
+    .hero{ padding:120px 6% 56px; }
+    .stats-bar{ grid-template-columns: 1fr; gap:18px; }
+    .stat-item{ border-right:none; padding:0; }
+    .services-grid{ grid-template-columns:1fr; }
+    .process-grid{ grid-template-columns:1fr; }
+    .trust-grid{ grid-template-columns: 1fr 1fr; }
+    .section{ padding: 60px 5%; }
+    .cta-section{ padding: 64px 5%; }
+    footer{ padding: 56px 5% 26px; }
+    .footer-links{ gap:18px; }
+}
+@media(max-width:480px){
+    .trust-grid{ grid-template-columns: 1fr; }
+}
+</style>
 </head>
+
 <body>
 
 <header>
     <div class="logo">
-        <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.style.display='none'">
+        <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'mark',textContent:'OT'}))">
         <span>Integra OT Technologies</span>
     </div>
-    <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">&#9776;</button>
+    <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
     <nav id="navbar">
         <a href="./index.html">Home</a>
         <a href="about.html">About</a>
@@ -217,19 +345,17 @@
     </nav>
 </header>
 
-<!-- HERO -->
-<section class="services-hero">
-    <div class="hero-badge">Our Capabilities</div>
-    <h1>Engineering Services That<br><span>Power Industrial Operations</span></h1>
-    <p>High-performance data solutions built for operational scale — protecting asset boundaries and delivering actionable plant metrics from sensor to boardroom.</p>
-    <div class="stats-bar">
+<section class="hero">
+    <div class="hero-inner">
+        <div class="eyebrow"><span class="dot"></span>Our Capabilities</div>
+        <h1>Engineering services that <em>power industrial operations</em></h1>
+        <p>High-performance data solutions built for operational scale — protecting asset boundaries and delivering actionable plant metrics from sensor to boardroom.</p>
     </div>
 </section>
 
-<!-- SERVICES GRID -->
-<section class="section">
-    <div class="section-header">
-        <div class="eyebrow">What We Do</div>
+<section class="section reveal">
+    <div class="section-head">
+        <div class="section-eyebrow">What We Do</div>
         <h2>Our Core Service Lines</h2>
         <p>Each engagement is scoped, staffed, and executed by engineers with deep OT domain expertise.</p>
     </div>
@@ -320,13 +446,26 @@
             </ul>
         </div>
 
+        <div class="service-card">
+            <div class="srv-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3>On-Site PI System Deployment</h3>
+            <p>Dedicated engineers deployed directly at your office or plant location — anywhere your operations are based — for hands-on PI System setup, configuration, and go-live support.</p>
+            <ul class="feature-list">
+                <li>Engineer Deployment at Client Office / Plant Site</li>
+                <li>On-Site Installation &amp; Commissioning Support</li>
+                <li>Pan-India &amp; Cross-Location Project Coverage</li>
+                <li>Hybrid On-Site + Remote Delivery Models</li>
+            </ul>
+        </div>
+
     </div>
 </section>
 
-<!-- WHY US -->
-<section class="trust-section">
-    <div class="section-header">
-        <div class="eyebrow">Why Partner With Us</div>
+<section class="section alt reveal">
+    <div class="section-head">
+        <div class="section-eyebrow">Why Partner With Us</div>
         <h2>The Integra Advantage</h2>
         <p>We bring more than technical skills — we bring deep industry context and a commitment to long-term outcomes.</p>
     </div>
@@ -362,10 +501,9 @@
     </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process-section">
-    <div class="section-header">
-        <div class="eyebrow">Execution Framework</div>
+<section class="section reveal">
+    <div class="section-head">
+        <div class="section-eyebrow">Execution Framework</div>
         <h2>How We Deploy Solutions</h2>
         <p>A structured three-phase approach that minimizes risk and maximizes speed-to-value.</p>
     </div>
@@ -397,17 +535,16 @@
     </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section">
+<section class="cta-section reveal">
     <div class="cta-inner">
-        <h2>Ready to Modernize<br><span>Your Plant Operations?</span></h2>
+        <h2>Ready to modernize <em>your plant operations?</em></h2>
         <p>Tell us about your OT environment. Our engineers will scope a solution tailored to your assets, constraints, and operational goals — no generic proposals.</p>
         <div class="cta-buttons">
-            <a href="contact.html" class="btn-primary">
+            <a href="contact.html" class="btn btn-primary">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1.01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                 Start a Conversation
             </a>
-            <a href="industries.html" class="btn-outline">
+            <a href="industries.html" class="btn btn-outline">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 View Industries
             </a>
@@ -415,7 +552,6 @@
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <div class="footer-logo">Integra OT Technologies</div>
     <div class="footer-tagline">Industrial Automation · AVEVA PI System · SCADA · Power BI · OT Cybersecurity</div>
@@ -428,25 +564,50 @@
     </div>
     <div class="footer-divider"></div>
     <div class="footer-details">
-        <p><strong>Email:</strong> info@integraottechnologies.com</p>
-        <p><strong>Website:</strong> www.integraottechnologies.com</p>
-        <p><strong>Address:</strong> Surat, Gujarat, India</p>
+        <p><strong>Email</strong> info@integraottechnologies.com</p>
+        <p><strong>Website</strong> www.integraottechnologies.com</p>
+        <p><strong>Address</strong> Surat, Gujarat, India</p>
+    </div>
+    <div class="footer-base">
+        <p>&copy; 2026 INTEGRA_OT // ALL RIGHTS RESERVED</p>
     </div>
 </footer>
 
 <script>
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navbar = document.getElementById('navbar');
-    mobileMenu.addEventListener('click', () => {
-        navbar.classList.toggle('active');
-        mobileMenu.innerHTML = navbar.classList.contains('active') ? '&times;' : '&#9776;';
+(function(){
+    var mobileMenu = document.getElementById('mobile-menu');
+    var navbar = document.getElementById('navbar');
+
+    mobileMenu.addEventListener('click', function(){
+        var open = navbar.classList.toggle('active');
+        mobileMenu.innerHTML = open ? '&times;' : '&#9776;';
+        mobileMenu.setAttribute('aria-expanded', open);
     });
-    document.querySelectorAll('#navbar a').forEach(link => {
-        link.addEventListener('click', () => {
+
+    navbar.querySelectorAll('a').forEach(function(link){
+        link.addEventListener('click', function(){
             navbar.classList.remove('active');
             mobileMenu.innerHTML = '&#9776;';
+            mobileMenu.setAttribute('aria-expanded', 'false');
         });
     });
+
+    var revealEls = document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+        var io = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if(entry.isIntersecting){
+                    entry.target.classList.add('is-visible');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealEls.forEach(function(el){ io.observe(el); });
+    } else {
+        revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+    }
+})();
 </script>
+
 </body>
 </html>
