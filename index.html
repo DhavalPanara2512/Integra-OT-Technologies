@@ -68,10 +68,6 @@ header{
     letter-spacing:0.01em; color: var(--ink);
 }
 .logo-text .logo-main .accent{ color: var(--signal); }
-.logo-text .logo-tagline{
-    font-family: var(--font-body); font-size:10.5px; font-weight:500;
-    letter-spacing:0.01em; color: var(--mist); margin-top:1px;
-}
 nav{ display:flex; align-items:center; gap:30px; }
 nav a{
     color: var(--mist); font-size:14.5px; font-weight:600; letter-spacing:0.01em;
@@ -243,6 +239,9 @@ nav a.active::after{
 .social-link.linkedin span{ background: var(--signal); color:#fff; font-weight:700; padding:2px 6px; border-radius:3px; font-size:11px; }
 .social-link.linkedin:hover{ border-color: rgba(255,255,255,0.32); background: rgba(255,255,255,0.07); }
 
+/* ==========================================================================
+   FOOTER FRAME & OVERRIDES
+   ========================================================================== */
 .contact-form-holder{
     background:#fff; border-radius: 14px; padding:38px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.35);
@@ -265,9 +264,6 @@ nav a.active::after{
 }
 .submit-btn:hover{ background:#1a6fbb; }
 
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
 footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
 .footer-brand{ font-family: var(--font-display); font-size:24px; font-weight:700; color:#fff; margin-bottom:10px; }
 .footer-tagline{ font-family: var(--font-mono); font-size:12px; color: rgba(255,255,255,0.4); letter-spacing:0.04em; margin-bottom:30px; }
@@ -279,6 +275,13 @@ footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border
 .footer-details p{ color: rgba(255,255,255,0.55); font-size:13px; }
 .footer-details strong{ color: var(--amber); margin-right:5px; font-family: var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; }
 footer .copyright{ color: rgba(255,255,255,0.3); font-size:12px; font-family: var(--font-mono); letter-spacing:0.03em; }
+
+/* FIX: Absolute enforcement loop ensuring mobile queries don't clip footer layout anchors */
+footer a {
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
 
 /* ==========================================================================
    SCROLL REVEAL
@@ -300,7 +303,9 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12px; font-family: va
 @media(max-width:768px){
     header{ padding:14px 5%; }
     .menu-toggle{ display:block; }
-    nav{
+    
+    /* Target only the top main header navigation tracker list */
+    header nav{
         display:flex; visibility:hidden; opacity:0; pointer-events:none;
         position:absolute; top:100%; left:0; width:100%;
         flex-direction:column; align-items:flex-start; gap:0;
@@ -309,10 +314,10 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12px; font-family: va
         padding:10px 0; transform: translateY(-8px);
         transition: all .25s ease;
     }
-    nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform: translateY(0); }
-    nav a{ width:100%; padding:13px 6%; border-bottom:1px solid var(--line); }
-    nav a:last-child{ border-bottom:none; }
-    nav a.active::after{ display:none; }
+    header nav.active{ visibility:visible; opacity:1; pointer-events:auto; transform: translateY(0); }
+    header nav a{ width:100%; padding:13px 6%; border-bottom:1px solid var(--line); color: var(--mist) !important; }
+    header nav a:last-child{ border-bottom:none; }
+    header nav a.active::after{ display:none; }
 
     .hero{ padding:120px 6% 64px; }
     .hero-btn-group{ flex-direction:column; }
@@ -334,7 +339,6 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12px; font-family: va
         <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'mark',textContent:'OT'}))">
         <div class="logo-text">
             <span class="logo-main">Integra <span class="accent">IT-OT Technologies</span></span>
-            <span class="logo-tagline">Integrate. Optimize. Transform.</span>
         </div>
     </div>
     <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
@@ -482,6 +486,41 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12px; font-family: va
         </div>
     </div>
 </section>
+
+<section class="bottom-split-section">
+    <div class="split-container">
+        <div class="info-left-panel">
+            <h2>Start Your Transformation</h2>
+            <div class="subtitle">Connect with an execution engineer to plan your industrial data framework.</div>
+            <div class="details-list">
+                <p><strong>Email</strong> info@integraottechnologies.com</p>
+                <p><strong>Website</strong> www.integraottechnologies.com</p>
+                <p><strong>Address</strong> Surat, Gujarat, India</p>
+            </div>
+            <a href="https://linkedin.com" target="_blank" class="social-link linkedin">
+                Connect on LinkedIn <span>in</span>
+            </a>
+        </div>
+        <div class="contact-form-holder">
+            <form action="#">
+                <div class="form-group">
+                    <label for="form-name">Full Name</label>
+                    <input type="text" id="form-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="form-email">Corporate Email</label>
+                    <input type="email" id="form-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="form-msg">Message / Scope Details</label>
+                    <textarea id="form-msg" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Enquiry</button>
+            </form>
+        </div>
+    </div>
+</section>
+
 <footer>
     <div class="footer-brand">Integra OT Technologies</div>
     <div class="footer-tagline">INDUSTRIAL AUTOMATION · AVEVA PI SYSTEM · SCADA · POWER BI · OT CYBERSECURITY</div>
@@ -512,6 +551,7 @@ footer .copyright{ color: rgba(255,255,255,0.3); font-size:12px; font-family: va
         mobileMenu.setAttribute('aria-expanded', open);
     });
 
+    // Handle standard mobile touch menu closures
     navbar.querySelectorAll('a').forEach(function(link){
         link.addEventListener('click', function(){
             navbar.classList.remove('active');
