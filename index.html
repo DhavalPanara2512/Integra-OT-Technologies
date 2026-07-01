@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Integra OT Technologies | Industrial Intelligence &amp; Digital Transformation</title>
 <meta name="description" content="Integra OT Technologies provides Industrial Automation, AVEVA PI System, SCADA, Power BI, OT Cybersecurity and Digital Transformation solutions.">
-<link rel="icon" type="image/png" href="images/favicon.png">
+
+<link rel="icon" type="image/png" sizes="32x32" href="https://integraottechnologies.com/images/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://integraottechnologies.com/images/favicon.png">
+<link rel="apple-touch-icon" href="https://integraottechnologies.com/images/favicon.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -136,7 +140,7 @@ nav a.active::after{
 .btn-outline{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.22); }
 .btn-outline:hover{ border-color: rgba(255,255,255,0.5); }
 
-/* signature: pipeline schematic */
+/* pipeline schematic - Data stream logic aligned center-to-center */
 .pipeline{
     border-top: 1px solid rgba(255,255,255,0.1);
     padding-top: 34px;
@@ -150,17 +154,90 @@ nav a.active::after{
     position: relative;
 }
 .pipeline-row svg.connector{
-    position:absolute; top:19px; left:0; width:100%; height:2px; z-index:0;
+    position:absolute; top:19px; left:10%; width:80%; height:2px; z-index:0;
 }
+
+/* moving dash current animation */
+.pipeline-row svg.connector .flow-line{
+    stroke-dasharray: 6 6;
+    animation: dashMove 1.4s linear infinite;
+}
+@keyframes dashMove{
+    from{ stroke-dashoffset: 24; }
+    to{ stroke-dashoffset: 0; }
+}
+
+/* Data Flow Packets Wrapper */
+.data-flow{
+    position:absolute; top:19px; left:10%; width:80%; height:0; z-index:1; pointer-events:none;
+}
+.data-flow .packet{
+    position:absolute; 
+    top:0; 
+    left:0; 
+    width:9px; 
+    height:9px; 
+    margin-left:-4.5px; 
+    margin-top:-4.5px;
+    border-radius:50%; 
+    background: var(--signal);
+    box-shadow: 0 0 8px 2px rgba(30,127,214,0.9), 0 0 20px 6px rgba(30,127,214,0.35);
+    opacity:0;
+    animation: flowPacket 4s linear infinite;
+}
+.data-flow .packet.p2{
+    background: var(--amber);
+    box-shadow: 0 0 8px 2px rgba(255,157,46,0.9), 0 0 20px 6px rgba(255,157,46,0.35);
+    animation-delay: 1.33s;
+}
+.data-flow .packet.p3{ 
+    animation-delay: 2.66s; 
+}
+
+@keyframes flowPacket {
+    0% { left: 0%; opacity: 0; }
+    5% { opacity: 1; }
+    95% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
 .pipeline-node{ position:relative; z-index:1; display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
 .pipeline-node .node-dot{
     width:38px; height:38px; border-radius:50%; background: var(--deep-2);
     border:1px solid rgba(255,255,255,0.16);
     display:flex; align-items:center; justify-content:center;
     font-family: var(--font-mono); font-size:12px; color: var(--signal); font-weight:600;
+    animation: nodePulse 4s ease infinite;
 }
+
+/* Synchronized node flashes based on packet placement timelines */
+.pipeline-node:nth-child(3) .node-dot{ animation-delay: 0s;   }
+.pipeline-node:nth-child(4) .node-dot{ animation-delay: 1s;   }
+.pipeline-node:nth-child(5) .node-dot{ animation-delay: 2s;   }
+.pipeline-node:nth-child(6) .node-dot{ animation-delay: 3s;   }
+.pipeline-node:nth-child(7) .node-dot{ animation-delay: 4s;   }
+
+@keyframes nodePulse{
+    0%, 100%{
+        border-color: rgba(30,127,214,0.9);
+        box-shadow: 0 0 0 6px rgba(30,127,214,0.18), 0 0 16px 4px rgba(30,127,214,0.5);
+        color:#fff;
+    }
+    15%, 85%{
+        border-color: rgba(255,255,255,0.16);
+        box-shadow: 0 0 0 0 rgba(30,127,214,0);
+        color: var(--signal);
+    }
+}
+
 .pipeline-node .node-label{ font-size:12.5px; color: rgba(255,255,255,0.55); font-weight:500; }
 .pipeline-node .node-label b{ display:block; color:#fff; font-size:13.5px; font-weight:600; margin-bottom:1px; }
+
+@media (prefers-reduced-motion: reduce){
+    .data-flow .packet,
+    .pipeline-row svg.connector .flow-line,
+    .pipeline-node .node-dot{ animation: none !important; opacity:1; }
+}
 
 /* ==========================================================================
    SECTION SHELLS
@@ -207,67 +284,8 @@ nav a.active::after{
 .section.alt{ background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 
 /* ==========================================================================
-   ENQUIRY / CONTACT
+   FOOTER STRUCTURE
    ========================================================================== */
-.bottom-split-section{
-    position:relative; padding: 100px 6%;
-    background-color: var(--deep);
-    background-image: linear-gradient(rgba(10,15,26,0.92), rgba(10,15,26,0.92)), url('images/industrial-bg.jpg');
-    background-size: cover; background-position: center;
-    overflow:hidden;
-}
-.bottom-split-section::before{
-    content:''; position:absolute; inset:0;
-    background-image: radial-gradient(ellipse 60% 50% at 100% 0%, rgba(30,127,214,0.16) 0%, transparent 70%);
-    pointer-events:none;
-}
-.split-container{
-    position:relative; z-index:2; max-width:1140px; margin:0 auto;
-    display:grid; grid-template-columns: 1.1fr 1fr; gap:64px; align-items:center;
-}
-.info-left-panel{ text-align:left; color:#fff; }
-.info-left-panel h2{ font-family: var(--font-display); font-size: clamp(26px,3vw,34px); font-weight:700; margin-bottom:12px; }
-.info-left-panel .subtitle{ font-size:14px; color: rgba(255,255,255,0.5); font-weight:500; margin-bottom:30px; line-height:1.6; }
-.details-list{ display:flex; flex-direction:column; gap:13px; margin-bottom:32px; }
-.details-list p{ font-size:14.5px; color: rgba(255,255,255,0.78); display:flex; gap:10px; }
-.details-list strong{
-    font-family: var(--font-mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
-    color: var(--amber); width:78px; flex-shrink:0; padding-top:2px;
-}
-.social-link.linkedin{
-    display:inline-flex; align-items:center; gap:10px;
-    background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.14);
-    color:#fff; padding:11px 22px; border-radius:7px;
-    font-size:13.5px; font-weight:600; transition: all .2s ease;
-}
-.social-link.linkedin span{ background: var(--signal); color:#fff; font-weight:700; padding:2px 6px; border-radius:3px; font-size:11px; }
-.social-link.linkedin:hover{ border-color: rgba(30,127,214,0.3); background: rgba(255,255,255,0.07); }
-
-/* ==========================================================================
-   FOOTER FRAME & OVERRIDES
-   ========================================================================== */
-.contact-form-holder{
-    background:#fff; border-radius: 14px; padding:38px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-}
-.form-group{ margin-bottom:18px; display:flex; flex-direction:column; gap:7px; text-align:left; }
-.form-group label{ font-size:12.5px; font-weight:600; color: var(--ink); }
-.form-group input, .form-group textarea{
-    padding:11px 14px; font-size:14.5px; border:1px solid var(--line); border-radius:7px;
-    background: var(--paper); color: var(--ink); transition: all .2s ease; width:100%;
-    font-family: var(--font-body);
-}
-.form-group input:focus, .form-group textarea:focus{
-    outline: 2px solid transparent; border-color: var(--signal); background:#fff;
-    box-shadow: 0 0 0 3px var(--signal-soft);
-}
-.submit-btn{
-    background: var(--signal); color:#fff; border:none; padding:13px 28px;
-    font-size:15px; font-weight:600; border-radius:7px; cursor:pointer;
-    transition: background .2s ease; width:100%; font-family: var(--font-body);
-}
-.submit-btn:hover{ background:#1a6fbb; }
-
 footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
 .footer-brand{ font-family: var(--font-display); font-size:24px; font-weight:700; color:#fff; margin-bottom:10px; }
 .footer-tagline{ font-family: var(--font-mono); font-size:12px; color: rgba(255,255,255,0.4); letter-spacing:0.04em; margin-bottom:30px; }
@@ -280,7 +298,6 @@ footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border
 .footer-details strong{ color: var(--amber); margin-right:5px; font-family: var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; }
 footer .copyright{ color: rgba(255,255,255,0.3); font-size:12px; font-family: var(--font-mono); letter-spacing:0.03em; }
 
-/* FIX: Absolute enforcement loop ensuring mobile queries don't clip footer layout anchors */
 footer a {
     visibility: visible !important;
     opacity: 1 !important;
@@ -302,13 +319,12 @@ footer a {
    ========================================================================== */
 @media(max-width:900px){
     .pipeline-row{ grid-template-columns: repeat(3, 1fr); row-gap:28px; }
-    .pipeline-row svg.connector{ display:none; }
+    .pipeline-row svg.connector, .data-flow { display:none; }
 }
 @media(max-width:768px){
     header{ padding:14px 5%; }
     .menu-toggle{ display:block; }
     
-    /* Target only the top main header navigation tracker list */
     header nav{
         display:flex; visibility:hidden; opacity:0; pointer-events:none;
         position:absolute; top:100%; left:0; width:100%;
@@ -326,10 +342,6 @@ footer a {
     .hero{ padding:120px 6% 64px; }
     .hero-btn-group{ flex-direction:column; }
     .pipeline-row{ grid-template-columns: repeat(2, 1fr); }
-    .split-container{ grid-template-columns:1fr; gap:44px; }
-    .info-left-panel{ text-align:center; }
-    .details-list p{ justify-content:center; }
-    .contact-form-holder{ padding:26px 22px; }
     .footer-details{ flex-direction:column; gap:8px; }
     .footer-nav{ gap:18px; }
 }
@@ -371,7 +383,18 @@ footer a {
         <div class="pipeline">
             <div class="pipeline-label">Sensor to dashboard — how data moves</div>
             <div class="pipeline-row">
-                <svg class="connector" preserveAspectRatio="none" viewBox="0 0 100 2"><line x1="10" y1="1" x2="90" y2="1" stroke="rgba(255,255,255,0.16)" stroke-width="1" stroke-dasharray="3 3"/></svg>
+                
+                <svg class="connector" preserveAspectRatio="none" viewBox="0 0 100 2">
+                    <line x1="0" y1="1" x2="100" y2="1" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+                    <line class="flow-line" x1="0" y1="1" x2="100" y2="1" stroke="rgba(30,127,214,0.65)" stroke-width="1.4"/>
+                </svg>
+                
+                <div class="data-flow" aria-hidden="true">
+                    <span class="packet p1"></span>
+                    <span class="packet p2"></span>
+                    <span class="packet p3"></span>
+                </div>
+                
                 <div class="pipeline-node"><div class="node-dot">01</div><div class="node-label"><b>Field &amp; SCADA</b>Sensors, PLCs, HMIs</div></div>
                 <div class="pipeline-node"><div class="node-dot">02</div><div class="node-label"><b>PI System</b>Historian &amp; Asset Framework</div></div>
                 <div class="pipeline-node"><div class="node-dot">03</div><div class="node-label"><b>Integration</b>Python / API bridges</div></div>
