@@ -137,7 +137,7 @@ nav a.active::after{
 .btn-outline:hover{ border-color: rgba(255,255,255,0.5); }
 
 /* ==========================================================================
-   PIPELINE SCHEMATIC — DATA FLOW ANIMATION (01 -> 02 -> 03 -> 04 -> 05)
+   PIPELINE SCHEMATIC — DATA FLOW ANIMATION FIXED (01 -> 05 WIDE EXPANSION)
    ========================================================================== */
 .pipeline{
     border-top: 1px solid rgba(255,255,255,0.1);
@@ -152,12 +152,12 @@ nav a.active::after{
     position: relative;
 }
 
-/* base connector line */
+/* FIX: Absolute connector line spanning exactly from center of Node 01 to Node 05 */
 .pipeline-row svg.connector{
-    position:absolute; top:19px; left:0; width:100%; height:2px; z-index:0;
+    position:absolute; top:19px; left:10%; width:80%; height:2px; z-index:0;
 }
 
-/* moving dash "current" effect on the line itself, so the wire looks live */
+/* moving dash "current" effect on the line itself */
 .pipeline-row svg.connector .flow-line{
     stroke-dasharray: 6 6;
     animation: dashMove 1.4s linear infinite;
@@ -167,9 +167,9 @@ nav a.active::after{
     to{ stroke-dashoffset: 0; }
 }
 
-/* glowing packets that physically travel from node 01 to node 05 */
+/* FIX: Packet container wrapper constraints matched safely across full pipeline layout width */
 .data-flow{
-    position:absolute; top:19px; left:0; width:100%; height:0; z-index:1; pointer-events:none;
+    position:absolute; top:19px; left:10%; width:80%; height:0; z-index:1; pointer-events:none;
 }
 .data-flow .packet{
     position:absolute; top:0; width:9px; height:9px; margin-left:-4.5px; margin-top:-4.5px;
@@ -185,15 +185,12 @@ nav a.active::after{
 }
 .data-flow .packet.p3{ animation-delay: 2.4s; }
 
+/* FIX: Re-mapped keyframes track smoothly along the full 0% to 100% path width line safely */
 @keyframes flowPacket{
-    0%{        left:10%; opacity:0;   transform: scale(0.4); }
-    4%{        opacity:1;             transform: scale(1); }
-    18%{       left:30%; }
-    38%{       left:50%; }
-    58%{       left:70%; }
-    78%{       left:90%; }
-    92%{       opacity:1; }
-    100%{      left:90%; opacity:0;   transform: scale(0.4); }
+    0%{   left:0%; opacity:0;  transform: scale(0.4); }
+    10%{  opacity:1;           transform: scale(1); }
+    90%{  opacity:1;           transform: scale(1); }
+    100%{ left:100%; opacity:0; transform: scale(0.4); }
 }
 
 .pipeline-node{ position:relative; z-index:1; display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
@@ -204,20 +201,21 @@ nav a.active::after{
     font-family: var(--font-mono); font-size:12px; color: var(--signal); font-weight:600;
     animation: nodePulse 3.6s ease infinite;
 }
-/* each node "lights up" exactly when the packet reaches it (matches flowPacket %s above) */
+
+/* FIX: Synchronized tracking phases to flash precisely when packets cross nodes */
 .pipeline-node:nth-child(3) .node-dot{ animation-delay: 0s;     }
-.pipeline-node:nth-child(4) .node-dot{ animation-delay: 0.65s;  }
-.pipeline-node:nth-child(5) .node-dot{ animation-delay: 1.37s;  }
-.pipeline-node:nth-child(6) .node-dot{ animation-delay: 2.09s;  }
-.pipeline-node:nth-child(7) .node-dot{ animation-delay: 2.81s;  }
+.pipeline-node:nth-child(4) .node-dot{ animation-delay: 0.9s;   }
+.pipeline-node:nth-child(5) .node-dot{ animation-delay: 1.8s;   }
+.pipeline-node:nth-child(6) .node-dot{ animation-delay: 2.7s;   }
+.pipeline-node:nth-child(7) .node-dot{ animation-delay: 3.6s;   }
 
 @keyframes nodePulse{
-    0%{
+    0%, 100%{
         border-color: rgba(30,127,214,0.9);
         box-shadow: 0 0 0 6px rgba(30,127,214,0.18), 0 0 16px 4px rgba(30,127,214,0.5);
         color:#fff;
     }
-    12%, 100%{
+    15%, 85%{
         border-color: rgba(255,255,255,0.16);
         box-shadow: 0 0 0 0 rgba(30,127,214,0);
         color: var(--signal);
@@ -278,67 +276,8 @@ nav a.active::after{
 .section.alt{ background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 
 /* ==========================================================================
-   ENQUIRY / CONTACT
+   FOOTER AND LAYOUT STRUCTURES
    ========================================================================== */
-.bottom-split-section{
-    position:relative; padding: 100px 6%;
-    background-color: var(--deep);
-    background-image: linear-gradient(rgba(10,15,26,0.92), rgba(10,15,26,0.92)), url('images/industrial-bg.jpg');
-    background-size: cover; background-position: center;
-    overflow:hidden;
-}
-.bottom-split-section::before{
-    content:''; position:absolute; inset:0;
-    background-image: radial-gradient(ellipse 60% 50% at 100% 0%, rgba(30,127,214,0.16) 0%, transparent 70%);
-    pointer-events:none;
-}
-.split-container{
-    position:relative; z-index:2; max-width:1140px; margin:0 auto;
-    display:grid; grid-template-columns: 1.1fr 1fr; gap:64px; align-items:center;
-}
-.info-left-panel{ text-align:left; color:#fff; }
-.info-left-panel h2{ font-family: var(--font-display); font-size: clamp(26px,3vw,34px); font-weight:700; margin-bottom:12px; }
-.info-left-panel .subtitle{ font-size:14px; color: rgba(255,255,255,0.5); font-weight:500; margin-bottom:30px; line-height:1.6; }
-.details-list{ display:flex; flex-direction:column; gap:13px; margin-bottom:32px; }
-.details-list p{ font-size:14.5px; color: rgba(255,255,255,0.78); display:flex; gap:10px; }
-.details-list strong{
-    font-family: var(--font-mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
-    color: var(--amber); width:78px; flex-shrink:0; padding-top:2px;
-}
-.social-link.linkedin{
-    display:inline-flex; align-items:center; gap:10px;
-    background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.14);
-    color:#fff; padding:11px 22px; border-radius:7px;
-    font-size:13.5px; font-weight:600; transition: all .2s ease;
-}
-.social-link.linkedin span{ background: var(--signal); color:#fff; font-weight:700; padding:2px 6px; border-radius:3px; font-size:11px; }
-.social-link.linkedin:hover{ border-color: rgba(30,127,214,0.3); background: rgba(255,255,255,0.07); }
-
-/* ==========================================================================
-   FOOTER FRAME & OVERRIDES
-   ========================================================================== */
-.contact-form-holder{
-    background:#fff; border-radius: 14px; padding:38px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-}
-.form-group{ margin-bottom:18px; display:flex; flex-direction:column; gap:7px; text-align:left; }
-.form-group label{ font-size:12.5px; font-weight:600; color: var(--ink); }
-.form-group input, .form-group textarea{
-    padding:11px 14px; font-size:14.5px; border:1px solid var(--line); border-radius:7px;
-    background: var(--paper); color: var(--ink); transition: all .2s ease; width:100%;
-    font-family: var(--font-body);
-}
-.form-group input:focus, .form-group textarea:focus{
-    outline: 2px solid transparent; border-color: var(--signal); background:#fff;
-    box-shadow: 0 0 0 3px var(--signal-soft);
-}
-.submit-btn{
-    background: var(--signal); color:#fff; border:none; padding:13px 28px;
-    font-size:15px; font-weight:600; border-radius:7px; cursor:pointer;
-    transition: background .2s ease; width:100%; font-family: var(--font-body);
-}
-.submit-btn:hover{ background:#1a6fbb; }
-
 footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
 .footer-brand{ font-family: var(--font-display); font-size:24px; font-weight:700; color:#fff; margin-bottom:10px; }
 .footer-tagline{ font-family: var(--font-mono); font-size:12px; color: rgba(255,255,255,0.4); letter-spacing:0.04em; margin-bottom:30px; }
@@ -351,7 +290,6 @@ footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border
 .footer-details strong{ color: var(--amber); margin-right:5px; font-family: var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; }
 footer .copyright{ color: rgba(255,255,255,0.3); font-size:12px; font-family: var(--font-mono); letter-spacing:0.03em; }
 
-/* FIX: Absolute enforcement loop ensuring mobile queries don't clip footer layout anchors */
 footer a {
     visibility: visible !important;
     opacity: 1 !important;
@@ -369,18 +307,16 @@ footer a {
 }
 
 /* ==========================================================================
-   RESPONSIVE
+   RESPONSIVE HOOKS
    ========================================================================== */
 @media(max-width:900px){
     .pipeline-row{ grid-template-columns: repeat(3, 1fr); row-gap:28px; }
-    .pipeline-row svg.connector{ display:none; }
-    .data-flow{ display:none; }
+    .pipeline-row svg.connector, .data-flow { display:none; }
 }
 @media(max-width:768px){
     header{ padding:14px 5%; }
     .menu-toggle{ display:block; }
     
-    /* Target only the top main header navigation tracker list */
     header nav{
         display:flex; visibility:hidden; opacity:0; pointer-events:none;
         position:absolute; top:100%; left:0; width:100%;
@@ -398,10 +334,6 @@ footer a {
     .hero{ padding:120px 6% 64px; }
     .hero-btn-group{ flex-direction:column; }
     .pipeline-row{ grid-template-columns: repeat(2, 1fr); }
-    .split-container{ grid-template-columns:1fr; gap:44px; }
-    .info-left-panel{ text-align:center; }
-    .details-list p{ justify-content:center; }
-    .contact-form-holder{ padding:26px 22px; }
     .footer-details{ flex-direction:column; gap:8px; }
     .footer-nav{ gap:18px; }
 }
@@ -443,15 +375,18 @@ footer a {
         <div class="pipeline">
             <div class="pipeline-label">Live data movement — plant floor to decision</div>
             <div class="pipeline-row">
+                
                 <svg class="connector" preserveAspectRatio="none" viewBox="0 0 100 2">
-                    <line x1="10" y1="1" x2="90" y2="1" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
-                    <line class="flow-line" x1="10" y1="1" x2="90" y2="1" stroke="rgba(30,127,214,0.65)" stroke-width="1.4"/>
+                    <line x1="0" y1="1" x2="100" y2="1" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+                    <line class="flow-line" x1="0" y1="1" x2="100" y2="1" stroke="rgba(30,127,214,0.65)" stroke-width="1.4"/>
                 </svg>
+                
                 <div class="data-flow" aria-hidden="true">
                     <span class="packet p1"></span>
                     <span class="packet p2"></span>
                     <span class="packet p3"></span>
                 </div>
+                
                 <div class="pipeline-node"><div class="node-dot">01</div><div class="node-label"><b>Field &amp; SCADA</b>Sensors, PLCs, HMIs</div></div>
                 <div class="pipeline-node"><div class="node-dot">02</div><div class="node-label"><b>PI System</b>Historian &amp; Asset Framework</div></div>
                 <div class="pipeline-node"><div class="node-dot">03</div><div class="node-label"><b>Integration</b>Python / API bridges</div></div>
@@ -571,6 +506,7 @@ footer a {
         </div>
     </div>
 </section>
+
 <footer>
     <div class="footer-brand">Integra OT Technologies</div>
     <div class="footer-tagline">INDUSTRIAL AUTOMATION · AVEVA PI SYSTEM · SCADA · POWER BI · OT CYBERSECURITY</div>
