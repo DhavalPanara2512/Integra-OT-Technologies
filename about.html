@@ -255,7 +255,7 @@ nav a.active::after{
 @keyframes scrollLeft{ 0%{ transform:translateX(0); } 100%{ transform:translateX(-50%); } }
 @keyframes scrollRight{ 0%{ transform:translateX(-50%); } 100%{ transform:translateX(0); } }
 
-.exp-ticker-track{ display:flex; width:max-content; gap:14px; }
+.exp-ticker-track{ display:flex; width:max-content; gap:14px; will-change: transform; }
 .track-left{ animation: scrollLeft 32s linear infinite; }
 .track-right{ animation: scrollRight 32s linear infinite; }
 .ticker-wrapper:hover .exp-ticker-track{ animation-play-state: paused; }
@@ -269,8 +269,14 @@ nav a.active::after{
 .exp-pill:hover{ background: var(--signal); border-color: var(--signal); transform: translateY(-2px); }
 .exp-pill svg{ width:15px; height:15px; stroke: var(--signal); fill:none; stroke-width:2.1; transition: stroke .2s ease; }
 .exp-pill:hover svg{ stroke:#fff; }
+
+/* FIX: previously this rule fully disabled the ticker animation whenever a
+   desktop OS/browser had "Reduce Motion" enabled in accessibility settings.
+   That setting is common on desktop and rare on mobile, which is exactly why
+   the ticker appeared "broken on desktop, working on mobile." We now just
+   slow it down instead of killing it outright. */
 @media (prefers-reduced-motion: reduce){
-    .exp-ticker-track{ animation: none; }
+    .exp-ticker-track{ animation-duration: 90s; }
 }
 
 /* ==========================================================================
@@ -366,7 +372,7 @@ footer a {
 @media(max-width:768px){
     header{ padding:14px 5%; }
     .menu-toggle{ display:block; }
-    
+
     /* Target only the top main header navigation tracker list */
     header nav{
         display:flex; visibility:hidden; opacity:0; pointer-events:none;
@@ -582,7 +588,7 @@ footer a {
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Power BI Operational Reporting</span>
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83"/></svg>Secure IT-OT Integration Bridge</span>
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>ISA/IEC 62443 OT Cybersecurity</span>
-                
+
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>AVEVA PI System Engineering</span>
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>SCADA Systems &amp; HMIs</span>
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Power BI Operational Reporting</span>
@@ -590,7 +596,7 @@ footer a {
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>ISA/IEC 62443 OT Cybersecurity</span>
             </div>
         </div>
-        
+
         <div class="ticker-wrapper">
             <div class="exp-ticker-track track-right">
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Industrial Process Automation</span>
@@ -598,7 +604,7 @@ footer a {
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>ISA-95 Enterprise Data Architecture</span>
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>Historian Data Infrastructure &amp; Buffering</span>
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/></svg>OPC UA / DA Interface Connectivity</span>
-                
+
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Industrial Process Automation</span>
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/></svg>Field Process Instrumentation</span>
                 <span class="exp-pill"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>ISA-95 Enterprise Data Architecture</span>
