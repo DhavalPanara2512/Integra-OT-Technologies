@@ -137,7 +137,7 @@ nav a.active::after{
 .btn-outline:hover{ border-color: rgba(255,255,255,0.5); }
 
 /* ==========================================================================
-   PIPELINE SCHEMATIC — DATA FLOW ANIMATION FIXED (01 -> 05 WIDE EXPANSION)
+   PIPELINE SCHEMATIC — DATA FLOW ANIMATION FULLY OPERATIONAL
    ========================================================================== */
 .pipeline{
     border-top: 1px solid rgba(255,255,255,0.1);
@@ -152,7 +152,7 @@ nav a.active::after{
     position: relative;
 }
 
-/* FIX: Absolute connector line spanning exactly from center of Node 01 to Node 05 */
+/* Absolute connector line spanning exactly from center of Node 01 to Node 05 */
 .pipeline-row svg.connector{
     position:absolute; top:19px; left:10%; width:80%; height:2px; z-index:0;
 }
@@ -167,7 +167,7 @@ nav a.active::after{
     to{ stroke-dashoffset: 0; }
 }
 
-/* FIX: Packet container wrapper constraints matched safely across full pipeline layout width */
+/* Packet container wrapper constraints matched across full pipeline layout width */
 .data-flow{
     position:absolute; top:19px; left:10%; width:80%; height:0; z-index:1; pointer-events:none;
 }
@@ -185,12 +185,12 @@ nav a.active::after{
 }
 .data-flow .packet.p3{ animation-delay: 2.4s; }
 
-/* FIX: Re-mapped keyframes track smoothly along the full 0% to 100% path width line safely */
+/* FIX FINAL: Explicit positions added to 10% and 90% parameters ensuring path movement */
 @keyframes flowPacket{
-    0%{   left:0%; opacity:0;  transform: scale(0.4); }
-    10%{  opacity:1;           transform: scale(1); }
-    90%{  opacity:1;           transform: scale(1); }
-    100%{ left:100%; opacity:0; transform: scale(0.4); }
+    0%{   left: 0%;  opacity: 0; transform: scale(0.4); }
+    10%{  left: 10%; opacity: 1; transform: scale(1); }
+    90%{  left: 90%; opacity: 1; transform: scale(1); }
+    100%{ left: 100%; opacity: 0; transform: scale(0.4); }
 }
 
 .pipeline-node{ position:relative; z-index:1; display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
@@ -202,7 +202,7 @@ nav a.active::after{
     animation: nodePulse 3.6s ease infinite;
 }
 
-/* FIX: Synchronized tracking phases to flash precisely when packets cross nodes */
+/* Synchronized tracking phases to flash precisely when packets cross nodes */
 .pipeline-node:nth-child(3) .node-dot{ animation-delay: 0s;     }
 .pipeline-node:nth-child(4) .node-dot{ animation-delay: 0.9s;   }
 .pipeline-node:nth-child(5) .node-dot{ animation-delay: 1.8s;   }
@@ -276,7 +276,7 @@ nav a.active::after{
 .section.alt{ background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 
 /* ==========================================================================
-   FOOTER AND LAYOUT STRUCTURES
+   FOOTER FRAME
    ========================================================================== */
 footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
 .footer-brand{ font-family: var(--font-display); font-size:24px; font-weight:700; color:#fff; margin-bottom:10px; }
