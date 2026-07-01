@@ -137,7 +137,7 @@ nav a.active::after{
 .btn-outline:hover{ border-color: rgba(255,255,255,0.5); }
 
 /* ==========================================================================
-   PIPELINE SCHEMATIC — DATA FLOW ANIMATION FULLY OPERATIONAL
+   PIPELINE SCHEMATIC — DATA FLOW ANIMATION FIXED & FULLY ACTIONABLE
    ========================================================================== */
 .pipeline{
     border-top: 1px solid rgba(255,255,255,0.1);
@@ -152,12 +152,12 @@ nav a.active::after{
     position: relative;
 }
 
-/* Absolute connector line spanning exactly from center of Node 01 to Node 05 */
+/* Absolute connector track spanning precisely between midpoints of grid nodes */
 .pipeline-row svg.connector{
     position:absolute; top:19px; left:10%; width:80%; height:2px; z-index:0;
 }
 
-/* moving dash "current" effect on the line itself */
+/* moving dash "current" flow tracking simulation rules */
 .pipeline-row svg.connector .flow-line{
     stroke-dasharray: 6 6;
     animation: dashMove 1.4s linear infinite;
@@ -167,30 +167,49 @@ nav a.active::after{
     to{ stroke-dashoffset: 0; }
 }
 
-/* Packet container wrapper constraints matched across full pipeline layout width */
+/* Packet wrapper boundary containment maps cleanly across tracking row sizes */
 .data-flow{
     position:absolute; top:19px; left:10%; width:80%; height:0; z-index:1; pointer-events:none;
 }
 .data-flow .packet{
-    position:absolute; top:0; width:9px; height:9px; margin-left:-4.5px; margin-top:-4.5px;
-    border-radius:50%; background: var(--signal);
+    position:absolute; 
+    top:0; 
+    left:0; /* CRITICAL FIX: Base placement property initializes timeline animation rendering math properly */
+    width:9px; 
+    height:9px; 
+    margin-left:-4.5px; 
+    margin-top:-4.5px;
+    border-radius:50%; 
+    background: var(--signal);
     box-shadow: 0 0 8px 2px rgba(30,127,214,0.9), 0 0 20px 6px rgba(30,127,214,0.35);
     opacity:0;
-    animation: flowPacket 3.6s cubic-bezier(.45,0,.55,1) infinite;
+    animation: flowPacket 4s linear infinite; /* CHANGED TO LINEAR: Provides precise continuous streaming motion */
 }
 .data-flow .packet.p2{
     background: var(--amber);
     box-shadow: 0 0 8px 2px rgba(255,157,46,0.9), 0 0 20px 6px rgba(255,157,46,0.35);
-    animation-delay: 1.2s;
+    animation-delay: 1.33s;
 }
-.data-flow .packet.p3{ animation-delay: 2.4s; }
+.data-flow .packet.p3{ 
+    animation-delay: 2.66s; 
+}
 
-/* FIX FINAL: Explicit positions added to 10% and 90% parameters ensuring path movement */
-@keyframes flowPacket{
-    0%{   left: 0%;  opacity: 0; transform: scale(0.4); }
-    10%{  left: 10%; opacity: 1; transform: scale(1); }
-    90%{  left: 90%; opacity: 1; transform: scale(1); }
-    100%{ left: 100%; opacity: 0; transform: scale(0.4); }
+/* CLEAN RENDERING CYCLE: Coordinates positional transitions cleanly on 0% to 100% path bounds */
+@keyframes flowPacket {
+    0% {
+        left: 0%;
+        opacity: 0;
+    }
+    5% {
+        opacity: 1;
+    }
+    95% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
 }
 
 .pipeline-node{ position:relative; z-index:1; display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
@@ -199,15 +218,15 @@ nav a.active::after{
     border:1px solid rgba(255,255,255,0.16);
     display:flex; align-items:center; justify-content:center;
     font-family: var(--font-mono); font-size:12px; color: var(--signal); font-weight:600;
-    animation: nodePulse 3.6s ease infinite;
+    animation: nodePulse 4s ease infinite; /* Scaled seamlessly to coordinate with the 4s linear tracking timeline */
 }
 
-/* Synchronized tracking phases to flash precisely when packets cross nodes */
-.pipeline-node:nth-child(3) .node-dot{ animation-delay: 0s;     }
-.pipeline-node:nth-child(4) .node-dot{ animation-delay: 0.9s;   }
-.pipeline-node:nth-child(5) .node-dot{ animation-delay: 1.8s;   }
-.pipeline-node:nth-child(6) .node-dot{ animation-delay: 2.7s;   }
-.pipeline-node:nth-child(7) .node-dot{ animation-delay: 3.6s;   }
+/* Synchronized node flashing phases to match exactly as packets traverse the layout components */
+.pipeline-node:nth-child(3) .node-dot{ animation-delay: 0s;   }  /* Node 01 */
+.pipeline-node:nth-child(4) .node-dot{ animation-delay: 1s;   }  /* Node 02 */
+.pipeline-node:nth-child(5) .node-dot{ animation-delay: 2s;   }  /* Node 03 */
+.pipeline-node:nth-child(6) .node-dot{ animation-delay: 3s;   }  /* Node 04 */
+.pipeline-node:nth-child(7) .node-dot{ animation-delay: 4s;   }  /* Node 05 */
 
 @keyframes nodePulse{
     0%, 100%{
@@ -276,7 +295,7 @@ nav a.active::after{
 .section.alt{ background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 
 /* ==========================================================================
-   FOOTER FRAME
+   FOOTER STRUCTURES
    ========================================================================== */
 footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
 .footer-brand{ font-family: var(--font-display); font-size:24px; font-weight:700; color:#fff; margin-bottom:10px; }
@@ -307,7 +326,7 @@ footer a {
 }
 
 /* ==========================================================================
-   RESPONSIVE HOOKS
+   RESPONSIVE LAYOUT BOUNDS
    ========================================================================== */
 @media(max-width:900px){
     .pipeline-row{ grid-template-columns: repeat(3, 1fr); row-gap:28px; }
