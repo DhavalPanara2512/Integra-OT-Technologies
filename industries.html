@@ -5,7 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Industries We Serve | Integra OT Technologies</title>
 <meta name="description" content="Discover the industrial sectors we serve, including Pharmaceutical, Oil & Gas, Petrochemicals, and Power Utilities with specialized IT-OT data platforms.">
-<link rel="icon" type="image/png" href="images/favicon.png">
+
+<link rel="icon" type="image/png" sizes="180x180" href="https://integraottechnologies.com/images/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://integraottechnologies.com/images/favicon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="https://integraottechnologies.com/images/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://integraottechnologies.com/images/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://integraottechnologies.com/images/favicon.png">
+<link rel="icon" href="https://integraottechnologies.com/favicon.ico" sizes="any">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -75,7 +82,7 @@ header{
 nav{ display:flex; align-items:center; gap:30px; }
 nav a{
     color: var(--mist); font-size:14.5px; font-weight:600; letter-spacing:0.01em;
-    transition: color .2s ease; position: relative; padding-bottom: 2px;
+    transition: color .2s ease, background-color .2s ease; position: relative; padding-bottom: 2px;
 }
 nav a:hover{ color: var(--ink); }
 nav a.active{ color: var(--signal); }
@@ -221,15 +228,24 @@ footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border
 .footer-brand{ font-family: var(--font-display); font-size:24px; font-weight:700; color:#fff; margin-bottom:10px; }
 .footer-tagline{ font-family: var(--font-mono); font-size:12px; color: rgba(255,255,255,0.4); letter-spacing:0.04em; margin-bottom:30px; }
 .footer-nav{ display:flex; gap:34px; justify-content:center; flex-wrap:wrap; margin-bottom:30px; }
-.footer-nav a{ color: rgba(255,255,255,0.65); font-size:14.5px; font-weight:600; transition: color .2s ease; }
+.footer-nav a{ 
+    color: rgba(255,255,255,0.65); font-size:14.5px; font-weight:600; transition: color .2s ease; 
+    position: relative; padding-bottom:4px;
+}
 .footer-nav a:hover{ color:#fff; }
+
+/* FIXED: Active footer configuration link matching layout features from index */
+.footer-nav a.active{ color: var(--signal); }
+.footer-nav a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background: var(--signal);
+}
+
 .footer-divider{ width:60px; height:1px; background: rgba(255,255,255,0.12); margin:0 auto 28px; }
 .footer-details{ display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin-bottom:22px; }
 .footer-details p{ color: rgba(255,255,255,0.55); font-size:13px; }
 .footer-details strong{ color: var(--amber); margin-right:5px; font-family: var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; }
 footer .copyright{ color: rgba(255,255,255,0.3); font-size:12px; font-family: var(--font-mono); letter-spacing:0.03em; }
 
-/* FIX: Absolute enforcement loop ensuring mobile queries don't clip footer layout anchors */
 footer a {
     visibility: visible !important;
     opacity: 1 !important;
@@ -266,6 +282,13 @@ footer a {
     header nav a:last-child{ border-bottom:none; }
     header nav a.active::after{ display:none; }
 
+    /* FIXED: Active tracking highlights within hamburger expansion loops */
+    header nav a.active{
+        color: var(--signal) !important;
+        background: var(--signal-soft);
+        font-weight: 700;
+    }
+
     .page-hero{ padding:120px 6% 64px; }
     .detailed-ind-grid{ grid-template-columns: 1fr; }
     .footer-details{ flex-direction:column; gap:8px; }
@@ -278,7 +301,7 @@ footer a {
 
 <header>
     <div class="logo">
-        <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'mark',textContent:'OT'}))">
+        <img src="images/favicon.png" alt="Integra OT Technologies" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'mark',textContent:'OT'}))">
         <div class="logo-text">
             <span class="logo-main">Integra <span class="accent">IT-OT Technologies</span></span>
             <span class="logo-tagline">Integrate. Optimize. Transform.</span>
@@ -362,7 +385,7 @@ footer a {
         <a href="./index.html">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
-        <a href="industries.html">Industries</a>
+        <a href="industries.html" class="active">Industries</a>
         <a href="contact.html">Contact</a>
     </nav>
     <div class="footer-divider"></div>
