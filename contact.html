@@ -6,6 +6,7 @@
 <title>Contact Us | Integra OT Technologies</title>
 <meta name="description" content="Get in touch with Integra OT Technologies for industrial automation engineering queries and IT-OT data platform consultation.">
 
+<!-- Favicon declarations for clean Google Search snippet rendering -->
 <link rel="icon" type="image/png" sizes="180x180" href="https://integraottechnologies.com/images/favicon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://integraottechnologies.com/images/favicon.png">
 <link rel="icon" type="image/png" sizes="48x48" href="https://integraottechnologies.com/images/favicon.png">
@@ -245,7 +246,6 @@ footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border
 }
 .footer-nav a:hover{ color:#fff; }
 
-/* FIXED: Active alignment configurations matched safely from index */
 .footer-nav a.active{ color: var(--signal); }
 .footer-nav a.active::after{
     content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background: var(--signal);
@@ -302,7 +302,6 @@ footer a {
     header nav a:last-child{ border-bottom:none; }
     header nav a.active::after{ display:none; }
 
-    /* FIXED: Active highlights inside hamburger menu expansion loops */
     header nav a.active{
         color: var(--signal) !important;
         background: var(--signal-soft);
@@ -395,13 +394,15 @@ footer a {
         </div>
 
         <div class="contact-form-holder">
+            <!-- FIXED: Action endpoint securely routes submissions to Web3Forms back-end pipeline -->
             <form action="https://api.web3forms.com/submit" method="POST">
                 
-                <input type="hidden" name="access_key" value="dcc6b840-7fef-4890-a5ea-56df85966df3">
-                <input type="hidden" name="to_email" value="dhavalpanara1234@gmail.com">
+                <!-- INTEGRATED: Your verified unique Form Access Key from image_6da918.png -->
+                <input type="hidden" name="access_key" value="7d578e1b-95d0-4830-ac8f-3475ca3e9eab">
                 <input type="hidden" name="from_name" value="Integra OT Enquiry Pipeline">
                 <input type="hidden" name="subject" value="New Engineering Specification Request Raised">
                 
+                <!-- Anti-Spam HoneyPot Protection Field -->
                 <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
                 <div class="form-group">
@@ -417,6 +418,7 @@ footer a {
                     <textarea id="msg" name="msg" rows="5" required placeholder="Outline your asset tag counts, software variants or system specifications..."></textarea>
                 </div>
                 
+                <!-- Success Redirect Page keeps clients on your platform after submission -->
                 <input type="hidden" name="redirect" value="https://integraottechnologies.com/contact.html">
 
                 <button type="submit" class="submit-btn">Submit Specification Request</button>
