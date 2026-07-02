@@ -6,7 +6,6 @@
 <title>About Us | Integra OT Technologies</title>
 <meta name="description" content="Discover our specialized engineering background in AVEVA PI System infrastructure, SCADA frameworks, and secure industrial IT-OT data integration.">
 
-<!-- Favicon & Site Icons -->
 <link rel="icon" type="image/png" sizes="180x180" href="https://integraottechnologies.com/images/favicon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://integraottechnologies.com/images/favicon.png">
 <link rel="icon" type="image/png" sizes="48x48" href="https://integraottechnologies.com/images/favicon.png">
@@ -167,7 +166,7 @@ nav a.active::after{
 .section.alt{ background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 
 /* ==========================================================================
-   OVERVIEW
+   OVERVIEW & ARCHITECTURE STACK (FIXED REMOVAL OF PROGRESS BARS)
    ========================================================================== */
 .overview-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:60px; align-items:center; max-width:1140px; margin:0 auto; }
 .overview-text h2{
@@ -175,19 +174,32 @@ nav a.active::after{
     color: var(--ink); line-height:1.3; margin-bottom:18px;
 }
 .overview-text p{ font-size:14.5px; color: var(--mist); line-height:1.8; margin-bottom:16px; }
-.ov-visual{
+
+.arch-visual{
     background:#fff; border:1px solid var(--line); border-radius: var(--radius);
-    padding:26px; display:flex; flex-direction:column; gap:12px;
+    padding:30px; display:flex; flex-direction:column; gap:11px;
 }
-.ov-visual-label{
+.arch-visual-label{
     font-family: var(--font-mono); font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
-    color: var(--signal); margin-bottom:4px;
+    color: var(--signal); margin-bottom:8px; display:block;
 }
-.ov-row{ display:flex; align-items:center; gap:12px; background: var(--paper); border:1px solid var(--line); border-radius:8px; padding:11px 15px; }
-.ov-dot{ width:8px; height:8px; border-radius:50%; min-width:8px; }
-.ov-name{ font-size:12.5px; font-weight:600; color: var(--ink); min-width:150px; }
-.ov-bar{ flex:1; height:6px; border-radius:3px; background: var(--line); overflow:hidden; }
-.ov-fill{ height:100%; border-radius:3px; }
+.arch-stack-layer{
+    display:flex; align-items:center; gap:14px; background: var(--paper); 
+    border:1px solid var(--line); border-radius:8px; padding:12px 16px;
+    transition: all .2s ease;
+}
+.arch-stack-layer:hover{
+    border-color: rgba(30,127,214,0.25);
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(13,20,32,0.03);
+}
+.arch-level{
+    font-family: var(--font-mono); font-size:11px; font-weight:700; color: #fff;
+    padding:3px 8px; border-radius:4px; min-width:64px; text-align:center;
+}
+.arch-meta{ display:flex; flex-direction:column; }
+.arch-title{ font-size:13.5px; font-weight:700; color: var(--ink); }
+.arch-desc{ font-size:11.5px; color: var(--mist); margin-top:1px; }
 
 /* ==========================================================================
    MISSION & VISION
@@ -396,7 +408,6 @@ footer a {
     header nav a:last-child{ border-bottom:none; }
     header nav a.active::after{ display:none; }
 
-    /* FIX: active page link now stays highlighted inside the mobile menu */
     header nav a.active{
         color: var(--signal) !important;
         background: var(--signal-soft);
@@ -491,32 +502,48 @@ footer a {
             <span class="section-eyebrow" style="margin-top:25px;">Our Engineering Edge</span>
             <p>We don't provide generic IT templates. Our integration team understands physical process loops, interface connectivity pooling, local buffering protocols, and high-availability operational bounds — ensuring your mission-critical pipelines maintain absolute data uptime under any network latency scenario.</p>
         </div>
-        <div class="ov-visual">
-            <div class="ov-visual-label">Technology Stack Coverage</div>
-            <div class="ov-row">
-                <div class="ov-dot" style="background:#1e7fd6;"></div>
-                <div class="ov-name">SCADA / Control Layer</div>
-                <div class="ov-bar"><div class="ov-fill" style="width:88%;background:#1e7fd6;"></div></div>
+        
+        <div class="arch-visual">
+            <span class="arch-visual-label">Industrial Architecture Alignment</span>
+            
+            <div class="arch-stack-layer">
+                <span class="arch-level" style="background: #1e7fd6;">Layer 4</span>
+                <div class="arch-meta">
+                    <span class="arch-title">Business Logistics (ERP)</span>
+                    <span class="arch-desc">Power BI, Executive Dashboards, Asset Efficiency Planning</span>
+                </div>
             </div>
-            <div class="ov-row">
-                <div class="ov-dot" style="background:#0d9488;"></div>
-                <div class="ov-name">AVEVA PI / Historian</div>
-                <div class="ov-bar"><div class="ov-fill" style="width:92%;background:#0d9488;"></div></div>
+            
+            <div class="arch-stack-layer">
+                <span class="arch-level" style="background: #0d9488;">Layer 3</span>
+                <div class="arch-meta">
+                    <span class="arch-title">Operations Management</span>
+                    <span class="arch-desc">AVEVA PI System, Historians, Asset Framework Assets</span>
+                </div>
             </div>
-            <div class="ov-row">
-                <div class="ov-dot" style="background:#7c3aed;"></div>
-                <div class="ov-name">IT-OT Data Bridge</div>
-                <div class="ov-bar"><div class="ov-fill" style="width:78%;background:#7c3aed;"></div></div>
+            
+            <div class="arch-stack-layer">
+                <span class="arch-level" style="background: #7c3aed;">Layer 2</span>
+                <div class="arch-meta">
+                    <span class="arch-title">Process Supervision</span>
+                    <span class="arch-desc">SCADA Nodes, Master Control HMI Graphics, Alarms</span>
+                </div>
             </div>
-            <div class="ov-row">
-                <div class="ov-dot" style="background:#ff9d2e;"></div>
-                <div class="ov-name">Power BI Reporting</div>
-                <div class="ov-bar"><div class="ov-fill" style="width:85%;background:#ff9d2e;"></div></div>
+            
+            <div class="arch-stack-layer">
+                <span class="arch-level" style="background: #ff9d2e;">Layer 1</span>
+                <div class="arch-meta">
+                    <span class="arch-title">Local Control Systems</span>
+                    <span class="arch-desc">PLC Processing Loops, Telemetry RTUs, PID Controllers</span>
+                </div>
             </div>
-            <div class="ov-row">
-                <div class="ov-dot" style="background:#dc2626;"></div>
-                <div class="ov-name">OT Cybersecurity</div>
-                <div class="ov-bar"><div class="ov-fill" style="width:80%;background:#dc2626;"></div></div>
+            
+            <div class="arch-stack-layer">
+                <span class="arch-level" style="background: #dc2626;">Layer 0</span>
+                <div class="arch-meta">
+                    <span class="arch-title">Physical Process Floor</span>
+                    <span class="arch-desc">Sensors, Flow Transmitters, Valves, Actuators</span>
+                </div>
             </div>
         </div>
     </div>
@@ -638,6 +665,7 @@ footer a {
     </div>
     <div class="trust-grid">
         <div class="trust-card">
+            <div class="trust-card">
             <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
             <h4>OT-Focused Expertise</h4>
             <p>Our engineers are specialists in industrial environments — not generalists adapting IT practices.</p>
