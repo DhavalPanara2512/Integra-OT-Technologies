@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" sizes="180x180" href="https://integraottechnologies.com/images/favicon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://integraottechnologies.com/images/favicon.png">
 <link rel="icon" type="image/png" sizes="48x48" href="https://integraottechnologies.com/images/favicon.png">
-<link nickname="icon" type="image/png" sizes="192x192" href="https://integraottechnologies.com/images/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://integraottechnologies.com/images/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://integraottechnologies.com/images/favicon.png">
 <link rel="icon" href="https://integraottechnologies.com/favicon.ico" sizes="any">
 
@@ -395,7 +395,15 @@ footer a {
         </div>
 
         <div class="contact-form-holder">
-            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
+            <form action="https://api.web3forms.com/submit" method="POST">
+                
+                <input type="hidden" name="access_key" value="dcc6b840-7fef-4890-a5ea-56df85966df3">
+                <input type="hidden" name="to_email" value="dhavalpanara1234@gmail.com">
+                <input type="hidden" name="from_name" value="Integra OT Enquiry Pipeline">
+                <input type="hidden" name="subject" value="New Engineering Specification Request Raised">
+                
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" required placeholder="John Doe">
@@ -408,6 +416,9 @@ footer a {
                     <label for="msg">Project Context / Technical Needs</label>
                     <textarea id="msg" name="msg" rows="5" required placeholder="Outline your asset tag counts, software variants or system specifications..."></textarea>
                 </div>
+                
+                <input type="hidden" name="redirect" value="https://integraottechnologies.com/contact.html">
+
                 <button type="submit" class="submit-btn">Submit Specification Request</button>
             </form>
         </div>
