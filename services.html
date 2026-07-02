@@ -6,7 +6,6 @@
 <title>Our Services | Integra OT Technologies</title>
 <meta name="description" content="Explore our specialized IT-OT integration, AVEVA PI System optimization, SCADA automation, OT Cybersecurity, and Annual Maintenance Contracts (AMC).">
 
-<!-- Favicon & Site Icons -->
 <link rel="icon" type="image/png" sizes="180x180" href="https://integraottechnologies.com/images/favicon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://integraottechnologies.com/images/favicon.png">
 <link rel="icon" type="image/png" sizes="48x48" href="https://integraottechnologies.com/images/favicon.png">
@@ -61,7 +60,7 @@ header{
     border-bottom: 1px solid var(--line);
     z-index: 1000;
 }
-.logo{ display:flex; align-items:center; gap:11px; }
+.logo{ display:flex; align-items:center; gap:11px; cursor: pointer; }
 .logo img{ height: 34px; width:auto; border-radius: 7px; }
 .logo .mark{
     width: 34px; height: 34px; border-radius: 7px;
@@ -365,13 +364,13 @@ footer a {
 <body>
 
 <header>
-    <div class="logo">
-        <img src="images/favicon.png" alt="Integra OT Technologies" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'mark',textContent:'OT'}))">
+    <a href="./index.html" class="logo">
+        <img src="images/logo.png" alt="Integra OT Technologies" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'mark',textContent:'OT'}))">
         <div class="logo-text">
             <span class="logo-main">Integra <span class="accent">IT-OT Technologies</span></span>
             <span class="logo-tagline">Integrate. Optimize. Transform.</span>
         </div>
-    </div>
+    </a>
     <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
     <nav id="navbar">
         <a href="./index.html">Home</a>
