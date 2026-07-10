@@ -87,6 +87,7 @@ nav a{
 }
 nav a:hover{ color: var(--ink); }
 nav a.active{ color: var(--signal); }
+nav a.active:hover{ color: var(--ink); }
 nav a.active::after{
     content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background: var(--signal);
 }
@@ -440,6 +441,7 @@ footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border
 }
 .footer-nav a:hover{ color:#fff; }
 .footer-nav a.active{ color: var(--signal); }
+.footer-nav a.active:hover{ color:#fff; }
 .footer-nav a.active::after{
     content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background: var(--signal);
 }
@@ -727,6 +729,7 @@ footer a {
     </div>
     <p class="copyright">&copy; 2026 INTEGRA IT-OT // ALL RIGHTS RESERVED</p>
 </footer>
+
 <script>
 (function(){
     var mobileMenu = document.getElementById('mobile-menu');
