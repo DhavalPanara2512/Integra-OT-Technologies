@@ -328,6 +328,106 @@ nav a.active::after{
 .section.alt{ background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 
 /* ==========================================================================
+   LIVE DASHBOARD MOCKUP (Operational Analytics card)
+   ========================================================================== */
+.card-media.dashboard-media{
+    background-color: var(--deep);
+    background-image:
+        radial-gradient(ellipse 90% 100% at 50% 0%, rgba(30,127,214,0.28) 0%, transparent 70%),
+        linear-gradient(135deg, #11223d 0%, #0a0f1a 100%);
+    display:flex; align-items:flex-end; padding:14px 16px 12px;
+    overflow:hidden;
+}
+.dash-mock{ width:100%; }
+.dash-mock-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+.dash-mock-title{ font-family: var(--font-mono); font-size:9.5px; letter-spacing:0.06em; color: rgba(255,255,255,0.4); text-transform:uppercase; }
+.dash-mock-live{ display:flex; align-items:center; gap:5px; font-family: var(--font-mono); font-size:9px; color: var(--amber); letter-spacing:0.05em; }
+.dash-mock-live .live-dot{ width:5px; height:5px; border-radius:50%; background: var(--amber); animation: livePulse 1.6s ease-in-out infinite; }
+@keyframes livePulse{
+    0%, 100%{ opacity:1; box-shadow: 0 0 0 0 rgba(255,157,46,0.5); }
+    50%{ opacity:0.5; box-shadow: 0 0 0 4px rgba(255,157,46,0); }
+}
+.dash-mock-body{ display:flex; align-items:flex-end; gap:14px; }
+.dash-bars{ display:flex; align-items:flex-end; gap:5px; height:52px; flex-shrink:0; }
+.dash-bars i{
+    display:block; width:6px; border-radius:2px 2px 0 0;
+    background: linear-gradient(180deg, var(--signal), rgba(30,127,214,0.25));
+    animation: barGrow 3.2s ease-in-out infinite;
+    transform-origin: bottom;
+}
+.dash-bars i:nth-child(odd){ background: linear-gradient(180deg, var(--amber), rgba(255,157,46,0.2)); }
+.dash-bars i:nth-child(1){ height:35%; animation-delay:0s; }
+.dash-bars i:nth-child(2){ height:60%; animation-delay:.2s; }
+.dash-bars i:nth-child(3){ height:42%; animation-delay:.4s; }
+.dash-bars i:nth-child(4){ height:78%; animation-delay:.6s; }
+.dash-bars i:nth-child(5){ height:55%; animation-delay:.8s; }
+.dash-bars i:nth-child(6){ height:90%; animation-delay:1s; }
+.dash-bars i:nth-child(7){ height:48%; animation-delay:1.2s; }
+@keyframes barGrow{
+    0%, 100%{ transform: scaleY(1); }
+    50%{ transform: scaleY(1.28); }
+}
+.dash-line{ flex:1; height:52px; }
+.dash-line path.line-path{
+    fill:none; stroke: var(--signal); stroke-width:1.6;
+    stroke-dasharray: 220; stroke-dashoffset: 220;
+    animation: lineDraw 3.2s ease-in-out infinite;
+}
+.dash-line path.line-fill{ fill: url(#lineGradient); opacity:0; animation: fillIn 3.2s ease-in-out infinite; }
+@keyframes lineDraw{
+    0%{ stroke-dashoffset: 220; }
+    55%, 100%{ stroke-dashoffset: 0; }
+}
+@keyframes fillIn{
+    0%, 40%{ opacity:0; }
+    60%, 100%{ opacity:1; }
+}
+.dash-mock-stats{ display:flex; gap:16px; margin-top:10px; }
+.dash-mock-stats span{ font-family: var(--font-mono); font-size:10px; color: rgba(255,255,255,0.55); display:flex; align-items:center; gap:5px; }
+.dash-mock-stats b{ color:#fff; font-weight:600; }
+.dash-mock-stats .up{ color:#3ed598; }
+
+/* ==========================================================================
+   WHY PARTNER — icon badges with motion
+   ========================================================================== */
+.card.no-media .card-body{ display:flex; flex-direction:column; gap:2px; }
+.why-icon{
+    width:46px; height:46px; border-radius:10px;
+    background: var(--signal-soft);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px;
+    position:relative;
+    transition: transform .3s ease, background .3s ease;
+}
+.why-icon svg{ width:23px; height:23px; stroke: var(--signal); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; position:relative; z-index:1; }
+.why-icon::before{
+    content:''; position:absolute; inset:0; border-radius:10px;
+    border:1px solid rgba(30,127,214,0.25);
+    animation: iconRing 2.6s ease-out infinite;
+}
+.card.no-media:nth-child(2) .why-icon{ background: var(--amber-soft); }
+.card.no-media:nth-child(2) .why-icon svg{ stroke: var(--amber); }
+.card.no-media:nth-child(2) .why-icon::before{ border-color: rgba(255,157,46,0.3); animation-delay:.6s; }
+.card.no-media:nth-child(3) .why-icon::before{ animation-delay:1.2s; }
+.card.no-media:nth-child(4) .why-icon{ background: var(--amber-soft); }
+.card.no-media:nth-child(4) .why-icon svg{ stroke: var(--amber); }
+.card.no-media:nth-child(4) .why-icon::before{ border-color: rgba(255,157,46,0.3); animation-delay:1.8s; }
+
+@keyframes iconRing{
+    0%{ transform: scale(1); opacity:0.9; }
+    100%{ transform: scale(1.55); opacity:0; }
+}
+.card.no-media:hover .why-icon{ transform: translateY(-3px) rotate(-4deg); }
+.card.no-media:hover .why-icon svg{ animation: iconWiggle .5s ease; }
+@keyframes iconWiggle{
+    0%, 100%{ transform: rotate(0deg); }
+    50%{ transform: rotate(8deg); }
+}
+@media (prefers-reduced-motion: reduce){
+    .why-icon::before, .dash-bars i, .dash-mock-live .live-dot, .dash-line path{ animation:none !important; }
+}
+
+/* ==========================================================================
    FOOTER STRUCTURE
    ========================================================================== */
 footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
@@ -484,7 +584,33 @@ footer a {
             </div>
         </div>
         <div class="card">
-            <div class="card-media" style="--card-img:url('images/powerbi.jpg')"><span class="tag">ANALYTICS</span></div>
+            <div class="card-media dashboard-media">
+                <div class="dash-mock">
+                    <div class="dash-mock-top">
+                        <span class="dash-mock-title">Plant Overview</span>
+                        <span class="dash-mock-live"><span class="live-dot"></span>LIVE</span>
+                    </div>
+                    <div class="dash-mock-body">
+                        <div class="dash-bars">
+                            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                        </div>
+                        <svg class="dash-line" viewBox="0 0 120 52" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="rgba(30,127,214,0.35)"/>
+                                    <stop offset="100%" stop-color="rgba(30,127,214,0)"/>
+                                </linearGradient>
+                            </defs>
+                            <path class="line-fill" d="M0,40 L15,28 L32,34 L48,14 L65,22 L82,8 L100,18 L120,10 L120,52 L0,52 Z"/>
+                            <path class="line-path" d="M0,40 L15,28 L32,34 L48,14 L65,22 L82,8 L100,18 L120,10"/>
+                        </svg>
+                    </div>
+                    <div class="dash-mock-stats">
+                        <span>OEE <b>91.4%</b></span>
+                        <span class="up">▲ 4.2%</span>
+                    </div>
+                </div>
+            </div>
             <div class="card-body">
                 <h3>Operational Analytics</h3>
                 <p>Consolidating real-time plant data with enterprise systems to deliver interactive dashboards, tracking manufacturing metrics and plant efficiencies.</p>
@@ -547,24 +673,36 @@ footer a {
     <div class="cards">
         <div class="card no-media">
             <div class="card-body">
+            <div class="why-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
             <h3>Deep Domain Expertise</h3>
             <p>We don't just write scripts; we understand plant process loops, piping, instrumentation constraints, and operational realities.</p>
             </div>
         </div>
         <div class="card no-media">
             <div class="card-body">
+            <div class="why-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1.6"/></svg>
+            </div>
             <h3>Security by Design</h3>
             <p>Industrial operations require a zero-risk approach. We maintain completely secure boundaries between control systems and business layers.</p>
             </div>
         </div>
         <div class="card no-media">
             <div class="card-body">
+            <div class="why-icon">
+                <svg viewBox="0 0 24 24"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/><path d="m13 4-2 16"/></svg>
+            </div>
             <h3>Custom Automation</h3>
             <p>We engineer custom Python and PowerShell bridge scripts and data connectors to ensure your enterprise applications interact seamlessly.</p>
             </div>
         </div>
         <div class="card no-media">
             <div class="card-body">
+            <div class="why-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 18v-2a9 9 0 0 1 18 0v2"/><rect x="1.5" y="15" width="4" height="6" rx="1.5"/><rect x="18.5" y="15" width="4" height="6" rx="1.5"/><path d="M19 21a4 4 0 0 1-4 2h-3"/></svg>
+            </div>
             <h3>24x7 Mission-Critical Support</h3>
             <p>Industrial data infrastructure never sleeps. We provide continuous system health monitoring and priority engineering response.</p>
             </div>
