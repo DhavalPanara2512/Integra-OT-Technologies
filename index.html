@@ -61,24 +61,40 @@ header{
     border-bottom: 1px solid var(--line);
     z-index: 1000;
 }
-.logo{ display:flex; align-items:center; gap:11px; }
-.logo img{ height: 34px; width:auto; border-radius: 7px; }
-.logo .mark{
-    width: 34px; height: 34px; border-radius: 7px;
-    background: var(--deep);
-    display:flex; align-items:center; justify-content:center;
-    font-family: var(--font-mono); font-weight:600; font-size:13px; color: var(--amber);
-    flex-shrink:0;
+.logo{ 
+    display:flex; 
+    align-items:center; 
+    gap:12px; 
 }
-.logo-text{ display:flex; flex-direction:column; line-height:1.15; }
+.logo img{ 
+    height: 38px; 
+    width: auto; 
+    border-radius: 0; 
+    background: transparent;
+    padding: 0;
+    object-fit: contain;
+}
+.logo-text{ 
+    display:flex; 
+    flex-direction:column; 
+    line-height:1.15; 
+}
 .logo-text .logo-main{
-    font-family: var(--font-display); font-size:17px; font-weight:700;
-    letter-spacing:0.01em; color: var(--ink);
+    font-family: var(--font-display); 
+    font-size: 18px; 
+    font-weight: 700;
+    letter-spacing: -0.01em; 
+    color: var(--ink);
 }
-.logo-text .logo-main .accent{ color: var(--signal); }
+.logo-text .logo-main .accent{ 
+    color: var(--signal); 
+}
 .logo-text .logo-tagline{
-    font-family: var(--font-body); font-size:10.5px; font-weight:500;
-    letter-spacing:0.01em; color: var(--mist); margin-top:2px;
+    font-family: var(--font-body); 
+    font-size: 11px; 
+    font-weight: 500;
+    color: var(--mist); 
+    margin-top: 2px;
 }
 nav{ display:flex; align-items:center; gap:30px; }
 nav a{
@@ -174,7 +190,6 @@ nav a.active::after{
 
 /* ==========================================================================
    RELAY DATA FLOW — packet travels node-to-node, not straight across
-   Total cycle: 4s. Each hop (01→02, 02→03, 03→04, 04→05) gets a ~1s window.
    ========================================================================== */
 .data-flow{
     position:absolute; top:19px; height:0; z-index:1; pointer-events:none; width:20%;
@@ -255,12 +270,11 @@ nav a.active::after{
     animation: nodePulse 4s ease-out infinite;
 }
 
-/* Node flashes are timed to match packet ARRIVAL from the relay animation above */
-.pipeline-node:nth-child(3) .node-dot{ animation-delay: 0s;   } /* 01 — source */
-.pipeline-node:nth-child(4) .node-dot{ animation-delay: 0.8s; } /* 02 — packet arrives at 20% of 4s */
-.pipeline-node:nth-child(5) .node-dot{ animation-delay: 1.8s; } /* 03 — arrives at 45% of 4s */
-.pipeline-node:nth-child(6) .node-dot{ animation-delay: 2.8s; } /* 04 — arrives at 70% of 4s */
-.pipeline-node:nth-child(7) .node-dot{ animation-delay: 3.8s; } /* 05 — arrives at 95% of 4s */
+.pipeline-node:nth-child(3) .node-dot{ animation-delay: 0s;   }
+.pipeline-node:nth-child(4) .node-dot{ animation-delay: 0.8s; }
+.pipeline-node:nth-child(5) .node-dot{ animation-delay: 1.8s; }
+.pipeline-node:nth-child(6) .node-dot{ animation-delay: 2.8s; }
+.pipeline-node:nth-child(7) .node-dot{ animation-delay: 3.8s; }
 
 @keyframes nodePulse{
     0%{
@@ -305,7 +319,6 @@ nav a.active::after{
     overflow: hidden; text-align:left; transition: border-color .2s ease, transform .2s ease;
     position: relative;
 }
-/* Gradient top accent line — matches About page's val-card hover treatment */
 .card::before{
     content:''; position:absolute; top:0; left:0; right:0; height:3px;
     background: linear-gradient(90deg, var(--signal), var(--amber));
@@ -338,7 +351,7 @@ nav a.active::after{
 .section.alt{ background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 
 /* ==========================================================================
-   LIVE DASHBOARD MOCKUP (Operational Analytics card)
+   LIVE DASHBOARD MOCKUP
    ========================================================================== */
 .card-media.dashboard-media{
     background-color: var(--deep);
@@ -398,7 +411,7 @@ nav a.active::after{
 .dash-mock-stats .up{ color:#3ed598; }
 
 /* ==========================================================================
-   WHY PARTNER — icon badges with motion
+   WHY PARTNER
    ========================================================================== */
 .card.no-media .card-body{ display:flex; flex-direction:column; gap:2px; }
 .why-icon{
@@ -438,7 +451,7 @@ nav a.active::after{
 }
 
 /* ==========================================================================
-   FOOTER STRUCTURE
+   FOOTER
    ========================================================================== */
 footer{ background: var(--deep); padding:56px 6% 28px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
 .footer-brand{ font-family: var(--font-display); font-size:24px; font-weight:700; color:#fff; margin-bottom:10px; }
@@ -501,7 +514,6 @@ footer a {
     header nav a:last-child{ border-bottom:none; }
     header nav a.active::after{ display:none; }
 
-    /* FIX: active page link now stays highlighted inside the mobile menu */
     header nav a.active{
         color: var(--signal) !important;
         background: var(--signal-soft);
@@ -521,7 +533,7 @@ footer a {
 
 <header>
     <div class="logo">
-        <img src="images/favicon.png" alt="Integra OT Technologies" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'mark',textContent:'OT'}))">
+        <img src="images/favicon.png" alt="Integra IT-OT Technologies">
         <div class="logo-text">
             <span class="logo-main">Integra <span class="accent">IT-OT Technologies</span></span>
             <span class="logo-tagline">Integrate. Optimize. Transform.</span>
@@ -720,6 +732,7 @@ footer a {
         </div>
     </div>
 </section>
+
 <footer>
     <div class="footer-brand">Integra IT-OT Technologies</div>
     <div class="footer-tagline">INDUSTRIAL AUTOMATION · AVEVA PI SYSTEM · SCADA · DASHBOARD · IT-OT CYBERSECURITY</div>
