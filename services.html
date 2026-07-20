@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================================
-   TOKENS (shared with index.html)
+   TOKENS (shared with index.html / about.html)
    ========================================================================== */
 :root{
     --ink: #0d1420;
@@ -31,6 +31,8 @@
     --signal-soft: rgba(30,127,214,0.12);
     --amber: #ff9d2e;
     --amber-soft: rgba(255,157,46,0.14);
+    --teal: #0d9488;
+    --teal-soft: rgba(13,148,136,0.12);
     --radius: 10px;
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -97,7 +99,7 @@ nav a.active::after{
    HERO
    ========================================================================== */
 .hero{
-    padding: 168px 6% 80px;
+    padding: 168px 6% 0;
     background: var(--deep);
     background-image: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(30,127,214,0.22) 0%, transparent 70%);
     position: relative;
@@ -114,7 +116,7 @@ nav a.active::after{
     mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent 85%);
     pointer-events:none;
 }
-.hero-inner{ position:relative; z-index:2; max-width: 760px; margin:0 auto; }
+.hero-inner{ position:relative; z-index:2; max-width: 760px; margin:0 auto; padding-bottom: 76px; }
 .eyebrow{
     display:inline-flex; align-items:center; gap:8px;
     font-family: var(--font-mono); font-size:11.5px; font-weight:600; letter-spacing:0.1em;
@@ -125,29 +127,34 @@ nav a.active::after{
 .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background: var(--amber); }
 .hero h1{
     font-family: var(--font-display);
-    font-size: clamp(32px, 4.6vw, 50px);
+    font-size: clamp(32px, 4.6vw, 52px);
     font-weight:700; line-height:1.15; letter-spacing:-0.01em;
     margin-bottom:18px;
 }
 .hero h1 em{ font-style:normal; color: var(--signal); }
 .hero p{
-    font-size:16.5px; color: rgba(255,255,255,0.62); max-width:580px; margin:0 auto 44px;
+    font-size:16.5px; color: rgba(255,255,255,0.62); max-width:580px; margin:0 auto;
 }
 
-/* stats bar - reuses pipeline visual language */
+/* stats bar - reuses pipeline visual language from home page */
 .stats-bar{
-    display:grid; grid-template-columns: repeat(3, 1fr);
-    max-width: 720px; margin: 0 auto;
+    position: relative; z-index:2;
+    display:grid; grid-template-columns: repeat(5, 1fr);
+    max-width: 1180px; margin: 44px auto 0;
     border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 30px;
 }
-.stat-item{ padding: 0 18px; border-right: 1px solid rgba(255,255,255,0.1); }
+.stat-item{
+    padding: 28px 18px; border-right: 1px solid rgba(255,255,255,0.1);
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    position:relative;
+}
 .stat-item:last-child{ border-right:none; }
-.stat-num{ font-family: var(--font-display); font-size:30px; font-weight:700; color:#fff; line-height:1; }
+.stat-item svg{ width:18px; height:18px; stroke: var(--signal); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; margin-bottom:4px; opacity:0.85; }
+.stat-num{ font-family: var(--font-display); font-size:26px; font-weight:700; color:#fff; line-height:1; }
 .stat-num em{ font-style:normal; color: var(--signal); }
 .stat-label{
-    font-family: var(--font-mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
-    color: rgba(255,255,255,0.4); margin-top:8px;
+    font-family: var(--font-mono); font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase;
+    color: rgba(255,255,255,0.42); text-align:center;
 }
 
 /* ==========================================================================
@@ -155,9 +162,10 @@ nav a.active::after{
    ========================================================================== */
 .section{ padding: 90px 6%; }
 .section-head{ max-width: 620px; margin: 0 auto 48px; text-align:center; }
+.section-head.left{ margin: 0 0 42px; text-align:left; }
 .section-eyebrow{
     font-family: var(--font-mono); font-size:11.5px; font-weight:600; letter-spacing:0.1em;
-    text-transform:uppercase; color: var(--signal); margin-bottom:12px;
+    text-transform:uppercase; color: var(--signal); margin-bottom:12px; display:inline-block;
 }
 .section h2{
     font-family: var(--font-display); font-size: clamp(26px, 3vw, 34px);
@@ -166,41 +174,66 @@ nav a.active::after{
 .section-head p{ color: var(--mist); font-size:15px; }
 
 /* ==========================================================================
-   SERVICES GRID
+   SERVICES — spec-sheet styled cards
    ========================================================================== */
-.services-grid{
-    display:grid; grid-template-columns: 1fr 1fr; gap:24px;
+.services-list{
+    display:flex; flex-direction:column; gap:18px;
     max-width:1140px; margin:0 auto;
 }
-.service-card{
+.service-row{
     background:#fff; border:1px solid var(--line); border-radius: var(--radius);
-    padding:32px; position:relative; overflow:hidden;
-    transition: border-color .2s ease, transform .2s ease;
+    display:grid; grid-template-columns: 240px 1fr;
+    overflow:hidden;
+    transition: border-color .2s ease, box-shadow .2s ease;
+    position: relative;
 }
-.service-card::before{
-    content:''; position:absolute; top:0; left:0; right:0; height:3px;
-    background: linear-gradient(90deg, var(--signal), var(--amber));
-    transform: scaleX(0); transform-origin:left; transition: transform .3s ease;
+.service-row:hover{ border-color: rgba(30,127,214,0.32); box-shadow: 0 10px 30px rgba(13,20,32,0.06); }
+
+.service-rail{
+    background: var(--deep);
+    background-image: radial-gradient(ellipse 140% 100% at 0% 0%, rgba(30,127,214,0.28) 0%, transparent 65%);
+    padding:28px 26px;
+    display:flex; flex-direction:column; justify-content:space-between; gap:20px;
+    position:relative;
+    border-right: 1px solid rgba(255,255,255,0.06);
 }
-.service-card:hover{ transform: translateY(-3px); border-color: rgba(30,127,214,0.3); }
-.service-card:hover::before{ transform: scaleX(1); }
+.service-rail::before{
+    content:''; position:absolute; inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 20px 20px;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,0.7), transparent 90%);
+    pointer-events:none;
+}
+.service-id{
+    font-family: var(--font-mono); font-size:11px; letter-spacing:0.08em; color: rgba(255,255,255,0.4);
+    position:relative; z-index:1;
+}
 .srv-icon{
-    width:46px; height:46px; background: var(--signal-soft); border-radius:10px;
-    display:flex; align-items:center; justify-content:center; margin-bottom:20px;
-    transition: background .2s ease;
+    width:44px; height:44px; border-radius:10px;
+    background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; z-index:1;
 }
-.service-card:hover .srv-icon{ background: var(--signal); }
-.srv-icon svg{ width:22px; height:22px; stroke: var(--signal); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; transition: stroke .2s ease; }
-.service-card:hover .srv-icon svg{ stroke:#fff; }
-.service-card h3{ font-family: var(--font-display); font-size:19.5px; font-weight:700; color: var(--ink); margin-bottom:11px; }
-.service-card p{ font-size:14px; color: var(--mist); line-height:1.7; margin-bottom:20px; }
-.feature-list{ list-style:none; display:flex; flex-direction:column; gap:9px; }
+.srv-icon svg{ width:21px; height:21px; stroke: var(--signal); fill:none; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
+.service-tag{
+    font-family: var(--font-mono); font-size:10px; letter-spacing:0.07em; text-transform:uppercase;
+    color: var(--amber); position:relative; z-index:1;
+}
+
+.service-body{ padding:28px 32px; }
+.service-body h3{ font-family: var(--font-display); font-size:20px; font-weight:700; color: var(--ink); margin-bottom:10px; }
+.service-body > p{ font-size:14px; color: var(--mist); line-height:1.7; margin-bottom:20px; max-width:640px; }
+.feature-list{ list-style:none; display:grid; grid-template-columns: 1fr 1fr; gap:10px 22px; }
 .feature-list li{
     font-size:13.5px; color: var(--ink); display:flex; align-items:flex-start; gap:9px;
     font-weight:500; line-height:1.5;
 }
 .feature-list li::before{
     content:"\2713"; color: var(--signal); font-weight:800; flex-shrink:0; margin-top:1px;
+    background: var(--signal-soft); width:16px; height:16px; border-radius:50%;
+    display:inline-flex; align-items:center; justify-content:center; font-size:9px;
 }
 
 .section.alt{ background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
@@ -214,7 +247,6 @@ nav a.active::after{
     padding:26px 22px; text-align:center; position:relative; overflow:hidden;
     transition: all .2s ease;
 }
-/* Gradient top accent line — matches service-card / val-card hover treatment */
 .trust-card::before{
     content:''; position:absolute; top:0; left:0; right:0; height:3px;
     background: linear-gradient(90deg, var(--signal), var(--amber));
@@ -231,15 +263,20 @@ nav a.active::after{
 .trust-card p{ font-size:13px; color: var(--mist); line-height:1.65; }
 
 /* ==========================================================================
-   PROCESS
+   PROCESS — connected rail (real sequence, so numbering is meaningful)
    ========================================================================== */
-.process-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; max-width:1140px; margin:0 auto; position: relative; }
+.process-wrap{ max-width:1140px; margin:0 auto; position:relative; }
+.process-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; position: relative; }
+.process-rail-line{
+    position:absolute; top:21px; left:calc(16.66% ); right:calc(16.66%);
+    height:2px; background: repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 14px);
+    z-index:0;
+}
 .process-card{
     background:#fff; border:1px solid var(--line); border-radius: var(--radius);
-    padding:30px 26px; position:relative; overflow:hidden;
+    padding:30px 26px; position:relative; overflow:hidden; z-index:1;
     transition: all .2s ease;
 }
-/* Gradient top accent line — matches service-card / val-card hover treatment */
 .process-card::before{
     content:''; position:absolute; top:0; left:0; right:0; height:3px;
     background: linear-gradient(90deg, var(--signal), var(--amber));
@@ -248,14 +285,47 @@ nav a.active::after{
 .process-card:hover{ transform: translateY(-3px); border-color: rgba(30,127,214,0.3); }
 .process-card:hover::before{ transform: scaleX(1); }
 .step-num{
-    font-family: var(--font-mono); font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
-    color: var(--signal); background: var(--signal-soft);
-    display:inline-block; padding:5px 12px; border-radius:4px; margin-bottom:18px;
+    font-family: var(--font-mono); font-size:12px; font-weight:600; letter-spacing:0.04em;
+    color: #fff; background: var(--signal);
+    width:30px; height:30px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
 }
 .p-icon{ width:42px; height:42px; background: var(--paper); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
 .p-icon svg{ width:20px; height:20px; stroke: var(--signal); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 .process-card h3{ font-family: var(--font-display); font-size:18.5px; font-weight:700; color: var(--ink); margin-bottom:11px; }
 .process-card p{ font-size:14px; color: var(--mist); line-height:1.75; }
+
+/* ==========================================================================
+   ENGAGEMENT MODELS — project vs AMC comparison panels
+   ========================================================================== */
+.engage-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:24px; max-width:1140px; margin:0 auto; }
+.engage-card{
+    border-radius: var(--radius); padding:34px 30px; position:relative; overflow:hidden;
+}
+.engage-card.dark{
+    background: var(--deep);
+    background-image: radial-gradient(ellipse 120% 100% at 100% 0%, rgba(30,127,214,0.24) 0%, transparent 65%);
+    color:#fff;
+}
+.engage-card.light{
+    background:#fff; border:1px solid var(--line);
+}
+.engage-badge{
+    font-family: var(--font-mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
+    display:inline-block; padding:5px 11px; border-radius:4px; margin-bottom:18px;
+}
+.engage-card.dark .engage-badge{ background: rgba(255,157,46,0.16); color: var(--amber); border:1px solid rgba(255,157,46,0.3); }
+.engage-card.light .engage-badge{ background: var(--signal-soft); color: var(--signal); border:1px solid rgba(30,127,214,0.22); }
+.engage-card h3{ font-family: var(--font-display); font-size:22px; font-weight:700; margin-bottom:12px; }
+.engage-card.light h3{ color: var(--ink); }
+.engage-card p.desc{ font-size:14px; line-height:1.75; margin-bottom:22px; }
+.engage-card.dark p.desc{ color: rgba(255,255,255,0.6); }
+.engage-card.light p.desc{ color: var(--mist); }
+.engage-list{ list-style:none; display:flex; flex-direction:column; gap:11px; }
+.engage-list li{ font-size:13.5px; display:flex; align-items:flex-start; gap:10px; font-weight:500; }
+.engage-card.dark .engage-list li{ color: rgba(255,255,255,0.85); }
+.engage-card.light .engage-list li{ color: var(--ink); }
+.engage-list li::before{ content:"\2192"; color: var(--signal); font-weight:700; flex-shrink:0; }
 
 /* ==========================================================================
    CTA
@@ -333,8 +403,17 @@ footer a {
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
+@media(max-width:1000px){
+    .stats-bar{ grid-template-columns: repeat(3, 1fr); }
+    .stat-item:nth-child(3){ border-right:none; }
+    .stat-item{ border-bottom:1px solid rgba(255,255,255,0.1); }
+    .stat-item:nth-last-child(-n+3){ border-bottom:none; }
+}
 @media(max-width:900px){
     .trust-grid{ grid-template-columns: 1fr 1fr; }
+    .service-row{ grid-template-columns:1fr; }
+    .service-rail{ flex-direction:row; align-items:center; border-right:none; border-bottom:1px solid rgba(255,255,255,0.06); padding:20px 26px; }
+    .engage-grid{ grid-template-columns:1fr; }
 }
 @media(max-width:768px){
     header{ padding:14px 5%; }
@@ -353,18 +432,21 @@ footer a {
     header nav a:last-child{ border-bottom:none; }
     header nav a.active::after{ display:none; }
 
-    /* FIX: active page link now stays highlighted inside the mobile menu */
     header nav a.active{
         color: var(--signal) !important;
         background: var(--signal-soft);
         font-weight: 700;
     }
 
-    .hero{ padding:120px 6% 56px; }
-    .stats-bar{ grid-template-columns: 1fr; gap:18px; }
-    .stat-item{ border-right:none; padding:0; }
-    .services-grid{ grid-template-columns:1fr; }
+    .hero{ padding:120px 6% 0; }
+    .hero-inner{ padding-bottom:56px; }
+    .stats-bar{ grid-template-columns: 1fr 1fr; margin-top:32px; }
+    .stat-item:nth-child(2n){ border-right:none; }
+    .stat-item{ padding:20px 12px; border-bottom:1px solid rgba(255,255,255,0.1); }
+    .stat-item:nth-last-child(-n+2){ border-bottom:none; }
+    .feature-list{ grid-template-columns:1fr; }
     .process-grid{ grid-template-columns:1fr; }
+    .process-rail-line{ display:none; }
     .trust-grid{ grid-template-columns: 1fr 1fr; }
     .section{ padding: 60px 5%; }
     .cta-section{ padding: 64px 5%; }
@@ -373,6 +455,7 @@ footer a {
 }
 @media(max-width:480px){
     .trust-grid{ grid-template-columns: 1fr; }
+    .stats-bar{ grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
@@ -403,6 +486,33 @@ footer a {
         <h1>Engineering services that <em>power industrial operations</em></h1>
         <p>High-performance data solutions built for operational scale protecting asset boundaries and delivering actionable plant metrics from sensor to boardroom.</p>
     </div>
+    <div class="stats-bar reveal">
+        <div class="stat-item">
+            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+            <div class="stat-num"><em>6</em></div>
+            <div class="stat-label">Core Service Lines</div>
+        </div>
+        <div class="stat-item">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="stat-num"><em>62443</em></div>
+            <div class="stat-label">ISA/IEC Aligned</div>
+        </div>
+        <div class="stat-item">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <div class="stat-num"><em>24/7</em></div>
+            <div class="stat-label">Priority Support</div>
+        </div>
+        <div class="stat-item">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <div class="stat-num"><em>99.9</em>%</div>
+            <div class="stat-label">Target Uptime SLA</div>
+        </div>
+        <div class="stat-item">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <div class="stat-num"><em>3</em></div>
+            <div class="stat-label">Phase Deployment</div>
+        </div>
+    </div>
 </section>
 
 <section class="section reveal">
@@ -411,92 +521,130 @@ footer a {
         <h2>Our Core Service Lines</h2>
         <p>Each engagement is scoped, staffed, and executed by engineers with deep OT domain expertise.</p>
     </div>
-    <div class="services-grid">
 
-        <div class="service-card">
-            <div class="srv-icon">
-                <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
+    <div class="services-list">
+
+        <div class="service-row">
+            <div class="service-rail">
+                <div class="service-id">SVC&nbsp;/&nbsp;01</div>
+                <div class="srv-icon">
+                    <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
+                </div>
+                <div class="service-tag">Historian &amp; AF</div>
             </div>
-            <h3>AVEVA PI System Engineering</h3>
-            <p>Complete execution framework covering data archive migrations, asset framework mapping infrastructure, and customized real-time processing visuals for plant-wide visibility.</p>
-            <ul class="feature-list">
-                <li>PI Data Archive Upgrades &amp; Patch Deployment</li>
-                <li>Asset Framework (AF) Templates &amp; Element Hierarchies</li>
-                <li>PI Vision Dashboard Layout Customization</li>
-                <li>PI Vision Custom Symbol Creation &amp; Extensibility</li>
-                <li>High-Availability Buffering &amp; OPC Interface Mapping</li>
-            </ul>
+            <div class="service-body">
+                <h3>AVEVA PI System Engineering</h3>
+                <p>Complete execution framework covering data archive migrations, asset framework mapping infrastructure, and customized real-time processing visuals for plant-wide visibility.</p>
+                <ul class="feature-list">
+                    <li>PI Data Archive Upgrades &amp; Patch Deployment</li>
+                    <li>Asset Framework (AF) Templates &amp; Element Hierarchies</li>
+                    <li>PI Vision Dashboard Layout Customization</li>
+                    <li>PI Vision Custom Symbol Creation &amp; Extensibility</li>
+                    <li>High-Availability Buffering &amp; OPC Interface Mapping</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="service-card">
-            <div class="srv-icon">
-                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <div class="service-row">
+            <div class="service-rail">
+                <div class="service-id">SVC&nbsp;/&nbsp;02</div>
+                <div class="srv-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                </div>
+                <div class="service-tag">HMI &amp; Control</div>
             </div>
-            <h3>SCADA &amp; Automation Systems</h3>
-            <p>Ergonomic HMI automation engineered directly for production line clarity, process control tracking, and precise shift telemetry loop management across plant environments.</p>
-            <ul class="feature-list">
-                <li>High-Performance HMI Graphical Designs</li>
-                <li>Industrial Alarm Rationalization &amp; Auditing</li>
-                <li>Automated Production Shift Report Matrices</li>
-                <li>PLC Data Loop Mapping &amp; Interlocking Protocols</li>
-            </ul>
+            <div class="service-body">
+                <h3>SCADA &amp; Automation Systems</h3>
+                <p>Ergonomic HMI automation engineered directly for production line clarity, process control tracking, and precise shift telemetry loop management across plant environments.</p>
+                <ul class="feature-list">
+                    <li>High-Performance HMI Graphical Designs</li>
+                    <li>Industrial Alarm Rationalization &amp; Auditing</li>
+                    <li>Automated Production Shift Report Matrices</li>
+                    <li>PLC Data Loop Mapping &amp; Interlocking Protocols</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="service-card">
-            <div class="srv-icon">
-                <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <div class="service-row">
+            <div class="service-rail">
+                <div class="service-id">SVC&nbsp;/&nbsp;03</div>
+                <div class="srv-icon">
+                    <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </div>
+                <div class="service-tag">Power BI</div>
             </div>
-            <h3>Operational Data Analytics</h3>
-            <p>Extracting raw historian tables and processing loop registries to build responsive analytical tracking modules and executive corporate insight dashboards.</p>
-            <ul class="feature-list">
-                <li>Interactive Power BI Process Dashboards</li>
-                <li>Overall Equipment Effectiveness (OEE) Tracking</li>
-                <li>Plant Mass Balance &amp; Utility Profiling Modules</li>
-                <li>Historical Equipment Downtime Analytics</li>
-            </ul>
+            <div class="service-body">
+                <h3>Operational Data Analytics</h3>
+                <p>Extracting raw historian tables and processing loop registries to build responsive analytical tracking modules and executive corporate insight dashboards.</p>
+                <ul class="feature-list">
+                    <li>Interactive Power BI Process Dashboards</li>
+                    <li>Overall Equipment Effectiveness (OEE) Tracking</li>
+                    <li>Plant Mass Balance &amp; Utility Profiling Modules</li>
+                    <li>Historical Equipment Downtime Analytics</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="service-card">
-            <div class="srv-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="service-row">
+            <div class="service-rail">
+                <div class="service-id">SVC&nbsp;/&nbsp;04</div>
+                <div class="srv-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div class="service-tag">ISA/IEC 62443</div>
             </div>
-            <h3>Industrial OT Cybersecurity</h3>
-            <p>Securing plant networks from environmental and digital threat vectors without creating pipeline latency issues or asset operational processing loop hazards.</p>
-            <ul class="feature-list">
-                <li>ISA/IEC 62443 Industrial Network Risk Assessment</li>
-                <li>Deep Perimeter Firewall &amp; DMZ Configurations</li>
-                <li>Secure Remote Access Infrastructure Architectures</li>
-                <li>Unidirectional Data Gateways &amp; Protocol Segmentation</li>
-            </ul>
+            <div class="service-body">
+                <h3>Industrial OT Cybersecurity</h3>
+                <p>Securing plant networks from environmental and digital threat vectors without creating pipeline latency issues or asset operational processing loop hazards.</p>
+                <ul class="feature-list">
+                    <li>ISA/IEC 62443 Industrial Network Risk Assessment</li>
+                    <li>Deep Perimeter Firewall &amp; DMZ Configurations</li>
+                    <li>Secure Remote Access Infrastructure Architectures</li>
+                    <li>Unidirectional Data Gateways &amp; Protocol Segmentation</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="service-card">
-            <div class="srv-icon">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        <div class="service-row">
+            <div class="service-rail">
+                <div class="service-id">SVC&nbsp;/&nbsp;05</div>
+                <div class="srv-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                </div>
+                <div class="service-tag">AMC / SLA</div>
             </div>
-            <h3>Annual Maintenance Contracts (AMC)</h3>
-            <p>Comprehensive SLA programs engineered to maximize uptime, audit process tag integrity, and keep server systems completely patched and performant.</p>
-            <ul class="feature-list">
-                <li>24/7 Priority Incident Engineering Support</li>
-                <li>Proactive PI System Health Checks &amp; Optimization</li>
-                <li>Interface Connectivity &amp; Buffer Pool Maintenance</li>
-                <li>Scheduled Application Backup &amp; Disaster Recovery Audits</li>
-            </ul>
+            <div class="service-body">
+                <h3>Annual Maintenance Contracts (AMC)</h3>
+                <p>Comprehensive SLA programs engineered to maximize uptime, audit process tag integrity, and keep server systems completely patched and performant.</p>
+                <ul class="feature-list">
+                    <li>24/7 Priority Incident Engineering Support</li>
+                    <li>Proactive PI System Health Checks &amp; Optimization</li>
+                    <li>Interface Connectivity &amp; Buffer Pool Maintenance</li>
+                    <li>Scheduled Application Backup &amp; Disaster Recovery Audits</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="service-card">
-            <div class="srv-icon">
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <div class="service-row">
+            <div class="service-rail">
+                <div class="service-id">SVC&nbsp;/&nbsp;06</div>
+                <div class="srv-icon">
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+                <div class="service-tag">IT/OT Bridge</div>
             </div>
-            <h3>IT/OT Network Integration</h3>
-            <p>Bridging enterprise IT systems with plant-floor OT infrastructure enabling secure, seamless data flow from PLC to ERP without compromising operational safety.</p>
-            <ul class="feature-list">
-                <li>IT/OT Convergence Architecture Design</li>
-                <li>Data Historian to Enterprise System Bridging</li>
-                <li>Industrial Protocol Translation (Modbus, OPC-UA)</li>
-                <li>Network Segmentation &amp; VLAN Configuration</li>
-            </ul>
+            <div class="service-body">
+                <h3>IT/OT Network Integration</h3>
+                <p>Bridging enterprise IT systems with plant-floor OT infrastructure enabling secure, seamless data flow from PLC to ERP without compromising operational safety.</p>
+                <ul class="feature-list">
+                    <li>IT/OT Convergence Architecture Design</li>
+                    <li>Data Historian to Enterprise System Bridging</li>
+                    <li>Industrial Protocol Translation (Modbus, OPC-UA)</li>
+                    <li>Network Segmentation &amp; VLAN Configuration</li>
+                </ul>
+            </div>
         </div>
+
     </div>
 </section>
 
@@ -544,30 +692,65 @@ footer a {
         <h2>How We Deploy Solutions</h2>
         <p>A structured three-phase approach that minimizes risk and maximizes speed-to-value.</p>
     </div>
-    <div class="process-grid">
-        <div class="process-card">
-            <div class="step-num">Phase 01</div>
-            <div class="p-icon">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+    <div class="process-wrap">
+        <div class="process-rail-line"></div>
+        <div class="process-grid">
+            <div class="process-card">
+                <div class="step-num">1</div>
+                <div class="p-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                </div>
+                <h3>Assess &amp; Architect</h3>
+                <p>We analyze your target process tags, instrument constraints, and system control boundaries to build zero-risk deployment blueprints tailored to your plant.</p>
             </div>
-            <h3>Assess &amp; Architect</h3>
-            <p>We analyze your target process tags, instrument constraints, and system control boundaries to build zero-risk deployment blueprints tailored to your plant.</p>
+            <div class="process-card">
+                <div class="step-num">2</div>
+                <div class="p-icon">
+                    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <h3>Integrate &amp; Validate</h3>
+                <p>We build automated Python/PowerShell bridges, tune high-availability archive buffers, and run concurrent validation tests before any go-live cutover.</p>
+            </div>
+            <div class="process-card">
+                <div class="step-num">3</div>
+                <div class="p-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <h3>Optimize &amp; Support</h3>
+                <p>We supply 24/7 mission-critical health monitoring and proactive optimization loops to preserve high data integrity from plant floor to executive level.</p>
+            </div>
         </div>
-        <div class="process-card">
-            <div class="step-num">Phase 02</div>
-            <div class="p-icon">
-                <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            </div>
-            <h3>Integrate &amp; Validate</h3>
-            <p>We build automated Python/PowerShell bridges, tune high-availability archive buffers, and run concurrent validation tests before any go-live cutover.</p>
+    </div>
+</section>
+
+<section class="section alt reveal">
+    <div class="section-head">
+        <div class="section-eyebrow">How You Engage Us</div>
+        <h2>Engagement Models</h2>
+        <p>Bring us in for a defined build, or keep us on as your standing OT engineering partner.</p>
+    </div>
+    <div class="engage-grid">
+        <div class="engage-card dark">
+            <span class="engage-badge">Project-Based</span>
+            <h3>Scoped Build &amp; Deployment</h3>
+            <p class="desc">Fixed-scope engagements for a specific integration, migration, or system rollout defined milestones, defined deliverables, defined go-live date.</p>
+            <ul class="engage-list">
+                <li>Requirements assessment &amp; solution architecture</li>
+                <li>Fixed-fee delivery with milestone billing</li>
+                <li>Full documentation &amp; knowledge transfer</li>
+                <li>Optional transition into an AMC on completion</li>
+            </ul>
         </div>
-        <div class="process-card">
-            <div class="step-num">Phase 03</div>
-            <div class="p-icon">
-                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            </div>
-            <h3>Optimize &amp; Support</h3>
-            <p>We supply 24/7 mission-critical health monitoring and proactive optimization loops to preserve high data integrity from plant floor to executive level.</p>
+        <div class="engage-card light">
+            <span class="engage-badge">Retained / AMC</span>
+            <h3>Standing Engineering Partner</h3>
+            <p class="desc">Ongoing coverage under an Annual Maintenance Contract a named engineering team monitoring, maintaining, and evolving your OT data infrastructure.</p>
+            <ul class="engage-list">
+                <li>24/7 priority incident response &amp; escalation</li>
+                <li>Scheduled health checks &amp; tag integrity audits</li>
+                <li>Quarterly optimization &amp; capacity reviews</li>
+                <li>Predictable annual cost, no surprise call-outs</li>
+            </ul>
         </div>
     </div>
 </section>
