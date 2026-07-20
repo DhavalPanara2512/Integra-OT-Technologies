@@ -211,9 +211,17 @@ nav a.active::after{
 .trust-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:20px; max-width:1140px; margin:0 auto; }
 .trust-card{
     background: var(--paper); border:1px solid var(--line); border-radius: var(--radius);
-    padding:26px 22px; text-align:center; transition: all .2s ease;
+    padding:26px 22px; text-align:center; position:relative; overflow:hidden;
+    transition: all .2s ease;
+}
+/* Gradient top accent line — matches service-card / val-card hover treatment */
+.trust-card::before{
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--signal), var(--amber));
+    transform: scaleX(0); transform-origin:left; transition: transform .3s ease;
 }
 .trust-card:hover{ background:#fff; border-color: rgba(30,127,214,0.3); transform: translateY(-3px); }
+.trust-card:hover::before{ transform: scaleX(1); }
 .trust-icon{
     width:50px; height:50px; background: var(--signal-soft); border-radius:11px;
     display:flex; align-items:center; justify-content:center; margin:0 auto 16px;
@@ -228,9 +236,17 @@ nav a.active::after{
 .process-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; max-width:1140px; margin:0 auto; position: relative; }
 .process-card{
     background:#fff; border:1px solid var(--line); border-radius: var(--radius);
-    padding:30px 26px; transition: all .2s ease;
+    padding:30px 26px; position:relative; overflow:hidden;
+    transition: all .2s ease;
+}
+/* Gradient top accent line — matches service-card / val-card hover treatment */
+.process-card::before{
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--signal), var(--amber));
+    transform: scaleX(0); transform-origin:left; transition: transform .3s ease;
 }
 .process-card:hover{ transform: translateY(-3px); border-color: rgba(30,127,214,0.3); }
+.process-card:hover::before{ transform: scaleX(1); }
 .step-num{
     font-family: var(--font-mono); font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
     color: var(--signal); background: var(--signal-soft);
