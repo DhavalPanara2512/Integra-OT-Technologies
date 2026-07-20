@@ -303,8 +303,17 @@ nav a.active::after{
 .card{
     background:#fff; border:1px solid var(--line); border-radius: var(--radius);
     overflow: hidden; text-align:left; transition: border-color .2s ease, transform .2s ease;
+    position: relative;
+}
+/* Gradient top accent line — matches About page's val-card hover treatment */
+.card::before{
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--signal), var(--amber));
+    transform: scaleX(0); transform-origin:left; transition: transform .3s ease;
+    z-index: 2;
 }
 .card:hover{ border-color: rgba(30,127,214,0.3); transform: translateY(-2px); }
+.card:hover::before{ transform: scaleX(1); }
 .card .card-media{
     position: relative; height:150px; width:100%;
     background-color: var(--deep);
